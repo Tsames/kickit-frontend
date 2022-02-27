@@ -1,0 +1,25 @@
+@import './variables.scss';
+
+nav {
+  background-color: $nav-background;
+  border-style: solid;
+  border-top-width: 0em;
+  border-left-width: 0em;
+  border-right-width: 0em;
+  border-bottom-width: 0.15em;
+  border-color: $nav-border;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+div.navLeft {
+  margin: 0.5em;
+}
+div.navRight {
+  margin: 0.5em;
+}
+Link {
+  text-decoration: none;
+  color: black;
+}

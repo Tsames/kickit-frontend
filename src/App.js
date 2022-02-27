@@ -1,10 +1,16 @@
+//Dependencies
 import React, { Component } from 'react';
 import axios from 'axios'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import Home from './components/Home'
-import Login from './components/registrations/Login'
-import Signup from './components/registrations/Signup'
+//Styling
+// import './App.scss';
+
+//Components
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import Login from './components/registrations/Login';
+import Signup from './components/registrations/Signup';
 
 class App extends Component {
 
@@ -51,6 +57,7 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
+          <Navbar loggedInStatus={this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} />
           <Switch>
             <Route
               exact path='/'

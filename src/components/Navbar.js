@@ -1,12 +1,23 @@
 //Dependencies
-import React from 'react';
+import { useState, React} from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { BiUser, BiX } from "react-icons/bi";
 
 //Styles
 import '../styles/navbar.scss';
 
 const Navbar = (props) => {
+
+  const [mo, setMo] = useState(false)
+
+  const handleMouseEnter = () => {
+    setMo(true);
+  }
+
+  const handleMouseLeave = () => {
+    setMo(false)
+  }
 
   const handleClick = () => {
     axios.delete('http://localhost:3001/logout', { withCredentials: true })
@@ -19,15 +30,21 @@ const Navbar = (props) => {
 
   const noUser = (
     <>
-      <Link to='/login'>Log In</Link>
-      <Link to='/signup'>Sign Up</Link>
+      <Link to='/login' className="navRightText navRightItem">Log In</Link>
+      <Link to='/signup' className="navRightText navRightItem">Sign Up</Link>
     </>
   )
 
   const yesUser = (
     <>
-      {props.user ? <h6>welcome, {props.user.username}!</h6> : null}
-      <Link to='/logout' onClick={handleClick}>Logout</Link>
+      {props.user ? 
+      <>
+        <BiUser className="navRightItem"></BiUser>
+        <h5 className="navRightText navRightItem">{props.user.username}</h5>
+      </>
+       : null}
+      <BiX className="navRightItem"></BiX>
+      { mo ? <Link to='/logout' className="navRightText navRightItem" onClick={handleClick}>Logout</Link> : null }
     </>
   )
 
@@ -36,7 +53,7 @@ const Navbar = (props) => {
       <div className="navLeft">
         <h1>Kick It</h1>
       </div>
-      <div className="navRight">
+      <div className="navRight" onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {
           props.loggedInStatus ? yesUser : noUser
         }

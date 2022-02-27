@@ -12,14 +12,20 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  color: $nav-text-big;
 }
 div.navLeft {
   margin: 0.5em;
 }
 div.navRight {
   margin: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-Link {
-  text-decoration: none;
-  color: black;
+.navRightText {
+  text-decoration-line: none;
+  color: $nav-text-small;
+  margin: 0.5em;
 }

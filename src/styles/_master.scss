@@ -1,11 +1,15 @@
-/*-- Pallette Colors --*/
+/*-------------  Pallette Colors -------------*/
 $palColor1: rgba(85, 38, 62, 0.5);
 $palColor2: rgba(42, 5, 24, 0.91);
 $palColor3: rgba(42, 5, 24, 0.91);
 $palColor4: rgba(42, 5, 24, 0.91);
 $palColor5: rgba(0,0,0,0.40);
 
-/*-- General Mixins --*/
+/*-------------  Grid Colors -------------*/
+$grid-active: rgba(138, 207, 155, 1);
+$grid-active-border: rgb(8, 109, 34);
+
+/*------------- General Mixins -------------*/
 @mixin mFlexbox($fdirection, $fspace, $falign) {
   display: flex;
   flex-direction: $fdirection;
@@ -18,3 +22,4 @@ $palColor5: rgba(0,0,0,0.40);
   border-width: $width;
   border-color: $borderColor;
 }
+/*------------- ############### -------------*/

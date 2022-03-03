@@ -1,12 +1,20 @@
 @import './master';
 
-table {
+//Styles for the grid table in Grid.js
+div.gridContents {
+  @include mFlexbox(row, center, center);
   margin: 5em auto;
 
-  th {
-    background-color: black;
-    width: 5em;
-    height: 5em;
+  div.gridCell {
+    @include mBorder(0.01em, black);
+    background-color: white;
+    width: 2em;
+    height: 1em;
+  }
+
+  div.gridActive {
+    border-color: $grid-active-border;
+    background-color: $grid-active;
   }
 
 }

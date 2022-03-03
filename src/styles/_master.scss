@@ -1,0 +1,20 @@
+/*-- Pallette Colors --*/
+$palColor1: rgba(85, 38, 62, 0.5);
+$palColor2: rgba(42, 5, 24, 0.91);
+$palColor3: rgba(42, 5, 24, 0.91);
+$palColor4: rgba(42, 5, 24, 0.91);
+$palColor5: rgba(0,0,0,0.40);
+
+/*-- General Mixins --*/
+@mixin mFlexbox($fdirection, $fspace, $falign) {
+  display: flex;
+  flex-direction: $fdirection;
+  justify-content: $fspace;
+  align-items: $falign;
+}
+
+@mixin mBorder($width: 0.15em, $borderColor: $palColor2, $style: solid) {
+  border-style: $style;
+  border-width: $width;
+  border-color: $borderColor;
+}

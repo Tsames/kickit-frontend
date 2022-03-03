@@ -30,8 +30,8 @@ const Navbar = (props) => {
 
   const noUser = (
     <>
-      <Link to='/login' className="navRightText navRightItem">Log In</Link>
-      <Link to='/signup' className="navRightText navRightItem">Sign Up</Link>
+      <Link to='/login' className="navItem">Log In</Link>
+      <Link to='/signup' className="navItem">Sign Up</Link>
     </>
   )
 
@@ -39,12 +39,12 @@ const Navbar = (props) => {
     <>
       {props.user ? 
       <>
-        <BiUser className="navRightItem"></BiUser>
-        <h5 className="navRightText navRightItem">{props.user.username}</h5>
+        <BiUser className="navItem"></BiUser>
+        <h5 className="navItem">{props.user.username}</h5>
       </>
        : null}
-      <BiX className="navRightItem"></BiX>
-      { mo ? <Link to='/logout' className="navRightText navRightItem" onClick={handleClick}>Logout</Link> : null }
+      <BiX className="navItem"></BiX>
+      { mo ? <Link to='/logout' className="navItem" onClick={handleClick}>Logout</Link> : null }
     </>
   )
 

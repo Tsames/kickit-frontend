@@ -7,7 +7,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // import './App.scss';
 
 //Components
-import Home from './components/Home';
+import Grid from './components/Grid';
 import Navbar from './components/Navbar';
 import Login from './components/registrations/Login';
 import Signup from './components/registrations/Signup';
@@ -62,7 +62,7 @@ class App extends Component {
             <Route
               exact path='/'
               render={props => (
-                <Home {...props} loggedInStatus={this.state.isLoggedIn} handleLogout={this.handleLogout}/>
+                <Grid {...props} loggedInStatus={this.state.isLoggedIn} handleLogout={this.handleLogout}/>
               )}
             />
             <Route

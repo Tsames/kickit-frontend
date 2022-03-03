@@ -1,31 +1,23 @@
-@import './variables.scss';
+@import './master';
 
 nav {
-  background-color: $nav-background;
-  border-style: solid;
-  border-top-width: 0em;
-  border-left-width: 0em;
-  border-right-width: 0em;
-  border-bottom-width: 0.15em;
-  border-color: $nav-border;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  color: $nav-text-big;
-}
-div.navLeft {
-  margin: 0.5em;
-}
-div.navRight {
-  margin: 0.5em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.navRightText {
-  text-decoration-line: none;
-  color: $nav-text-small;
-  margin: 0.5em;
+  @include mFlexbox(row, space-between, center);
+  @include mBorder(0em 0em 0.15em 0em);
+  background-color: $palColor1;
+  color: $palColor2;
+
+  div.navLeft {
+    margin: 0.5em;
+  }
+
+  div.navRight {
+    margin: 0.5em;
+    @include mFlexbox(row, space-between, center)
+  }
+
+  .navItem {
+    text-decoration-line: none;
+    color: $palColor2;
+    margin: 0.5em;
+  }
 }

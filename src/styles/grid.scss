@@ -12,9 +12,13 @@ div.gridContents {
     height: 1em;
   }
 
-  div.gridActive {
+  div.gridSelected {
     border-color: $grid-active-border;
     background-color: $grid-active;
+  }
+
+  div.gridTouch {
+    background-color: $grid-touch1;
   }
 
 }

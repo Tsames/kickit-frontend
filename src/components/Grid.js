@@ -10,17 +10,25 @@ const Grid = (props) => {
 
   //Starts a selection and prevents page scrolling
   const handleMouseDown = e => {
+    //Prevent page scrolling
     e.preventDefault();
-    console.log(`running handleMouseDown on ${e.target}`);
 
+    //Console message
+    console.log(`Starting at Column: ${e.target.dataset.column}/Row: ${e.target.dataset.row}...`);
+    console.log(e);
+
+    //Set component wide variables that track a selection
     selection = true;
     selectionStart = e.target;
     selectionEnd = e.target;
     setToggle(e.target);
+
+    //Toggle current cell
+    toggleThis([e.target]);
   }
 
   //Helper function - determines toggle state
-  const setToggle = (target) => {
+  const setToggle = target => {
     if (target.className == "gridCell") {
       toggle = "gridCell gridSelected";
     } else {
@@ -28,13 +36,53 @@ const Grid = (props) => {
     }
   }
 
-  //Toggles mouseover cell's class according to mousedown's class
+  //Helper function - toggles the provided elements' class
+  const toggleThis = arry => {
+    arry.forEach((element) => { 
+      element.className = toggle;
+    });
+  }
+
+  //Determine which cells to toggle based on selection
   const handleMouseOver = e => {
-    console.log(`running handleMouseOver on ${e.target}`);
+    //Only run the function if a selection is currently active
     if (selection) {
-      e.target.className = toggle;
+
+      //Console message
+      console.log(`running handleMouseOver on Column: ${e.target.dataset.column} - Row: ${e.target.dataset.row}...`);
+
+      //Set new end
+      selectionEnd = e.target;
+
+      //Set helper variables
+      let startColumn = Number(selectionStart.dataset.column);
+      let startRow = Number(selectionStart.dataset.row);
+      let endColumn = Number(selectionEnd.dataset.column);
+      let endRow = Number(selectionEnd.dataset.row);
+
+      //If the end is in the same column
+      if (startColumn === endColumn) {
+        //Create sliced array from child node list of parent element
+        let fillArray = Array.from(selectionEnd.parentElement.childNodes).filter(child => 
+          (startRow <= Number(child.dataset.row) && Number(child.dataset.row) <= endRow));
+        console.log(fillArray);
+        toggleThis(fillArray);
+      //Else the selection spans columns
+      } else {
+        return
+      }
     }
   }
+
+  // const handleMouseOver = e => {
+  //   console.log(`running handleMouseOver on ${e.target.id}`);
+  //   if (selection) {
+  //     selectionEnd = e.target;
+  //     if (selectionStart.dataset.column === selectionEnd.dataset.column) {
+  //        selectionEnd.parentElement.childNodes.slice(selectionStart.dataset.row, selectionEnd.dataset.row + 1)
+  //     }
+  //   }
+  // }
 
   //Ends a selection when mouse up
   const handleMouseUp = () => {

@@ -5,8 +5,15 @@ import { useState, React } from 'react';
 import '../styles/grid.scss';
 
 const Grid = (props) => {
+  //Component wide variables
+  let selection = false; //Tracks if there is a selection occuring
+  let selectionStart; //Trakcs where the selection began from
+  let selectionEnd; //Tracks where the selection is ending
+  let toggleState = true; //Tracks if the gridSelected class should be added or removed
+  let selectedCells = [] //Tracks the cells that are being selected
 
-  let selection = false, selectionStart, selectionEnd, toggle;
+  const cellOn = "gridCell gridSelected";
+  const cellOff = "gridCell";
 
   //Starts a selection and prevents page scrolling
   const handleMouseDown = e => {
@@ -14,33 +21,66 @@ const Grid = (props) => {
     e.preventDefault();
 
     //Console message
-    console.log(`Starting at Column: ${e.target.dataset.column}/Row: ${e.target.dataset.row}...`);
+    console.log(`Starting at Column: ${e.target.dataset.column} - Row: ${e.target.dataset.row}...`);
     console.log(e);
 
     //Set component wide variables that track a selection
     selection = true;
     selectionStart = e.target;
     selectionEnd = e.target;
-    setToggle(e.target);
-
-    //Toggle current cell
-    toggleThis([e.target]);
+    setToggleState(e.target);
+    addCells([e.target]);
   }
 
   //Helper function - determines toggle state
-  const setToggle = target => {
-    if (target.className == "gridCell") {
-      toggle = "gridCell gridSelected";
+  const setToggleState = target => {
+    //Sets toggleState to true if the selected cell is not colored upon mousedown
+    if (target.className === cellOff) {
+      toggleState = true;
+    //Sets toggleState to false if the selected cell is already colored upon md
     } else {
-      toggle = "gridCell";
+      toggleState = false;
     }
   }
 
-  //Helper function - toggles the provided elements' class
-  const toggleThis = arry => {
-    arry.forEach((element) => { 
-      element.className = toggle;
-    });
+  //Helper function - adds array of cells individually to selectedCells array
+  const addCells = cells => {
+    cells.forEach((element) => {
+      console.log(`Adding ${element.dataset.column}, ${element.dataset.row} to selection.`)
+      selectedCells.push(element)
+    })
+    toggleThis();
+  }
+
+  //Helper function - removes array of cells individually from selectedCells array
+  const removeCells = cells => {
+    cells.forEach((element) => {
+      const idx = selectedCells.findIndex((cell) => {return cell === element});
+      if (idx) {
+        console.log(`Removing ${element.dataset.column}, ${element.dataset.row} from selection.`)
+        toggleThis(element, false);
+        selectedCells.splice(idx, 1)
+      }
+    })
+  }
+
+  //Helper function - toggles the provided elements' class off
+  const toggleThis = (toggleWhat = selectedCells, added = true) => {
+    if (added) {
+      toggleWhat.forEach((element) => {
+        if (toggleState) {
+          element.className = cellOn;
+        } else {
+          element.className = cellOff;
+        }
+      });
+    } else {
+      if (toggleState) {
+        toggleWhat.className = cellOff;
+      } else {
+        toggleWhat.className = cellOn;
+      }
+    }
   }
 
   //Determine which cells to toggle based on selection
@@ -49,7 +89,7 @@ const Grid = (props) => {
     if (selection) {
 
       //Console message
-      console.log(`running handleMouseOver on Column: ${e.target.dataset.column} - Row: ${e.target.dataset.row}...`);
+      console.log(`running at Column: ${e.target.dataset.column} - Row: ${e.target.dataset.row}...`);
 
       //Set new end
       selectionEnd = e.target;
@@ -60,34 +100,31 @@ const Grid = (props) => {
       let endColumn = Number(selectionEnd.dataset.column);
       let endRow = Number(selectionEnd.dataset.row);
 
-      //If the end is in the same column
-      if (startColumn === endColumn) {
-        //Create sliced array from child node list of parent element
-        let fillArray = Array.from(selectionEnd.parentElement.childNodes).filter(child => 
-          (startRow <= Number(child.dataset.row) && Number(child.dataset.row) <= endRow));
-        console.log(fillArray);
-        toggleThis(fillArray);
-      //Else the selection spans columns
+      //----- Adding Cells -----
+      if ((toggleState && e.target.className === cellOff) || (!toggleState && e.target.className === cellOn)){
+        //If the end is in the same column
+        if (startColumn === endColumn) {
+          //Create sliced array from child node list of parent element
+          let fillArray = Array.from(selectionEnd.parentElement.childNodes).filter(child => 
+            (startRow <= Number(child.dataset.row) && Number(child.dataset.row) <= endRow));
+          console.log(fillArray);
+          addCells(fillArray);
+        //Else the selection spans columns
+        } else {
+          return
+        }
+       //----- Removing Cells -----
       } else {
-        return
+        removeCells([e.target]);
       }
     }
   }
 
-  // const handleMouseOver = e => {
-  //   console.log(`running handleMouseOver on ${e.target.id}`);
-  //   if (selection) {
-  //     selectionEnd = e.target;
-  //     if (selectionStart.dataset.column === selectionEnd.dataset.column) {
-  //        selectionEnd.parentElement.childNodes.slice(selectionStart.dataset.row, selectionEnd.dataset.row + 1)
-  //     }
-  //   }
-  // }
-
   //Ends a selection when mouse up
   const handleMouseUp = () => {
-    console.log(`running handleMouseUp...`)
+    console.log(`Stopping selection...`)
     if (selection) {
+      selectedCells = []
       selection = false
     }
   }

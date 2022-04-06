@@ -11,7 +11,6 @@ const Grid = (props) => {
   let selectionStart; //Trakcs where the selection began from
   let selectionEnd; //Tracks where the selection is ending
   let toggleState = true; //Tracks if the gridSelected class should be added or removed
-  // let selectedCells = [] //Tracks the cells that are being selected
 
   const cellOn = "gridCell gridSelected"; //The class that highlights a cell
   const cellOff = "gridCell"; //The class for a normal cell
@@ -139,7 +138,6 @@ const Grid = (props) => {
   const handleMouseUp = () => {
     console.log(`Stopping selection...`)
     if (selection) {
-      // selectedCells = []
       selection = false
     }
   }

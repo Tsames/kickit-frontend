@@ -1,10 +1,42 @@
 //Dependencies
-import { useState, React } from 'react';
+import { React } from 'react';
 
 //Styles
 import '../styles/grid.scss';
 
 const Grid = (props) => {
+
+  /* ------------------------------------------ Grid Generator ------------------------------------------*/
+
+  //Get column and row numbers from props
+  let numColumns = props.numColumns;
+  let numRows = props.numRows;
+
+  //Helper function - generates the rows within a column
+  const generateRows = (column) => {
+    let content = []
+    for (let i = 1; i <= numRows; i++) {
+      content.push(
+        <div key={`${column}, ${i}`} data-column={column} data-row={i} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}></div>
+      )
+    }
+    return content
+  }
+
+  //Main generator function that generates the columns of a grid
+  const generateColumns = () => {
+    let content = []
+    for (let i = 1; i <= numColumns; i++) {
+      content.push(
+        <div key={`c${i}`} data-column={i} className="gridColumn">
+          {generateRows(i)}
+        </div>
+      )
+    }
+    return content
+  }
+
+  /* ------------------------------------------ Selection Events & Logic ------------------------------------------*/
 
   //Component wide variables
   let selection = false; //Tracks if there is a selection occuring
@@ -13,7 +45,7 @@ const Grid = (props) => {
   let toggleState = true; //Tracks if the gridSelected class should be added or removed
 
   const cellOn = "gridCell gridSelected"; //The class that highlights a cell
-  const cellOff = "gridCell"; //The class for a normal cell
+  const cellOff = "gridCell"; //The class for an unhighlighted cell
 
   const handleMouseDown = e => {
     //Prevent page scrolling
@@ -40,17 +72,19 @@ const Grid = (props) => {
 
   //Helper function - toggles the provided elements' class according to toggleState
   const toggleThis = (toggleWhat) => {
-    toggleWhat.forEach((element) => {
-      if (toggleState) {
+    if (toggleState) {
+      toggleWhat.forEach((element) => {
         element.className = cellOn;
-      } else {
+      });
+    } else {
+      toggleWhat.forEach((element) => {
         element.className = cellOff;
-      }
-    });
+      });
+    }
   }
 
   //Helper function - determines if start or end is the bigger number
-  const findShape = () => {
+  const getCorners = () => {
 
     //Set helper variables
     const startColumn = Number(selectionStart.dataset.column);
@@ -93,7 +127,7 @@ const Grid = (props) => {
       selectionEnd = e.target;
 
       //Set toggle points
-      const sizeArray = findShape();
+      const sizeArray = getCorners();
       const smallRow = sizeArray[0], bigRow = sizeArray[1], smallColumn = sizeArray[2], bigColumn = sizeArray[3];
 
       //If the selection is restricted to a single column
@@ -112,8 +146,10 @@ const Grid = (props) => {
 
         //Create a new array to send to helper
         const toggleWhat = [];
+
+        //Grab all selected column nodes
         const selectedColumns = Array.from(selectionEnd.parentElement.parentNode.childNodes).filter(child => 
-          (smallColumn <= Number(child.id) && Number(child.id) <= bigColumn)
+          (smallColumn <= Number(child.dataset.column) && Number(child.dataset.column) <= bigColumn)
         );
         
         //Find all the cells in selected columns that are within the selected rows
@@ -142,81 +178,12 @@ const Grid = (props) => {
     }
   }
 
+  /* ------------------------------------------ Returning JSX ------------------------------------------*/
+
   return (
     <div className="gridTable">
       <div className="gridContents">
-        <div id="1" className="gridColumn">
-          <div id="1" data-column="1" data-row="1" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="2" data-column="1" data-row="2" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="3" data-column="1" data-row="3" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="4" data-column="1" data-row="4" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="5" data-column="1" data-row="5" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="6" data-column="1" data-row="6" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="7" data-column="1" data-row="7" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="8" data-column="1" data-row="8" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="9" data-column="1" data-row="9" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="10" data-column="1" data-row="10" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-        </div>
-        <div id="2" className="gridColumn">
-          <div id="1" data-column="2" data-row="1" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="2" data-column="2" data-row="2" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="3" data-column="2" data-row="3" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="4" data-column="2" data-row="4" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="5" data-column="2" data-row="5" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="6" data-column="2" data-row="6" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="7" data-column="2" data-row="7" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="8" data-column="2" data-row="8" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="9" data-column="2" data-row="9" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="10" data-column="2" data-row="10" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-        </div>
-        <div id="3" className="gridColumn">
-          <div id="1" data-column="3" data-row="1" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="2" data-column="3" data-row="2" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="3" data-column="3" data-row="3" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="4" data-column="3" data-row="4" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="5" data-column="3" data-row="5" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="6" data-column="3" data-row="6" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="7" data-column="3" data-row="7" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="8" data-column="3" data-row="8" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="9" data-column="3" data-row="9" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="10" data-column="3" data-row="10" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-        </div>
-        <div id="4" className="gridColumn">
-          <div id="1" data-column="4" data-row="1" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="2" data-column="4" data-row="2" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="3" data-column="4" data-row="3" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="4" data-column="4" data-row="4" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="5" data-column="4" data-row="5" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="6" data-column="4" data-row="6" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="7" data-column="4" data-row="7" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="8" data-column="4" data-row="8" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="9" data-column="4" data-row="9" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="10" data-column="4" data-row="10" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-        </div>
-        <div id="5" className="gridColumn">
-          <div id="1" data-column="5" data-row="1" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="2" data-column="5" data-row="2" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="3" data-column="5" data-row="3" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="4" data-column="5" data-row="4" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="5" data-column="5" data-row="5" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="6" data-column="5" data-row="6" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="7" data-column="5" data-row="7" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="8" data-column="5" data-row="8" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="9" data-column="5" data-row="9" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="10" data-column="5" data-row="10" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-        </div>
-        <div id="6" className="gridColumn">
-          <div id="1" data-column="6" data-row="1" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="2" data-column="6" data-row="2" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="3" data-column="6" data-row="3" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="4" data-column="6" data-row="4" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="5" data-column="6" data-row="5" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="6" data-column="6" data-row="6" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="7" data-column="6" data-row="7" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="8" data-column="6" data-row="8" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="9" data-column="6" data-row="9" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-          <div id="10" data-column="6" data-row="10" className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp} onTouchStart={handleMouseDown} onTouchMove={handleMouseOver} onTouchEnd={handleMouseUp}></div>
-        </div>
+        {generateColumns()}
       </div>
     </div>
   );

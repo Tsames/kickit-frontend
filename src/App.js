@@ -62,7 +62,7 @@ class App extends Component {
             <Route
               exact path='/'
               render={props => (
-                <Grid {...props} loggedInStatus={this.state.isLoggedIn} handleLogout={this.handleLogout}/>
+                <Grid {...props} numColumns={10} numRows={10}/>
               )}
             />
             <Route

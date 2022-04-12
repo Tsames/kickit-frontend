@@ -1,0 +1,17 @@
+@import './master';
+
+div.createFormShell {
+  margin: 5em;
+  @include mFlexbox(column, space-between, center);
+
+  .createFormBlock {
+    margin: 1em;
+  }
+
+}
+
+div.inputFormShell {
+  margin: 5em;
+  @include mFlexbox(column, space-between, center);
+  
+}

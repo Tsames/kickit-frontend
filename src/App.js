@@ -7,10 +7,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // import './App.scss';
 
 //Components
-import Grid from './components/Grid';
 import Navbar from './components/Navbar';
 import Login from './components/registrations/Login';
 import Signup from './components/registrations/Signup';
+import Form from './components/Form';
 
 class App extends Component {
 
@@ -62,7 +62,7 @@ class App extends Component {
             <Route
               exact path='/'
               render={props => (
-                <Grid {...props} numColumns={10} numRows={10}/>
+                <Form {...props} form="createForm"/>
               )}
             />
             <Route

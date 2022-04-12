@@ -11,6 +11,9 @@ $grid-active-border: rgb(8, 109, 34);
 $grid-touch1: rgb(83, 175, 218);
 $grid-touch2: rgb(143, 81, 184);
 
+/*-------------  Create Colors -------------*/
+
+
 /*------------- General Mixins -------------*/
 @mixin mFlexbox($fdirection, $fspace, $falign) {
   display: flex;

@@ -1,34 +1,48 @@
 //Dependencies
 import { React } from 'react';
 
+//Styling
+import '../../styles/small/timedropdown.scss';
+
 const TimeDropdown = (props) => {
+
+  //Helper Variables
+  const form = props.questionArray[0]
+  const name = props.questionArray[1]
+  const text = props.questionArray[2]
+  const value = props.questionArray[3]
+  const handleChange = props.questionArray[4]
+
   return (
-    <select id={props.id} className={props.className} name={props.name} onChange={props.onChange}>
-      <option value="0">12:00 AM</option>
-      <option value="1">1:00 AM</option>
-      <option value="2">2:00 AM</option>
-      <option value="3">3:00 AM</option>
-      <option value="4">4:00 AM</option>
-      <option value="5">5:00 AM</option>
-      <option value="6">6:00 AM</option>
-      <option value="7">7:00 AM</option>
-      <option value="8">8:00 AM</option>
-      <option value="9">9:00 AM</option>
-      <option value="10">10:00 AM</option>
-      <option value="11">11:00 AM</option>
-      <option value="12">12:00 PM</option>
-      <option value="13">1:00 PM</option>
-      <option value="14">2:00 PM</option>
-      <option value="15">3:00 PM</option>
-      <option value="16">4:00 PM</option>
-      <option value="17">5:00 PM</option>
-      <option value="18">6:00 PM</option>
-      <option value="19">7:00 PM</option>
-      <option value="20">8:00 PM</option>
-      <option value="21">9:00 PM</option>
-      <option value="22">10:00 PM</option>
-      <option value="23">11:00 PM</option>
-    </select>
+    <div className={`${form}Block`}>
+      <label for={name} className={`${form}Label`}>{text}</label><br />
+      <select id={`${form}${name}`} className={`${form}Input`} name={name} value={value} onChange={handleChange}>
+        <option value="0">12:00 AM</option>
+        <option value="1">1:00 AM</option>
+        <option value="2">2:00 AM</option>
+        <option value="3">3:00 AM</option>
+        <option value="4">4:00 AM</option>
+        <option value="5">5:00 AM</option>
+        <option value="6">6:00 AM</option>
+        <option value="7">7:00 AM</option>
+        <option value="8">8:00 AM</option>
+        <option value="9">9:00 AM</option>
+        <option value="10">10:00 AM</option>
+        <option value="11">11:00 AM</option>
+        <option value="12">12:00 PM</option>
+        <option value="13">1:00 PM</option>
+        <option value="14">2:00 PM</option>
+        <option value="15">3:00 PM</option>
+        <option value="16">4:00 PM</option>
+        <option value="17">5:00 PM</option>
+        <option value="18">6:00 PM</option>
+        <option value="19">7:00 PM</option>
+        <option value="20">8:00 PM</option>
+        <option value="21">9:00 PM</option>
+        <option value="22">10:00 PM</option>
+        <option value="23">11:00 PM</option>
+      </select>
+    </div>
   )
 }
 

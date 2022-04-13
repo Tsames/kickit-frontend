@@ -5,9 +5,10 @@ import { React, useState } from 'react';
 import '../styles/form.scss';
 
 //Components
-import Grid from './Grid';
-import TimeDropdown from './small/TimeDropdown';
 import Question from './small/Question';
+import QuestionTA from './small/QuestionTA';
+import TimeDropdown from './small/TimeDropdown';
+import Grid from './Grid';
 
 const Form = (props) => {
 
@@ -15,20 +16,17 @@ const Form = (props) => {
   const form = props.form;
 
   const [newForm, setNewForm] = useState({
-    name: "",
+    title: "",
     location: "",
-    cost: "",
     description: "",
-    startRange: "",
-    endRange: "",
+    cost: "",
     early: "",
+    days: "",
     late: "",
     image: "",
     organizer: "",
     attendees: []
   });
-
-  console.log(newForm);
 
   /* ------------------------------------------ Form Logic ------------------------------------------*/
   const handleChange = (event) => {
@@ -39,7 +37,7 @@ const Form = (props) => {
     event.preventDefault();
     props.createEvent(newForm);
     setNewForm({
-      name: "",
+      title: "",
       location: "",
       description: "",
       cost: "",
@@ -57,57 +55,39 @@ const Form = (props) => {
   const createForm = () => {
     return (
       <form>
-        <div className={`${form}Block`}>
-          <label for="name" className={`${form}Label`}>Name of Event</label><br/>
-          <input id={`${form}Name`} className={`${form}Input`} type="text" name="name" value={newForm.name} onChange={handleChange}/>
-        </div>
-        <div className={`${form}Block`}>
-          <label for="eventLocation" className={`${form}Label`}>Location</label><br/>
-          <input id={`${form}Location`} className={`${form}Input`} type="text" name="location" value={newForm.location} onChange={handleChange}/>
-        </div>
-        <div className={`${form}Block`}>
-          <label for="cost" className={`${form}Label`}>Cost</label><br/>
-          <input id={`${form}Cost`} className={`${form}Input`} type="text" name="cost" value={newForm.cost} onChange={handleChange}/>
-        </div>
-        <div className={`${form}Block`}>
-          <label for="description" className={`${form}Label`}>Description</label><br/>
-          <textarea id={`${form}Description`} className={`${form}Input`} type="test" name="description" cols="25" rows="5" value={newForm.description} onChange={handleChange}/>
-        </div>
-        <div className={`${form}Block`}>
-          <label for="early" className={`${form}Label`}>No Earlier Than:</label><br/>
-          <TimeDropdown id={`${form}Early`} className={`${form}Input`} name="early" value={newForm.early} onChange={handleChange}/>
-        </div>
-        <div className={`${form}Block`}>
-          <label for="late" className={`${form}Label`}>No Later Than:</label><br/>
-          <TimeDropdown id={`${form}Late`} className={`${form}Input`} name="late" value={newForm.late} onChange={handleChange}/>
-        </div>
-        <div className={`${form}Block`}>
-          <label for="days" className={`${form}Label`}>Days</label><br/>
-          <input id={`${form}Days`} className={`${form}Input`} type="number" name="days" value={newForm.days} onChange={handleChange} />
-        </div>
+        <Question questionArray={["createForm", "text", "title", "Name of Event:", newForm.title, handleChange]}/>
+        <Question questionArray={["createForm", "text", "location", "Location:", newForm.location, handleChange]}/>
+        <QuestionTA questionArray={["createForm", [5,10], "description", "Description of Event:", newForm.description, handleChange]}/>
+        <Question questionArray={["createForm", "text", "cost", "Cost:", newForm.cost, handleChange]}/>
+        <TimeDropdown questionArray={["createForm", "early", "No Earlier Than:", newForm.early, handleChange]}/>
+        <TimeDropdown questionArray={["createForm", "late", "No Later Than:", newForm.late, handleChange]}/>
+        <Question questionArray={["createForm", "number", "days", "Number of Potential Days:", newForm.days, handleChange]}/>
       </form>
     )
   }
 
   const inputForm = () => {
-    if (newForm.days > 0) {
+    if (newForm.days > 0 && (newForm.early !== "" && newForm.late !== "")) {
       return (
         <Grid early={newForm.early} late={newForm.late} days={newForm.days}/>
       )   
-    } else {
+    } else if (newForm.days < 0 || newForm.days === "") {
       return (
         <h4>Enter a number of days greater than 0 for your event!</h4>
+      )
+    } else {
+      return (
+        <h4>Make sure you've entered a time range for your event.</h4>
       )
     }
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
   return (
-  <div className={`${form}Shell`}>
-    {createForm()}
-    {inputForm()}
-  </div >
-
+    <div className={`${form}Shell`}>
+      {createForm()}
+      {inputForm()}
+    </div >
   )
 }
 

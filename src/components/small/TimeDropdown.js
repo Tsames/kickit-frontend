@@ -3,7 +3,7 @@ import { React } from 'react';
 
 const TimeDropdown = (props) => {
   return (
-    <select id={props.id} className={props.className} name={props.name} value={props.value} onChange={props.onChange}>
+    <select id={props.id} className={props.className} name={props.name} onChange={props.onChange}>
       <option value="0">12:00 AM</option>
       <option value="1">1:00 AM</option>
       <option value="2">2:00 AM</option>

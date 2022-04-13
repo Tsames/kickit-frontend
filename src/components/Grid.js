@@ -9,8 +9,8 @@ const Grid = (props) => {
   /* ------------------------------------------ Grid Generator ------------------------------------------*/
 
   //Get column and row numbers from props
-  let numColumns = props.numColumns;
-  let numRows = props.numRows;
+  let numColumns = props.days;
+  let numRows = Math.abs(props.late - props.early) * 2;
 
   //Helper function - generates the rows within a column
   const generateRows = (column) => {
@@ -59,6 +59,7 @@ const Grid = (props) => {
     selectionStart = e.target;
     selectionEnd = e.target;
     setToggleState(e.target);
+    toggleThis([e.target]);
   }
 
   //Helper function - determines toggle state

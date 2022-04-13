@@ -7,6 +7,7 @@ import '../styles/form.scss';
 //Components
 import Grid from './Grid';
 import TimeDropdown from './small/TimeDropdown';
+import Question from './small/Question';
 
 const Form = (props) => {
 
@@ -18,13 +19,16 @@ const Form = (props) => {
     location: "",
     cost: "",
     description: "",
-    dates: [],
+    startRange: "",
+    endRange: "",
     early: "",
     late: "",
     image: "",
     organizer: "",
     attendees: []
   });
+
+  console.log(newForm);
 
   /* ------------------------------------------ Form Logic ------------------------------------------*/
   const handleChange = (event) => {
@@ -36,12 +40,12 @@ const Form = (props) => {
     props.createEvent(newForm);
     setNewForm({
       name: "",
-      date: "",
-      startTime: "",
-      endTime: "",
       location: "",
       description: "",
       cost: "",
+      early: "",
+      late: "",
+      days: "",
       image: "",
       organizer: "",
       attendees: []
@@ -77,20 +81,31 @@ const Form = (props) => {
           <label for="late" className={`${form}Label`}>No Later Than:</label><br/>
           <TimeDropdown id={`${form}Late`} className={`${form}Input`} name="late" value={newForm.late} onChange={handleChange}/>
         </div>
+        <div className={`${form}Block`}>
+          <label for="days" className={`${form}Label`}>Days</label><br/>
+          <input id={`${form}Days`} className={`${form}Input`} type="number" name="days" value={newForm.days} onChange={handleChange} />
+        </div>
       </form>
     )
   }
 
   const inputForm = () => {
-    return (
-      <h1>inputForm</h1>
-    )
+    if (newForm.days > 0) {
+      return (
+        <Grid early={newForm.early} late={newForm.late} days={newForm.days}/>
+      )   
+    } else {
+      return (
+        <h4>Enter a number of days greater than 0 for your event!</h4>
+      )
+    }
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
   return (
   <div className={`${form}Shell`}>
-    {form === "createForm" ? createForm() : inputForm()}
+    {createForm()}
+    {inputForm()}
   </div >
 
   )

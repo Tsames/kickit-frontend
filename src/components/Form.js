@@ -33,9 +33,21 @@ const Form = (props) => {
     setNewForm({ ...newForm, [event.target.name]: event.target.value });
   };
 
+  const URL = "http://localhost:3001/events";
+
+  const createEvent = async (events) => {
+    await fetch(URL, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(events),
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.createEvent(newForm);
+    createEvent(newForm);
     setNewForm({
       title: "",
       location: "",
@@ -49,19 +61,20 @@ const Form = (props) => {
       attendees: []
     });
     props.history.push("/")
-  };
+  }
 
   /* ------------------------------------------ Different Types of Forms ------------------------------------------*/
   const createForm = () => {
     return (
       <form>
-        <Question questionArray={["createForm", "text", "title", "Name of Event:", newForm.title, handleChange]}/>
+        <Question form="createForm" type="text" name="title" text="Name of Event:" value={newForm.title} doThis={handleChange}/>
         <Question questionArray={["createForm", "text", "location", "Location:", newForm.location, handleChange]}/>
         <QuestionTA questionArray={["createForm", [5,10], "description", "Description of Event:", newForm.description, handleChange]}/>
         <Question questionArray={["createForm", "text", "cost", "Cost:", newForm.cost, handleChange]}/>
         <TimeDropdown questionArray={["createForm", "early", "No Earlier Than:", newForm.early, handleChange]}/>
         <TimeDropdown questionArray={["createForm", "late", "No Later Than:", newForm.late, handleChange]}/>
         <Question questionArray={["createForm", "number", "days", "Number of Potential Days:", newForm.days, handleChange]}/>
+        <Question questionArray={["createForm", "submit", "submit", "", "Submit", handleSubmit]}/>
       </form>
     )
   }

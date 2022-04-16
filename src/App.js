@@ -10,7 +10,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import Login from './components/registrations/Login';
 import Signup from './components/registrations/Signup';
-import Form from './components/Form';
+import CreateForm from './components/CreateForm';
 
 class App extends Component {
 
@@ -22,6 +22,7 @@ class App extends Component {
     };
   }
 
+  /* ------------------------------------------ Authentication Logic ------------------------------------------*/
   componentDidMount() {
     this.loginStatus()
   }
@@ -55,14 +56,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <BrowserRouter>
           <Navbar loggedInStatus={this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} />
           <Switch>
             <Route
               exact path='/'
               render={props => (
-                <Form {...props} form="createForm"/>
+                <CreateForm {...props}/>
               )}
             />
             <Route
@@ -79,7 +80,7 @@ class App extends Component {
             />
           </Switch>
         </BrowserRouter>
-      </div>
+      </>
     );
   }
 }

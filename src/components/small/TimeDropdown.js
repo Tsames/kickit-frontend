@@ -4,19 +4,12 @@ import { React } from 'react';
 //Styling
 import '../../styles/small/timedropdown.scss';
 
-const TimeDropdown = (props) => {
-
-  //Helper Variables
-  const form = props.questionArray[0]
-  const name = props.questionArray[1]
-  const text = props.questionArray[2]
-  const value = props.questionArray[3]
-  const handleChange = props.questionArray[4]
+const TimeDropdown = ({form, name, text, value, doThis}) => {
 
   return (
     <div className={`${form}Block`}>
       <label for={name} className={`${form}Label`}>{text}</label><br />
-      <select id={`${form}${name}`} className={`${form}Input`} name={name} value={value} onChange={handleChange}>
+      <select id={`${form}${name}`} className={`${form}Input`} name={name} value={value} onChange={doThis}>
         <option value="0">12:00 AM</option>
         <option value="1">1:00 AM</option>
         <option value="2">2:00 AM</option>

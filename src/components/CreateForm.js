@@ -10,10 +10,11 @@ import QuestionTA from './small/QuestionTA';
 import TimeDropdown from './small/TimeDropdown';
 import Grid from './Grid';
 
-const Form = (props) => {
+const CreateForm = (props) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
-  const form = props.form;
+  const form = "createForm";
+  const URL = "http://localhost:3001/events";
 
   const [newForm, setNewForm] = useState({
     title: "",
@@ -32,8 +33,6 @@ const Form = (props) => {
   const handleChange = (event) => {
     setNewForm({ ...newForm, [event.target.name]: event.target.value });
   };
-
-  const URL = "http://localhost:3001/events";
 
   const createEvent = async (events) => {
     await fetch(URL, {
@@ -63,34 +62,20 @@ const Form = (props) => {
     props.history.push("/")
   }
 
-  /* ------------------------------------------ Different Types of Forms ------------------------------------------*/
-  const createForm = () => {
-    return (
-      <form>
-        <Question form="createForm" type="text" name="title" text="Name of Event:" value={newForm.title} doThis={handleChange}/>
-        <Question questionArray={["createForm", "text", "location", "Location:", newForm.location, handleChange]}/>
-        <QuestionTA questionArray={["createForm", [5,10], "description", "Description of Event:", newForm.description, handleChange]}/>
-        <Question questionArray={["createForm", "text", "cost", "Cost:", newForm.cost, handleChange]}/>
-        <TimeDropdown questionArray={["createForm", "early", "No Earlier Than:", newForm.early, handleChange]}/>
-        <TimeDropdown questionArray={["createForm", "late", "No Later Than:", newForm.late, handleChange]}/>
-        <Question questionArray={["createForm", "number", "days", "Number of Potential Days:", newForm.days, handleChange]}/>
-        <Question questionArray={["createForm", "submit", "submit", "", "Submit", handleSubmit]}/>
-      </form>
-    )
-  }
+  /* ------------------------------------------ Conditional Components ------------------------------------------*/
 
-  const inputForm = () => {
+  const renderGrid = () => {
     if (newForm.days > 0 && (newForm.early !== "" && newForm.late !== "")) {
       return (
         <Grid early={newForm.early} late={newForm.late} days={newForm.days}/>
       )   
     } else if (newForm.days < 0 || newForm.days === "") {
       return (
-        <h4>Enter a number of days greater than 0 for your event!</h4>
+        <h6>Enter a number of days greater than 0 for your event!</h6>
       )
     } else {
       return (
-        <h4>Make sure you've entered a time range for your event.</h4>
+        <h6>Make sure you've entered a range of potential times for your event.</h6>
       )
     }
   }
@@ -98,10 +83,25 @@ const Form = (props) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
   return (
     <div className={`${form}Shell`}>
-      {createForm()}
-      {inputForm()}
+      <form className={`${form}`} onSubmit={handleSubmit}>
+        <div className={`${form}SectionOne`}>
+          <Question form={form} type="text" name="title" text="Name of Event:" value={newForm.title} doThis={handleChange} />
+          <Question form={form} type="text" name="location" text="Location:" value={newForm.location} doThis={handleChange} />
+          <QuestionTA form={form} rows="5" cols="10" name="description" text="Description of Event:" value={newForm.description} doThis={handleChange} />
+          <Question form={form} type="text" name="cost" text="Cost:" value={newForm.cost} doThis={handleChange} />
+        </div>
+        <div className={`${form}Section`}>
+          <div id="gridControls" className={`${form}SubSection`}>
+            <TimeDropdown form={form} name="early" text="No Earlier Than:" value={newForm.early} doThis={handleChange} />
+            <TimeDropdown form={form} name="late" text="No Later Than:" value={newForm.late} doThis={handleChange} />
+            <Question form={form} type="number" name="days" text="Number of Potential Days:" value={newForm.days} doThis={handleChange} />
+          </div>
+          {renderGrid()}
+        </div>
+        {/* <Question form={form} type="submit" name="submit" text="" value="Submit" /> */}
+      </form>
     </div >
   )
 }
 
-export default Form;
+export default CreateForm;

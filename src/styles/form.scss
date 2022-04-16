@@ -1,17 +1,29 @@
 @import './master';
 
 div.createFormShell {
-  margin: 5em;
-  @include mFlexbox(column, space-between, center);
+  margin: 1em;
+  font-size: small;
+
+  form.createForm {
+    @include mFlexbox(row, space-around, center);
+
+    div.createFormSection {
+      @include mFlexbox(column, space-between, center);
+    }
+
+    div.createFormSubSection#gridControls {
+      @include mFlexbox(row, space-between, center);
+      font-size: xx-small;
+
+      option {
+        font-size: xx-small;
+      }
+    }
+  }
 
   .createFormBlock {
-    margin: 1em;
+    margin: 0.2em;
   }
 
 }
 
-div.inputFormShell {
-  margin: 5em;
-  @include mFlexbox(column, space-between, center);
-  
-}

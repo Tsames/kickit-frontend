@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import Login from './components/registrations/Login';
 import Signup from './components/registrations/Signup';
 import CreateForm from './components/CreateForm';
+import Calendar from './components/Calendar';
 
 class App extends Component {
 
@@ -63,7 +64,7 @@ class App extends Component {
             <Route
               exact path='/'
               render={props => (
-                <CreateForm {...props}/>
+                <Calendar {...props}/>
               )}
             />
             <Route

@@ -1,0 +1,9 @@
+@import './master';
+
+div.calendarShell {
+  @include mFlexbox(column, space-around, center);
+
+  div.calendarDaysCaption {
+    @include mFlexbox(row, space-around, center);
+  }
+}

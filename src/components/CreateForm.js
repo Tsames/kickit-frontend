@@ -67,7 +67,7 @@ const CreateForm = (props) => {
   const renderGrid = () => {
     if (newForm.days > 0 && (newForm.early !== "" && newForm.late !== "")) {
       return (
-        <Grid early={newForm.early} late={newForm.late} days={newForm.days}/>
+        <Grid early={newForm.early} late={newForm.late} days={newForm.days} blocks={[]}/>
       )   
     } else if (newForm.days < 0 || newForm.days === "") {
       return (

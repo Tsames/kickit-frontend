@@ -1,9 +1,12 @@
+
+
 /*-------------  Pallette Colors -------------*/
 $palColor1: rgba(85, 38, 62, 0.5);
 $palColor2: rgba(42, 5, 24, 0.91);
 $palColor3: rgba(42, 5, 24, 0.91);
 $palColor4: rgba(42, 5, 24, 0.91);
 $palColor5: rgba(0,0,0,0.40);
+$invisible: rgba(0,0,0,0);
 
 /*-------------  Grid Colors -------------*/
 $grid-active: rgba(138, 207, 155, 1);
@@ -11,7 +14,10 @@ $grid-active-border: rgb(8, 109, 34);
 $grid-touch1: rgb(83, 175, 218);
 $grid-touch2: rgb(143, 81, 184);
 
-/*-------------  Create Colors -------------*/
+/*-------------  Calendar Colors -------------*/
+$calendar-heading-item: rgba(0,0,0,0);
+$calendar-background: rgba(0,0,0,0);
+
 
 
 /*------------- General Mixins -------------*/

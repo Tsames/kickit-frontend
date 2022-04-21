@@ -1,9 +1,27 @@
 @import './master';
 
 div.calendarShell {
+  //General Styling in Calendar
+  max-width: 15em;
   @include mFlexbox(column, space-around, center);
+  margin: 1em;
+  background-color: lightgray;
 
-  div.calendarDaysCaption {
-    @include mFlexbox(row, space-around, center);
+  //Calendar Heading Styling
+  div.calendarHeadingButton {
+    margin: 0.4em;
+    font-size: large;
+    font-weight: bold;
   }
+
+  div.calendarBody {
+    display: grid;
+  }
+
+
+  div.Invisible {
+    color: $invisible;
+  }
+
+
 }

@@ -15,8 +15,19 @@ $grid-touch1: rgb(83, 175, 218);
 $grid-touch2: rgb(143, 81, 184);
 
 /*-------------  Calendar Colors -------------*/
-$calendar-heading-item: rgba(0,0,0,0);
-$calendar-background: rgba(0,0,0,0);
+//Shell
+$calendar-primary: rgb(68, 131, 160);
+$calendar-background: rgba(239, 228, 234, 0.4);
+$calendar-border: rgba(239, 228, 234, 0.8);
+
+//Hover Class
+$calendar-hover: white;
+$calendar-hover-background: rgb(68, 131, 160, 0.3);
+
+//Selected Class
+$calendar-selected-background: rgb(68, 131, 160);
+$calendar-selected-border: rgb(68, 131, 160);
+$calendar-selected-color: white;
 
 
 

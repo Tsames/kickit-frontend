@@ -2,26 +2,56 @@
 
 div.calendarShell {
   //General Styling in Calendar
-  max-width: 15em;
   @include mFlexbox(column, space-around, center);
-  margin: 1em;
-  background-color: lightgray;
+  background-color: $calendar-background;
+  border-color: $calendar-border;
+  border-style: solid;
+  border-radius: 1em;
+  max-width: 20em;
+  padding: 0.5em;
 
   //Calendar Heading Styling
-  div.calendarHeadingButton {
-    margin: 0.4em;
-    font-size: large;
-    font-weight: bold;
+  div.calendarHeading {
+    @include mFlexbox(row, space-around, center);
+    color: $calendar-primary;
+
+    .calendarHeadingButton {
+      margin: 1em;
+    }
   }
 
+  //Grid Layout with 7 columns
   div.calendarBody {
     display: grid;
+    grid-template-columns: repeat(7, 1fr);
   }
 
+  //Style for Individual Items in the grid
+  div.calendarItem {
+    text-align: center;
+    align-items: center;
+    margin: 0.2em;
+  }
+
+  div.calendarHover {
+    color: $calendar-hover;
+    background-color: $calendar-hover-background;
+    border-style: solid;
+    border-radius: 0.2em;
+    border-width: 0em;
+  }
+
+  //Style for Selected Items in the grid
+  div.calendarSelected {
+    background-color: $calendar-selected-background;
+    border-color: $calendar-selected-border;
+    color: $calendar-selected-color;
+    border-style: solid;
+    border-radius: 0.2em;
+    border-width: 0em;
+  } 
 
   div.Invisible {
     color: $invisible;
   }
-
-
 }

@@ -1,5 +1,6 @@
 //Dependencies
 import { React, useState } from 'react';
+import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 //Styling
 import '../styles/calendar.scss';
@@ -8,7 +9,7 @@ const Calendar = () => {
 
   /* -------------------------  Helper Functions -------------------------*/
 
-  //Helper function that resets the hours, minutes, seconds, and miliseconds
+  //Helper function that sets the hours, minutes, seconds, and miliseconds to 0
   const cleanDate = (date) => {
     date.setHours(0);
     date.setMinutes(0);
@@ -26,11 +27,44 @@ const Calendar = () => {
     return new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date)
   }
 
+  //Helper function (recursive binary search) that checks if a 
+  //datetime is in payload returns index of element if found or -1 if not
+  const checkPayload = (arr, element, pivot = (arr.length - 1) / 2 | 0, index = (arr.length - 1) / 2 | 0) => {
+
+    //--- Base Case Check ---
+    if (arr.length === 0) {
+      return -1
+    } else if (arr[pivot] === element) {
+      return index
+    } else if (arr.length === 1 && arr[0] != element) {
+      return -1
+    // --- Calls on Subsections of the Array ---
+
+    //Call if element is greater than pivot
+    } else if (arr[pivot] < element) {
+      const newArr = arr.slice(pivot + 1, arr.length)
+      pivot = (newArr.length - 1) / 2 | 0;
+      index += pivot + 1
+      return checkPayload(newArr, element, pivot, index)
+
+    //Call if element is less than pivot
+    } else {
+      const newArr = arr.slice(0, pivot);
+      pivot = (newArr.length - 1) / 2 | 0;
+      index -= (newArr.length) - pivot
+      return checkPayload(newArr, element, pivot, index)
+    }
+  }
+
   /* -------------------------  Component Wide Variables & State -------------------------*/
 
   //The Page UseState keeps track of the month that the calendar should display
   const now = new Date(Date.now()); cleanDate(now);
   const [page, setPage] = useState(now);
+
+  //Data that the calendar will pass on
+  const [payload, setPayload] = useState([]);
+  console.log(payload);
 
   /* -------------------------  Generator Function -------------------------*/
 
@@ -51,10 +85,16 @@ const Calendar = () => {
       //If tracker is on the same day of the week as the index add a non-dummy div and increment tracker
       if (todayIs === weekdays[i]) {
         content.push(
-          <div className="calendarItem" key={`calendar${tracker.getDate()}${weekdays[i]}`}>
+          <div className={checkPayload(payload, tracker.getTime()) >= 0 ? "calendarItem calendarSelected" : "calendarItem"}
+           key={`calendar${tracker.getDate()}${weekdays[i]}`}
+           data-time={tracker.getTime()} 
+           onClick={handleClick}
+           onMouseEnter={handleMouseEnter}
+           onMouseLeave={handleMouseLeave}>
             {tracker.getDate()}
           </div>
         )
+        
         tracker.setDate(tracker.getDate() + 1);
         if (tracker.getDate() === 1) {
           tracker.setMonth(tracker.getMonth() + 1)
@@ -90,7 +130,7 @@ const Calendar = () => {
       const newPage = new Date(page);
       newPage.setMonth(newPage.getMonth() - 1)
       //If going back to the current month set the earliest available day to today
-      if (newPage.getMonth() !== now.getMonth() && newPage.getFullYear() !== now.getFullYear()) {
+      if (newPage.getMonth() !== now.getMonth() || newPage.getFullYear() !== now.getFullYear()) {
         newPage.setDate(1);
       } else {
         newPage.setDate(now.getDate());
@@ -99,22 +139,62 @@ const Calendar = () => {
     }
   }
 
+  const handleClick = (event) => {
+    //Only if calendarSelected is not on the element already
+    if (event.target.className === "calendarItem calendarHover") {
+
+      //Add css class
+      event.target.className = "calendarItem calendarSelected";
+
+      //Add element to payload
+      const newPayload = [...payload, Number(event.target.dataset.time)];
+      newPayload.sort(function (a, b) { return a - b });
+      setPayload(newPayload)
+
+    //Otherwise if the element has the calendarSelected class
+    } else {
+
+      //Remove the css class
+      event.target.className = "calendarItem calendarHover"
+
+      //Find index of the element in payload
+      const index = checkPayload(Number(event.target.dataset.time));
+
+      //Remove element at index from payload and set new payload
+      const newPayload = [...payload];
+      newPayload.splice(index, 1);
+      setPayload(newPayload)
+    }
+  }
+
+  const handleMouseEnter = (event) => {
+    if (event.target.className === "calendarItem") {
+      event.target.className = "calendarItem calendarHover";
+    }
+  }
+
+  const handleMouseLeave = (event) => {
+    if (event.target.className === "calendarItem calendarHover") {
+      event.target.className = "calendarItem";
+    }
+  }
+
   /* ------------------------- Returning JSX ------------------------------*/
   return (
     <div className="calendarShell">
-      <div className="calendarHeading calendarRow">
-        <div id="calendarPrevMonth" className="calendarHeadingButton" onClick={handlePrevMonth}>{'<'}</div>
-        <h4>{`${findMonth(page)}, ${page.getFullYear()}`}</h4>
-        <div id="calendarNextMonth" className="calendarHeadingButton" onClick={handleNextMonth}>{'>'}</div>
+      <div className="calendarHeading">
+        <BiLeftArrow id="calendarPrevMonth" className="calendarHeadingButton" onClick={handlePrevMonth}>{'<'}</BiLeftArrow>
+        <h4>{`${findMonth(page)} ${page.getFullYear()}`}</h4>
+        <BiRightArrow id="calendarNextMonth" className="calendarHeadingButton" onClick={handleNextMonth}>{'>'}</BiRightArrow>
       </div>
       <div className="calendarBody">
-        <div id="sunday" className="calendarDayLabel calendarItem">Su</div>
-        <div id="monday" className="calendarDayLabel calendarItem">M</div>
-        <div id="tuesday" className="calendarDayLabel calendarItem">Tu</div>
-        <div id="wednesday" className="calendarDayLabel calendarItem">W</div>
-        <div id="thursday" className="calendarDayLabel calendarItem">Th</div>
-        <div id="friday" className="calendarDayLabel calendarItem">F</div>
-        <div id="satday" className="calendarDayLabel calendarItem">Sa</div>
+        <div id="sunday" className="calendarDayLabel calendarItem">Sun</div>
+        <div id="monday" className="calendarDayLabel calendarItem">Mon</div>
+        <div id="tuesday" className="calendarDayLabel calendarItem">Tue</div>
+        <div id="wednesday" className="calendarDayLabel calendarItem">Wed</div>
+        <div id="thursday" className="calendarDayLabel calendarItem">Thu</div>
+        <div id="friday" className="calendarDayLabel calendarItem">Fri</div>
+        <div id="satday" className="calendarDayLabel calendarItem">Sat</div>
         {generateCalendar()}
       </div>
     </div>

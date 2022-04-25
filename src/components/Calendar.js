@@ -5,7 +5,7 @@ import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 //Styling
 import '../styles/calendar.scss';
 
-const Calendar = () => {
+const Calendar = (props) => {
 
   /* -------------------------  Helper Functions -------------------------*/
 
@@ -36,7 +36,7 @@ const Calendar = () => {
       return -1
     } else if (arr[pivot] === element) {
       return index
-    } else if (arr.length === 1 && arr[0] != element) {
+    } else if (arr.length === 1 && arr[0] !== element) {
       return -1
     // --- Calls on Subsections of the Array ---
 
@@ -150,6 +150,7 @@ const Calendar = () => {
       const newPayload = [...payload, Number(event.target.dataset.time)];
       newPayload.sort(function (a, b) { return a - b });
       setPayload(newPayload)
+      props.getCalendarData(payload);
 
     //Otherwise if the element has the calendarSelected class
     } else {

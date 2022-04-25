@@ -39,6 +39,13 @@ $calendar-selected-color: white;
   align-items: $falign;
 }
 
+@mixin mGrid($columns, $rows, $falign) {
+  display: grid;
+  grid-template-columns: $columns;
+  $grid-template-rows: $rows;
+  align-items: $falign;
+}
+
 @mixin mBorder($width: 0.15em, $borderColor: $palColor2, $style: solid) {
   border-style: $style;
   border-width: $width;

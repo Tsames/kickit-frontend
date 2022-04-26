@@ -62,10 +62,6 @@ const Calendar = (props) => {
   const now = new Date(Date.now()); cleanDate(now);
   const [page, setPage] = useState(now);
 
-  //Data that the calendar will pass on
-  const [payload, setPayload] = useState([]);
-  console.log(payload);
-
   /* -------------------------  Generator Function -------------------------*/
 
   const generateCalendar = () => {
@@ -85,7 +81,7 @@ const Calendar = (props) => {
       //If tracker is on the same day of the week as the index add a non-dummy div and increment tracker
       if (todayIs === weekdays[i]) {
         content.push(
-          <div className={checkPayload(payload, tracker.getTime()) >= 0 ? "calendarItem calendarSelected" : "calendarItem"}
+          <div className={checkPayload(props.payload, tracker.getTime()) >= 0 ? "calendarItem calendarSelected" : "calendarItem"}
            key={`calendar${tracker.getDate()}${weekdays[i]}`}
            data-time={tracker.getTime()} 
            onClick={handleClick}
@@ -94,7 +90,8 @@ const Calendar = (props) => {
             {tracker.getDate()}
           </div>
         )
-        
+
+        //If the tracker loops around on days add 1 to its month
         tracker.setDate(tracker.getDate() + 1);
         if (tracker.getDate() === 1) {
           tracker.setMonth(tracker.getMonth() + 1)
@@ -147,10 +144,9 @@ const Calendar = (props) => {
       event.target.className = "calendarItem calendarSelected";
 
       //Add element to payload
-      const newPayload = [...payload, Number(event.target.dataset.time)];
+      const newPayload = [...props.payload, Number(event.target.dataset.time)];
       newPayload.sort(function (a, b) { return a - b });
-      setPayload(newPayload)
-      props.getCalendarData(payload);
+      props.setPayload(newPayload)
 
     //Otherwise if the element has the calendarSelected class
     } else {
@@ -159,13 +155,14 @@ const Calendar = (props) => {
       event.target.className = "calendarItem calendarHover"
 
       //Find index of the element in payload
-      const index = checkPayload(Number(event.target.dataset.time));
+      const index = checkPayload(props.payload, Number(event.target.dataset.time));
 
       //Remove element at index from payload and set new payload
-      const newPayload = [...payload];
+      const newPayload = [...props.payload];
       newPayload.splice(index, 1);
-      setPayload(newPayload)
+      props.setPayload(newPayload)
     }
+    props.getCalendarData();
   }
 
   const handleMouseEnter = (event) => {

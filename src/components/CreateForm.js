@@ -13,7 +13,6 @@ import Calendar from './Calendar';
 const CreateForm = (props) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
-  const form = "createForm";
   const URL = "http://localhost:3001/events";
 
   const [newForm, setNewForm] = useState({
@@ -26,15 +25,21 @@ const CreateForm = (props) => {
     days: ""
   });
 
-  if (newForm.days.length > 0) {
-    console.log(typeof(newForm.days[0]));
-  }
-  console.log(newForm);
+  //Data that the calendar will use
+  const [payload, setPayload] = useState([]);
 
   /* ------------------------------------------ Form Logic ------------------------------------------*/
   const handleChange = (event) => {
     setNewForm({ ...newForm, [event.target.name]: event.target.value });
   };
+
+  const getCalendarData = () => {
+    let newDays = "";
+    payload.forEach((date) => {
+      newDays.length === 0 ? newDays = newDays + date.toString() : newDays = newDays + ";" + date.toString();
+    })
+    setNewForm({ ...newForm, ["days"]: newDays });
+  }
 
   const createEvent = async (events) => {
     await fetch(URL, {
@@ -48,6 +53,7 @@ const CreateForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setPayload([]);
     createEvent(newForm);
     setNewForm({
       title: "",
@@ -63,22 +69,22 @@ const CreateForm = (props) => {
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
   return (
-    <div className={`${form}Shell`}>
-      <form className={`${form}`} onSubmit={handleSubmit}>
-        <div className={`${form}SectionLeft`}>
-          <Question form={form} type="text" name="title" text="Name of Event:" value={newForm.title} doThis={handleChange} />
-          <Question form={form} type="text" name="location" text="Location:" value={newForm.location} doThis={handleChange} />
-          <QuestionTA form={form} rows="5" cols="10" name="description" text="Description of Event:" value={newForm.description} doThis={handleChange} />
-          <Question form={form} type="text" name="cost" text="Cost:" value={newForm.cost} doThis={handleChange} />
+    <div className="createFormShell">
+      <form className="createForm" onSubmit={handleSubmit}>
+        <div className="createFormSectionLeft">
+          <Question form="createForm" type="text" name="title" text="Name of Event:" value={newForm.title} doThis={handleChange} />
+          <Question form="createForm" type="text" name="location" text="Location:" value={newForm.location} doThis={handleChange} />
+          <QuestionTA form="createForm" rows="5" cols="10" name="description" text="Description of Event:" value={newForm.description} doThis={handleChange} />
+          <Question form="createForm" type="text" name="cost" text="Cost:" value={newForm.cost} doThis={handleChange} />
         </div>
-        <div className={`${form}SectionRight`}>
-          <div id="gridControls" className={`${form}SubSection`}>
-            <TimeDropdown form={form} name="early" text="No Earlier Than:" value={newForm.early} doThis={handleChange} />
-            <TimeDropdown form={form} name="late" text="No Later Than:" value={newForm.late} doThis={handleChange} />
+        <div className="createFormSectionRight">
+          <div id="gridControls" className="createFormSubSection">
+            <TimeDropdown form="createForm" name="early" text="No Earlier Than:" value={newForm.early} doThis={handleChange} />
+            <TimeDropdown form="createForm" name="late" text="No Later Than:" value={newForm.late} doThis={handleChange} />
           </div>
-          <Calendar getCalendarData={getCalendarData} />
+          <Calendar payload={payload} setPayload={setPayload} getCalendarData={getCalendarData}/>
         </div>
-        <Question form={form} type="submit" name="submit" text="" value="Submit" />
+        <Question form="createForm" type="submit" name="submit" text="" value="Submit" />
       </form>
     </div >
   )

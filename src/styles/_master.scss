@@ -1,20 +1,23 @@
 
 
 /*-------------  Pallette Colors -------------*/
-$palColor1: rgba(85, 38, 62, 0.5);
-$palColor2: rgba(42, 5, 24, 0.91);
-$palColor3: rgba(42, 5, 24, 0.91);
-$palColor4: rgba(42, 5, 24, 0.91);
-$palColor5: rgba(0,0,0,0.40);
+
+$palColor1: rgb(242, 235, 229, 0.5);
+$palColor2: rgb(100, 114, 149);
+$palColor3: rgb(159, 73, 110);
+$palColor4: rgb(43, 38, 45);
+$palColor5: rgba(0, 0, 0, 0.7);
 $invisible: rgba(0,0,0,0);
 
 /*-------------  Grid Colors -------------*/
+
 $grid-active: rgba(138, 207, 155, 1);
 $grid-active-border: rgb(8, 109, 34);
 $grid-touch1: rgb(83, 175, 218);
 $grid-touch2: rgb(143, 81, 184);
 
 /*-------------  Calendar Colors -------------*/
+
 //Shell
 $calendar-primary: rgb(68, 131, 160);
 $calendar-background: rgba(239, 228, 234, 0.4);
@@ -29,26 +32,102 @@ $calendar-selected-background: rgb(68, 131, 160);
 $calendar-selected-border: rgb(68, 131, 160);
 $calendar-selected-color: white;
 
-
-
 /*------------- General Mixins -------------*/
-@mixin mFlexbox($fdirection, $fspace, $falign) {
+@mixin mFlexbox($fdirection, $jcontent, $falign) {
   display: flex;
   flex-direction: $fdirection;
-  justify-content: $fspace;
+  justify-content: $jcontent;
   align-items: $falign;
 }
 
-@mixin mGrid($columns, $rows, $falign) {
-  display: grid;
-  grid-template-columns: $columns;
-  $grid-template-rows: $rows;
-  align-items: $falign;
+/*------------- Page Layout -------------*/
+
+/* ----------------------- Small devices -----------------------
+(portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+
+  //Container
+  div#root {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(12, auto);
+    column-gap: 0px;
+    row-gap: 0px;
+  }
+
+  .pageTop {
+    grid-column-start: 1;
+    grid-column-end: 9;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+  .pageBody {
+
+  }
+
+  .pageFooter {
+
+  }
 }
 
-@mixin mBorder($width: 0.15em, $borderColor: $palColor2, $style: solid) {
-  border-style: $style;
-  border-width: $width;
-  border-color: $borderColor;
+/* ----------------------- Medium devices-----------------------
+(landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+
+  //Container
+  div#root {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(8, auto);
+    column-gap: 0px;
+    row-gap: 0px;
+  }
+
+  .pageTop {
+    grid-column-start: 1;
+    grid-column-end: 9;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+  .pageBody {
+
+  }
+
+  .pageFooter {
+
+  }
 }
-/*------------- ############### -------------*/
+
+/* ----------------------- Large devices -----------------------
+(laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+
+  //Container
+  div#root {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(8, auto);
+    column-gap: 0px;
+    row-gap: 0px;
+  }
+
+  .pageTop {
+    grid-column-start: 1;
+    grid-column-end: 9;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+  .pageBody {
+
+  }
+
+  .pageFooter {
+
+  }
+}

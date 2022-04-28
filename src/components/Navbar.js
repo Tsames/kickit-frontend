@@ -3,6 +3,7 @@ import { useState, React} from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { BiUser, BiX } from "react-icons/bi";
+import { BsFillPlusSquareFill } from "react-icons/bs";
 
 //Styles
 import '../styles/navbar.scss';
@@ -49,9 +50,9 @@ const Navbar = (props) => {
   )
 
   return (
-    <nav>
+    <nav className="pageTop">
       <div className="navLeft">
-        <h1>Kick It</h1>
+        <Link to='/'><h1 className="navTittle">Kick <span className="ItColor">It</span></h1></Link>
       </div>
       <div className="navRight" onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {

@@ -1,9 +1,20 @@
 @import './master';
 
 div.createFormShell {
+
+  //Display Settings
   margin: 1em;
   font-size: small;
 
+  //General Font Settings
+  font-weight: bold;
+  font-size: x-large;
+
+  //Coloring
+  color: $palColor3;
+
+
+  //Sub Components
   form.createForm {
     @include mFlexbox(row, space-around, center);
 

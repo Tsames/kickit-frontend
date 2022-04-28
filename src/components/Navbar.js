@@ -41,18 +41,18 @@ const Navbar = (props) => {
       {props.user ? 
       <>
         <BiUser className="navItem"></BiUser>
-        <h5 className="navItem">{props.user.username}</h5>
+        <h5 className="navItem navLink">{props.user.username}</h5>
       </>
        : null}
-      <BiX className="navItem"></BiX>
-      { mo ? <Link to='/logout' className="navItem" onClick={handleClick}>Logout</Link> : null }
+      <BiX className="navItem navLink"></BiX>
+      { mo ? <Link to='/logout' className="navItem navLink" onClick={handleClick}>Logout</Link> : null }
     </>
   )
 
   return (
     <nav className="pageTop">
       <div className="navLeft">
-        <Link to='/'><h1 className="navTittle">Kick <span className="ItColor">It</span></h1></Link>
+        <Link to='/' className="navLink"><h1 className="navTittle">Kick <span className="ItColor">It</span></h1></Link>
       </div>
       <div className="navRight" onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {

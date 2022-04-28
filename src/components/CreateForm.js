@@ -69,7 +69,7 @@ const CreateForm = (props) => {
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
   return (
-    <div className="createFormShell">
+    <div className="createFormShell pageBody">
       <form className="createForm" onSubmit={handleSubmit}>
         <div className="createFormSectionLeft">
           <Question form="createForm" type="text" name="title" text="Name of Event:" value={newForm.title} doThis={handleChange} />

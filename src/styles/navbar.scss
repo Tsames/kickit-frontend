@@ -2,7 +2,7 @@
 
 nav {
 
-  //Flexbox Settings
+  //Display Settings
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -12,16 +12,24 @@ nav {
   font-weight: bold;
   text-decoration: none;
 
-
+  //Coloring
   background-color: $palColor1;
   color: $palColor2;
 
-  h1.navTittle {
+  //Child Components
+
+  .navLink {
     text-decoration: none;
+  }
+
+  h1.navTittle {
+    color: $palColor2;
+    font-style: normal;
   }
 
   span.ItColor {
     color: $palColor3;
+    text-decoration: none;
   }
 
   div.navLeft {

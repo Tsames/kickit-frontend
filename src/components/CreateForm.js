@@ -72,15 +72,15 @@ const CreateForm = (props) => {
     <div className="createFormShell pageBody">
       <form className="createForm" onSubmit={handleSubmit}>
         <div className="createFormSectionLeft">
-          <Question form="createForm" type="text" name="title" text="Name of Event:" value={newForm.title} doThis={handleChange} />
-          <Question form="createForm" type="text" name="location" text="Location:" value={newForm.location} doThis={handleChange} />
-          <QuestionTA form="createForm" rows="5" cols="10" name="description" text="Description of Event:" value={newForm.description} doThis={handleChange} />
-          <Question form="createForm" type="text" name="cost" text="Cost:" value={newForm.cost} doThis={handleChange} />
+          <Question form="createForm" type="text" name="title" text="Name of Event" value={newForm.title} doThis={handleChange} />
+          <Question form="createForm" type="text" name="location" text="Location" value={newForm.location} doThis={handleChange} />
+          <QuestionTA form="createForm" rows="10" cols="30" name="description" text="Description of Event" value={newForm.description} doThis={handleChange} />
+          <Question form="createForm" type="text" name="cost" text="Cost" value={newForm.cost} doThis={handleChange} />
         </div>
         <div className="createFormSectionRight">
           <div id="gridControls" className="createFormSubSection">
-            <TimeDropdown form="createForm" name="early" text="No Earlier Than:" value={newForm.early} doThis={handleChange} />
-            <TimeDropdown form="createForm" name="late" text="No Later Than:" value={newForm.late} doThis={handleChange} />
+            <TimeDropdown form="createForm" name="early" text="No Earlier Than" value={newForm.early} doThis={handleChange} />
+            <TimeDropdown form="createForm" name="late" text="No Later Than" value={newForm.late} doThis={handleChange} />
           </div>
           <Calendar payload={payload} setPayload={setPayload} getCalendarData={getCalendarData}/>
         </div>

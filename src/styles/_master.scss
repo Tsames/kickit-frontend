@@ -6,8 +6,13 @@ $palColor1: rgb(242, 235, 229, 0.5);
 $palColor2: rgb(100, 114, 149);
 $palColor3: rgb(159, 73, 110);
 $palColor4: rgb(43, 38, 45);
-$palColor5: rgba(0, 0, 0, 0.7);
+$palColor5: rgb(46, 44, 44);
 $invisible: rgba(0,0,0,0);
+
+/*-------------  Create Form Colors -------------*/
+
+$input-color: rgb(100, 114, 149);
+$input-background: rgb(242, 242, 242);
 
 /*-------------  Grid Colors -------------*/
 
@@ -113,17 +118,9 @@ $calendar-selected-color: white;
 
 @media only screen and (min-width: 992px) {
 
-  //Root
-  body {
-    display: grid;
-    background-image: url("https://i.imgur.com/rgL0UVv.jpg");
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-  }
-
   //Container
   div#root {
+    display: grid;
     grid-template-columns: repeat(5, auto);
     grid-template-rows: repeat(6, auto);
     column-gap: 0px;

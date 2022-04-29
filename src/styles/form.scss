@@ -8,11 +8,10 @@ div.createFormShell {
 
   //General Font Settings
   font-weight: bold;
-  font-size: x-large;
+  font-size: large;
 
   //Coloring
-  color: $palColor3;
-
+  color: $palColor2;
 
   //Sub Components
   form.createForm {
@@ -30,10 +29,36 @@ div.createFormShell {
         font-size: xx-small;
       }
     }
-  }
 
-  .createFormBlock {
-    margin: 0.2em;
+    .createFormQuestion {
+      font-size: 14px;
+      padding-top: 20px;
+      margin-bottom: 5px;
+    }
+
+    .createFormInput {
+      border: none;
+      -webkit-appearance: none;
+      -ms-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      box-sizing: border-box;
+      border-radius: 3px;
+      background: $input-background;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      outline: none;
+      resize: none;
+      font-size: 14px;
+      width: 250px;
+    }
+
+    .createFormQuestionLabel {
+      position: relative;
+      left: 12px;
+      top: 50%;
+    }
   }
 
 }

@@ -71,13 +71,13 @@ const CreateForm = (props) => {
   return (
     <div className="createFormShell pageBody">
       <form className="createForm" onSubmit={handleSubmit}>
-        <div className="createFormSectionLeft">
-          <Question form="createForm" type="text" name="title" text="Name of Event" value={newForm.title} doThis={handleChange} />
+        <div id="section-left" className="createForm-section">
+          <Question form="createForm" type="text" name="title" text="Event Name" value={newForm.title} doThis={handleChange} />
           <Question form="createForm" type="text" name="location" text="Location" value={newForm.location} doThis={handleChange} />
-          <QuestionTA form="createForm" rows="10" cols="30" name="description" text="Description of Event" value={newForm.description} doThis={handleChange} />
+          <QuestionTA form="createForm" rows="10" cols="30" name="description" text="Description" value={newForm.description} doThis={handleChange} />
           <Question form="createForm" type="text" name="cost" text="Cost" value={newForm.cost} doThis={handleChange} />
         </div>
-        <div className="createFormSectionRight">
+        <div id="section-right" className="createForm-section">
           <div id="gridControls" className="createFormSubSection">
             <TimeDropdown form="createForm" name="early" text="No Earlier Than" value={newForm.early} doThis={handleChange} />
             <TimeDropdown form="createForm" name="late" text="No Later Than" value={newForm.late} doThis={handleChange} />

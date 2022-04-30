@@ -1,0 +1,7 @@
+@import './master';
+
+div.pageFooter {
+  position: absolute;
+  bottom: 0;
+  background-color: $footer-background;
+}

@@ -37,6 +37,11 @@ $calendar-selected-background: rgb(68, 131, 160);
 $calendar-selected-border: rgb(68, 131, 160);
 $calendar-selected-color: white;
 
+/*------------- Footer -------------*/
+
+$footer-background: $palColor1;
+
+
 /*------------- General Mixins -------------*/
 @mixin mFlexbox($fdirection, $jcontent, $falign) {
   display: flex;
@@ -144,7 +149,7 @@ $calendar-selected-color: white;
 
   .pageFooter {
     grid-column-start: 1;
-    grid-column-end: 9;
+    grid-column-end: 6;
     grid-row-start: 6;
     grid-row-end: 7;
   }

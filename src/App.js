@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import Login from './components/registrations/Login';
 import Signup from './components/registrations/Signup';
 import CreateForm from './components/CreateForm';
+import Footer from './components/Footer';
 
 class App extends Component {
 
@@ -79,6 +80,7 @@ class App extends Component {
               )}
             />
           </Switch>
+          <Footer/>
         </BrowserRouter>
       </>
     );

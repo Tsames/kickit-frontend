@@ -15,51 +15,111 @@ div.createFormShell {
 
   //Sub Components
   form.createForm {
-    @include mFlexbox(row, space-around, center);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 0px;
+    row-gap: 0px;
 
-    div.createFormSection {
-      @include mFlexbox(column, space-between, center);
+    #section-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 3;
     }
 
-    div.createFormSubSection#gridControls {
-      @include mFlexbox(row, space-between, center);
-      font-size: xx-small;
-
-      option {
-        font-size: xx-small;
-      }
+    #section-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 3;
     }
 
-    .createFormQuestion {
+    #createForm-submit {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 3;
+      grid-row-end: 4;
+      margin: auto;
+    }
+
+    /* ------------------ Styling for Inputs ------------------*/
+
+    //Custom Field Shell
+    .createForm-custom-field {
+      position: relative;
       font-size: 14px;
       padding-top: 20px;
       margin-bottom: 5px;
-    }
 
-    .createFormInput {
-      border: none;
-      -webkit-appearance: none;
-      -ms-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      box-sizing: border-box;
-      border-radius: 3px;
-      background: $input-background;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      outline: none;
-      resize: none;
-      font-size: 14px;
-      width: 250px;
-    }
+      //Input inside our custom field
+      Input {
+        border: none;
+        -webkit-appearance: none;
+        -ms-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        box-sizing: border-box;
+        
+        border-radius: 3px;
+        background: $input-background;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        outline: none;
+        resize: none;
+        font-size: 14px;
+        width: 200px;
+      }
 
-    .createFormQuestionLabel {
-      position: relative;
-      left: 12px;
-      top: 50%;
+      textarea {
+        border: none;
+        -webkit-appearance: none;
+        -ms-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        box-sizing: border-box;
+
+        border-radius: 3px;
+        background: $input-background;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        outline: none;
+        resize: none;
+        font-size: 14px;
+        width: 200px;
+      }
+
+      //Span placeholder inside our custom field
+      .placeholder {
+        position: absolute;
+        font-size: 14px;
+        left: 4px;
+        top: calc(50% + 10px);
+        transform: translateY(-50%);
+        font-weight: normal;
+        color: #aaa;
+        transition: 
+          top 0.3s ease,
+          font-size 0.3s ease,
+          color 0.3s ease;
+      }
+
+      input:focus + .placeholder {
+        top: 10px;
+        font-size: 10px;
+        color: #222;
+      }
     }
   }
-
 }
 

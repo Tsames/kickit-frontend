@@ -40,6 +40,8 @@ $calendar-selected-color: white;
 /*------------- Footer -------------*/
 
 $footer-background: $palColor1;
+$footer-text: $palColor2;
+$footer-mouseover: rgb(62, 93, 170);
 
 
 /*------------- General Mixins -------------*/
@@ -59,6 +61,7 @@ $footer-background: $palColor1;
 
   //Container
   div#root {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(5, auto);
     grid-template-rows: repeat(12, auto);
@@ -89,6 +92,7 @@ $footer-background: $palColor1;
 
   //Container
   div#root {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(5, auto);
     grid-template-rows: repeat(8, auto);
@@ -125,6 +129,7 @@ $footer-background: $palColor1;
 
   //Container
   div#root {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(5, auto);
     grid-template-rows: repeat(6, auto);

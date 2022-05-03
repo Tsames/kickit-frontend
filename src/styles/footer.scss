@@ -1,7 +1,44 @@
 @import './master';
 
 div.pageFooter {
+
+  //Size and Position
   position: absolute;
   bottom: 0;
+  width: 100%;
+
+  //Flexbox for contents
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  //Apply to Children
+  font-size: 14px;
+  color: $footer-text;
   background-color: $footer-background;
+
+  a {
+    text-decoration: none;
+    color: $footer-text;
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  #footer-left-side {
+    margin-left: 2rem;
+  }
+
+  #footer-right-side {
+    margin-right: 2rem;
+  }
+
+  .mouseover {
+    color: $footer-mouseover;
+    font-weight: bolder;
+    transition:
+      color 0.3s ease,
+      font-weight 0.3s ease;
+  }
+
 }

@@ -24,9 +24,9 @@ $grid-touch2: rgb(143, 81, 184);
 /*-------------  Calendar Colors -------------*/
 
 //Shell
-$calendar-primary: rgb(68, 131, 160);
-$calendar-background: rgba(239, 228, 234, 0.4);
-$calendar-border: rgba(239, 228, 234, 0.8);
+$calendar-primary: $palColor2;
+$calendar-background: $palColor1;
+$calendar-border: $palColor1;
 
 //Hover Class
 $calendar-hover: white;

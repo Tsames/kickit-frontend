@@ -5,10 +5,13 @@ div.calendarShell {
   @include mFlexbox(column, space-around, center);
   background-color: $calendar-background;
   border-color: $calendar-border;
-  border-style: solid;
-  border-radius: 1em;
+  border-style: none;
+  border-radius: 0em;
   max-width: 20em;
   padding: 0.5em;
+  font-size: 14px;
+  color: #222;
+  font-weight: lighter;
 
   //Calendar Heading Styling
   div.calendarHeading {

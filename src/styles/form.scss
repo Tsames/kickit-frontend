@@ -43,6 +43,21 @@ div.createFormShell {
       grid-row-end: 3;
     }
 
+    .subsection {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      font-weight: lighter;
+      font-size: 14px;
+    }
+
+    .drop-down {
+      font-size: 14px;
+      margin: 1rem;
+    }
+
+
     #createForm-submit {
       grid-column-start: 1;
       grid-column-end: 3;

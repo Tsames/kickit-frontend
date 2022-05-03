@@ -7,10 +7,9 @@ import '../../styles/small/timedropdown.scss';
 const TimeDropdown = ({form, name, text, value, doThis}) => {
 
   return (
-    <div className={`${form}Block`}>
-      <label for={name} className={`${form}Label`}>{text}</label><br />
-      <select id={`${form}${name}`} className={`${form}Input`} name={name} value={value} onChange={doThis}>
-        <option value="0">12:00 AM</option>
+    <label id={`${form}${name}`} for={name} className={"drop-down"}>
+      <span>{text}</span>
+      <select name={name} value={value} onChange={doThis}>
         <option value="1">1:00 AM</option>
         <option value="2">2:00 AM</option>
         <option value="3">3:00 AM</option>
@@ -34,8 +33,9 @@ const TimeDropdown = ({form, name, text, value, doThis}) => {
         <option value="21">9:00 PM</option>
         <option value="22">10:00 PM</option>
         <option value="23">11:00 PM</option>
+        <option value="0">12:00 AM</option>
       </select>
-    </div>
+    </label>
   )
 }
 

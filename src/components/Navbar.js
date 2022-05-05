@@ -50,7 +50,7 @@ const Navbar = (props) => {
   )
 
   return (
-    <nav className="pageTop">
+    <nav className="page-top">
       <div className="navLeft">
         <Link to='/' className="navLink"><h1 className="navTittle">Kick <span className="ItColor">It</span></h1></Link>
       </div>

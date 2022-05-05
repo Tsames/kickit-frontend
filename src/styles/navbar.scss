@@ -38,7 +38,10 @@ nav {
 
   div.navRight {
     margin: 0.5em;
-    @include mFlexbox(row, space-between, center)
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .navItem {

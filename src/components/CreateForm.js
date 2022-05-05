@@ -2,7 +2,7 @@
 import { React, useState } from 'react';
 
 //Styles
-import '../styles/form.scss';
+import '../styles/createform.scss';
 
 //Components
 import Question from './small/Question';

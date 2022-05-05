@@ -15,7 +15,7 @@ const Footer = ({ form, type, name, text, value, doThis }) => {
   }
 
   return (
-    <div className="pageFooter">
+    <div className="page-footer">
       <a id="footer-left-side" href="https://github.com/Tsames/kickit-frontend" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>github</a>
       <p id="footer-right-side">created by <a href="https://www.linkedin.com/in/thomasames/" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Tom Ames</a></p>
     </div>

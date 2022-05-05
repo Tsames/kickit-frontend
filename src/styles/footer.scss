@@ -1,9 +1,9 @@
 @import './master';
 
-div.pageFooter {
+div.page-footer {
 
   //Size and Position
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 
@@ -37,7 +37,7 @@ div.pageFooter {
     color: $footer-mouseover;
     font-weight: bolder;
     transition:
-      color 0.3s ease,
+      color s ease,
       font-weight 0.3s ease;
   }
 

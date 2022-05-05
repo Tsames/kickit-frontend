@@ -2,7 +2,11 @@
 
 div.calendarShell {
   //General Styling in Calendar
-  @include mFlexbox(column, space-around, center);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  
   background-color: $calendar-background;
   border-color: $calendar-border;
   border-style: none;
@@ -15,7 +19,10 @@ div.calendarShell {
 
   //Calendar Heading Styling
   div.calendarHeading {
-    @include mFlexbox(row, space-around, center);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     color: $calendar-primary;
 
     .calendarHeadingButton {

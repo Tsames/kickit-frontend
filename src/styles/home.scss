@@ -1,0 +1,16 @@
+@import './master';
+
+.home-shell {
+
+  button {
+    background-color: $palColor4;
+    text-decoration: none;
+    color: $palColor3;
+    border-radius: 3px;
+    border: none;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    font-size: 3rem;
+  }
+}

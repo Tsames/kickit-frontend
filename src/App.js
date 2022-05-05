@@ -8,6 +8,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 //Components
 import Navbar from './components/Navbar';
+import Home from './components/Home';
 import Login from './components/registrations/Login';
 import Signup from './components/registrations/Signup';
 import CreateForm from './components/CreateForm';
@@ -64,7 +65,13 @@ class App extends Component {
             <Route
               exact path='/'
               render={props => (
-                <CreateForm {...props}/>
+                <Home {...props}/>
+              )}
+            />
+            <Route
+              exact path='/create'
+              render={props => (
+                <CreateForm {...props} />
               )}
             />
             <Route

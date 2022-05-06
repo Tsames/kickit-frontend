@@ -129,6 +129,20 @@ div.createFormShell {
           color 0.3s ease;
       }
 
+      .placeholder-ta {
+        position: absolute;
+        font-size: 14px;
+        left: 4px;
+        top: 15%;
+        transform: translateY(-50%);
+        font-weight: normal;
+        color: #aaa;
+        transition: 
+          top 0.3s ease,
+          font-size 0.3s ease,
+          color 0.3s ease;
+      }
+
       input:focus + .placeholder {
         top: 10px;
         font-size: 10px;

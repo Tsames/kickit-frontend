@@ -7,11 +7,13 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // import './App.scss';
 
 //Components
-import Navbar from './components/Navbar';
-import Home from './components/Home';
 import Login from './components/registrations/Login';
 import Signup from './components/registrations/Signup';
+
+import Navbar from './components/Navbar';
+import Home from './components/Home';
 import CreateForm from './components/CreateForm';
+import AvailabilitiesForm from './components/AvailabilitiesForm'
 import Footer from './components/Footer';
 
 class App extends Component {
@@ -72,6 +74,12 @@ class App extends Component {
               exact path='/create'
               render={props => (
                 <CreateForm {...props} />
+              )}
+            />
+            <Route
+              exact path='/availability/:id'
+              render={props => (
+                <AvailabilitiesForm {...props} />
               )}
             />
             <Route

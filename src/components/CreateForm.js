@@ -38,7 +38,7 @@ const CreateForm = (props) => {
     payload.forEach((date) => {
       newDays.length === 0 ? newDays = newDays + date.toString() : newDays = newDays + ";" + date.toString();
     })
-    setNewForm({ ...newForm, ["days"]: newDays });
+    setNewForm({ ...newForm, "days": newDays });
   }
 
   const createEvent = async (events) => {

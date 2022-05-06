@@ -3,7 +3,7 @@ import { useState, React} from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { BiUser, BiX } from "react-icons/bi";
-import { BsFillPlusSquareFill } from "react-icons/bs";
+// import { BsFillPlusSquareFill } from "react-icons/bs";
 
 //Styles
 import '../styles/navbar.scss';

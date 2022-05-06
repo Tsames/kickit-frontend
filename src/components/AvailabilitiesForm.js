@@ -11,24 +11,46 @@ const AvailabilitiesForm = ({match}) => {
   const id = match.params.id;
   const apiURL = `http://localhost:3001/events/${id}`;
 
-  const [event, setEvent] = useState();
+  const [event, setEvent] = useState(null);
 
+  /* ------------------------------------------ Fetch Data ------------------------------------------*/
 
-  /* ------------------------------------------ Form Logic ------------------------------------------*/
-
+  //Helper function - gets relevant event data
   const getEventData = async () => {
-    const response = await fetch(apiURL);
-    const data = response.json();
-    setEvent(data)
+    try {
+      const response = await fetch(apiURL);
+      if (!response.ok) {
+        throw Error("Could not retrieve data.")
+      }
+      const data = await response.json()
+      setEvent(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  useEffect(getEventData());
+  //Run to get relevant event data upon first loading
+  useEffect(() => getEventData(), []);
+
+  /* ------------------------------------------ Conditional JSX ------------------------------------------*/
+
+  const loading = () => {
+    return(
+      <h4>Loading...</h4>
+    )
+  }
+
+  const loaded = () => {
+    return(
+      <h4>{event.title}</h4>
+    )
+  }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
 
   return (
     <div id="availabilities-form-shell" className="page-body">
-      <h4>Availabilities</h4>
+      {event === null ? loading() :  loaded()}
     </div>
   )
 }

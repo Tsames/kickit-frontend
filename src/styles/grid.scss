@@ -2,11 +2,13 @@
 
 //Styles for the grid table in Grid.js
 div.gridContents {
-  @include mFlexbox(row, center, center);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   margin: 5em auto;
 
   div.gridCell {
-    @include mBorder(0.01em, black);
     background-color: white;
     width: 2em;
     height: 1em;

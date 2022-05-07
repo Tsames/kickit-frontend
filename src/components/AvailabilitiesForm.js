@@ -1,6 +1,9 @@
 //Dependencies
 import { React, useState, useEffect } from 'react';
 
+//Import Components
+import Grid from "./Grid";
+
 //Styling
 import '../styles/availabilitiesform.scss';
 
@@ -32,6 +35,11 @@ const AvailabilitiesForm = ({match}) => {
   //Run to get relevant event data upon first loading
   useEffect(() => getEventData(), []);
 
+  //Prepare data
+  const getDayArray = () => {
+    return event.days.split(';').map((datetime) => new Date(datetime));
+  }
+
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
 
   const loading = () => {
@@ -41,8 +49,14 @@ const AvailabilitiesForm = ({match}) => {
   }
 
   const loaded = () => {
+    const daysArray = getDayArray();
     return(
-      <h4>{event.title}</h4>
+      <>
+        <h1>{event.title}</h1>
+        <h6>{event.location}</h6>
+        <p>{event.description}</p>
+        <p>days: {daysArray[0].day}</p>
+      </>
     )
   }
 

@@ -13,33 +13,26 @@ import Calendar from './Calendar';
 const CreateForm = (props) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
-  const URL = "http://localhost:3001/events";
+  const URL = "http://localhost:3002/events";
 
   const [newForm, setNewForm] = useState({
     title: "",
     location: "",
     description: "",
     cost: "",
-    early: "",
-    late: "",
-    days: ""
+    early: "1",
+    late: "1",
+    days: []
   });
-
-  //Data that the calendar will use
-  const [payload, setPayload] = useState([]);
 
   /* ------------------------------------------ Form Logic ------------------------------------------*/
   const handleChange = (event) => {
-    setNewForm({ ...newForm, [event.target.name]: event.target.value });
+    let newValue = event.target.value;
+    if (event.target.name === "early" || event.target.name === "late") {
+      newValue = Number(event.target.value)
+    }
+    setNewForm({ ...newForm, [event.target.name]: newValue });
   };
-
-  const getCalendarData = () => {
-    let newDays = "";
-    payload.forEach((date) => {
-      newDays.length === 0 ? newDays = newDays + date.toString() : newDays = newDays + ";" + date.toString();
-    })
-    setNewForm({ ...newForm, "days": newDays });
-  }
 
   const createEvent = async (events) => {
     await fetch(URL, {
@@ -53,8 +46,8 @@ const CreateForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setPayload([]);
     createEvent(newForm);
+    console.log(newForm);
     setNewForm({
       title: "",
       location: "",
@@ -62,7 +55,7 @@ const CreateForm = (props) => {
       cost: "",
       early: "",
       late: "",
-      days: ""
+      days: []
     });
     props.history.push("/")
   }
@@ -82,7 +75,7 @@ const CreateForm = (props) => {
             <TimeDropdown form="createForm" name="early" text="No Earlier Than" value={newForm.early} doThis={handleChange} />
             <TimeDropdown form="createForm" name="late" text="No Later Than" value={newForm.late} doThis={handleChange} />
           </div>
-          <Calendar payload={payload} setPayload={setPayload} getCalendarData={getCalendarData}/>
+          <Calendar newForm={newForm} setNewForm={setNewForm}/>
         </div>
         <Question form="createForm" type="submit" name="submit" text="" value="Submit" />
       </form>

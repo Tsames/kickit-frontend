@@ -5,7 +5,7 @@ import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 //Styling
 import '../styles/calendar.scss';
 
-const Calendar = (props) => {
+const Calendar = ({newForm, setNewForm}) => {
 
   /* -------------------------  Helper Functions -------------------------*/
 
@@ -28,8 +28,8 @@ const Calendar = (props) => {
   }
 
   //Helper function (recursive binary search) that checks if a 
-  //datetime is in payload returns index of element if found or -1 if not
-  const checkPayload = (arr, element, pivot = (arr.length - 1) / 2 | 0, index = (arr.length - 1) / 2 | 0) => {
+  //datetime is already in the days array and returns the index of the element if found or -1 if not found
+  const checkDays = (arr, element, pivot = (arr.length - 1) / 2 | 0, index = (arr.length - 1) / 2 | 0) => {
 
     //--- Base Case Check ---
     if (arr.length === 0) {
@@ -45,14 +45,14 @@ const Calendar = (props) => {
       const newArr = arr.slice(pivot + 1, arr.length)
       pivot = (newArr.length - 1) / 2 | 0;
       index += pivot + 1
-      return checkPayload(newArr, element, pivot, index)
+      return checkDays(newArr, element, pivot, index)
 
     //Call if element is less than pivot
     } else {
       const newArr = arr.slice(0, pivot);
       pivot = (newArr.length - 1) / 2 | 0;
       index -= (newArr.length) - pivot
-      return checkPayload(newArr, element, pivot, index)
+      return checkDays(newArr, element, pivot, index)
     }
   }
 
@@ -81,7 +81,7 @@ const Calendar = (props) => {
       //If tracker is on the same day of the week as the index add a non-dummy div and increment tracker
       if (todayIs === weekdays[i]) {
         content.push(
-          <div className={checkPayload(props.payload, tracker.getTime()) >= 0 ? "calendarItem calendarSelected" : "calendarItem"}
+          <div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendarItem calendarSelected" : "calendarItem"}
            key={`calendar${tracker.getDate()}${weekdays[i]}`}
            data-time={tracker.getTime()} 
            onClick={handleClick}
@@ -143,10 +143,10 @@ const Calendar = (props) => {
       //Add css class
       event.target.className = "calendarItem calendarSelected";
 
-      //Add element to payload
-      const newPayload = [...props.payload, Number(event.target.dataset.time)];
-      newPayload.sort(function (a, b) { return a - b });
-      props.setPayload(newPayload)
+      //Add element to days array
+      const newDays = [...newForm.days, Number(event.target.dataset.time)];
+      newDays.sort(function (a, b) { return a - b });
+      setNewForm({ ...newForm,  "days": newDays });
 
     //Otherwise if the element has the calendarSelected class
     } else {
@@ -154,15 +154,14 @@ const Calendar = (props) => {
       //Remove the css class
       event.target.className = "calendarItem calendarHover"
 
-      //Find index of the element in payload
-      const index = checkPayload(props.payload, Number(event.target.dataset.time));
+      //Find index of the element in days array
+      const index = checkDays(newForm.days, Number(event.target.dataset.time));
 
-      //Remove element at index from payload and set new payload
-      const newPayload = [...props.payload];
-      newPayload.splice(index, 1);
-      props.setPayload(newPayload)
+      //Remove element at index from days array and set new days array
+      const newDays = [...newForm.days];
+      newDays.splice(index, 1);
+      setNewForm({ ...newForm, "days": newDays });
     }
-    props.getCalendarData();
   }
 
   const handleMouseEnter = (event) => {

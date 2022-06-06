@@ -13,7 +13,7 @@ import Signup from './components/registrations/Signup';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import CreateForm from './components/CreateForm';
-import AvailabilitiesForm from './components/AvailabilitiesForm'
+import AttendForm from './components/AttendForm'
 import Footer from './components/Footer';
 
 class App extends Component {
@@ -77,9 +77,9 @@ class App extends Component {
               )}
             />
             <Route
-              exact path='/availability/:id'
+              exact path='/attend/:id'
               render={props => (
-                <AvailabilitiesForm {...props} />
+                <AttendForm {...props} />
               )}
             />
             <Route

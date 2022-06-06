@@ -4,7 +4,7 @@ import { React } from 'react';
 //Styles
 import '../styles/grid.scss';
 
-const Grid = ({early, late, days, blocks}) => {
+const Grid = ({early, late, blocks}) => {
 
   /* ------------------------------------------ Grid Generator ------------------------------------------*/
 

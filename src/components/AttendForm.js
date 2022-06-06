@@ -12,9 +12,18 @@ const AvailabilitiesForm = ({match}) => {
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
 
   const id = match.params.id;
-  const apiURL = `http://localhost:3001/events/${id}`;
+  const apiURL = `http://localhost:3002/events/${id}`;
 
-  const [event, setEvent] = useState(null);
+  const [event, setEvent] = useState({
+    title: "",
+    location: "",
+    description: "",
+    cost: "",
+    early: "",
+    late: "",
+    days: "",
+    blocks: ""
+  });
 
   /* ------------------------------------------ Fetch Data ------------------------------------------*/
 
@@ -35,9 +44,22 @@ const AvailabilitiesForm = ({match}) => {
   //Run to get relevant event data upon first loading
   useEffect(() => getEventData(), []);
 
-  //Prepare data
-  const getDayArray = () => {
-    return event.days.split(';').map((datetime) => new Date(datetime));
+  /* ------------------------------------------ Helper Functions ------------------------------------------*/
+  const extractData = (data) => {
+    data
+  }
+
+  const makeBlocks = () => {
+    const output = [], data = dayArray;
+    while (data.length > 0) {
+      const smallBlock = [];
+      smallBlock.push(data.shift());
+      while (Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000) {
+        smallBlock.push(data.shift());
+      }
+      output.push(smallBlock);
+    }
+    return output;
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
@@ -49,13 +71,12 @@ const AvailabilitiesForm = ({match}) => {
   }
 
   const loaded = () => {
-    const daysArray = getDayArray();
     return(
       <>
         <h1>{event.title}</h1>
         <h6>{event.location}</h6>
         <p>{event.description}</p>
-        <p>days: {daysArray[0].day}</p>
+        <Grid early={event.early} late={event.late} blocks={} />
       </>
     )
   }

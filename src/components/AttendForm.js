@@ -14,28 +14,39 @@ const AvailabilitiesForm = ({match}) => {
   const id = match.params.id;
   const apiURL = `http://localhost:3002/events/${id}`;
 
-  const [event, setEvent] = useState({
-    title: "",
-    location: "",
-    description: "",
-    cost: "",
-    early: "",
-    late: "",
-    days: "",
-    blocks: ""
-  });
+  const [event, setEvent] = useState(null);
+
+  /* ------------------------------------------ Helper Functions ------------------------------------------*/
+
+  const makeBlocks = (daysArray) => {
+    const newBlocks = [], data = daysArray;
+    while (data.length > 0) {
+      const smallBlock = [];
+      smallBlock.push(data.shift());
+      while (Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000) {
+        smallBlock.push(data.shift());
+      }
+      newBlocks.push(smallBlock);
+    }
+    return newBlocks
+  }
 
   /* ------------------------------------------ Fetch Data ------------------------------------------*/
 
   //Helper function - gets relevant event data
   const getEventData = async () => {
     try {
+      //Fetch event data
       const response = await fetch(apiURL);
-      if (!response.ok) {
-        throw Error("Could not retrieve data.")
-      }
       const data = await response.json()
-      setEvent(data);
+
+      //Use helper function to construct an array of arrays, where each child array contains
+      //only consecutive days - this is for the grid component
+      const blocks = makeBlocks(data.days);
+
+      //Set event state
+      setEvent({...data, "blocks": blocks});
+
     } catch (error) {
       console.log(error);
     }
@@ -43,24 +54,6 @@ const AvailabilitiesForm = ({match}) => {
 
   //Run to get relevant event data upon first loading
   useEffect(() => getEventData(), []);
-
-  /* ------------------------------------------ Helper Functions ------------------------------------------*/
-  const extractData = (data) => {
-    data
-  }
-
-  const makeBlocks = () => {
-    const output = [], data = dayArray;
-    while (data.length > 0) {
-      const smallBlock = [];
-      smallBlock.push(data.shift());
-      while (Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000) {
-        smallBlock.push(data.shift());
-      }
-      output.push(smallBlock);
-    }
-    return output;
-  }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
 
@@ -71,12 +64,25 @@ const AvailabilitiesForm = ({match}) => {
   }
 
   const loaded = () => {
+
+    //Create an array of grid components for the number of blocks for this event
+    const grids = [];
+    console.log(event);
+
+    if (event.blocks != null && event.blocks.length !== 0) {
+      event.blocks.forEach((singleBlock) => {
+        grids.push(<Grid key={singleBlock[0]} early={event.early} late={event.late} days={singleBlock} />)
+      });
+    }
+
     return(
       <>
         <h1>{event.title}</h1>
         <h6>{event.location}</h6>
         <p>{event.description}</p>
-        <Grid early={event.early} late={event.late} blocks={} />
+        {/* <Grid early={event.early} late={event.late} blocks={event.blocks} /> */}
+        <p>The event will be held between {event.early} and {event.late}</p>
+        {grids}
       </>
     )
   }

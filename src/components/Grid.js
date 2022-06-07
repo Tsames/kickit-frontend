@@ -4,12 +4,12 @@ import { React } from 'react';
 //Styles
 import '../styles/grid.scss';
 
-const Grid = ({early, late, blocks}) => {
+const Grid = ({early, late, days}) => {
 
   /* ------------------------------------------ Grid Generator ------------------------------------------*/
 
   //Get column and row numbers from props
-  let numColumns = days;
+  let numColumns = days.length;
   let numRows = Math.abs(late - early) * 2;
 
   //Helper function - generates the rows within a column

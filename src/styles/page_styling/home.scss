@@ -1,11 +1,22 @@
-@import './../master';
+@import './../variables';
+@import './../layout';
+
+#root {
+  background: linear-gradient(45deg, rgb(61, 114, 228), rgb(223, 139, 106));
+}
 
 .home-shell {
 
+  h2{
+    margin: auto;
+    color: $kick-it-brand;
+    font-weight: bolder;
+  }
+
   button {
-    background-color: $palColor4;
+    background-color: $invisible;
     text-decoration: none;
-    color: $palColor3;
+    color: white;
     border-radius: 3px;
     border: none;
     align-items: center;

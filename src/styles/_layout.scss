@@ -1,52 +1,14 @@
-/*-------------  Pallette Colors -------------*/
-
-$palColor1: rgb(242, 235, 229, 0.5);
-$palColor2: rgb(100, 114, 149);
-$palColor3: rgb(159, 73, 110);
-$palColor4: rgb(43, 38, 45);
-$palColor5: rgb(46, 44, 44);
-$invisible: rgba(0,0,0,0);
-
-/*-------------  Create Form Colors -------------*/
-
-$input-color: rgb(100, 114, 149);
-$input-background: rgb(242, 242, 242);
-
-/*-------------  Grid Colors -------------*/
-
-$grid-active: rgba(138, 207, 155, 1);
-$grid-active-border: rgb(8, 109, 34);
-$grid-touch1: rgb(83, 175, 218);
-$grid-touch2: rgb(143, 81, 184);
-
-/*-------------  Calendar Colors -------------*/
-
-//Shell
-$calendar-primary: $palColor2;
-$calendar-background: $palColor1;
-$calendar-border: $palColor1;
-
-//Hover Class
-$calendar-hover: white;
-$calendar-hover-background: rgb(68, 131, 160, 0.3);
-
-//Selected Class
-$calendar-selected-background: rgb(68, 131, 160);
-$calendar-selected-border: rgb(68, 131, 160);
-$calendar-selected-color: white;
-
-/*------------- Footer -------------*/
-
-$footer-background: $palColor1;
-$footer-text: $palColor2;
-$footer-mouseover: rgb(62, 93, 170);
-
 /*------------- Page Layout -------------*/
 
 /* ----------------------- Small devices -----------------------
 (portrait tablets and large phones, 600px and up) */
 
 @media only screen and (min-width: 600px) {
+
+  //Setting font-size for rem
+  html{
+    font-size: 12px;
+  }
 
   //Container
   #root {
@@ -55,6 +17,8 @@ $footer-mouseover: rgb(62, 93, 170);
     grid-template-rows: repeat(12, auto);
     column-gap: 0px;
     row-gap: 0px;
+    width: 100vw;
+    height: 100vh;
   }
 
   .page-top {
@@ -64,9 +28,7 @@ $footer-mouseover: rgb(62, 93, 170);
     grid-row-end: 1;
   }
 
-  .page-body {
-
-  }
+  .page-body {}
 
   .page-footer {
     height: 5%;
@@ -78,14 +40,20 @@ $footer-mouseover: rgb(62, 93, 170);
 
 @media only screen and (min-width: 768px) {
 
+  //Setting font-size for rem
+  html {
+    font-size: 16px;
+  }
+
   //Container
   #root {
-    position: relative;
     display: grid;
     grid-template-columns: repeat(5, auto);
     grid-template-rows: repeat(8, auto);
     column-gap: 0px;
     row-gap: 0px;
+    width: 100vw;
+    height: 100vh;
   }
 
   .page-top {
@@ -114,6 +82,11 @@ $footer-mouseover: rgb(62, 93, 170);
 (laptops/desktops, 992px and up) */
 
 @media only screen and (min-width: 992px) {
+
+  //Setting font-size for rem
+  html {
+    font-size: 20px;
+  }
 
   //Container
   #root {

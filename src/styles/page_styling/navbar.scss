@@ -1,5 +1,7 @@
-@import './../master';
+@use './../variables' as v;
+@use './../layout';
 
+//Container Element
 nav {
 
   //Display Settings
@@ -13,40 +15,44 @@ nav {
   text-decoration: none;
 
   //Coloring
-  background-color: $palColor1;
-  color: $palColor2;
+  background-color: v.$navbar-background;
+  color: v.$navbar-text;
 
-  //Child Components
+  /* ------------------------------------- Child Components ------------------------------------- */
 
-  .navLink {
-    text-decoration: none;
+  //Create Event Button
+  button{
+    background-color: v.$invisible;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 0.1rem;
+    border-color: v.$navbar-text;
+    font-size: 1.5rem;
   }
 
-  h1.navTittle {
-    color: $palColor2;
-    font-style: normal;
-  }
-
-  span.ItColor {
-    color: $palColor3;
-    text-decoration: none;
-  }
-
-  div.navLeft {
-    margin: 0.5em;
-  }
-
-  div.navRight {
-    margin: 0.5em;
+  div#navRight {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: 0 0 0 80%
+  }
+
+  div#loginBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 0 0 1rem;
   }
 
   .navItem {
     text-decoration-line: none;
-    color: $palColor2;
-    margin: 0.5em;
+    color: v.$navbar-text;
+    &:hover {
+      transition: ease 0.2s;
+      font-weight: bolder;
+      border-width: 0.140rem;
+    }
   }
 }

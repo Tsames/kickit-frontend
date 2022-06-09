@@ -14,13 +14,16 @@ const ViewEvent = ({match}) => {
   const id = match.params.id;
   const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
 
+  //Stores event data
   const [event, setEvent] = useState(null);
+  //Toggles what the page displays
+  const [viewAttendance, setViewAttendance] = useState(false);
 
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
 
 
 
-  /* ------------------------------------------ Fetch Data ------------------------------------------*/
+  /* ------------------------------------------ Fetch Event Data ------------------------------------------*/
 
   //Helper function - gets relevant event data
   const getEventData = async () => {
@@ -30,7 +33,7 @@ const ViewEvent = ({match}) => {
       const data = await response.json()
 
       //Set event state
-      setEvent({ ...data, "blocks": blocks });
+      setEvent(data);
 
     } catch (error) {
       console.log(error);
@@ -60,7 +63,12 @@ const ViewEvent = ({match}) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
 
   return (
-    <div id="availabilities-form-shell" className="page-body">
+
+    <div id="view-event-shell" className="page-body">
+      <div>
+        <h3>{event.title}</h3>
+      </div>
+
       {event === null ? loading() : loaded()}
     </div>
   )

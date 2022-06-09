@@ -1,4 +1,5 @@
-@import './../master';
+@import './../variables';
+@import './../layout';
 
 div.page-footer {
 
@@ -34,7 +35,7 @@ div.page-footer {
   }
 
   .mouseover {
-    color: $footer-mouseover;
+    color: $footer-text;
     font-weight: bolder;
     transition:
       color s ease,

@@ -3,14 +3,18 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-//Components
+//Import Authentication Components
 // import Login from './components/registrations/Login';
 // import Signup from './components/registrations/Signup';
 
+//Import Form Components
+import CreateForm from './components/form_components/CreateForm';
+import AttendForm from './components/form_components/AttendForm';
+
+//Import Page Components
 import Navbar from './components/page_components/Navbar';
 import Home from './components/page_components/Home';
-import CreateForm from './components/form_components/CreateForm';
-import AttendForm from './components/form_components/AttendForm'
+import ViewEvent from './components/page_components/ViewEvent';
 import Footer from './components/page_components/Footer';
 
 class App extends Component {
@@ -72,6 +76,12 @@ class App extends Component {
               exact path='/create'
               render={props => (
                 <CreateForm {...props} />
+              )}
+            />
+            <Route
+              exact path='/share/:id'
+              render={props => (
+                <ViewEvent {...props} />
               )}
             />
             <Route

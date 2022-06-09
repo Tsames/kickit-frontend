@@ -1,0 +1,44 @@
+$invisible: rgba(0,0,0,0);
+
+/*-------------  Navbar Colors -------------*/
+
+$navbar-background: rgba(1,1,1,0);
+$navbar-text: rgba(228, 226, 226, 1);
+
+/*-------------  Footer Colors -------------*/
+
+$footer-background: rgba(1, 1, 1, 0);
+$footer-text: rgba(255, 255, 255,1);
+
+/*-------------  Home Colors -------------*/
+
+$kick-it-brand: rgb(255, 255, 255);
+$kick-it-brand-2: rgba(255, 255, 255, 1);
+
+/*-------------  Create Form Colors -------------*/
+
+$input-color: rgb(100, 114, 149);
+$input-background: rgb(242, 242, 242);
+
+/*-------------  Grid Colors -------------*/
+
+$grid-active: rgba(138, 207, 155, 1);
+$grid-active-border: rgb(8, 109, 34);
+$grid-touch1: rgb(83, 175, 218);
+$grid-touch2: rgb(143, 81, 184);
+
+/*-------------  Calendar Colors -------------*/
+
+//Shell
+$calendar-primary: blue;
+$calendar-background: white;
+$calendar-border: white;
+
+//Hover Class
+$calendar-hover: white;
+$calendar-hover-background: rgb(68, 131, 160, 0.3);
+
+//Selected Class
+$calendar-selected-background: rgb(68, 131, 160);
+$calendar-selected-border: rgb(68, 131, 160);
+$calendar-selected-color: white;

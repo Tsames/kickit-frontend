@@ -3,18 +3,15 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-//Styling
-// import './App.scss';
-
 //Components
-import Login from './components/registrations/Login';
-import Signup from './components/registrations/Signup';
+// import Login from './components/registrations/Login';
+// import Signup from './components/registrations/Signup';
 
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import CreateForm from './components/CreateForm';
-import AttendForm from './components/AttendForm'
-import Footer from './components/Footer';
+import Navbar from './components/page_components/Navbar';
+import Home from './components/page_components/Home';
+import CreateForm from './components/form_components/CreateForm';
+import AttendForm from './components/form_components/AttendForm'
+import Footer from './components/page_components/Footer';
 
 class App extends Component {
 
@@ -27,42 +24,43 @@ class App extends Component {
   }
 
   /* ------------------------------------------ Authentication Logic ------------------------------------------*/
-  componentDidMount() {
-    this.loginStatus()
-  }
+  // componentDidMount() {
+  //   this.loginStatus()
+  // }
 
-  loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in',
-      { withCredentials: true })
-      .then(response => {
-        if (response.data.logged_in) {
-          this.handleLogin(response)
-        } else {
-          this.handleLogout()
-        }
-      })
-      .catch(error => console.log('api errors:', error))
-  }
+  // loginStatus = () => {
+  //   axios.get('http://localhost:3001/logged_in',
+  //     { withCredentials: true })
+  //     .then(response => {
+  //       if (response.data.logged_in) {
+  //         this.handleLogin(response)
+  //       } else {
+  //         this.handleLogout()
+  //       }
+  //     })
+  //     .catch(error => console.log('api errors:', error))
+  // }
 
-  handleLogin = (data) => {
-    this.setState({
-      isLoggedIn: true,
-      user: data.user
-    })
-  }
+  // handleLogin = (data) => {
+  //   this.setState({
+  //     isLoggedIn: true,
+  //     user: data.user
+  //   })
+  // }
 
-  handleLogout = () => {
-    this.setState({
-      isLoggedIn: false,
-      user: {}
-    })
-  }
+  // handleLogout = () => {
+  //   this.setState({
+  //     isLoggedIn: false,
+  //     user: {}
+  //   })
+  // }
 
   render() {
     return (
       <>
         <BrowserRouter>
-          <Navbar loggedInStatus={this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} />
+          {/* <Navbar loggedInStatus={this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} /> */}
+          <Navbar/>
           <Switch>
             <Route
               exact path='/'
@@ -82,18 +80,18 @@ class App extends Component {
                 <AttendForm {...props} />
               )}
             />
-            <Route
+            {/* <Route
               exact path='/login'
               render={props => (
                 <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
               )}
-            />
-            <Route
+            /> */}
+            {/* <Route
               exact path='/signup'
               render={props => (
                 <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
               )}
-            />
+            /> */}
           </Switch>
           <Footer/>
         </BrowserRouter>

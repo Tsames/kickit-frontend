@@ -2,9 +2,9 @@
 import { React } from 'react';
 
 //Styling
-import '../../styles/small/questionta.scss';
+import '../../styles/input_styling/text_area.scss';
 
-const QuestionTA = ({form, rows, cols, name, text, value, doThis}) => {
+const TextArea = ({form, rows, cols, name, text, value, doThis}) => {
 
   return (
     <label for={name} id={`${form}-${name}`} className={`${form}-custom-field`}>
@@ -14,4 +14,4 @@ const QuestionTA = ({form, rows, cols, name, text, value, doThis}) => {
   )
 }
 
-export default QuestionTA;
+export default TextArea;

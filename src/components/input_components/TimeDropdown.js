@@ -2,7 +2,7 @@
 import { React } from 'react';
 
 //Styling
-import '../../styles/small/timedropdown.scss';
+import '../../styles/input_styling/time_drop_down.scss';
 
 const TimeDropdown = ({form, name, text, value, doThis}) => {
 

@@ -2,7 +2,7 @@
 import { React } from 'react';
 
 //Styles
-import '../styles/grid.scss';
+import '../../styles/input_styling/grid.scss';
 
 const Grid = ({early, late, days}) => {
 

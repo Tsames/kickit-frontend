@@ -3,7 +3,7 @@ import { React, useState } from 'react';
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 //Styling
-import '../styles/calendar.scss';
+import '../../styles/input_styling/calendar.scss';
 
 const Calendar = ({newForm, setNewForm}) => {
 

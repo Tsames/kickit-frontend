@@ -6,7 +6,7 @@ import { BiUser, BiX } from "react-icons/bi";
 // import { BsFillPlusSquareFill } from "react-icons/bs";
 
 //Styles
-import '../styles/navbar.scss';
+import '../../styles/page_styling/navbar.scss';
 
 const Navbar = (props) => {
 
@@ -55,6 +55,7 @@ const Navbar = (props) => {
         <Link to='/' className="navLink"><h1 className="navTittle">Kick <span className="ItColor">It</span></h1></Link>
       </div>
       <div className="navRight" onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <Link id="to-create" to="/create"><button>+</button></Link>
         {
           props.loggedInStatus ? yesUser : noUser
         }

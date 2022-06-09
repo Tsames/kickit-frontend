@@ -2,9 +2,9 @@
 import { React } from 'react';
 
 //Styling
-import '../../styles/small/question.scss';
+import '../../styles/input_styling/field.scss';
 
-const Question = ({form, type, name, text, value, doThis}) => {
+const Field = ({form, type, name, text, value, doThis}) => {
 
   return (
     <label for={name} id={`${form}-${name}`} className={`${form}-custom-field`}>
@@ -14,4 +14,4 @@ const Question = ({form, type, name, text, value, doThis}) => {
   )
 }
 
-export default Question;
+export default Field;

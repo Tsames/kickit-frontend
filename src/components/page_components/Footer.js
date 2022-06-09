@@ -2,7 +2,7 @@
 import { React } from 'react';
 
 //Styling
-import '../styles/footer.scss';
+import '../../styles/page_styling/footer.scss';
 
 const Footer = ({ form, type, name, text, value, doThis }) => {
 

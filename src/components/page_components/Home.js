@@ -3,7 +3,7 @@ import { React } from 'react';
 import { Link } from 'react-router-dom';
 
 //Styling
-import '../styles/home.scss';
+import '../../styles/page_styling/home.scss';
 
 const Home = () => {
 

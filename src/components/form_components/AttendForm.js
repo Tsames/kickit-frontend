@@ -2,17 +2,17 @@
 import { React, useState, useEffect } from 'react';
 
 //Import Components
-import Grid from "./Grid";
+import Grid from "../input_components/Grid";
 
 //Styling
-import '../styles/availabilitiesform.scss';
+import '../../styles/page_styling/view_event.scss';
 
 const AvailabilitiesForm = ({match}) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
 
   const id = match.params.id;
-  const apiURL = `http://localhost:3002/events/${id}`;
+  const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
 
   const [event, setEvent] = useState(null);
 
@@ -37,7 +37,7 @@ const AvailabilitiesForm = ({match}) => {
   const getEventData = async () => {
     try {
       //Fetch event data
-      const response = await fetch(apiURL);
+      const response = await fetch(URL);
       const data = await response.json()
 
       //Use helper function to construct an array of arrays, where each child array contains
@@ -77,9 +77,6 @@ const AvailabilitiesForm = ({match}) => {
 
     return(
       <>
-        <h1>{event.title}</h1>
-        <h6>{event.location}</h6>
-        <p>{event.description}</p>
         {/* <Grid early={event.early} late={event.late} blocks={event.blocks} /> */}
         <p>The event will be held between {event.early} and {event.late}</p>
         {grids}

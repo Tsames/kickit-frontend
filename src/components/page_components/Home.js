@@ -1,5 +1,5 @@
 //Dependencies
-import { React } from 'react';
+import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //Import Components
@@ -10,15 +10,24 @@ import '../../styles/page_styling/home.scss';
 
 const Home = () => {
 
-  /* ------------------------------------------ Component Variables & State ------------------------------------------*/
+/* ------------------------------------------ Component Variables & State ------------------------------------------*/
 
-  /* ------------------------------------------ Helper Functions ------------------------------------------*/
+  const [search, setSearch] = useState("");
 
-  /* ------------------------------------------ Returning JSX ------------------------------------------*/
+/* ------------------------------------------ Helper Functions ------------------------------------------*/
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  }
+
+/* ------------------------------------------ Returning JSX ------------------------------------------*/
 
   return (
-    <div className="home-shell page-body">
-      <h2>Kick <span>It</span></h2>
+    <div id="home-shell" className="page-body">
+      <h2>Kick <span id="it">It</span></h2>
+      <label for="search" id="searchLabel">
+        <input id="search" type="text" name="search" value={search} onChange={handleChange} placeholder="Enter event title or id to search"/>
+      </label>
     </div>
   )
 }

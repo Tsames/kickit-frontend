@@ -1,5 +1,6 @@
+//Imports
 @use './../variables' as v;
-@use './../layout';
+@import './../layout';
 
 //Container Element
 nav {
@@ -18,7 +19,7 @@ nav {
   background-color: v.$navbar-background;
   color: v.$navbar-text;
 
-  /* ------------------------------------- Child Components ------------------------------------- */
+  /* ------------------------------------- Child Elements ------------------------------------- */
 
   //Create Event Button
   button{
@@ -49,7 +50,7 @@ nav {
   .navItem {
     text-decoration-line: none;
     color: v.$navbar-text;
-    &:hover {
+    &:hover, touch {
       transition: ease 0.2s;
       font-weight: bolder;
       border-width: 0.140rem;

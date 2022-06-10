@@ -1,6 +1,8 @@
-@import './../variables';
+//Imports
+@use './../variables' as v;
 @import './../layout';
 
+//Container Element
 div.page-footer {
 
   //Size and Position
@@ -15,31 +17,28 @@ div.page-footer {
   align-items: center;
 
   //Apply to Children
-  font-size: 14px;
-  color: $footer-text;
-  background-color: $footer-background;
+  color: v.$footer-text;
+  font-size: 0.6rem;
+  background-color: v.$footer-background;
 
-  a {
-    text-decoration: none;
-    color: $footer-text;
-    font-size: 14px;
-    font-weight: normal;
-  }
+  /* ------------------------------------- Child Elements ------------------------------------- */
 
   #footer-left-side {
-    margin-left: 2rem;
+    margin: 0 0 0 0.8rem;
   }
 
   #footer-right-side {
-    margin-right: 2rem;
+    margin: 0 0.8rem 0 0;
   }
 
-  .mouseover {
-    color: $footer-text;
-    font-weight: bolder;
-    transition:
-      color s ease,
-      font-weight 0.3s ease;
+  .footerLink {
+    text-decoration: none;
+    color: v.$footer-text;
+    font-weight: normal;
+    &:hover {
+      transition: ease 0.2s;
+      font-weight: bolder;
+    }
   }
 
 }

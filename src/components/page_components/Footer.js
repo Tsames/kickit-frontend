@@ -4,20 +4,12 @@ import { React } from 'react';
 //Styling
 import '../../styles/page_styling/footer.scss';
 
-const Footer = ({ form, type, name, text, value, doThis }) => {
-
-  const handleMouseEnter = (event) => {
-    event.target.classList.add("mouseover");
-  }
-
-  const handleMouseLeave = (event) => {
-    event.target.classList.remove("mouseover");
-  }
+const Footer = () => {
 
   return (
     <div className="page-footer">
-      <a id="footer-left-side" href="https://github.com/Tsames/kickit-frontend" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>github</a>
-      <p id="footer-right-side">created by <a href="https://www.linkedin.com/in/thomasames/" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Tom Ames</a></p>
+      <a id="footer-left-side" className="footerLink" href="https://github.com/Tsames/kickit-frontend">github</a>
+      <p id="footer-right-side">created by <a className="footerLink" href="https://www.linkedin.com/in/thomasames/">Tom Ames</a></p>
     </div>
   )
 }

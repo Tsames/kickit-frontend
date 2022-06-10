@@ -1,27 +1,59 @@
-@import './../variables';
+//Imports
+@use './../variables' as v;
 @import './../layout';
 
 #root {
   background: linear-gradient(45deg, rgb(61, 114, 228), rgb(223, 139, 106));
 }
 
-.home-shell {
+#home-shell {
 
+  //Display Settings
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 auto;
+  
+  /* ------------------------------------- Child Elements ------------------------------------- */
+
+  //Kick-It Branding
   h2{
-    margin: auto;
-    color: $kick-it-brand;
-    font-weight: bolder;
+    position: relative;
+    color: v.$kick-it-brand;
+    font-weight: 900;
+    font-size: 4rem;
+    grid-row-start: 3;
+    grid-row-end: 6;
   }
 
-  button {
-    background-color: $invisible;
-    text-decoration: none;
-    color: white;
-    border-radius: 3px;
+  #it {
+    color: v.$kick-it-brand-2;
+    font-weight: 900;
+  }
+
+  //Search Bar
+  input {
     border: none;
-    align-items: center;
-    width: 5rem;
-    height: 5rem;
-    font-size: 3rem;
+    appearance: none;
+    color:v.$search-color;
+    background: v.$search-background;
+    border-radius: 5px;
+
+    width: 50vw;
+    height: 8vh;
+    font-size: 1.5rem;
+
+    outline: none;
+
+    &::placeholder{
+      color: v.$search-placeholder-color;
+      padding: 0 0 0 0.3rem;
+      transition: color 0.3s ease;
+    }
+
+    &:focus::placeholder {
+      color:v.$invisible;
+    }
   }
 }

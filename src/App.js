@@ -1,11 +1,6 @@
 //Dependencies
 import React, { Component } from 'react';
-import axios from 'axios'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-
-//Import Authentication Components
-// import Login from './components/registrations/Login';
-// import Signup from './components/registrations/Signup';
 
 //Import Form Components
 import CreateForm from './components/form_components/CreateForm';
@@ -19,89 +14,42 @@ import Footer from './components/page_components/Footer';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { 
-      isLoggedIn: false,
-      user: {}
-    };
+  setRoot = (newClass) => {
+    const root = document.getElementById("root");
+    root.className = "";
+    root.className = newClass;
   }
-
-  /* ------------------------------------------ Authentication Logic ------------------------------------------*/
-  // componentDidMount() {
-  //   this.loginStatus()
-  // }
-
-  // loginStatus = () => {
-  //   axios.get('http://localhost:3001/logged_in',
-  //     { withCredentials: true })
-  //     .then(response => {
-  //       if (response.data.logged_in) {
-  //         this.handleLogin(response)
-  //       } else {
-  //         this.handleLogout()
-  //       }
-  //     })
-  //     .catch(error => console.log('api errors:', error))
-  // }
-
-  // handleLogin = (data) => {
-  //   this.setState({
-  //     isLoggedIn: true,
-  //     user: data.user
-  //   })
-  // }
-
-  // handleLogout = () => {
-  //   this.setState({
-  //     isLoggedIn: false,
-  //     user: {}
-  //   })
-  // }
 
   render() {
     return (
       <>
         <BrowserRouter>
-          {/* <Navbar loggedInStatus={this.state.isLoggedIn} user={this.state.user} handleLogout={this.handleLogout} /> */}
-          <Navbar/>
+          <Navbar />
           <Switch>
             <Route
               exact path='/'
               render={props => (
-                <Home {...props}/>
+                <Home {...props} setRoot={this.setRoot}/>
               )}
             />
             <Route
               exact path='/create'
               render={props => (
-                <CreateForm {...props} />
+                <CreateForm {...props} setRoot={this.setRoot}/>
               )}
             />
             <Route
               exact path='/share/:id'
               render={props => (
-                <ViewEvent {...props} />
+                <ViewEvent {...props} setRoot={this.setRoot}/>
               )}
             />
             <Route
               exact path='/attend/:id'
               render={props => (
-                <AttendForm {...props} />
+                <AttendForm {...props} setRoot={this.setRoot}/>
               )}
             />
-            {/* <Route
-              exact path='/login'
-              render={props => (
-                <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
-              )}
-            /> */}
-            {/* <Route
-              exact path='/signup'
-              render={props => (
-                <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
-              )}
-            /> */}
           </Switch>
           <Footer/>
         </BrowserRouter>

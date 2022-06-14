@@ -1,0 +1,24 @@
+
+@mixin inputField($width, $height) {
+  border: none;
+  appearance: none;
+  color: v.$search-color;
+  background: v.$search-background;
+  border-radius: 5px;
+
+  width: $width;
+  height: $height;
+  font-size: 1.5rem;
+
+  outline: none;
+
+  &::placeholder {
+    color: v.$search-placeholder-color;
+    padding: 0 0 0 0.3rem;
+    transition: color 0.3s ease;
+  }
+
+  &:focus::placeholder {
+    color: v.$invisible;
+  }
+}

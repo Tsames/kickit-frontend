@@ -2,7 +2,11 @@
 @use './../variables' as v;
 @import './../layout';
 
-#root {
+//Google Font Import
+@import url('https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap');
+
+//Page-specific background
+.rb-landing {
   background: linear-gradient(45deg, rgb(61, 114, 228), rgb(223, 139, 106));
 }
 
@@ -12,6 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 
   margin: 0 auto;
   
@@ -20,8 +25,9 @@
   //Kick-It Branding
   h2{
     position: relative;
+    font-family: 'Sonsie One', cursive;
     color: v.$kick-it-brand;
-    font-weight: 900;
+    font-weight: 50;
     font-size: 4rem;
     grid-row-start: 3;
     grid-row-end: 6;

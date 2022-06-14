@@ -1,34 +1,18 @@
 //Dependencies
-import { useState, React} from 'react';
-import axios from 'axios'
-import { Link } from 'react-router-dom'
-import { BiUser, BiX } from "react-icons/bi";
-// import { BsFillPlusSquareFill } from "react-icons/bs";
+import { React} from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { RiHome2Fill } from "react-icons/ri";
 
 //Styles
 import '../../styles/page_styling/navbar.scss';
 
 const Navbar = (props) => {
 
-  const [mo, setMo] = useState(false)
+  /* ------------------------------------------ Component Variables ------------------------------------------*/
 
-  const handleMouseEnter = () => {
-    setMo(true);
-  }
+  const location = useLocation().pathname;
 
-  const handleMouseLeave = () => {
-    setMo(false)
-  }
-
-  const handleClick = () => {
-    axios.delete('http://localhost:3001/logout', { withCredentials: true })
-      .then(response => {
-        props.handleLogout()
-        props.history.push('/')
-      })
-      .catch(error => console.log(error))
-  }
-
+  /* ------------------------------------------ Conditional JSX ------------------------------------------*/
   const noUser = (
     <>
       <Link to='/login' className="navItem">Log In</Link>
@@ -36,25 +20,20 @@ const Navbar = (props) => {
     </>
   )
 
-  const yesUser = (
-    <>
-      {props.user ? 
-      <>
-        <BiUser className="navItem"></BiUser>
-        <h5 className="navItem navLink">{props.user.username}</h5>
-      </>
-       : null}
-      <BiX className="navItem"></BiX>
-      { mo ? <Link to='/logout' className="navItem navLink" onClick={handleClick}>Logout</Link> : null }
-    </>
+  const home = (
+    <Link to="/" className="navItem"><RiHome2Fill id="home" /></Link>
   )
 
+  /* ------------------------------------------ Returning JSX ------------------------------------------*/
   return (
     <nav className="page-top">
-      <div id="navRight" onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <Link to="/create"><button class="navItem">+</button></Link>
+      <div id="navLeft">
+        {location !== "/" ? home : null }
+      </div>
+      <div id="navRight">
+        <Link to="/create"><button className="navItem">+</button></Link>
         <div id="loginBlock">
-          { props.loggedInStatus ? yesUser : noUser}
+          {noUser}
         </div>
       </div>
     </nav>

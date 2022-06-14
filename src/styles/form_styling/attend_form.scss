@@ -1,0 +1,38 @@
+@use './../variables' as v;
+@import './../layout';
+
+.rb-view-event {
+  background: linear-gradient(45deg, rgb(156, 203, 110), rgb(223, 139, 106));
+}
+
+#attend-form-shell {
+
+  //Display Settings
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+
+  /* ------------------------------------- Child Elements - Event Loading ------------------------------------- */
+
+
+  /* ------------------------------------- Child Elements - Event Loaded ------------------------------------- */
+  
+
+  //Styling for the container of all input grids
+  #attend-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  //Styling for each individual grid
+  .attend-grid-input {
+
+  }
+
+
+}

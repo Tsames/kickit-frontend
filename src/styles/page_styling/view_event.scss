@@ -1,3 +1,55 @@
-@import './../variables';
+//Imports
+@use './../variables' as v;
 @import './../layout';
 
+.rb-view-event {
+  background: linear-gradient(45deg, rgb(156, 203, 110), rgb(223, 139, 106));
+}
+
+#view-event-shell {
+
+  //Display Settings
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+
+  /* ------------------------------------- Child Elements - Event Loading ------------------------------------- */
+
+    #loading{
+      margin: 0 auto;
+    }
+
+  /* ------------------------------------- Child Elements - Event Loaded ------------------------------------- */
+  .eventDetail {
+    color: white;
+    padding: 0 0.5rem;
+  } 
+
+  button {
+    border: none;
+    appearance: none;
+    background-color:v.$ve-button-background;
+    border-radius: 5px;
+
+    .buttonLink {
+      text-decoration: none;
+      color: v.$ve-button-color;
+    }
+  }
+
+  #leftSide {
+    background: green;
+    height: 100vh;
+    width: 50vw;
+  }
+
+  #rightSide {
+    background: red;
+    height: 80vh;
+    width: 50vw;
+  }
+
+}

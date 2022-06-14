@@ -71,15 +71,16 @@ const AvailabilitiesForm = ({match}) => {
 
     if (event.blocks != null && event.blocks.length !== 0) {
       event.blocks.forEach((singleBlock) => {
-        grids.push(<Grid key={singleBlock[0]} early={event.early} late={event.late} days={singleBlock} />)
+        grids.push(<Grid className={"attend-grid-input"} key={singleBlock[0]} early={event.early} late={event.late} days={singleBlock} />)
       });
     }
 
     return(
       <>
-        {/* <Grid early={event.early} late={event.late} blocks={event.blocks} /> */}
-        <p>The event will be held between {event.early} and {event.late}</p>
-        {grids}
+        <p>{`${event.title}`} will be held between {event.early} and {event.late}</p>
+        <div id="attend-input-container">
+          {grids}
+        </div>
       </>
     )
   }
@@ -87,7 +88,7 @@ const AvailabilitiesForm = ({match}) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
 
   return (
-    <div id="availabilities-form-shell" className="page-body">
+    <div id="attend-form-shell" className="page-body">
       {event === null ? loading() :  loaded()}
     </div>
   )

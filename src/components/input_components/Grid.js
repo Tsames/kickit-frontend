@@ -28,10 +28,25 @@ const Grid = ({early, late, days}) => {
     let content = []
     for (let i = 1; i <= numColumns; i++) {
       content.push(
-        <div key={`c${i}`} data-column={i} className="gridColumn">
+        <div key={`c${i}`} data-column={i} data-time={days[i-1]} className="gridColumn">
           {generateRows(i)}
         </div>
       )
+    }
+    return content
+  }
+
+  //Helper function - generates the label for rows
+  const generateLabels = (rows) => {
+    let content = []
+    for (let i = 0; i < numRows; i++) {
+      if (i % 2 === 0) {
+        content.push(
+          <div key={`label-${i}`} data-row={i} className="gridLabel">
+            {early}
+          </div>
+        )
+      }
     }
     return content
   }

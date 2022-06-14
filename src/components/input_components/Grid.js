@@ -12,7 +12,25 @@ const Grid = ({early, late, days}) => {
   let numColumns = days.length;
   let numRows = Math.abs(late - early) * 2;
 
-  //Helper function - generates the rows within a column
+  //Generates the labels for rows
+  const generateRowLabels = (rows) => {
+    let content = []
+    for (let i = 0; i < numRows; i++) {
+      content.push(
+        <div key={`label-cell-${i}`} data-row={i} className="gridLabelCell">
+          <p className="gridLabelText">{shorthand(i)}</p>
+        </div>
+      )
+    }
+
+    return (
+      <div className="gridLabalColumn">
+        {content}
+      </div>
+    )
+  }
+
+  //Generates the rows within a column
   const generateRows = (column) => {
     let content = []
     for (let i = 1; i <= numRows; i++) {
@@ -26,6 +44,7 @@ const Grid = ({early, late, days}) => {
   //Main generator function that generates the columns of a grid
   const generateColumns = () => {
     let content = []
+    content.push(generateRowLabels());
     for (let i = 1; i <= numColumns; i++) {
       content.push(
         <div key={`c${i}`} data-column={i} data-time={days[i-1]} className="gridColumn">
@@ -36,22 +55,7 @@ const Grid = ({early, late, days}) => {
     return content
   }
 
-  //Helper function - generates the label for rows
-  const generateLabels = (rows) => {
-    let content = []
-    for (let i = 0; i < numRows; i++) {
-      if (i % 2 === 0) {
-        content.push(
-          <div key={`label-${i}`} data-row={i} className="gridLabel">
-            {early}
-          </div>
-        )
-      }
-    }
-    return content
-  }
-
-  /* ------------------------------------------ Selection Events & Logic ------------------------------------------*/
+  /* ------------------------------------------ Component Wide Varaibles ------------------------------------------*/
 
   //Component wide variables
   let selection = false; //Tracks if there is a selection occuring
@@ -62,20 +66,17 @@ const Grid = ({early, late, days}) => {
   const cellOn = "gridCell gridSelected"; //The class that highlights a cell
   const cellOff = "gridCell"; //The class for an unhighlighted cell
 
-  const handleMouseDown = e => {
-    //Prevent page scrolling
-    e.preventDefault();
 
-    //Console message
-    console.log(`Starting at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
+  /* ------------------------------------------ Helper Functions ------------------------------------------*/
 
-    //Set component wide variables that track a selection
-    selection = true;
-    selectionStart = e.target;
-    selectionEnd = e.target;
-    setToggleState(e.target);
-    toggleThis([e.target]);
+  //Helper function to determine the hour text for row labels
+  const shorthand = (moreHours) => {
+    let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
+    let suffix = (base > 11 && base < 24) ? "PM" : "AM";
+    return `${base} ${suffix}`;
   }
+
+  /* ------------------ Event Helper Functions ------------------ */
 
   //Helper function - determines toggle state
   const setToggleState = target => {
@@ -131,6 +132,23 @@ const Grid = ({early, late, days}) => {
     }
     console.log(`Endpoints are from (${sizeArray[2]}, ${sizeArray[0]}) to (${sizeArray[3]}, ${sizeArray[1]})`);
     return sizeArray;
+  }
+
+  /* ------------------------------------------ Selection Events & Logic ------------------------------------------*/
+
+  const handleMouseDown = e => {
+    //Prevent page scrolling
+    e.preventDefault();
+
+    //Console message
+    console.log(`Starting at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
+
+    //Set component wide variables that track a selection
+    selection = true;
+    selectionStart = e.target;
+    selectionEnd = e.target;
+    setToggleState(e.target);
+    toggleThis([e.target]);
   }
 
   //Determine which cells to toggle based on selection

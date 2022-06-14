@@ -33,7 +33,7 @@ const TimeDropdown = ({form, name, text, value, doThis}) => {
         <option value="21">9:00 PM</option>
         <option value="22">10:00 PM</option>
         <option value="23">11:00 PM</option>
-        <option value="0">12:00 AM</option>
+        <option value="24">12:00 AM</option>
       </select>
     </label>
   )

@@ -1,23 +1,37 @@
 @use './../variables' as v;
 @import './../layout';
 
-$grid-cell-width: 3rem;
-$grid-cell-height: 1.5rem;
+$grid-cell-width: 4rem;
+$grid-cell-height: 2.5rem;
 
 //Styles for the grid table in Grid.js
+.gridTable {
+  margin: 0.3rem;
+}
+
+
 div.gridContents {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem auto;
+  margin: 0 auto 0 auto;
+  padding: 0rem;
+
+  div.gridColumn {
+    padding: 0rem;
+    margin: 0rem;
+  }
 
   div.gridCell {
     background-color: v.$invisible;
     width: $grid-cell-width;
-    height: $grid-cell-width;
+    height: $grid-cell-height;
     border-style: solid;
     border-color: black;
+    border-width: 0.1rem;
+    margin: 0;
+    padding: 0;
   }
 
   div.gridSelected {
@@ -29,61 +43,61 @@ div.gridContents {
     background-color: v.$grid-touch1;
   }
 
-
-  //Row Label Styling ------------------ $
-  .gridRowLabels {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    // margin: 5em auto;
-  }
-
-  .gridLabelRowCell {
-    border: solid;
-    border-color: red;
-    background-color: v.$invisible;
-    width: $grid-cell-width;
-    height: $grid-cell-height;
-  }
-
-  .gridLabelRowText {
-    font-size: 0.5rem;
-    color: black;
-    padding: 0;
-    margin: 0;
-    text-align: right;
-    vertical-align: center;
-  }
-  //--------------------------------------- $
-
-  //Column Label Styling ------------------ $
-  .gridCoumnLabels {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    // margin: 5em auto;
-  }
-
-  .gridLabelColumnCell {
-    border: solid;
-    border-color: green;
-    border-width: 0.5rem;
-    background-color: v.$invisible;
-    width: $grid-cell-width;
-    height: $grid-cell-height;
-  }
-
-  .gridLabelColumnText {
-    font-size: 0.5rem;
-    color: black;
-    padding: 0;
-    margin: 0;
-    text-align: right;
-    vertical-align: center;
-  }
-
-  //--------------------------------------- $
-
 }
+//Row Label Styling ------------------ $
+
+.gridRowLabels {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gridRowLabelCell {
+  border: solid;
+  border-color:v.$invisible;
+  border-width: 0.1rem;
+  background-color: v.$invisible;
+  width: $grid-cell-width;
+  height: $grid-cell-height;
+}
+
+.gridRowLabelText {
+  position: relative;
+  top: 10%;
+  right: 5%;
+  font-size: 0.5rem;
+  color: black;
+  text-align: right;
+}
+//--------------------------------------- $
+
+//Column Label Styling ------------------ $
+
+.gridColumnLabels {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.gridColumnLabelCell {
+  border: none;
+  border-color: purple;
+  border-width: 0.1rem;
+  margin: 0 0 0 0;
+  width: $grid-cell-width;
+  height: $grid-cell-height;
+}
+
+.gridColumnLabelText {
+  position: relative;
+  top: 55%;
+  font-size: 0.5rem;
+  color: black;
+  text-align: center;
+}
+
+//--------------------------------------- $

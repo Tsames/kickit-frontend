@@ -3,11 +3,12 @@ import { React, useState, useEffect } from 'react';
 
 //Import Components
 import Grid from "../input_components/Grid";
+import Field from "../input_components/Field";
 
 //Styling
 import '../../styles/page_styling/view_event.scss';
 
-const AvailabilitiesForm = ({match, setRoot}) => {
+const AttendForm = ({match, setRoot}) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
 
@@ -15,7 +16,14 @@ const AvailabilitiesForm = ({match, setRoot}) => {
   const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
   setRoot("rb-attend-event");
 
+  //State to store event data
   const [event, setEvent] = useState(null);
+
+  //State to store attendance data
+  const [form, setForm] = useState({
+    name: "",
+    attending: null
+  });
 
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
 
@@ -58,6 +66,13 @@ const AvailabilitiesForm = ({match, setRoot}) => {
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
 
+  const handleName = (event) => {
+    let newValue = event.target.value;
+    setForm({ ...form, "name": newValue });
+  }
+
+  /* ------------------------------------------ Conditional JSX ------------------------------------------*/
+
   const loading = () => {
     return(
       <h4>Loading...</h4>
@@ -68,7 +83,6 @@ const AvailabilitiesForm = ({match, setRoot}) => {
 
     //Create an array of grid components for the number of blocks for this event
     const grids = [];
-    console.log(event);
 
     if (event.blocks != null && event.blocks.length !== 0) {
       event.blocks.forEach((singleBlock) => {
@@ -80,6 +94,7 @@ const AvailabilitiesForm = ({match, setRoot}) => {
       <>
         <p>{`${event.title}`} will be held between {event.early} and {event.late}</p>
         <div id="attend-input-container">
+          <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName}/>
           {grids}
         </div>
       </>
@@ -95,4 +110,4 @@ const AvailabilitiesForm = ({match, setRoot}) => {
   )
 }
 
-export default AvailabilitiesForm;
+export default AttendForm;

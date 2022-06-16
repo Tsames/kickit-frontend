@@ -20,7 +20,7 @@ const Grid = ({early, late, days}) => {
     for (let i = 0; i < numRows; i++) {
       label = rowLabelHelper(i);
       content.push(
-        <div key={`label-row-cell-${i}`} data-row={i} className="gridLabelRowCell">
+        <div key={`label-row-cell-${i}`} data-row={i} className="gridRowLabelCell">
           {label}
         </div>
       )
@@ -42,7 +42,7 @@ const Grid = ({early, late, days}) => {
     for (let i = 0; i <= numColumns; i++) {
       label = columnLabelHelper(i)
       content.push(
-        <div key={`label-column-cell-${i}`} data-column={i} className="gridLabelColumnCell">
+        <div key={`label-column-cell-${i}`} data-column={i} className="gridColumnLabelCell">
           {label}
         </div>
       )
@@ -99,10 +99,12 @@ const Grid = ({early, late, days}) => {
   //Helper function to determine the hour text for row labels
   const rowLabelHelper = (index) => {
     let label = null, moreHours = Math.floor(index / 2);
+    let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
+    let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
     if (index % 2 === 0) {
-      let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
-      let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
-      label = <p className="gridLabelRowText">{`${base} ${suffix}`}</p>
+      label = <p className="gridRowLabelText">{`${base} ${suffix}`}</p>
+    } else {
+      label = <p className="gridRowLabelText">{`${base}:30`}</p>
     }
     return label;
   }
@@ -112,7 +114,8 @@ const Grid = ({early, late, days}) => {
     let label = null;
     if (index !== 0) {
       const day = new Date(days[index - 1]);
-      label = <p className="gridLabelColumnText">{day.toDateString()}</p>
+      let text = day.toDateString().substring(0,10);
+      label = <p className="gridColumnLabelText">{text}</p>
     }
     return label;
   }

@@ -69,87 +69,87 @@ div.createFormShell {
 
     /* ------------------ Styling for Inputs ------------------*/
 
-    //Custom Field Shell
-    .createForm-custom-field {
-      position: relative;
-      font-size: 14px;
-      padding-top: 20px;
-      margin-bottom: 5px;
+  //   //Custom Field Shell
+  //   .createForm-custom-field {
+  //     position: relative;
+  //     font-size: 14px;
+  //     padding-top: 20px;
+  //     margin-bottom: 5px;
 
-      //Input inside our custom field
-      Input {
-        border: none;
-        -webkit-appearance: none;
-        -ms-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        box-sizing: border-box;
+  //     //Input inside our custom field
+  //     Input {
+  //       border: none;
+  //       -webkit-appearance: none;
+  //       -ms-appearance: none;
+  //       -moz-appearance: none;
+  //       appearance: none;
+  //       box-sizing: border-box;
         
-        border-radius: 3px;
-        background: $input-background;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        outline: none;
-        resize: none;
-        font-size: 14px;
-        width: 200px;
-      }
+  //       border-radius: 3px;
+  //       background: $input-background;
+  //       overflow: hidden;
+  //       white-space: nowrap;
+  //       text-overflow: ellipsis;
+  //       outline: none;
+  //       resize: none;
+  //       font-size: 14px;
+  //       width: 200px;
+  //     }
 
-      textarea {
-        border: none;
-        -webkit-appearance: none;
-        -ms-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        box-sizing: border-box;
+  //     textarea {
+  //       border: none;
+  //       -webkit-appearance: none;
+  //       -ms-appearance: none;
+  //       -moz-appearance: none;
+  //       appearance: none;
+  //       box-sizing: border-box;
 
-        border-radius: 3px;
-        background: $input-background;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        outline: none;
-        resize: none;
-        font-size: 14px;
-        width: 200px;
-      }
+  //       border-radius: 3px;
+  //       background: $input-background;
+  //       overflow: hidden;
+  //       white-space: nowrap;
+  //       text-overflow: ellipsis;
+  //       outline: none;
+  //       resize: none;
+  //       font-size: 14px;
+  //       width: 200px;
+  //     }
 
-      //Span placeholder inside our custom field
-      .placeholder {
-        position: absolute;
-        font-size: 14px;
-        left: 4px;
-        top: calc(50% + 10px);
-        transform: translateY(-50%);
-        font-weight: normal;
-        color: #aaa;
-        transition: 
-          top 0.3s ease,
-          font-size 0.3s ease,
-          color 0.3s ease;
-      }
+  //     //Span placeholder inside our custom field
+  //     .placeholder {
+  //       position: absolute;
+  //       font-size: 14px;
+  //       left: 4px;
+  //       top: calc(50% + 10px);
+  //       transform: translateY(-50%);
+  //       font-weight: normal;
+  //       color: #aaa;
+  //       transition: 
+  //         top 0.3s ease,
+  //         font-size 0.3s ease,
+  //         color 0.3s ease;
+  //     }
 
-      .placeholder-ta {
-        position: absolute;
-        font-size: 14px;
-        left: 4px;
-        top: 15%;
-        transform: translateY(-50%);
-        font-weight: normal;
-        color: #aaa;
-        transition: 
-          top 0.3s ease,
-          font-size 0.3s ease,
-          color 0.3s ease;
-      }
+  //     .placeholder-ta {
+  //       position: absolute;
+  //       font-size: 14px;
+  //       left: 4px;
+  //       top: 15%;
+  //       transform: translateY(-50%);
+  //       font-weight: normal;
+  //       color: #aaa;
+  //       transition: 
+  //         top 0.3s ease,
+  //         font-size 0.3s ease,
+  //         color 0.3s ease;
+  //     }
 
-      input:focus + .placeholder {
-        top: 10px;
-        font-size: 10px;
-        color: #222;
-      }
-    }
+  //     input:focus + .placeholder {
+  //       top: 10px;
+  //       font-size: 10px;
+  //       color: #222;
+  //     }
+  //   }
   }
 }
 

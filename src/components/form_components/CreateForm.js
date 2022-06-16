@@ -73,8 +73,8 @@ const CreateForm = (props) => {
         </div>
         <div id="section-right" className="createForm-section">
           <div id="gridControls" className="subsection">
-            <TimeDropdown form="createForm" name="early" text="No Earlier Than" value={newForm.early} doThis={handleChange} />
-            <TimeDropdown form="createForm" name="late" text="No Later Than" value={newForm.late} doThis={handleChange} />
+            <TimeDropdown form="createForm" name="early" text="No earlier than" value={newForm.early} doThis={handleChange} />
+            <TimeDropdown form="createForm" name="late" text="No later than" value={newForm.late} doThis={handleChange} />
           </div>
           <Calendar newForm={newForm} setNewForm={setNewForm}/>
         </div>

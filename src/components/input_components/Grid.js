@@ -1,16 +1,44 @@
 //Dependencies
-import { React } from 'react';
+import { React, useState } from 'react';
 
 //Styles
 import '../../styles/input_styling/grid.scss';
 
-const Grid = ({early, late, days}) => {
+const Grid = ({early, late, days, handleAttending}) => {
 
-  /* ------------------------------------------ Grid Generator ------------------------------------------*/
+  /* ------------------------------------------ Grid Generator Helper Functions & Variables ------------------------------------------*/
 
   //Get column and row numbers from props
   let numColumns = days.length;
   let numRows = Math.abs(late - early) * 2;
+
+  //Helper function to determine the hour text for row labels
+  const rowLabelHelper = (index) => {
+    let label = null, moreHours = Math.floor(index / 2);
+    let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
+    let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
+    if (index % 2 === 0) {
+      label = <p className="gridRowLabelText">{`${base} ${suffix}`}</p>
+    } else {
+      label = <p className="gridRowLabelText">{`${base}:30`}</p>
+    }
+    return label;
+  }
+
+  //Helper function to arrange the text for column labels
+  const columnLabelHelper = (index) => {
+    let label = null;
+    if (index !== 0) {
+      const day = new Date(days[index - 1]);
+      let text = day.toDateString().substring(0, 10);
+      label = <p className="gridColumnLabelText">{text}</p>
+    }
+    return label;
+  }
+
+  /* ------------------------------------------ Grid Generator Functions ------------------------------------------*/
+
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Labels %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
   //Generates the labels for rows
   const generateRowLabels = (rows) => {
@@ -56,6 +84,8 @@ const Grid = ({early, late, days}) => {
     )
   }
 
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Grid %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
   //Generates the rows within a column
   const generateRows = (column) => {
     let content = []
@@ -82,7 +112,11 @@ const Grid = ({early, late, days}) => {
     return content
   }
 
-  /* ------------------------------------------ Component Wide Varaibles ------------------------------------------*/
+  /* ------------------------------------------ Selection Event Variables ------------------------------------------*/
+
+  //The Data that will be returned to AttendForm
+  const [selectedCells, setSelectedCells] = useState([]);
+
 
   //Component wide variables
   let selection = false; //Tracks if there is a selection occuring
@@ -94,33 +128,7 @@ const Grid = ({early, late, days}) => {
   const cellOff = "gridCell"; //The class for an unhighlighted cell
 
 
-  /* ------------------------------------------ Helper Functions ------------------------------------------*/
-
-  //Helper function to determine the hour text for row labels
-  const rowLabelHelper = (index) => {
-    let label = null, moreHours = Math.floor(index / 2);
-    let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
-    let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
-    if (index % 2 === 0) {
-      label = <p className="gridRowLabelText">{`${base} ${suffix}`}</p>
-    } else {
-      label = <p className="gridRowLabelText">{`${base}:30`}</p>
-    }
-    return label;
-  }
-
-  //Helper function to arrange the text for column labels
-  const columnLabelHelper = (index) => {
-    let label = null;
-    if (index !== 0) {
-      const day = new Date(days[index - 1]);
-      let text = day.toDateString().substring(0,10);
-      label = <p className="gridColumnLabelText">{text}</p>
-    }
-    return label;
-  }
-
-  /* ------------------ Event Helper Functions ------------------ */
+  /* ------------------------------------------ Selection Event Helper Functions ------------------------------------------*/
 
   //Helper function - determines toggle state
   const setToggleState = target => {
@@ -178,7 +186,7 @@ const Grid = ({early, late, days}) => {
     return sizeArray;
   }
 
-  /* ------------------------------------------ Selection Events & Logic ------------------------------------------*/
+  /* ------------------------------------------ Selection Events Functions ------------------------------------------*/
 
   const handleMouseDown = e => {
     //Prevent page scrolling

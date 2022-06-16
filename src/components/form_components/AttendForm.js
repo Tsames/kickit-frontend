@@ -19,7 +19,7 @@ const AttendForm = ({match, setRoot}) => {
   //State to store event data
   const [event, setEvent] = useState(null);
 
-  //State to store attendance data
+  //State to store attendance data that will be submitted to the event record on the backend
   const [form, setForm] = useState({
     name: "",
     attending: null
@@ -27,6 +27,7 @@ const AttendForm = ({match, setRoot}) => {
 
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
 
+  //Helper function - arranges the days array into sub arrays of only adjacent days
   const makeBlocks = (daysArray) => {
     const newBlocks = [], data = daysArray;
     while (data.length > 0) {
@@ -39,6 +40,18 @@ const AttendForm = ({match, setRoot}) => {
     }
     return newBlocks
   }
+
+  //Helper function - Updates the name key:value of form
+  const handleName = (event) => {
+    let newValue = event.target.value;
+    setForm({ ...form, "name": newValue });
+  }
+
+  //Helper function - passed to the grid component which will update form upon the selections in the grid
+  const handleAttending = (event) => {
+
+  }
+  
 
   /* ------------------------------------------ Fetch Data ------------------------------------------*/
 
@@ -66,13 +79,6 @@ const AttendForm = ({match, setRoot}) => {
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
 
-  const handleName = (event) => {
-    let newValue = event.target.value;
-    setForm({ ...form, "name": newValue });
-  }
-
-  /* ------------------------------------------ Conditional JSX ------------------------------------------*/
-
   const loading = () => {
     return(
       <h4>Loading...</h4>
@@ -86,7 +92,7 @@ const AttendForm = ({match, setRoot}) => {
 
     if (event.blocks != null && event.blocks.length !== 0) {
       event.blocks.forEach((singleBlock) => {
-        grids.push(<Grid className={"attend-grid-input"} key={singleBlock[0]} early={event.early} late={event.late} days={singleBlock} />)
+        grids.push(<Grid className={"attend-grid-input"} key={singleBlock[0]} early={event.early} late={event.late} days={singleBlock} handleAttending={handleAttending}/>)
       });
     }
 

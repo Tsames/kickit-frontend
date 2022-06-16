@@ -1,5 +1,7 @@
-@import './../variables';
+@use './../variables' as v;
 @import './../layout';
+
+$calendar-background: rgba(233, 232, 232, 0.55);
 
 div.calendarShell {
   //General Styling in Calendar
@@ -9,9 +11,8 @@ div.calendarShell {
   align-items: center;
   
   background-color: $calendar-background;
-  border-color: $calendar-border;
   border-style: none;
-  border-radius: 0em;
+  border-radius: 0.3rem;
   max-width: 20em;
   padding: 0.5em;
   font-size: 14px;
@@ -24,7 +25,7 @@ div.calendarShell {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    color: $calendar-primary;
+    color: v.$calendar-primary;
 
     .calendarHeadingButton {
       margin: 1em;
@@ -45,8 +46,8 @@ div.calendarShell {
   }
 
   div.calendarHover {
-    color: $calendar-hover;
-    background-color: $calendar-hover-background;
+    color: v.$calendar-hover;
+    background-color: v.$calendar-hover-background;
     border-style: solid;
     border-radius: 0.2em;
     border-width: 0em;
@@ -54,15 +55,15 @@ div.calendarShell {
 
   //Style for Selected Items in the grid
   div.calendarSelected {
-    background-color: $calendar-selected-background;
-    border-color: $calendar-selected-border;
-    color: $calendar-selected-color;
+    background-color: v.$calendar-selected-background;
+    border-color: v.$calendar-selected-border;
+    color: v.$calendar-selected-color;
     border-style: solid;
     border-radius: 0.2em;
     border-width: 0em;
   } 
 
   div.Invisible {
-    color: $invisible;
+    color: v.$invisible;
   }
 }

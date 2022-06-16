@@ -4,6 +4,7 @@
 
 //Google Font Import
 @import url('https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap');
 
 //Page-specific background
 .rb-landing {
@@ -26,6 +27,7 @@
   h2{
     position: relative;
     font-family: 'Sonsie One', cursive;
+    // font-family: 'Cherry Swash', cursive;
     color: v.$kick-it-brand;
     font-weight: 50;
     font-size: 4rem;

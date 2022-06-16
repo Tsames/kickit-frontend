@@ -7,12 +7,13 @@ import Grid from "../input_components/Grid";
 //Styling
 import '../../styles/page_styling/view_event.scss';
 
-const AvailabilitiesForm = ({match}) => {
+const AvailabilitiesForm = ({match, setRoot}) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
 
   const id = match.params.id;
   const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
+  setRoot("rb-attend-event");
 
   const [event, setEvent] = useState(null);
 

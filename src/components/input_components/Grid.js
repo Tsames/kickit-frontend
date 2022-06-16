@@ -14,17 +14,43 @@ const Grid = ({early, late, days}) => {
 
   //Generates the labels for rows
   const generateRowLabels = (rows) => {
-    let content = []
+    let content = [], label = null;
+
+    //Generate an array of row labels
     for (let i = 0; i < numRows; i++) {
+      label = rowLabelHelper(i);
       content.push(
-        <div key={`label-cell-${i}`} data-row={i} className="gridLabelCell">
-          <p className="gridLabelText">{shorthand(i)}</p>
+        <div key={`label-row-cell-${i}`} data-row={i} className="gridLabelRowCell">
+          {label}
         </div>
       )
     }
 
+    //Return the array of row labels we made above wrapped inside a container div
     return (
-      <div className="gridLabalColumn">
+      <div className="gridRowLabels">
+        {content}
+      </div>
+    )
+  }
+
+  //Generate the labels for columns
+  const generateColumnLabels = () => {
+    let content = [], label = null;
+
+    //Generate an array of column labels
+    for (let i = 0; i <= numColumns; i++) {
+      label = columnLabelHelper(i)
+      content.push(
+        <div key={`label-column-cell-${i}`} data-column={i} className="gridLabelColumnCell">
+          {label}
+        </div>
+      )
+    }
+
+    //Return the array of column labels we made above wrapped inside a container div
+    return (
+      <div className="gridColumnLabels">
         {content}
       </div>
     )
@@ -35,7 +61,8 @@ const Grid = ({early, late, days}) => {
     let content = []
     for (let i = 1; i <= numRows; i++) {
       content.push(
-        <div key={`${column}, ${i}`} data-column={column} data-row={i} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}></div>
+        <div key={`${column}, ${i}`} data-column={column} data-row={i} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
+        </div>
       )
     }
     return content
@@ -70,10 +97,24 @@ const Grid = ({early, late, days}) => {
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
 
   //Helper function to determine the hour text for row labels
-  const shorthand = (moreHours) => {
-    let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
-    let suffix = (base > 11 && base < 24) ? "PM" : "AM";
-    return `${base} ${suffix}`;
+  const rowLabelHelper = (index) => {
+    let label = null, moreHours = Math.floor(index / 2);
+    if (index % 2 === 0) {
+      let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
+      let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
+      label = <p className="gridLabelRowText">{`${base} ${suffix}`}</p>
+    }
+    return label;
+  }
+
+  //Helper function to arrange the text for column labels
+  const columnLabelHelper = (index) => {
+    let label = null;
+    if (index !== 0) {
+      const day = new Date(days[index - 1]);
+      label = <p className="gridLabelColumnText">{day.toDateString()}</p>
+    }
+    return label;
   }
 
   /* ------------------ Event Helper Functions ------------------ */
@@ -216,7 +257,8 @@ const Grid = ({early, late, days}) => {
 
   return (
     <div className="gridTable">
-      <div className="gridContents">
+      {generateColumnLabels()}
+      <div className="gridContents" onMouseLeave={handleMouseUp}>
         {generateColumns()}
       </div>
     </div>

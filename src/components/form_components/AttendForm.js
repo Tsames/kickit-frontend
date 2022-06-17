@@ -91,8 +91,8 @@ const AttendForm = ({match, setRoot}) => {
     const grids = [];
 
     if (event.blocks != null && event.blocks.length !== 0) {
-      event.blocks.forEach((singleBlock) => {
-        grids.push(<Grid className={"attend-grid-input"} key={singleBlock[0]} early={event.early} late={event.late} days={singleBlock} handleAttending={handleAttending}/>)
+      event.blocks.forEach((singleBlock, index) => {
+        grids.push(<Grid className={"attend-grid-input"} key={singleBlock[0]} early={event.early} late={event.late} days={singleBlock} block={index + 1}/>)
       });
     }
 

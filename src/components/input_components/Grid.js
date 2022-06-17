@@ -4,7 +4,7 @@ import { React, useState } from 'react';
 //Styles
 import '../../styles/input_styling/grid.scss';
 
-const Grid = ({early, late, days, handleAttending}) => {
+const Grid = ({early, late, days, block}) => {
 
   /* ------------------------------------------ Grid Generator Helper Functions & Variables ------------------------------------------*/
 
@@ -48,7 +48,7 @@ const Grid = ({early, late, days, handleAttending}) => {
     for (let i = 0; i < numRows; i++) {
       label = rowLabelHelper(i);
       content.push(
-        <div key={`label-row-cell-${i}`} data-row={i} className="gridRowLabelCell">
+        <div key={`${i}`} data-row={i} className="gridRowLabelCell">
           {label}
         </div>
       )
@@ -56,7 +56,7 @@ const Grid = ({early, late, days, handleAttending}) => {
 
     //Return the array of row labels we made above wrapped inside a container div
     return (
-      <div className="gridRowLabels">
+      <div key={"rowLabels"} className="gridRowLabels">
         {content}
       </div>
     )
@@ -70,7 +70,7 @@ const Grid = ({early, late, days, handleAttending}) => {
     for (let i = 0; i <= numColumns; i++) {
       label = columnLabelHelper(i)
       content.push(
-        <div key={`label-column-cell-${i}`} data-column={i} className="gridColumnLabelCell">
+        <div key={`${i}`} data-column={i} className="gridColumnLabelCell">
           {label}
         </div>
       )
@@ -78,7 +78,7 @@ const Grid = ({early, late, days, handleAttending}) => {
 
     //Return the array of column labels we made above wrapped inside a container div
     return (
-      <div className="gridColumnLabels">
+      <div key={"columnLabels"} className="gridColumnLabels">
         {content}
       </div>
     )
@@ -91,7 +91,7 @@ const Grid = ({early, late, days, handleAttending}) => {
     let content = []
     for (let i = 1; i <= numRows; i++) {
       content.push(
-        <div key={`${column}, ${i}`} data-column={column} data-row={i} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
+        <div key={`${i}`} data-column={column} data-row={i} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
         </div>
       )
     }
@@ -104,7 +104,7 @@ const Grid = ({early, late, days, handleAttending}) => {
     content.push(generateRowLabels());
     for (let i = 1; i <= numColumns; i++) {
       content.push(
-        <div key={`c${i}`} data-column={i} data-time={days[i-1]} className="gridColumn">
+        <div key={`${i}`} data-column={i} data-block={block} data-time={days[i-1]} className="gridColumn">
           {generateRows(i)}
         </div>
       )
@@ -126,9 +126,6 @@ const Grid = ({early, late, days, handleAttending}) => {
   const cellOn = "gridCell gridSelected"; //The class that highlights a cell
   const cellOff = "gridCell"; //The class for an unhighlighted cell
 
-  // console.log("SelectedCells looks like this: ")
-  // console.log(selectedCells);
-
   /* ------------------------------------------ Selection Event Helper Functions ------------------------------------------*/
 
   //Helper function - determines toggle state
@@ -146,13 +143,13 @@ const Grid = ({early, late, days, handleAttending}) => {
     if (toggleState) {
       toggleWhat.forEach((element) => {
         element.className = cellOn;
-        // console.log(`Adding ${[Number(element.dataset.column), Number(element.dataset.row)]} to selectedCells: ${selectedCells}`);
+        console.log(`Adding ${[Number(element.dataset.column), Number(element.dataset.row)]} to selectedCells`);
         addToSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
       });
     } else {
       toggleWhat.forEach((element) => {
         element.className = cellOff;
-        // console.log(`Removing ${[Number(element.dataset.column), Number(element.dataset.row)]} from selectedCells: ${selectedCells}`);
+        console.log(`Removing ${[Number(element.dataset.column), Number(element.dataset.row)]} from selectedCells`);
         removeFromSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
       });
     }
@@ -163,7 +160,9 @@ const Grid = ({early, late, days, handleAttending}) => {
     const item = [column, row];
 
     if (selectedCells.length === 0 || searchSelectedCells(item) === null) {
-      const newCells = selectedCells.push(item); newCells.sort();
+      const newCells = selectedCells;
+      newCells.push(item);
+      newCells.sort();
       setSelectedCells(newCells);
     }
   }
@@ -234,7 +233,7 @@ const Grid = ({early, late, days, handleAttending}) => {
     e.preventDefault();
 
     //Console message
-    // console.log(`Starting at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
+    console.log(`Starting at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
 
     //Set component wide variables that track a selection
     selection = true;
@@ -248,7 +247,7 @@ const Grid = ({early, late, days, handleAttending}) => {
   const handleMouseOver = e => {
     if (selection) {
       //Console message
-      // console.log(`Mouse over at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
+      console.log(`Mouse over at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
 
       //Set new end
       selectionEnd = e.target;
@@ -264,8 +263,8 @@ const Grid = ({early, late, days, handleAttending}) => {
         let fillArray = Array.from(selectionEnd.parentElement.childNodes).filter(child => 
           (smallRow <= Number(child.dataset.row) && Number(child.dataset.row) <=bigRow)
         );
-        // console.log(`Toggling the contents of: `);
-        // console.log(fillArray);
+        console.log(`Toggling the contents of: `);
+        console.log(fillArray);
         toggleThis(fillArray);
 
       //Else the selection spans columns
@@ -290,8 +289,8 @@ const Grid = ({early, late, days, handleAttending}) => {
           })
         })
 
-        // console.log(`Toggling the contents of: `);
-        // console.log(toggleWhat);
+        console.log(`Toggling the contents of: `);
+        console.log(toggleWhat);
         toggleThis(toggleWhat);
       }
     }
@@ -300,10 +299,9 @@ const Grid = ({early, late, days, handleAttending}) => {
   //Ends a selection when mouse up
   const handleMouseUp = () => {
     console.log(`Stopping selection...`);
-    if (selection) {
-      selection = false
-    }
-    console.log(`selectedCells looks like this: ${selectedCells}`);
+    selection = false
+    console.log("selectedCells looks like this:");
+    console.log(selectedCells);
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
@@ -311,7 +309,7 @@ const Grid = ({early, late, days, handleAttending}) => {
   return (
     <div className="gridTable">
       {generateColumnLabels()}
-      <div className="gridContents" onMouseLeave={handleMouseUp}>
+      <div className="gridContents" onMouseLeave={selection ? handleMouseUp() : null}>
         {generateColumns()}
       </div>
     </div>

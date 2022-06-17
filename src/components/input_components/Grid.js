@@ -117,7 +117,6 @@ const Grid = ({early, late, days, handleAttending}) => {
   //The Data that will be returned to AttendForm
   const [selectedCells, setSelectedCells] = useState([]);
 
-
   //Component wide variables
   let selection = false; //Tracks if there is a selection occuring
   let selectionStart; //Trakcs where the selection began from
@@ -127,6 +126,8 @@ const Grid = ({early, late, days, handleAttending}) => {
   const cellOn = "gridCell gridSelected"; //The class that highlights a cell
   const cellOff = "gridCell"; //The class for an unhighlighted cell
 
+  // console.log("SelectedCells looks like this: ")
+  // console.log(selectedCells);
 
   /* ------------------------------------------ Selection Event Helper Functions ------------------------------------------*/
 
@@ -139,17 +140,57 @@ const Grid = ({early, late, days, handleAttending}) => {
     }
   }
 
-  //Helper function - toggles the provided elements' class according to toggleState
+  //Helper function - toggles the provided elements' class according to toggleState and manages
+  //adding or removing the cell from selectedCells state
   const toggleThis = (toggleWhat) => {
     if (toggleState) {
       toggleWhat.forEach((element) => {
         element.className = cellOn;
+        // console.log(`Adding ${[Number(element.dataset.column), Number(element.dataset.row)]} to selectedCells: ${selectedCells}`);
+        addToSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
       });
     } else {
       toggleWhat.forEach((element) => {
         element.className = cellOff;
+        // console.log(`Removing ${[Number(element.dataset.column), Number(element.dataset.row)]} from selectedCells: ${selectedCells}`);
+        removeFromSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
       });
     }
+  }
+
+  //Helper function to add to selectedCells under the right conditions
+  const addToSelectedCells = (column, row) => {
+    const item = [column, row];
+
+    if (selectedCells.length === 0 || searchSelectedCells(item) === null) {
+      const newCells = selectedCells.push(item); newCells.sort();
+      setSelectedCells(newCells);
+    }
+  }
+
+  //Helper function to remove from selectedCells under the right conditions
+  const removeFromSelectedCells = (column, row) => {
+    const item = [column, row];
+    const index = searchSelectedCells(item);
+
+    if (index !== null) {
+      const newCells = selectedCells; newCells.splice(index, 1);
+      setSelectedCells(newCells);
+    }
+  }
+
+  //Helper function to search through selectedCells - return null if no element exists - otherwise returns
+  //index of the element being searched for
+  const searchSelectedCells = (item) => {
+    let exists = null;
+
+    selectedCells.forEach((cell, index) => {
+      if (cell[0] === item[0] && cell[1] === item[1]) {
+        exists = index;
+      }
+    })
+
+    return exists;
   }
 
   //Helper function - determines if start or end is the bigger number
@@ -182,7 +223,7 @@ const Grid = ({early, late, days, handleAttending}) => {
       sizeArray.push(startColumn);
       sizeArray.push(endColumn);
     }
-    console.log(`Endpoints are from (${sizeArray[2]}, ${sizeArray[0]}) to (${sizeArray[3]}, ${sizeArray[1]})`);
+    // console.log(`Endpoints are from (${sizeArray[2]}, ${sizeArray[0]}) to (${sizeArray[3]}, ${sizeArray[1]})`);
     return sizeArray;
   }
 
@@ -193,7 +234,7 @@ const Grid = ({early, late, days, handleAttending}) => {
     e.preventDefault();
 
     //Console message
-    console.log(`Starting at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
+    // console.log(`Starting at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
 
     //Set component wide variables that track a selection
     selection = true;
@@ -207,7 +248,7 @@ const Grid = ({early, late, days, handleAttending}) => {
   const handleMouseOver = e => {
     if (selection) {
       //Console message
-      console.log(`Mouse over at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
+      // console.log(`Mouse over at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
 
       //Set new end
       selectionEnd = e.target;
@@ -223,8 +264,8 @@ const Grid = ({early, late, days, handleAttending}) => {
         let fillArray = Array.from(selectionEnd.parentElement.childNodes).filter(child => 
           (smallRow <= Number(child.dataset.row) && Number(child.dataset.row) <=bigRow)
         );
-        console.log(`Toggling the contents of: `);
-        console.log(fillArray);
+        // console.log(`Toggling the contents of: `);
+        // console.log(fillArray);
         toggleThis(fillArray);
 
       //Else the selection spans columns
@@ -249,8 +290,8 @@ const Grid = ({early, late, days, handleAttending}) => {
           })
         })
 
-        console.log(`Toggling the contents of: `);
-        console.log(toggleWhat);
+        // console.log(`Toggling the contents of: `);
+        // console.log(toggleWhat);
         toggleThis(toggleWhat);
       }
     }
@@ -258,10 +299,11 @@ const Grid = ({early, late, days, handleAttending}) => {
 
   //Ends a selection when mouse up
   const handleMouseUp = () => {
-    console.log(`Stopping selection...`)
+    console.log(`Stopping selection...`);
     if (selection) {
       selection = false
     }
+    console.log(`selectedCells looks like this: ${selectedCells}`);
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/

@@ -1,6 +1,5 @@
 //Dependencies
 import { React, useState, useEffect } from 'react';
-import { Redirect } from "react-router-dom";
 
 //Import Components
 import Grid from "../input_components/Grid";
@@ -23,14 +22,16 @@ const AttendForm = ({match, setRoot}) => {
   //State to store attendance data that will be submitted to the event record on the backend
   const [form, setForm] = useState({
     name: "",
-    attending: []
+    available: []
   });
+
+  let blocks = [];
 
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
 
   //Helper function - arranges the days array into sub arrays of only adjacent days
   const makeBlocks = (daysArray) => {
-    const newBlocks = [], data = daysArray;
+    const newBlocks = [], data = [ ...daysArray ];
     while (data.length > 0) {
       const smallBlock = [];
       smallBlock.push(data.shift());
@@ -39,28 +40,59 @@ const AttendForm = ({match, setRoot}) => {
       }
       newBlocks.push(smallBlock);
     }
-    return newBlocks
+
+    blocks = newBlocks;
   }
 
   //Helper function - Updates the name key:value of form
   const handleName = (event) => {
-    let newValue = event.target.value;
-    setForm({ ...form, "name": newValue });
+    setForm({ ...form, "name": event.target.value });
   }
 
   //Helper function - Updates the attending key:value of form
-  const handleAttending = (selectedCells) => {
-    setForm({ ...form, "attending": selectedCells });
+  const handleAvailable = (selectedCells) => {
+    setForm({ ...form, "available": selectedCells });
+  }
+
+  //Helper function that replaces attending data if the person's record already
+  // exists, otherwise adds to it
+  const prepareData = () => {
+    const attendingData = event.attending; let swap = false;
+
+    if (attendingData.length !== 0) {
+      attendingData.forEach((person, index) => {
+        if (swap === false && person.name === form.name) {
+          swap = true;
+          attendingData.splice(index, 1, form);
+        }
+      })
+      if (!swap) {
+        attendingData.push(form);
+        attendingData.sort()
+      }
+    } else {
+      attendingData.push(form);
+    }
+    return attendingData;
   }
 
   //Helper function - sends put request to the appropriate backend URL
   const submitData = async (events) => {
+    const newAttending = prepareData();
+    const newEventData = { ...event, "attending": newAttending };
+
+    console.log(`This is the new Event data right before submitting put request:`);
+    console.log(newEventData);
+
+    console.log(`Submitting data for ${form.name}:`);
+    console.log(form.attending);
+    
     await fetch(URL, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ ...event, attending: [...event.attending, form]}),
+      body: JSON.stringify(newEventData),
     });
   };
 
@@ -68,14 +100,12 @@ const AttendForm = ({match, setRoot}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     submitData();
-    setNewForm({
+    setForm({
       name: "",
-      attending: []
+      available: []
     });
-    return <Redirect to="/"/>
   }
   
-
   /* ------------------------------------------ Fetch Data ------------------------------------------*/
 
   //Helper function - gets relevant event data
@@ -87,10 +117,11 @@ const AttendForm = ({match, setRoot}) => {
 
       //Use helper function to construct an array of arrays, where each child array contains
       //only consecutive days - this is for the grid component
-      const blocks = makeBlocks(data.days);
+      makeBlocks(data.days)
+      console.log(blocks);
 
       //Set event state
-      setEvent({...data, "blocks": blocks});
+      setEvent(data);
 
     } catch (error) {
       console.log(error);
@@ -113,8 +144,10 @@ const AttendForm = ({match, setRoot}) => {
     //Create an array of grid components for the number of blocks for this event
     const grids = [];
 
-    if (event.blocks != null && event.blocks.length !== 0) {
-      event.blocks.forEach((singleBlock, index) => {
+    console.log(blocks);
+
+    if (blocks.length !== 0) {
+      blocks.forEach((singleBlock, index) => {
         grids.push(<Grid 
           className={"attend-grid-input"} 
           key={singleBlock[0]} 
@@ -122,8 +155,8 @@ const AttendForm = ({match, setRoot}) => {
           late={event.late} 
           days={singleBlock} 
           block={index + 1}
-          selectedCells={form.attending}
-          setSelectedCells={handleAttending}/>)
+          handleAvailable={handleAvailable}/>
+        )
       });
     }
 
@@ -134,6 +167,7 @@ const AttendForm = ({match, setRoot}) => {
           <form id="AttendForm" onSubmit={handleSubmit}>
             <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName}/>
             {grids}
+            <Field form="attendForm" type="submit" name="submit" text="" value="Submit"/>
           </form>
         </div>
       </>

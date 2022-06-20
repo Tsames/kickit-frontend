@@ -4,7 +4,7 @@ import { React, useState } from 'react';
 //Styles
 import '../../styles/input_styling/grid.scss';
 
-const Grid = ({early, late, days, block, selectedCells, setSelectedCells}) => {
+const Grid = ({ early, late, days, block, handleAvailable }) => {
 
   /* ------------------------------------------ Grid Generator Helper Functions & Variables ------------------------------------------*/
 
@@ -115,6 +115,8 @@ const Grid = ({early, late, days, block, selectedCells, setSelectedCells}) => {
   /* ------------------------------------------ Selection Event Variables ------------------------------------------*/
 
   //Component wide variables
+  const [selectedCells, setSelectedCells] = useState([]);
+
   let selection = false; //Tracks if there is a selection occuring
   let selectionStart; //Trakcs where the selection began from
   let selectionEnd; //Tracks where the selection is ending
@@ -140,13 +142,11 @@ const Grid = ({early, late, days, block, selectedCells, setSelectedCells}) => {
     if (toggleState) {
       toggleWhat.forEach((element) => {
         element.className = cellOn;
-        console.log(`Adding (${block}, ${Number(element.dataset.column)}, ${Number(element.dataset.row)}) to selectedCells`);
         addToSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
       });
     } else {
       toggleWhat.forEach((element) => {
         element.className = cellOff;
-        console.log(`Removing (${block}, ${Number(element.dataset.column)}, ${Number(element.dataset.row)}) from selectedCells`);
         removeFromSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
       });
     }
@@ -157,6 +157,7 @@ const Grid = ({early, late, days, block, selectedCells, setSelectedCells}) => {
     const item = [block, column, row];
 
     if (selectedCells.length === 0 || searchSelectedCells(item) === null) {
+      console.log(`Adding (${block}, ${column}, ${row}) to selectedCells`);
       const newCells = selectedCells;
       newCells.push(item);
       newCells.sort();
@@ -170,6 +171,7 @@ const Grid = ({early, late, days, block, selectedCells, setSelectedCells}) => {
     const index = searchSelectedCells(item);
 
     if (index !== null) {
+      console.log(`Removing (${block}, ${column}, ${row}) from selectedCells`);
       const newCells = selectedCells; newCells.splice(index, 1);
       setSelectedCells(newCells);
     }
@@ -289,12 +291,13 @@ const Grid = ({early, late, days, block, selectedCells, setSelectedCells}) => {
     }
   }
 
-  //Ends a selection when mouse up
+  //Ends a selection when mouse up or cursor moves out of grid
   const handleMouseUp = () => {
     console.log(`Stopping selection...`);
     selection = false
     console.log("selectedCells looks like this:");
     console.log(selectedCells);
+    handleAvailable(selectedCells);
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/

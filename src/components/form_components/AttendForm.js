@@ -19,13 +19,13 @@ const AttendForm = ({match, setRoot}) => {
   //State to store event data
   const [event, setEvent] = useState(null);
 
+  const [blocks, setBlocks] = useState([]);
+
   //State to store attendance data that will be submitted to the event record on the backend
   const [form, setForm] = useState({
     name: "",
     available: []
   });
-
-  let blocks = [];
 
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
 
@@ -41,7 +41,7 @@ const AttendForm = ({match, setRoot}) => {
       newBlocks.push(smallBlock);
     }
 
-    blocks = newBlocks;
+    setBlocks(newBlocks);
   }
 
   //Helper function - Updates the name key:value of form
@@ -118,7 +118,6 @@ const AttendForm = ({match, setRoot}) => {
       //Use helper function to construct an array of arrays, where each child array contains
       //only consecutive days - this is for the grid component
       makeBlocks(data.days)
-      console.log(blocks);
 
       //Set event state
       setEvent(data);

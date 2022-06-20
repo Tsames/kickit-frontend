@@ -4,7 +4,7 @@ import { React, useState } from 'react';
 //Styles
 import '../../styles/input_styling/grid.scss';
 
-const Grid = ({early, late, days, block}) => {
+const Grid = ({early, late, days, block, selectedCells, setSelectedCells}) => {
 
   /* ------------------------------------------ Grid Generator Helper Functions & Variables ------------------------------------------*/
 
@@ -91,7 +91,7 @@ const Grid = ({early, late, days, block}) => {
     let content = []
     for (let i = 1; i <= numRows; i++) {
       content.push(
-        <div key={`${i}`} data-column={column} data-row={i} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
+        <div key={`${i}`} data-column={column} data-row={i} data-block={block} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
         </div>
       )
     }
@@ -113,9 +113,6 @@ const Grid = ({early, late, days, block}) => {
   }
 
   /* ------------------------------------------ Selection Event Variables ------------------------------------------*/
-
-  //The Data that will be returned to AttendForm
-  const [selectedCells, setSelectedCells] = useState([]);
 
   //Component wide variables
   let selection = false; //Tracks if there is a selection occuring
@@ -143,13 +140,13 @@ const Grid = ({early, late, days, block}) => {
     if (toggleState) {
       toggleWhat.forEach((element) => {
         element.className = cellOn;
-        console.log(`Adding ${[Number(element.dataset.column), Number(element.dataset.row)]} to selectedCells`);
+        console.log(`Adding (${block}, ${Number(element.dataset.column)}, ${Number(element.dataset.row)}) to selectedCells`);
         addToSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
       });
     } else {
       toggleWhat.forEach((element) => {
         element.className = cellOff;
-        console.log(`Removing ${[Number(element.dataset.column), Number(element.dataset.row)]} from selectedCells`);
+        console.log(`Removing (${block}, ${Number(element.dataset.column)}, ${Number(element.dataset.row)}) from selectedCells`);
         removeFromSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
       });
     }
@@ -157,7 +154,7 @@ const Grid = ({early, late, days, block}) => {
 
   //Helper function to add to selectedCells under the right conditions
   const addToSelectedCells = (column, row) => {
-    const item = [column, row];
+    const item = [block, column, row];
 
     if (selectedCells.length === 0 || searchSelectedCells(item) === null) {
       const newCells = selectedCells;
@@ -169,7 +166,7 @@ const Grid = ({early, late, days, block}) => {
 
   //Helper function to remove from selectedCells under the right conditions
   const removeFromSelectedCells = (column, row) => {
-    const item = [column, row];
+    const item = [block, column, row];
     const index = searchSelectedCells(item);
 
     if (index !== null) {
@@ -184,7 +181,7 @@ const Grid = ({early, late, days, block}) => {
     let exists = null;
 
     selectedCells.forEach((cell, index) => {
-      if (cell[0] === item[0] && cell[1] === item[1]) {
+      if (cell[0] === item[0] && cell[1] === item[1] && cell[2] === item[2]) {
         exists = index;
       }
     })
@@ -233,7 +230,7 @@ const Grid = ({early, late, days, block}) => {
     e.preventDefault();
 
     //Console message
-    console.log(`Starting at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
+    console.log(`Starting at (${block}, ${e.target.dataset.column}, ${e.target.dataset.row})...`);
 
     //Set component wide variables that track a selection
     selection = true;
@@ -247,7 +244,7 @@ const Grid = ({early, late, days, block}) => {
   const handleMouseOver = e => {
     if (selection) {
       //Console message
-      console.log(`Mouse over at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
+      console.log(`Mouse over at (${block}, ${e.target.dataset.column}, ${e.target.dataset.row})...`);
 
       //Set new end
       selectionEnd = e.target;
@@ -263,8 +260,6 @@ const Grid = ({early, late, days, block}) => {
         let fillArray = Array.from(selectionEnd.parentElement.childNodes).filter(child => 
           (smallRow <= Number(child.dataset.row) && Number(child.dataset.row) <=bigRow)
         );
-        console.log(`Toggling the contents of: `);
-        console.log(fillArray);
         toggleThis(fillArray);
 
       //Else the selection spans columns
@@ -289,8 +284,6 @@ const Grid = ({early, late, days, block}) => {
           })
         })
 
-        console.log(`Toggling the contents of: `);
-        console.log(toggleWhat);
         toggleThis(toggleWhat);
       }
     }

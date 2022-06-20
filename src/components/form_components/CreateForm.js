@@ -48,7 +48,6 @@ const CreateForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     createEvent(newForm);
-    console.log(newForm);
     setNewForm({
       title: "",
       location: "",

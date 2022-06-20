@@ -1,5 +1,6 @@
 //Dependencies
 import { React, useState, useEffect } from 'react';
+import { Redirect } from "react-router-dom";
 
 //Import Components
 import Grid from "../input_components/Grid";
@@ -22,7 +23,7 @@ const AttendForm = ({match, setRoot}) => {
   //State to store attendance data that will be submitted to the event record on the backend
   const [form, setForm] = useState({
     name: "",
-    attending: null
+    attending: []
   });
 
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
@@ -47,9 +48,31 @@ const AttendForm = ({match, setRoot}) => {
     setForm({ ...form, "name": newValue });
   }
 
-  //Helper function - passed to the grid component which will update form upon the selections in the grid
-  const handleAttending = (event) => {
+  //Helper function - Updates the attending key:value of form
+  const handleAttending = (selectedCells) => {
+    setForm({ ...form, "attending": selectedCells });
+  }
 
+  //Helper function - sends put request to the appropriate backend URL
+  const submitData = async (events) => {
+    await fetch(URL, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...event, attending: [...event.attending, form]}),
+    });
+  };
+
+  //Helper function - the function that is run upon submission of the html form
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    submitData();
+    setNewForm({
+      name: "",
+      attending: []
+    });
+    return <Redirect to="/"/>
   }
   
 
@@ -92,7 +115,15 @@ const AttendForm = ({match, setRoot}) => {
 
     if (event.blocks != null && event.blocks.length !== 0) {
       event.blocks.forEach((singleBlock, index) => {
-        grids.push(<Grid className={"attend-grid-input"} key={singleBlock[0]} early={event.early} late={event.late} days={singleBlock} block={index + 1}/>)
+        grids.push(<Grid 
+          className={"attend-grid-input"} 
+          key={singleBlock[0]} 
+          early={event.early} 
+          late={event.late} 
+          days={singleBlock} 
+          block={index + 1}
+          selectedCells={form.attending}
+          setSelectedCells={handleAttending}/>)
       });
     }
 
@@ -100,8 +131,10 @@ const AttendForm = ({match, setRoot}) => {
       <>
         <p>{`${event.title}`} will be held between {event.early} and {event.late}</p>
         <div id="attend-input-container">
-          <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName}/>
-          {grids}
+          <form id="AttendForm" onSubmit={handleSubmit}>
+            <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName}/>
+            {grids}
+          </form>
         </div>
       </>
     )

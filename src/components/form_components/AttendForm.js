@@ -54,26 +54,29 @@ const AttendForm = ({match, setRoot}) => {
     setForm({ ...form, "available": selectedCells });
   }
 
-  //Helper function that replaces attending data if the person's record already
-  // exists, otherwise adds to it
+  //Helper function - replaces attending data if the person's record already exists, otherwise adds to it
   const prepareData = () => {
-    const attendingData = event.attending; let swap = false;
+    const data = [ ...event.attending ]; let swap = false;
 
-    if (attendingData.length !== 0) {
-      attendingData.forEach((person, index) => {
+    //If no one has yet submitted their availability data yet then just push new datat to array
+    if (data.length === 0) {
+      data.push(form);
+    //Else check and see if the person's availability already exists
+    } else {
+      data.forEach((person, index) => {
         if (swap === false && person.name === form.name) {
           swap = true;
-          attendingData.splice(index, 1, form);
+          data.splice(index, 1, form);
         }
       })
+      //If we don't find an existing record then push and sort
       if (!swap) {
-        attendingData.push(form);
-        attendingData.sort()
+        data.push(form);
+        data.sort()
       }
-    } else {
-      attendingData.push(form);
     }
-    return attendingData;
+
+    return data;
   }
 
   //Helper function - sends put request to the appropriate backend URL
@@ -81,11 +84,8 @@ const AttendForm = ({match, setRoot}) => {
     const newAttending = prepareData();
     const newEventData = { ...event, "attending": newAttending };
 
-    console.log(`This is the new Event data right before submitting put request:`);
+    console.log(`This is the new Event data right before submitting patch request:`);
     console.log(newEventData);
-
-    console.log(`Submitting data for ${form.name}:`);
-    console.log(form.attending);
     
     await fetch(URL, {
       method: "put",
@@ -142,8 +142,6 @@ const AttendForm = ({match, setRoot}) => {
 
     //Create an array of grid components for the number of blocks for this event
     const grids = [];
-
-    console.log(blocks);
 
     if (blocks.length !== 0) {
       blocks.forEach((singleBlock, index) => {

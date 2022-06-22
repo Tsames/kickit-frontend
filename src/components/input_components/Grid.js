@@ -6,13 +6,15 @@ import '../../styles/input_styling/grid.scss';
 
 const Grid = ({ early, late, days, block, handleAvailable }) => {
 
-  /* ------------------------------------------ Grid Generator Helper Functions & Variables ------------------------------------------*/
+  /* ------------------------------------------ Grid Generator Functions & Variables ------------------------------------------*/
 
   //Get column and row numbers from props
   let numColumns = days.length;
   let numRows = Math.abs(late - early) * 2;
 
-  //Helper function to determine the hour text for row labels
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Labels Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+  //Generate the hour text for row labels
   const rowLabelHelper = (index) => {
     let label = null, moreHours = Math.floor(index / 2);
     let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
@@ -35,8 +37,6 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     }
     return label;
   }
-
-  /* ------------------------------------------ Grid Generator Functions ------------------------------------------*/
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Labels %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 

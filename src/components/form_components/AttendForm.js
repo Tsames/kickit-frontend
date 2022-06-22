@@ -8,7 +8,7 @@ import Field from "../input_components/Field";
 //Styling
 import '../../styles/page_styling/view_event.scss';
 
-const AttendForm = ({event, blocks, }) => {
+const AttendForm = ({event, blocks}) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
 

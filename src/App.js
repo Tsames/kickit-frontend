@@ -44,12 +44,6 @@ class App extends Component {
                 <ViewEvent {...props} setRoot={this.setRoot}/>
               )}
             />
-            <Route
-              exact path='/attend/:id'
-              render={props => (
-                <AttendForm {...props} setRoot={this.setRoot}/>
-              )}
-            />
           </Switch>
           <Footer/>
         </BrowserRouter>

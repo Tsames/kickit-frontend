@@ -3,7 +3,7 @@ import { React, useState, useEffect } from 'react';
 
 //Import Components
 import AttendanceChart from "../display_components/AttendanceChart";
-import EventDetails from "../display_components/AttendanceChart";
+import EventDetails from "../display_components/EventDetails";
 import AttendForm from "../form_components/AttendForm";
 
 //Styling
@@ -20,13 +20,13 @@ const ViewEvent = ({match, setRoot}) => {
   //Stores event data
   const [event, setEvent] = useState(null);
 
-  //Stores data used to display attendance
+  //Stores data used to organize AttendanceChart.js and Grid.js
   const [blocks, setBlocks] = useState([]);
 
   //States to keep track of the component that is displayed
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState("toDetails");
 
-  /* ------------------------------------------ Fetch Event Data & State Helper Functions ------------------------------------------*/
+  /* ------------------------------------------ State Helper Functions ------------------------------------------*/
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Event State %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
@@ -70,10 +70,8 @@ const ViewEvent = ({match, setRoot}) => {
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page State %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  const pages = ["details", "attendance", "rsvp"] 
-
-  const togglePage = (whatPage) => {
-    setPage(pages[whatPage]);
+  const togglePage = (event) => {
+    setPage(event.target.dataset.to);
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
@@ -87,9 +85,9 @@ const ViewEvent = ({match, setRoot}) => {
 
   //Determine which page should be displayed
   const eventLoaded = () => {
-    if (page === 1) {
+    if (page === "details") {
       return details()
-    } else if (page === 2) {
+    } else if (page === "attendance") {
       return attendance();
     } else {
       return rsvp();
@@ -99,11 +97,11 @@ const ViewEvent = ({match, setRoot}) => {
   //Return EventDetails.js component with proper props
   const details = () => {
     return (
-      <>
+      <div>
         <EventDetails event={event} />
-        <button onClick={togglePage(2)}>View Attendance</button>
-        <button onClick={togglePage(3)}>Sign Up!</button>
-      </>
+        <button onClick={togglePage} data-to="attendance">View Attendance</button>
+        <button onClick={togglePage} data-to="rsvp">Sign Up!</button>
+      </div>
     )
   }
 
@@ -111,7 +109,7 @@ const ViewEvent = ({match, setRoot}) => {
   const attendance = () => {
     return (
       <>
-        <button onClick={togglePage(1)}>Back</button>
+        <button onClick={togglePage} data-to="details">Back</button>
         <AttendanceChart event={event} blocks={blocks} />
       </>
     )
@@ -121,7 +119,7 @@ const ViewEvent = ({match, setRoot}) => {
   const rsvp = () => {
     return (
       <>
-        <button onClick={togglePage(1)}>Back</button>
+        <button onClick={togglePage} data-to="details">Back</button>
         <AttendForm event={event} blocks={blocks} />
       </>
     )

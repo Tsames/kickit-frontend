@@ -1,5 +1,5 @@
 //Dependencies
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
 
 //Import Components
 import Grid from "../input_components/Grid";
@@ -8,18 +8,9 @@ import Field from "../input_components/Field";
 //Styling
 import '../../styles/page_styling/view_event.scss';
 
-const AttendForm = ({match, setRoot}) => {
+const AttendForm = ({event, blocks, }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
-
-  const id = match.params.id;
-  const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
-  setRoot("rb-attend-event");
-
-  //State to store event data
-  const [event, setEvent] = useState(null);
-
-  const [blocks, setBlocks] = useState([]);
 
   //State to store attendance data that will be submitted to the event record on the backend
   const [form, setForm] = useState({
@@ -28,21 +19,6 @@ const AttendForm = ({match, setRoot}) => {
   });
 
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
-
-  //Helper function - arranges the days array into sub arrays of only adjacent days
-  const makeBlocks = (daysArray) => {
-    const newBlocks = [], data = [ ...daysArray ];
-    while (data.length > 0) {
-      const smallBlock = [];
-      smallBlock.push(data.shift());
-      while (Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000) {
-        smallBlock.push(data.shift());
-      }
-      newBlocks.push(smallBlock);
-    }
-
-    setBlocks(newBlocks);
-  }
 
   //Helper function - Updates the name key:value of form
   const handleName = (event) => {
@@ -105,30 +81,6 @@ const AttendForm = ({match, setRoot}) => {
       available: []
     });
   }
-  
-  /* ------------------------------------------ Fetch Data ------------------------------------------*/
-
-  //Helper function - gets relevant event data
-  const getEventData = async () => {
-    try {
-      //Fetch event data
-      const response = await fetch(URL);
-      const data = await response.json()
-
-      //Use helper function to construct an array of arrays, where each child array contains
-      //only consecutive days - this is for the grid component
-      makeBlocks(data.days)
-
-      //Set event state
-      setEvent(data);
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  //Run to get relevant event data upon first loading
-  useEffect(() => getEventData(), []);
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
 
@@ -159,12 +111,15 @@ const AttendForm = ({match, setRoot}) => {
 
     return(
       <>
-        <p>{`${event.title}`} will be held between {event.early} and {event.late}</p>
         <div id="attend-input-container">
           <form id="AttendForm" onSubmit={handleSubmit}>
-            <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName}/>
-            {grids}
-            <Field form="attendForm" type="submit" name="submit" text="" value="Submit"/>
+            <div id="field-container">
+              <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName} />
+              <Field form="attendForm" type="submit" name="submit" text="" value="Submit" />
+            </div>
+            <div id="grids-container">
+              {grids}              
+            </div>
           </form>
         </div>
       </>

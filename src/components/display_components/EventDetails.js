@@ -1,14 +1,23 @@
 //Dependencies
-import { React} from 'react';
+import { React } from 'react';
 
 //Styling
-import '../../styles/page_styling/attendance_chart.scss';
+import '../../styles/display_styling/event_details.scss';
 
-const AttendanceChart = ({event}) => {
+const EventDetails = ({ event }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
 
+
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
+
+  // const getAttendeeNames = () => {
+  //   const content = []
+  //   event.attending.forEach((person) => {
+  //     content.push(person.name);
+  //   });
+  //   return content.join(", ");
+  // }
 
   /* ------------------------------------------ Fetch Event Data ------------------------------------------*/
 
@@ -17,10 +26,13 @@ const AttendanceChart = ({event}) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
 
   return (
-    <div id="attendance-chart-shell">
-
-    </div>
+    <>
+      <h3 className="eventDetail">{event.title}</h3>
+      <p className="eventDetail">{event.location}</p>
+      <p className="eventDetail">{event.cost}</p>
+      <p className="eventDetail">{event.description}</p>
+    </>
   )
 }
 
-export default AttendanceChart;
+export default EventDetails;

@@ -1,10 +1,10 @@
 //Dependencies
 import { React, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 //Import Components
+import AttendanceChart from "../display_components/AttendanceChart";
+import EventDetails from "../display_components/AttendanceChart";
 import AttendForm from "../form_components/AttendForm";
-import AttendanceChart from "./AttendanceChart";
 
 //Styling
 import '../../styles/form_styling/attend_form.scss';
@@ -20,28 +20,25 @@ const ViewEvent = ({match, setRoot}) => {
   //Stores event data
   const [event, setEvent] = useState(null);
 
-  //States to keep track of the page that is displayed
-  //True => View Attendance / False => Sign Up
-  const [page, setPage] = useState(true);
+  //Stores data used to display attendance
+  const [blocks, setBlocks] = useState([]);
 
-  /* ------------------------------------------ Helper Functions ------------------------------------------*/
+  //States to keep track of the component that is displayed
+  const [page, setPage] = useState(1);
 
-  const getAttendeeNames = () => {
-    const content = []
-    event.attending.forEach((person) => {
-      content.push(person.name);
-    });
-    return content.join(", ");
-  }
+  /* ------------------------------------------ Fetch Event Data & State Helper Functions ------------------------------------------*/
 
-  /* ------------------------------------------ Fetch Event Data ------------------------------------------*/
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Event State %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  //Helper function - gets relevant event data
+  //Helper function - Gets Event Data
   const getEventData = async () => {
     try {
       //Fetch event data
       const response = await fetch(URL);
       const data = await response.json()
+
+      //Set block state
+      makeBlocks(data.days)
 
       //Set event state
       setEvent(data);
@@ -54,48 +51,78 @@ const ViewEvent = ({match, setRoot}) => {
   //Run to get relevant event data upon first loading
   useEffect(() => getEventData(), []);
 
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Blocks State %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+  //Helper function - arranges the days array into sub arrays of only adjacent days
+  const makeBlocks = (daysArray) => {
+    const newBlocks = [], data = [...daysArray];
+    while (data.length > 0) {
+      const smallBlock = [];
+      smallBlock.push(data.shift());
+      while (Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000) {
+        smallBlock.push(data.shift());
+      }
+      newBlocks.push(smallBlock);
+    }
+
+    setBlocks(newBlocks);
+  }
+
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page State %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+  const pages = ["details", "attendance", "rsvp"] 
+
+  const togglePage = (whatPage) => {
+    setPage(pages[whatPage]);
+  }
+
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
 
-  //Loading animation if event is still in the process of loading
+  //JSX to display if event is still in the process of loading
   const eventLoading = () => {
     return (
       <h4 id="loading">Loading...</h4>
     )
   }
 
-  //Page Layout when event has loaded
+  //Determine which page should be displayed
   const eventLoaded = () => {
+    if (page === 1) {
+      return details()
+    } else if (page === 2) {
+      return attendance();
+    } else {
+      return rsvp();
+    }
+  }
+
+  //Return EventDetails.js component with proper props
+  const details = () => {
     return (
       <>
-        <div id="leftSide">
-          {eventDetailsLoaded()}
-        </div>
-        <div id="rightSide">
-          {eventSchedulingLoaded()}
-        </div>
+        <EventDetails event={event} />
+        <button onClick={togglePage(2)}>View Attendance</button>
+        <button onClick={togglePage(3)}>Sign Up!</button>
       </>
     )
   }
 
-  //Event details for the left side of the page
-  const eventDetailsLoaded = () => {
+  //Return AttendanceChart.js component with proper props
+  const attendance = () => {
     return (
       <>
-        <h3 className="eventDetail">{event.title}</h3>
-        <p className="eventDetail">{event.location}</p>
-        <p className="eventDetail">{event.cost}</p>
-        <p className="eventDetail">{event.description}</p>
-        <p className="eventDetail">Attending: {getAttendeeNames()}</p>
-        <button><Link to={`/attend/${id}`}>Sign Up!</Link></button>
+        <button onClick={togglePage(1)}>Back</button>
+        <AttendanceChart event={event} blocks={blocks} />
       </>
     )
   }
 
-  //Event scheduling for the right side of the page
-  const eventSchedulingLoaded = () => {
+  //Return AttendForm.js component with proper props
+  const rsvp = () => {
     return (
       <>
-        <AttendanceChart event={event}/>
+        <button onClick={togglePage(1)}>Back</button>
+        <AttendForm event={event} blocks={blocks} />
       </>
     )
   }

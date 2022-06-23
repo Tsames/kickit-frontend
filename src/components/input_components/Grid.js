@@ -91,7 +91,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     let content = []
     for (let i = 1; i <= numRows; i++) {
       content.push(
-        <div key={`${i}`} data-column={column} data-row={i} data-block={block} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
+        <div key={`${i}`} data-block={block} data-column={column} data-row={i} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
         </div>
       )
     }
@@ -104,7 +104,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     content.push(generateRowLabels());
     for (let i = 1; i <= numColumns; i++) {
       content.push(
-        <div key={`${i}`} data-column={i} data-block={block} data-time={days[i-1]} className="gridColumn">
+        <div key={`${i}`} data-block={block} data-column={i} data-time={days[i-1]} className="gridColumn">
           {generateRows(i)}
         </div>
       )

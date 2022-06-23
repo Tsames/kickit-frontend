@@ -24,11 +24,11 @@ const ViewEvent = ({match, setRoot}) => {
   const [blocks, setBlocks] = useState([]);
 
   //States to keep track of the component that is displayed
-  const [page, setPage] = useState("toDetails");
+  const [page, setPage] = useState("rsvp");
 
   /* ------------------------------------------ State Helper Functions ------------------------------------------*/
 
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Event State %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Event State Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
   //Helper function - Gets Event Data
   const getEventData = async () => {
@@ -51,7 +51,7 @@ const ViewEvent = ({match, setRoot}) => {
   //Run to get relevant event data upon first loading
   useEffect(() => getEventData(), []);
 
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Blocks State %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Blocks State Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
   //Helper function - arranges the days array into sub arrays of only adjacent days
   const makeBlocks = (daysArray) => {
@@ -68,7 +68,7 @@ const ViewEvent = ({match, setRoot}) => {
     setBlocks(newBlocks);
   }
 
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page State %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page State Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
   const togglePage = (event) => {
     setPage(event.target.dataset.to);
@@ -83,7 +83,7 @@ const ViewEvent = ({match, setRoot}) => {
     )
   }
 
-  //Determine which page should be displayed
+  //Determine which page should be displayed when event is loaded
   const eventLoaded = () => {
     if (page === "details") {
       return details()
@@ -110,9 +110,29 @@ const ViewEvent = ({match, setRoot}) => {
     return (
       <>
         <button onClick={togglePage} data-to="details">Back</button>
-        <AttendanceChart event={event} blocks={blocks} />
+        {prepareBlocks()}
       </>
     )
+  }
+
+  const prepareBlocks = () => {
+    const content =[];
+
+    if (blocks.length > 0) {
+      blocks.forEach((singleBlock, index) => {
+        content.push(<AttendanceChart 
+          key={singleBlock[0]}
+          className={"attendance-chart"} 
+          attending={event.attending}
+          days={blocks[index]}
+          early={event.early}
+          late={event.late}
+          block={index + 1} />
+        )
+      });
+    }
+
+    return content;
   }
 
   //Return AttendForm.js component with proper props
@@ -128,7 +148,6 @@ const ViewEvent = ({match, setRoot}) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
 
   return (
-
     <div id="view-event-shell" className="page-body">
       { event !== null ? eventLoaded() : eventLoading()}
     </div>

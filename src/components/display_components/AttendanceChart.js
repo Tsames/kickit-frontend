@@ -4,7 +4,7 @@ import { React} from 'react';
 //Styling
 import '../../styles/display_styling/attendance_chart.scss';
 
-const AttendanceChart = ({attending, days, early, late, block}) => {
+const AttendanceChart = ({attending, days, early, late, block, getOutput}) => {
   /* ------------------------------------------ Grid Generator Functions & Variables ------------------------------------------*/
 
   //Get column and row numbers from props
@@ -106,9 +106,22 @@ const AttendanceChart = ({attending, days, early, late, block}) => {
     return list;
   }
 
-  //
+  //Helper function that assigns cells a class that colors them based on the percentage
+  //of total attendees that reported they are available at the time this cell represents
   const determineColor = (count) => {
-    return "";
+    const totalCount = attending.length;
+    const percentage = (count / totalCount) * 100;
+    if (percentage === 1) {
+      return "everyoneAvailable";
+    } else if (percentage >= 75) {
+      return "alotAvailable";
+    } else if (percentage >= 50) {
+      return "someAvailable";
+    } else if (percentage >= 25) {
+      return "fewAvailable";
+    } else {
+      return "veryFewAvailable";
+    }
   }
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -120,7 +133,7 @@ const AttendanceChart = ({attending, days, early, late, block}) => {
       const whoAvailable = determineWho(column, i);
       const whatColor = determineColor(whoAvailable.length);
       content.push(
-        <div className={`chartCell ${whatColor}`} key={`${i}`} data-block={block} data-column={column} data-row={i} data-who={whoAvailable}>
+        <div className={`chartCell ${whatColor}`} key={`${i}`} data-block={block} data-column={column} data-row={i} data-who={whoAvailable} onMouseEnter={getOutput}>
         </div>
       )
     }
@@ -140,6 +153,11 @@ const AttendanceChart = ({attending, days, early, late, block}) => {
     }
     return content
   }
+
+  /* ------------------------------------------ Event Functions ------------------------------------------*/
+
+
+
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
 

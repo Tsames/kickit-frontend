@@ -25,7 +25,6 @@ div.chartContents {
 
   //Chart Cells
   div.chartCell {
-    background-color: v.$invisible;
     width: $chart-cell-width;
     height: $chart-cell-height;
     border-style: solid;
@@ -95,4 +94,26 @@ div.chartContents {
   font-size: 0.5rem;
   color: black;
   text-align: center;
+}
+
+// %%%%%%%%%%%%%%%%%%%% Cell Background Colors %%%%%%%%%%%%%%%%%%%%
+
+.veryFewAvailable {
+  background: v.$invisible;
+}
+
+.fewAvailable {
+  background: rgba(209, 130, 130, 0.75);
+}
+
+.someAvailable {
+  background: rgba(182, 194, 75, 0.75);
+}
+
+.alotAvailable {
+  background: rgba(106, 187, 13, 0.75);
+}
+
+.everyoneAvailable {
+  background: rgba(140, 71, 215, 0.75);
 }

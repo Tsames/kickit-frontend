@@ -26,6 +26,9 @@ const ViewEvent = ({match, setRoot}) => {
   //States to keep track of the component that is displayed
   const [page, setPage] = useState("rsvp");
 
+  //Stores data sent back from AttendanceChart.js
+  let output = "";
+
   /* ------------------------------------------ State Helper Functions ------------------------------------------*/
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Event State Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -51,7 +54,7 @@ const ViewEvent = ({match, setRoot}) => {
   //Run to get relevant event data upon first loading
   useEffect(() => getEventData(), []);
 
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Blocks State Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Blocks State Helper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
   //Helper function - arranges the days array into sub arrays of only adjacent days
   const makeBlocks = (daysArray) => {
@@ -68,10 +71,17 @@ const ViewEvent = ({match, setRoot}) => {
     setBlocks(newBlocks);
   }
 
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page State Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page State Helper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
   const togglePage = (event) => {
     setPage(event.target.dataset.to);
+  }
+
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Output Helper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+  const getOutput = (event) => {
+    const newOutput = event.target.dataset.who.replaceAll(",", ", ");
+    output = newOutput;
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
@@ -105,34 +115,38 @@ const ViewEvent = ({match, setRoot}) => {
     )
   }
 
-  //Return AttendanceChart.js component with proper props
-  const attendance = () => {
-    return (
-      <>
-        <button onClick={togglePage} data-to="details">Back</button>
-        {prepareBlocks()}
-      </>
-    )
-  }
-
+  //Helper function to attendance
   const prepareBlocks = () => {
-    const content =[];
+    const content = [];
 
     if (blocks.length > 0) {
       blocks.forEach((singleBlock, index) => {
-        content.push(<AttendanceChart 
+        content.push(<AttendanceChart
           key={singleBlock[0]}
-          className={"attendance-chart"} 
+          className={"attendance-chart"}
           attending={event.attending}
           days={blocks[index]}
           early={event.early}
           late={event.late}
-          block={index + 1} />
+          block={index + 1} 
+          getOutput={getOutput}
+          />
         )
       });
     }
 
     return content;
+  }
+
+  //Return AttendanceChart.js component with proper props
+  const attendance = () => {
+    return (
+      <>
+        <button onClick={togglePage} data-to="details">Back</button>
+        <p>{output}</p>
+        {prepareBlocks()}
+      </>
+    )
   }
 
   //Return AttendForm.js component with proper props

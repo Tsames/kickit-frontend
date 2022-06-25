@@ -1,14 +1,12 @@
 //Dependencies
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-//Import Form Components
-import CreateForm from './components/form_components/CreateForm';
-import AttendForm from './components/form_components/AttendForm';
 
 //Import Page Components
 import Navbar from './components/page_components/Navbar';
 import Home from './components/page_components/Home';
+import CreateForm from './components/form_components/CreateForm';
 import ViewEvent from './components/page_components/ViewEvent';
 import Footer from './components/page_components/Footer';
 
@@ -25,26 +23,11 @@ class App extends Component {
       <>
         <BrowserRouter>
           <Navbar />
-          <Switch>
-            <Route
-              exact path='/'
-              render={props => (
-                <Home {...props} setRoot={this.setRoot}/>
-              )}
-            />
-            <Route
-              exact path='/create'
-              render={props => (
-                <CreateForm {...props} setRoot={this.setRoot}/>
-              )}
-            />
-            <Route
-              exact path='/share/:id'
-              render={props => (
-                <ViewEvent {...props} setRoot={this.setRoot}/>
-              )}
-            />
-          </Switch>
+          <Routes>
+            <Route path='/' element={<Home setRoot={this.setRoot}/>} />
+            <Route path='/create' element={<CreateForm setRoot={this.setRoot}/>} />
+            <Route exact path='/share/:id' match={this.props.match} element={<ViewEvent setRoot={this.setRoot} />} />
+          </Routes>
           <Footer/>
         </BrowserRouter>
       </>

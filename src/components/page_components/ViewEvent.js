@@ -1,5 +1,6 @@
 //Dependencies
 import { React, useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 //Import Components
 import AttendanceChart from "../display_components/AttendanceChart";
@@ -9,11 +10,11 @@ import AttendForm from "../form_components/AttendForm";
 //Styling
 import '../../styles/form_styling/attend_form.scss';
 
-const ViewEvent = ({match, setRoot}) => {
+const ViewEvent = ({ setRoot }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
 
-  const id = match.params.id;
+  const id = useParams().id;
   const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
   setRoot("rb-view-event");
 
@@ -26,8 +27,7 @@ const ViewEvent = ({match, setRoot}) => {
   //States to keep track of the component that is displayed
   const [page, setPage] = useState("rsvp");
 
-  //Stores data sent back from AttendanceChart.js
-  let output = "";
+  const [output, setOutput] = useState("test");
 
   /* ------------------------------------------ State Helper Functions ------------------------------------------*/
 
@@ -77,11 +77,11 @@ const ViewEvent = ({match, setRoot}) => {
     setPage(event.target.dataset.to);
   }
 
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Output Helper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Output State Helper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  const getOutput = (event) => {
+  const handleHover = (event) => {
     const newOutput = event.target.dataset.who.replaceAll(",", ", ");
-    output = newOutput;
+    setOutput(newOutput);
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
@@ -128,8 +128,8 @@ const ViewEvent = ({match, setRoot}) => {
           days={blocks[index]}
           early={event.early}
           late={event.late}
-          block={index + 1} 
-          getOutput={getOutput}
+          block={index + 1}
+          handleHover={handleHover}
           />
         )
       });
@@ -142,8 +142,8 @@ const ViewEvent = ({match, setRoot}) => {
   const attendance = () => {
     return (
       <>
-        <button onClick={togglePage} data-to="details">Back</button>
         <p>{output}</p>
+        <button onClick={togglePage} data-to="details">Back</button>
         {prepareBlocks()}
       </>
     )

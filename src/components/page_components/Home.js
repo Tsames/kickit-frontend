@@ -13,7 +13,7 @@ const Home = ({setRoot}) => {
 //State that stores the input for the search bar
   const [search, setSearch] = useState(""); 
   
-  //State that stores the events the search returns
+  //stores the events the search returns
   let result = null;
 
   const SEARCH_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/search/" + search;
@@ -27,12 +27,12 @@ const Home = ({setRoot}) => {
   }
 
   const handleSearch = async () => {
-    await getEventData();
+    await searchEvents();
     navigate("/share/" + result[0]._id)
   }
 
   //Helper function - Gets Event Data
-  const getEventData = async () => {
+  const searchEvents = async () => {
     try {
       //Fetch event data
       const response = await fetch(SEARCH_URL);
@@ -40,8 +40,6 @@ const Home = ({setRoot}) => {
 
       //Set event state
       result = data;
-      console.log("Afer setting the data in the result the id is:")
-      console.log(result);
 
     } catch (error) {
       console.log(error);

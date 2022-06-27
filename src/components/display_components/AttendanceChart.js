@@ -4,7 +4,7 @@ import { React, useState } from 'react';
 //Styling
 import '../../styles/display_styling/attendance_chart.scss';
 
-const AttendanceChart = ({ attending, days, early, late, block, handleHover }) => {
+const AttendanceChart = ({ attending, days, early, late, block, handleHover, limit }) => {
   /* ------------------------------------------ Grid Generator Functions & Variables ------------------------------------------*/
 
   //Get column and row numbers from props
@@ -124,6 +124,15 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover }) =
     }
   }
 
+  //Helper function that assigns cells a class that colors them if limit is active
+  const determineColorLimited = (whoAvailable) => {
+    if (whoAvailable.includes(limit.name)) {
+      return "alotAvailable";
+    } else {
+      return  "veryFewAvailable";
+    }
+  }
+
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
   //Generates the rows within a column
@@ -131,11 +140,19 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover }) =
     let content = []
     for (let i = 1; i <= numRows; i++) {
       const whoAvailable = determineWho(column, i);
-      const whatColor = determineColor(whoAvailable.length);
-      content.push(
-        <div className={`chartCell ${whatColor}`} key={`${i}`} data-block={block} data-column={column} data-row={i} data-who={whoAvailable} onMouseEnter={handleHover}>
-        </div>
-      )
+      if (limit.active) {
+        const whatColor = determineColorLimited(whoAvailable);
+        content.push(
+          <div className={`chartCell ${whatColor}`} key={`${i}`} data-block={block} data-column={column} data-row={i} data-who={whoAvailable} onMouseEnter={handleHover}>
+          </div>
+        )
+      } else {
+        const whatColor = determineColor(whoAvailable.length);
+        content.push(
+          <div className={`chartCell ${whatColor}`} key={`${i}`} data-block={block} data-column={column} data-row={i} data-who={whoAvailable} onMouseEnter={handleHover}>
+          </div>
+        )
+      }
     }
     return content
   }
@@ -155,26 +172,18 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover }) =
   }
 
   /* ------------------------------------------ Event Functions ------------------------------------------*/
-  // const [output, setOutput] = useState("test");
 
-  // const handleHover = (event) => {
-  //   const newOutput = event.target.dataset.who.replaceAll(",", ", ");
-  //   setOutput(newOutput);
-  // }
 
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
 
   return (
-    // <div>
-    //   <p id="hoverOutput">{output}</p>
     <div className="attendanceChart">
       {generateColumnLabels()}
       <div className="chartContents">
         {generateColumns()}
       </div>
     </div>
-    // </div>
   )
 }
 

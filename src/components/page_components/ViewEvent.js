@@ -1,6 +1,7 @@
 //Dependencies
 import { React, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { FiUsers, FiNavigation } from "react-icons/fi";
 
 //Import Components
 import AttendanceChart from "../display_components/AttendanceChart";
@@ -25,9 +26,22 @@ const ViewEvent = ({ setRoot }) => {
   const [blocks, setBlocks] = useState([]);
 
   //States to keep track of the component that is displayed
-  const [page, setPage] = useState("rsvp");
+  const [page, setPage] = useState("attendance");
 
-  const [output, setOutput] = useState("test");
+  /* %%%%%%%%%%%%%%%% Attendance Page Specific State %%%%%%%%%%%%%%%% */
+
+  //Stores data from the AttendanceChart component to show who is coming at a particular time
+  const [output, setOutput] = useState([]);
+
+  //Stores data to determine the mode for Attendance Page
+  const [mode, setMode] = useState(true);
+
+  //Stores data to determine who to show in Attendance Chart
+  const [limit, setLimit] = useState({
+    name: "",
+    node: null,
+    active: false
+  })
 
   /* ------------------------------------------ State Helper Functions ------------------------------------------*/
 
@@ -77,11 +91,54 @@ const ViewEvent = ({ setRoot }) => {
     setPage(event.target.dataset.to);
   }
 
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Output State Helper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Output, Mode, and Limit State Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
+  //Helper function passed to the Attendance Chart so that a cell within the chart that is hovered on
+  //will change the output variable in this component
   const handleHover = (event) => {
-    const newOutput = event.target.dataset.who.replaceAll(",", ", ");
+    const newOutput = event.target.dataset.who.split(",");
     setOutput(newOutput);
+  }
+
+  //Helper function resposible for toggling selecting individuals on the list that accompanies the attendance chart
+  const handlePersonClick = (event) => {
+
+    const target = event.target;
+    const name = target.dataset.name;
+    const siblings = target.parentNode.childNodes;
+
+    if (limit.active && name === limit.name) {
+      target.className = "attendance-list-person";
+      noLimit();
+    } else if (limit.active) {
+      activateLimit(name, target);
+      if (limit.node !== null) {
+        limit.node.className = "attendance-list-person"
+      }
+      target.className = "attendance-list-person limit-active"
+    } else {
+      target.className = "attendance-list-person limit-active"
+      activateLimit(name, target);
+    }
+  }
+
+  //Helper to handlePersonClick
+  const activateLimit = (newName, newNode) => {
+    const newLimit = {
+      name: newName,
+      node: newNode,
+      active: true
+    }
+    setLimit(newLimit);
+  }
+
+  //Helper to handlePersonClick
+  const noLimit = () => {
+    setLimit({...limit, active: false});
+  }
+
+  const changeMode = () => {
+
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
@@ -130,6 +187,7 @@ const ViewEvent = ({ setRoot }) => {
           late={event.late}
           block={index + 1}
           handleHover={handleHover}
+          limit={limit}
           />
         )
       });
@@ -138,14 +196,42 @@ const ViewEvent = ({ setRoot }) => {
     return content;
   }
 
+  const prepareListItems = () => {
+    const content = [];
+    if (mode) {
+      event.attending.forEach((person, index) => {
+        content.push(<button key={index} className="attendance-list-person" data-name={person.name} onClick={handlePersonClick}>{person.name}</button>);
+      })
+    } else {
+      output.forEach((person, index) => {
+        content.push(<p key={index} className="attendance-list-person">{person}</p>);
+      })
+    }
+
+    return content;
+  }
+
   //Return AttendanceChart.js component with proper props
   const attendance = () => {
     return (
-      <>
-        <p>{output}</p>
-        <button onClick={togglePage} data-to="details">Back</button>
-        {prepareBlocks()}
-      </>
+      <div id="attendance-main">
+        <div id="attendance-left">
+          <div id="attendance-modes">
+            <p><button className="unbutton" onClick={() => setMode(true)}><FiUsers></FiUsers></button> / 
+              <button className="unbutton" onClick={() => setMode(false)}><FiNavigation></FiNavigation></button></p>
+          </div>
+          <div id="attendance-list-wrapper">
+            <p>Attendees:</p>
+            <div id="attendance-list">
+              {prepareListItems()}
+            </div>
+          </div>
+          <button onClick={togglePage} data-to="details">Back</button>
+        </div>
+        <div id="attendance-right">
+          {prepareBlocks()}
+        </div>
+      </div>
     )
   }
 

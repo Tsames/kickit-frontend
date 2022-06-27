@@ -2,6 +2,8 @@
 @use './../variables' as v;
 @import './../layout';
 
+$selected-person: rgb(155, 217, 85);
+
 .rb-view-event {
   background: linear-gradient(45deg, rgb(156, 203, 110), rgb(223, 139, 106));
 }
@@ -40,16 +42,65 @@
     }
   }
 
-  #leftSide {
-    background: green;
-    height: 100vh;
-    width: 50vw;
+  .unbutton {
+    border: none;
+    appearance: none;
+    background: none;
   }
 
-  #rightSide {
-    background: red;
-    height: 80vh;
-    width: 50vw;
+
+  /* ------------------------------------- Attendance Page ------------------------------------- */
+
+  #attendance-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  #attendance-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: grey;
+    width: 30vw;
+    height: 100vh;
+  }
+
+  #attendance-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  #attendance-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    #attendance-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: left;
+    }
+  }
+
+  .attendance-list-person {
+    padding: 0 0;
+    text-align: left;
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+    color: black;
+    background: none;
+  }
+
+  .limit-active {
+    color: $selected-person;
+    background: none;
   }
 
 }

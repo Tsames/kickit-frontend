@@ -50,3 +50,18 @@ $calendar-hover-background: rgb(68, 131, 160, 0.3);
 $calendar-selected-background: rgb(68, 131, 160);
 $calendar-selected-border: rgb(68, 131, 160);
 $calendar-selected-color: white;
+
+/*-------------  Root Class Styles -------------*/
+
+//Landing Page
+.rb-landing {
+  background-color: #FBAB7E;
+  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 33%, #c32727 66%, #bc53d1 100%);
+}
+
+//View Event - Attending Page
+.rb-view-attending {
+  background: linear-gradient(45deg, rgba(101, 108, 122, 0.598), rgb(40, 39, 38));
+}
+
+/*-------------  Nav Class Styles -------------*/

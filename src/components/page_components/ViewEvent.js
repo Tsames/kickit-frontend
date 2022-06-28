@@ -17,7 +17,7 @@ const ViewEvent = ({ setRoot }) => {
 
   const id = useParams().id;
   const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
-  setRoot("rb-view-event");
+  setRoot("rb-view-event-attending");
 
   //Stores event data
   const [event, setEvent] = useState(null);

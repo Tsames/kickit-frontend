@@ -1,5 +1,5 @@
 @use './../variables' as v;
-@import './../layout';
+@import '../device_layout/layout';
 
 $grid-cell-width: 4rem;
 $grid-cell-height: 2.5rem;

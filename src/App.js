@@ -1,6 +1,6 @@
 //Dependencies
 import React, { Component } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 
 //Import Page Components
@@ -12,10 +12,20 @@ import Footer from './components/page_components/Footer';
 
 class App extends Component {
 
-  setRoot = (newClass) => {
-    const root = document.getElementById("root");
-    root.className = "";
-    root.className = newClass;
+  setRoot = (newClassRoot=null, newClassNav=null) => {
+    //Set the class of root
+    if (newClassRoot !== null) {
+      const root = document.getElementById("root");
+      root.className = "";
+      root.className = newClassRoot;
+    }
+
+    //Set the class of Nav
+    if (newClassNav !== null) {
+      const navbar = document.getElementById("navbar");
+      navbar.className = "";
+      navbar.className = newClassNav;
+    }
   }
 
   render() {

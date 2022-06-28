@@ -1,0 +1,42 @@
+/* ----------------------- Large devices -----------------------
+(laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+
+  //Setting font-size for rem
+  html {
+    font-size: 20px;
+  }
+
+  //Container
+  #root {
+    display: grid;
+    grid-template-columns: repeat(10, auto);
+    grid-template-rows: repeat(10, auto);
+    column-gap: 0px;
+    row-gap: 0px;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .page-top {
+    grid-column-start: 1;
+    grid-column-end: 11;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    max-height: 15vh;
+  }
+
+  .page-body {
+    padding: 1em;
+    margin: auto;
+    grid-column-start: 2;
+    grid-column-end: 10;
+    grid-row-start: 3;
+    grid-row-end: 9;
+  }
+
+  .page-footer {
+    max-height: 8vh;
+  }
+}

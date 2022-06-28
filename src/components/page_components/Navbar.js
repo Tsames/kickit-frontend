@@ -26,7 +26,7 @@ const Navbar = (props) => {
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/
   return (
-    <nav className="page-top">
+    <nav id="navbar" className="page-top">
       <div id="navLeft">
         {location !== "/" ? home : null }
       </div>

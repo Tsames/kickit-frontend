@@ -1,6 +1,6 @@
 //Imports
 @use './../variables' as v;
-@import './../layout';
+@import '../device_layout/layout';
 
 $chart-cell-width: 4rem;
 $chart-cell-height: 2.5rem;

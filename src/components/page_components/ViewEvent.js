@@ -217,18 +217,17 @@ const ViewEvent = ({ setRoot }) => {
       <div id="attendance-main">
         <div id="attendance-left">
           <div id="attendance-modes">
-            <p><button className="unbutton" onClick={() => setMode(true)}><FiUsers></FiUsers></button> / 
-              <button className="unbutton" onClick={() => setMode(false)}><FiNavigation></FiNavigation></button></p>
+            <p><button id="all-attending-button" className="unbutton" onClick={() => setMode(true)}><FiUsers></FiUsers></button> | 
+              <button id="mouseover-button" className="unbutton" onClick={() => setMode(false)}><FiNavigation></FiNavigation></button></p>
           </div>
+          <h4>{mode ? "All Attending" : "Mouseover"}</h4>
           <div id="attendance-list-wrapper">
-            <p>Attendees:</p>
-            <div id="attendance-list">
               {prepareListItems()}
-            </div>
           </div>
           <button onClick={togglePage} data-to="details">Back</button>
         </div>
         <div id="attendance-right">
+          {/* <p>{limit.active ? `Viewing ${limit.name}'s availability` : null}</p> */}
           {prepareBlocks()}
         </div>
       </div>

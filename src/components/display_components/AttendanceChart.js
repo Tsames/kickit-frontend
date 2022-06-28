@@ -111,13 +111,13 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
   const determineColor = (count) => {
     const totalCount = attending.length;
     const percentage = (count / totalCount) * 100;
-    if (percentage === 1) {
+    if (percentage >= 85) {
       return "everyoneAvailable";
-    } else if (percentage >= 75) {
+    } else if (percentage >= 70) {
       return "alotAvailable";
-    } else if (percentage >= 50) {
+    } else if (percentage >= 45) {
       return "someAvailable";
-    } else if (percentage >= 25) {
+    } else if (percentage >= 20) {
       return "fewAvailable";
     } else {
       return "veryFewAvailable";

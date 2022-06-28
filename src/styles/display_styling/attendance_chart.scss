@@ -32,6 +32,7 @@ div.chartContents {
     border-width: 0.1rem;
     margin: 0;
     padding: 0;
+    transition: all 0.5s ease;
   }
 }
 
@@ -100,20 +101,25 @@ div.chartContents {
 
 .veryFewAvailable {
   background: v.$invisible;
+  transition: all 0.5s ease;
 }
 
 .fewAvailable {
-  background: rgba(209, 130, 130, 0.75);
+  background: rgb(245, 87, 9);
+  transition: all 0.5s ease;
 }
 
 .someAvailable {
-  background: rgba(182, 194, 75, 0.75);
+  background: rgb(244, 192, 5);
+  transition: all 0.5s ease;
 }
 
 .alotAvailable {
-  background: rgba(106, 187, 13, 0.75);
+  background: rgb(126, 210, 23);
+  transition: all 0.5s ease;
 }
 
 .everyoneAvailable {
-  background: rgba(140, 71, 215, 0.75);
+  background: rgb(16, 111, 15);
+  transition: all 0.5s ease;
 }

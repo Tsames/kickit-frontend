@@ -1,4 +1,29 @@
-$invisible: rgba(0,0,0,0);
+/* This stylesheet is intended to set variables and mixins that the rest of the stylesheets pull from
+making it simple to make small or large tweaks to many aspects of the web app */
+
+/* -!-!-!-!-!-!-!-!-!-!-!-!-!  Colors !-!-!-!-!-!-!-!-!-!-!-!-!- */
+
+$invisible: rgba(0, 0, 0, 0);
+
+$font-light: rgb(255, 255, 255);
+$font-heavy: rgba(55, 53, 53, 0.8);
+
+$background-light: rgba(242, 242, 242, 0.35);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*-------------  Navbar Colors -------------*/
 
@@ -9,15 +34,6 @@ $navbar-text: rgba(228, 226, 226, 1);
 
 $footer-background: rgba(1, 1, 1, 0);
 $footer-text: rgba(255, 255, 255,1);
-
-/*-------------  Home Colors -------------*/
-
-$kick-it-brand: rgb(255, 255, 255);
-$kick-it-brand-2: rgb(255, 255, 255);
-
-$search-color: rgba(55, 53, 53, 0.851);
-$search-placeholder-color:#222;
-$search-background: #f2f2f257;
 
 /*-------------  View Event Colors -------------*/
 
@@ -63,9 +79,15 @@ $calendar-selected-color: white;
   background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 33%, #c32727 66%, #bc53d1 100%);
 }
 
-//View Event - Attending Page
-.rb-view-attending {
-  background: linear-gradient(45deg, rgba(101, 108, 122, 0.598), rgb(40, 39, 38));
+//View Event - Details Page
+.rb-view-event {
+  background-color: #319ae6;
+  background-image: linear-gradient(180deg, #319ae6 0%, #5285db 20%, #7b99f2 40%, #a869c9 60%, #6e36d7 80%, #1800ff 100%);
+}
+
+//Create Event
+.rb-create-event {
+  background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
 }
 
 /*-------------  Nav Class Styles -------------*/

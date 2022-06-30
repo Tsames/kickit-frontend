@@ -33,6 +33,11 @@ div.chartContents {
     margin: 0;
     padding: 0;
     transition: all 0.5s ease;
+
+    &:hover {
+      border-color: white;
+      transition: border-color 0.5s ease;
+    }
   }
 }
 
@@ -99,26 +104,43 @@ div.chartContents {
 
 // %%%%%%%%%%%%%%%%%%%% Cell Background Colors %%%%%%%%%%%%%%%%%%%%
 
-.veryFewAvailable {
+// 0% - 10%
+.noneAvailable {
   background: v.$invisible;
   transition: all 0.5s ease;
 }
 
+// 11% - 25%
+.veryFewAvailable {
+  background: rgb(241, 6, 6);
+  transition: all 0.5s ease;
+}
+
+// 26% - 40%
 .fewAvailable {
-  background: rgb(245, 87, 9);
+  background: rgb(243, 120, 6);
   transition: all 0.5s ease;
 }
 
+//41% - 55%
 .someAvailable {
-  background: rgb(244, 192, 5);
+  background: rgb(255, 213, 0);
   transition: all 0.5s ease;
 }
 
+//56% - 70%
+.manyAvailable {
+  background: rgb(217, 255, 0);
+  transition: all 0.5s ease;
+}
+
+//71% - 85%
 .alotAvailable {
-  background: rgb(126, 210, 23);
+  background: rgb(103, 234, 10);
   transition: all 0.5s ease;
 }
 
+// 86% - 100%
 .everyoneAvailable {
   background: rgb(16, 111, 15);
   transition: all 0.5s ease;

@@ -26,9 +26,11 @@ const Home = ({setRoot}) => {
     setSearch(e.target.value);
   }
 
-  const handleSearch = async () => {
-    await searchEvents();
-    navigate("/share/" + result[0]._id)
+  const handleSearch = async (event) => {
+    if (event.which === 13) {
+      await searchEvents();
+      navigate("/share/" + result[0]._id)
+    }
   }
 
   //Helper function - Gets Event Data
@@ -52,9 +54,9 @@ const Home = ({setRoot}) => {
   return (
     <div id="home-shell" className="page-body">
       <h2>Kick it</h2>
-      <label htmlFor="search" id="searchLabel">
-        <input id="search" type="text" name="search" value={search} onChange={handleChange} placeholder="Enter event title"/>
-        <button onClick={handleSearch}><BiSearchAlt></BiSearchAlt></button>
+      <label htmlFor="search" id="search-Label">
+        <input id="search" type="text" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch} placeholder="Enter event title"/>
+        {/* <button id="search-button" onClick={handleSearch}><BiSearchAlt id="search-icon"></BiSearchAlt></button> */}
       </label>
     </div>
   )

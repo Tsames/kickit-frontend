@@ -19,7 +19,17 @@ Kick-it is a webapp designed to take the hastle out of organizing small events. 
 - MongoDB
 - Heroku
 
-## Wireframes
+### Future Features
+
+- Accounts
+- Integrating Google Maps
+- Connect with other users
+- Upcoming events organized by users you've connected with
+- Notifications
+- Repeated Events
+- Edit already existing events
+- More advanced search
+- Comments on Events
 
 
 

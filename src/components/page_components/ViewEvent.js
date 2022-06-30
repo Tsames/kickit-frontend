@@ -17,7 +17,7 @@ const ViewEvent = ({ setRoot }) => {
 
   const id = useParams().id;
   const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
-  setRoot("rb-view-event-attending");
+  setRoot("rb-view-event");
 
   //Stores event data
   const [event, setEvent] = useState(null);
@@ -26,7 +26,7 @@ const ViewEvent = ({ setRoot }) => {
   const [blocks, setBlocks] = useState([]);
 
   //States to keep track of the component that is displayed
-  const [page, setPage] = useState("attendance");
+  const [page, setPage] = useState("details");
 
   /* %%%%%%%%%%%%%%%% Attendance Page Specific State %%%%%%%%%%%%%%%% */
 
@@ -137,10 +137,6 @@ const ViewEvent = ({ setRoot }) => {
     setLimit({...limit, active: false});
   }
 
-  const changeMode = () => {
-
-  }
-
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
 
   //JSX to display if event is still in the process of loading
@@ -164,10 +160,14 @@ const ViewEvent = ({ setRoot }) => {
   //Return EventDetails.js component with proper props
   const details = () => {
     return (
-      <div>
-        <EventDetails event={event} />
-        <button onClick={togglePage} data-to="attendance">View Attendance</button>
-        <button onClick={togglePage} data-to="rsvp">Sign Up!</button>
+      <div id="details-main">
+        <div id="details-left">
+          <EventDetails event={event}/>
+        </div>
+        <div id="details-right">
+          <button className="details-button" onClick={togglePage} data-to="rsvp">Sign Up!</button>
+          <button className="details-button" onClick={togglePage} data-to="attendance">View Attendance</button>
+        </div>
       </div>
     )
   }
@@ -224,7 +224,7 @@ const ViewEvent = ({ setRoot }) => {
           <div id="attendance-list-wrapper">
               {prepareListItems()}
           </div>
-          <button onClick={togglePage} data-to="details">Back</button>
+          <button id="attendance-back" onClick={togglePage} data-to="details">Back</button>
         </div>
         <div id="attendance-right">
           {/* <p>{limit.active ? `Viewing ${limit.name}'s availability` : null}</p> */}

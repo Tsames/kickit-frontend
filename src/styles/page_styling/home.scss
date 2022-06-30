@@ -7,19 +7,14 @@
 // @import url('https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
-//Page-specific background
-.rb-landing {
-  background: linear-gradient(45deg, rgb(61, 114, 228), rgb(223, 139, 106));
-}
-
 #home-shell {
 
   //Display Settings
+  appearance: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  appearance: none;
 
   margin: 0 auto;
   
@@ -28,28 +23,25 @@
   //Kick-It Branding
   h2{
     position: relative;
+    grid-row-start: 3;
+    grid-row-end: 6;
+
     font-family: 'Dancing Script', cursive;
     // font-family: 'Sonsie One', cursive;
     // font-family: 'Cherry Swash', cursive;
-    color: v.$kick-it-brand;
+    color: v.$font-light;
     font-weight: 50;
     font-size: 4rem;
-    grid-row-start: 3;
-    grid-row-end: 6;
-  }
-
-  #it {
-    color: v.$kick-it-brand-2;
-    font-weight: 900;
   }
 
   //Search Bar
   input {
-    border: none;
     appearance: none;
-    color:v.$search-color;
-    background: v.$search-background;
+    border: none;
+    color:v.$font-heavy;
+    background: v.$background-light;
     border-radius: 5px;
+    font-size: 0.5rem;
 
     width: 40vw;
     height: 8vh;
@@ -58,7 +50,7 @@
     outline: none;
 
     &::placeholder{
-      color: v.$search-color;
+      color: v.$font-heavy;
       padding: 0 0 0 0.3rem;
       transition: color 0.3s ease;
     }

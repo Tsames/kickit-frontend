@@ -10,10 +10,12 @@ import TextArea from '../input_components/TextArea';
 import TimeDropdown from '../input_components/TimeDropdown';
 import Calendar from '../input_components/Calendar';
 
-const CreateForm = (props) => {
+const CreateForm = ({ setRoot }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
-  
+  setRoot("rb-create-event");
+
+
   const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events";
 
   const [newForm, setNewForm] = useState({
@@ -57,7 +59,6 @@ const CreateForm = (props) => {
       late: "",
       days: []
     });
-    props.history.push("/")
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/

@@ -2,10 +2,6 @@
 @use './../variables' as v;
 @import '../device_layout/layout';
 
-.rb-view-event {
-  background: linear-gradient(45deg, rgb(156, 203, 110), rgb(223, 139, 106));
-}
-
 #view-event-shell {
 
   //Display Settings
@@ -46,7 +42,41 @@
     appearance: none;
     background: none;
   }
+  /* ------------------------------------- Details Page ------------------------------------- */
 
+  #details-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  #details-left {
+    max-width: 40vw;
+  }
+
+  #details-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .details-button {
+    margin: 1.1rem 0 1.1rem 1.5rem;
+    width: 5rem;
+    height: 2.2rem;
+    color: white;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0.05rem;
+    border-color: v.$invisible;
+
+    &:hover {
+      transition: border-color 0.5s ease;
+      border-color: white;
+    }
+  }
 
   /* ------------------------------------- Attendance Page ------------------------------------- */
 
@@ -195,5 +225,20 @@
     align-items: center;
   }
 
+  //Back button for the attendance page
+  #attendance-back {
+    color: black;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0.05rem;
+    border-color: v.$invisible;
+
+    &:hover {
+      transition: border-color 0.5s ease;
+      border-color: black;
+    }
+  }
+
+  /* ------------------------------------- &&&&&&&&&&&&&&&&&&&& ------------------------------------- */
 
 }

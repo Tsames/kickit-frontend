@@ -11,14 +11,6 @@ const EventDetails = ({ event }) => {
 
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
 
-  // const getAttendeeNames = () => {
-  //   const content = []
-  //   event.attending.forEach((person) => {
-  //     content.push(person.name);
-  //   });
-  //   return content.join(", ");
-  // }
-
   /* ------------------------------------------ Fetch Event Data ------------------------------------------*/
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
@@ -28,9 +20,8 @@ const EventDetails = ({ event }) => {
   return (
     <div>
       <h3 className="eventDetail">{event.title}</h3>
-      <p className="eventDetail">{event.location}</p>
-      <p className="eventDetail">{event.cost}</p>
-      <p className="eventDetail">{event.description}</p>
+      <p className="eventDetail">@ {event.location}</p>
+      <p id="event-description" className="eventDetail">{event.description}</p>
     </div>
   )
 }

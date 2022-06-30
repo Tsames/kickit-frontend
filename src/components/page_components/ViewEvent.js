@@ -105,7 +105,6 @@ const ViewEvent = ({ setRoot }) => {
 
     const target = event.target;
     const name = target.dataset.name;
-    const siblings = target.parentNode.childNodes;
 
     if (limit.active && name === limit.name) {
       target.className = "attendance-list-person";
@@ -217,8 +216,8 @@ const ViewEvent = ({ setRoot }) => {
       <div id="attendance-main">
         <div id="attendance-left">
           <div id="attendance-modes">
-            <p><button id="all-attending-button" className="unbutton" onClick={() => setMode(true)}><FiUsers></FiUsers></button> | 
-              <button id="mouseover-button" className="unbutton" onClick={() => setMode(false)}><FiNavigation></FiNavigation></button></p>
+            <p><button id="all-button" className="mode-button" onClick={() => setMode(true)}><FiUsers></FiUsers></button>
+             | <button id="mouseover-button" className="mode-button" onClick={() => setMode(false)}><FiNavigation></FiNavigation></button></p>
           </div>
           <h4>{mode ? "All Attending" : "Mouseover"}</h4>
           <div id="attendance-list-wrapper">
@@ -227,7 +226,6 @@ const ViewEvent = ({ setRoot }) => {
           <button id="attendance-back" onClick={togglePage} data-to="details">Back</button>
         </div>
         <div id="attendance-right">
-          {/* <p>{limit.active ? `Viewing ${limit.name}'s availability` : null}</p> */}
           {prepareBlocks()}
         </div>
       </div>
@@ -237,10 +235,9 @@ const ViewEvent = ({ setRoot }) => {
   //Return AttendForm.js component with proper props
   const rsvp = () => {
     return (
-      <>
-        <button onClick={togglePage} data-to="details">Back</button>
-        <AttendForm event={event} blocks={blocks} />
-      </>
+      <div id="rsvp-main">
+        <AttendForm event={event} blocks={blocks} togglePage={togglePage}/>
+      </div>
     )
   }
 

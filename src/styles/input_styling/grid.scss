@@ -9,7 +9,7 @@ $grid-cell-height: 2.5rem;
   margin: 0.3rem;
 }
 
-
+//Grid Wrapper
 div.gridContents {
   display: flex;
   flex-direction: row;
@@ -28,23 +28,19 @@ div.gridContents {
     width: $grid-cell-width;
     height: $grid-cell-height;
     border-style: solid;
-    border-color: black;
+    border-color: v.$font-heavy;
     border-width: 0.1rem;
     margin: 0;
     padding: 0;
 
     &:hover {
-      border-color: white;
+      border-color: v.$font-light;
       transition: border-color 0.5s ease;
     }
   }
 
   div.gridSelected {
     background-color: v.$grid-active;
-  }
-
-  div.gridTouch {
-    background-color: v.$grid-touch1;
   }
 
 }
@@ -68,10 +64,9 @@ div.gridContents {
 
 .gridRowLabelText {
   position: relative;
-  top: 10%;
-  right: 5%;
+  bottom: 0.8rem;
   font-size: 0.5rem;
-  color: black;
+  color: v.$font-heavy;
   text-align: right;
 }
 //--------------------------------------- $
@@ -100,7 +95,7 @@ div.gridContents {
   position: relative;
   top: 55%;
   font-size: 0.5rem;
-  color: black;
+  color: v.$font-heavy;
   text-align: center;
 }
 

@@ -1,24 +1,36 @@
 
-@mixin inputField($width, $height) {
-  border: none;
-  appearance: none;
-  color: v.$search-color;
-  background: v.$search-background;
+@use './variables' as v;
+
+/* -!-!-!-!-!-!-!-!-!-!-!-!-!  Mixins !-!-!-!-!-!-!-!-!-!-!-!-!- */
+
+/* %*%*%*% Buttons %*%*%*% */
+
+@mixin button-light() {
+  color: v.$font-light;
+  background: v.$background-light;
+
+  border: solid;
   border-radius: 5px;
+  border-width: 0.05rem;
+  border-color: v.$invisible;
 
-  width: $width;
-  height: $height;
-  font-size: 1.5rem;
-
-  outline: none;
-
-  &::placeholder {
-    color: v.$search-placeholder-color;
-    padding: 0 0 0 0.3rem;
-    transition: color 0.3s ease;
+  &:hover {
+    transition: border-color 0.5s ease;
+    border-color: v.$font-light;
   }
+}
 
-  &:focus::placeholder {
-    color: v.$invisible;
+@mixin button-dark() {
+  color: v.$font-heavy;
+  background: v.$background-light;
+
+  border: solid;
+  border-radius: 5px;
+  border-width: 0.05rem;
+  border-color: v.$invisible;
+
+  &:hover {
+    transition: border-color 0.5s ease;
+    border-color: v.$font-heavy;
   }
 }

@@ -1,5 +1,5 @@
 //Dependencies
-import { React, useState } from 'react';
+import { React } from 'react';
 
 //Styling
 import '../../styles/display_styling/attendance_chart.scss';
@@ -20,9 +20,9 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
     let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
     if (index % 2 === 0) {
-      label = <p className="chartRowLabelText">{`${base} ${suffix}`}</p>
+      label = <p className="chartRowLabelText">{`${base}:00 ${suffix}`}</p>
     } else {
-      label = <p className="chartRowLabelText">{`${base}:30`}</p>
+      label = <p className="chartRowLabelText">{`${base}:30 ${suffix}`}</p>
     }
     return label;
   }
@@ -133,7 +133,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     if (whoAvailable.includes(limit.name)) {
       return "alotAvailable";
     } else {
-      return  "veryFewAvailable";
+      return  "noneAvailable";
     }
   }
 

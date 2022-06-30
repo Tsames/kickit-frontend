@@ -17,6 +17,8 @@ label.custom-field {
     appearance: none;
     box-sizing: border-box;
 
+    color: v.$font-heavy;
+
     border-radius: 3px;
     background: $input-background;
     overflow: hidden;
@@ -25,7 +27,7 @@ label.custom-field {
     outline: none;
     resize: none;
     font-size: 14px;
-    width: 200px;
+    width: 150px;
   }
 
   //Span placeholder inside our custom field
@@ -35,7 +37,7 @@ label.custom-field {
     left: 0.5rem;
     top: 45%;
     font-weight: normal;
-    color: rgb(99, 94, 94);
+    color: v.$font-heavy;
     transition:
       top 0.3s ease,
       bottom 0.3s ease,
@@ -48,6 +50,6 @@ label.custom-field {
     bottom: 100%;
     left: 0.3rem;
     font-size: 10px;
-    color: #222;
+    color: v.$font-heavy;
   }
 }

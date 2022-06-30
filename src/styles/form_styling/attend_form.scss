@@ -1,52 +1,74 @@
 @use './../variables' as v;
+@use './../mixins' as m;
 @import '../device_layout/layout';
 
-.rb-attend-event {
-  background: linear-gradient(45deg, rgb(156, 203, 110), rgb(223, 139, 106));
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Side-bar Wrapper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#rsvp-left {
+//Position
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 25vw;
+  max-width: 25vw;
+  height: 100vh;
+  z-index: 1;
+
+  //Arrange Items Within
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0;
+
+  color: v.$font-heavy;
+  background-image: linear-gradient(270deg, #EECE13 10%, #f4942e 100%);
+
+  //Border
+  border-right: solid;
+  border-width: 0.4rem;
+  border-color: v.$background-light;
+  border-radius: 4px;
+
+  /* %%%%%%%%%%%% Children %%%%%%%%%%%% */
+
+  button {
+    @include m.button-dark;
+  }
+
+  h2 {
+    position: relative;
+    bottom: 2rem;
+  }
+
+  //Name input and submit button wrapper
+  #rsvp-left-data {
+    position: relative;
+    bottom: 5rem;
+    left: 1rem;
+
+    button {
+      position: relative;
+      left: 3.5rem;
+      margin: 0.5rem 0 0 0;
+    }
+  }
 }
 
-#attend-form-shell {
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Grid Block %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#rsvp-right {
+//Position
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 75vw;
+  height: 100vh;
+  z-index: -1;
 
-  //Display Settings
+  background-image: linear-gradient(120deg, #abd4f8 0%, #3577c3 100%);
+
+  //Arrange Items Within
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 1rem;
-
-  /* ------------------------------------- Child Elements - Event Loading ------------------------------------- */
-
-
-  /* ------------------------------------- Child Elements - Event Loaded ------------------------------------- */
-  
-
-  //Styling for the container of all input grids
-  form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
-    div#fields-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
-    }
-
-    div#grids-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: center;
-    }
-  }
-  
-  //Styling for each individual grid
-  .attend-grid-input {
-
-  }
-
-
 }

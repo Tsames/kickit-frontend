@@ -1,10 +1,10 @@
 //Imports
 @use './../variables' as v;
+@use './../mixins' as m;
 @import '../device_layout/layout';
 
 $chart-cell-width: 4rem;
 $chart-cell-height: 2.5rem;
-
 
 //Chart Wrapper
 div.chartContents {
@@ -15,12 +15,15 @@ div.chartContents {
   margin: 0 auto 0 auto;
   padding: 0rem;
 
+  max-height: 80vh;
+
   // %%%%%%%%%%%%%%%%%%%% Chart Columns and Rows Styling %%%%%%%%%%%%%%%%%%%%
 
   //Chart Columns
   div.chartColumn {
     padding: 0rem;
     margin: 0rem;
+    max-height: 80vh;
   }
 
   //Chart Cells
@@ -28,14 +31,14 @@ div.chartContents {
     width: $chart-cell-width;
     height: $chart-cell-height;
     border-style: solid;
-    border-color: black;
+    border-color: v.$font-heavy;
     border-width: 0.1rem;
     margin: 0;
     padding: 0;
     transition: all 0.5s ease;
 
     &:hover {
-      border-color: white;
+      border-color: v.$font-light;
       transition: border-color 0.5s ease;
     }
   }
@@ -64,10 +67,9 @@ div.chartContents {
 //Row Label Text
 .chartRowLabelText {
   position: relative;
-  top: 10%;
-  right: 5%;
+  bottom: 0.85rem;
   font-size: 0.5rem;
-  color: black;
+  color: v.$font-heavy;
   text-align: right;
 }
 
@@ -98,50 +100,6 @@ div.chartContents {
   position: relative;
   top: 55%;
   font-size: 0.5rem;
-  color: black;
+  color: v.$font-heavy;
   text-align: center;
-}
-
-// %%%%%%%%%%%%%%%%%%%% Cell Background Colors %%%%%%%%%%%%%%%%%%%%
-
-// 0% - 10%
-.noneAvailable {
-  background: v.$invisible;
-  transition: all 0.5s ease;
-}
-
-// 11% - 25%
-.veryFewAvailable {
-  background: rgb(241, 6, 6);
-  transition: all 0.5s ease;
-}
-
-// 26% - 40%
-.fewAvailable {
-  background: rgb(243, 120, 6);
-  transition: all 0.5s ease;
-}
-
-//41% - 55%
-.someAvailable {
-  background: rgb(255, 213, 0);
-  transition: all 0.5s ease;
-}
-
-//56% - 70%
-.manyAvailable {
-  background: rgb(217, 255, 0);
-  transition: all 0.5s ease;
-}
-
-//71% - 85%
-.alotAvailable {
-  background: rgb(103, 234, 10);
-  transition: all 0.5s ease;
-}
-
-// 86% - 100%
-.everyoneAvailable {
-  background: rgb(16, 111, 15);
-  transition: all 0.5s ease;
 }

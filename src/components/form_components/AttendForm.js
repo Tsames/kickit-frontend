@@ -8,7 +8,7 @@ import Field from "../input_components/Field";
 //Styling
 import '../../styles/page_styling/view_event.scss';
 
-const AttendForm = ({event, blocks}) => {
+const AttendForm = ({event, blocks, togglePage}) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
 
@@ -59,9 +59,6 @@ const AttendForm = ({event, blocks}) => {
   const submitData = async (events) => {
     const newAttending = prepareData();
     const newEventData = { ...event, "attending": newAttending };
-
-    console.log(`This is the new Event data right before submitting patch request:`);
-    console.log(newEventData);
     
     await fetch(URL, {
       method: "put",
@@ -80,6 +77,10 @@ const AttendForm = ({event, blocks}) => {
       name: "",
       available: []
     });
+  }
+
+  const checkPerson = () => {
+
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
@@ -111,16 +112,17 @@ const AttendForm = ({event, blocks}) => {
 
     return(
       <>
-        <div id="attend-input-container">
-          <form id="AttendForm" onSubmit={handleSubmit}>
-            <div id="field-container">
-              <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName} />
-              <Field form="attendForm" type="submit" name="submit" text="" value="Submit" />
-            </div>
-            <div id="grids-container">
-              {grids}              
-            </div>
-          </form>
+        <div id="rsvp-left">
+          <h2>Sign Up</h2>
+          <p id="rsvp-taken">{checkPerson()}</p>
+          <div id="rsvp-left-data">
+            <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName} />
+            <button id="rsvp-submit" onClick={handleSubmit}>Submit</button>
+          </div>
+          <button id="rsvp-back" onClick={togglePage} data-to="details">Back</button>
+        </div>
+        <div id="rsvp-right">
+          {grids}              
         </div>
       </>
     )

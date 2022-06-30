@@ -1,8 +1,8 @@
 @use './../variables' as v;
+@use './../mixins' as m;
 @import '../device_layout/layout';
 
-$calendar-background: rgba(233, 232, 232, 0.55);
-
+//Wrapper
 div.calendarShell {
   //General Styling in Calendar
   display: flex;
@@ -10,13 +10,13 @@ div.calendarShell {
   justify-content: space-around;
   align-items: center;
   
-  background-color: $calendar-background;
+  background-color: v.$background-light;
   border-style: none;
   border-radius: 0.3rem;
   max-width: 20em;
   padding: 0.5em;
   font-size: 14px;
-  color: #222;
+  color: v.$font-heavy;
   font-weight: lighter;
 
   //Calendar Heading Styling
@@ -25,7 +25,7 @@ div.calendarShell {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    color: v.$calendar-primary;
+    color: v.$font-heavy;
 
     .calendarHeadingButton {
       margin: 1em;

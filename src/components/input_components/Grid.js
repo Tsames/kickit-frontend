@@ -20,9 +20,9 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
     let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
     if (index % 2 === 0) {
-      label = <p className="gridRowLabelText">{`${base} ${suffix}`}</p>
+      label = <p className="gridRowLabelText">{`${base}:00 ${suffix}`}</p>
     } else {
-      label = <p className="gridRowLabelText">{`${base}:30`}</p>
+      label = <p className="gridRowLabelText">{`${base}:30 ${suffix}`}</p>
     }
     return label;
   }

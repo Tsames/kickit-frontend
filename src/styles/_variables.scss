@@ -10,57 +10,60 @@ $font-heavy: rgba(55, 53, 53, 0.8);
 
 $background-light: rgba(242, 242, 242, 0.35);
 
+/* %*%*%*% Component-specific Colors %*%*%*% */
 
+/* -- View Event Colors -- */
 
+/* Attendance Cell Color Classes based on percentage
+of attendees available at that time slot */
 
+// 0% - 10%
+.noneAvailable {
+  background: $invisible;
+  transition: all 0.5s ease;
+}
 
+// 11% - 25%
+.veryFewAvailable {
+  background: rgb(241, 6, 6);
+  transition: all 0.5s ease;
+}
 
+// 26% - 40%
+.fewAvailable {
+  background: rgb(243, 120, 6);
+  transition: all 0.5s ease;
+}
 
+//41% - 55%
+.someAvailable {
+  background: rgb(255, 213, 0);
+  transition: all 0.5s ease;
+}
 
+//56% - 70%
+.manyAvailable {
+  background: rgb(217, 255, 0);
+  transition: all 0.5s ease;
+}
 
+//71% - 85%
+.alotAvailable {
+  background: rgb(103, 234, 10);
+  transition: all 0.5s ease;
+}
 
+// 86% - 100%
+.everyoneAvailable {
+  background: rgb(5, 146, 2);
+  transition: all 0.5s ease;
+}
 
+/* -- Grid Component Colors -- */
 
+$grid-active: rgb(96, 201, 149);
 
-
-
-
-/*-------------  Navbar Colors -------------*/
-
-$navbar-background: rgba(1,1,1,0);
-$navbar-text: rgba(228, 226, 226, 1);
-
-/*-------------  Footer Colors -------------*/
-
-$footer-background: rgba(1, 1, 1, 0);
-$footer-text: rgba(255, 255, 255,1);
-
-/*-------------  View Event Colors -------------*/
-
-$ve-button-color: rgba(78, 70, 70, 0.855);
-$ve-button-background: #f2f2f257;
-
-//Attending Page
-$ve-attending-selected-person: rgb(53, 92, 8);
-$ve-attending-selected-person-background: rgb(127, 203, 94);
-
-/*-------------  Create Form Colors -------------*/
-
-$input-color: rgb(100, 114, 149);
-$input-background: rgb(242, 242, 242);
-
-/*-------------  Grid Colors -------------*/
-
-$grid-active: rgba(138, 207, 155, 1);
-$grid-active-border: rgb(8, 109, 34);
-$grid-touch1: rgb(83, 175, 218);
-$grid-touch2: rgb(143, 81, 184);
-
-/*-------------  Calendar Colors -------------*/
-
-//Shell
-$calendar-primary: rgb(99, 94, 94);
-$calendar-background: white;
+/* -- Calendar Component Colors -- */
 
 //Hover Class
 $calendar-hover: white;
@@ -71,7 +74,7 @@ $calendar-selected-background: rgb(68, 131, 160);
 $calendar-selected-border: rgb(68, 131, 160);
 $calendar-selected-color: white;
 
-/*-------------  Root Class Styles -------------*/
+/* -!-!-!-!-!-!-!-!-!-!-!-!-!  Root Background Class Styles !-!-!-!-!-!-!-!-!-!-!-!-!- */
 
 //Landing Page
 .rb-landing {
@@ -90,4 +93,4 @@ $calendar-selected-color: white;
   background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
 }
 
-/*-------------  Nav Class Styles -------------*/
+/* -!-!-!-!-!-!-!-!-!-!-!-!-!  &%$#&%$#&%$#&%$# !-!-!-!-!-!-!-!-!-!-!-!-!- */

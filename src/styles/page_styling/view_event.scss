@@ -1,5 +1,6 @@
 //Imports
 @use './../variables' as v;
+@use './../mixins' as m;
 @import '../device_layout/layout';
 
 #view-event-shell {
@@ -15,33 +16,12 @@
 
   /* ------------------------------------- Child Elements - Event Loading ------------------------------------- */
 
-    #loading{
-      margin: 0 auto;
-    }
+  #loading{
+    margin: 0 auto;
+  }
 
   /* ------------------------------------- Child Elements - Event Loaded ------------------------------------- */
-  .eventDetail {
-    color: white;
-    padding: 0 0.5rem;
-  } 
 
-  button {
-    border: none;
-    appearance: none;
-    background-color:v.$ve-button-background;
-    border-radius: 5px;
-
-    .buttonLink {
-      text-decoration: none;
-      color: v.$ve-button-color;
-    }
-  }
-
-  .unbutton {
-    border: none;
-    appearance: none;
-    background: none;
-  }
   /* ------------------------------------- Details Page ------------------------------------- */
 
   #details-main {
@@ -66,16 +46,7 @@
     margin: 1.1rem 0 1.1rem 1.5rem;
     width: 5rem;
     height: 2.2rem;
-    color: white;
-    border: solid;
-    border-radius: 5px;
-    border-width: 0.05rem;
-    border-color: v.$invisible;
-
-    &:hover {
-      transition: border-color 0.5s ease;
-      border-color: white;
-    }
+    @include m.button-light;
   }
 
   /* ------------------------------------- Attendance Page ------------------------------------- */
@@ -87,7 +58,8 @@
     align-items: center;
   }
 
-  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Side-bar %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Side-bar Wrapper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
   #attendance-left {
     //Position
     position: absolute;
@@ -105,13 +77,13 @@
     align-items: center;
     padding: 0;
 
-    color: black;
-    background-image: linear-gradient(135deg, #EECE13 10%, #f2a452 100%);
+    color: v.$font-heavy;
+    background-image: linear-gradient(270deg, #EECE13 10%, #f4942e 100%);
 
     //Border
     border-right: solid;
     border-width: 0.4rem;
-    border-color: #f2f2f257;
+    border-color: v.$background-light;
     border-radius: 4px;
 
     /* %%%%%%%%%%%% Children %%%%%%%%%%%% */
@@ -121,29 +93,30 @@
       position: absolute;
       top: 3vh;
 
-      //Button to toggle on All Attending
-      #all-attending-button {
-        margin-right: 1rem;
+      //Individual ajustments for each button within the widget
+      //Left Button
+      #all-button {
         position: relative;
-        bottom: 55%;
-        transition: all 0.5s ease;
-
-        &:hover {
-          color: white;
-          transition: all 0.5s ease;
-        }
+        top: 0.1rem;
+        margin-right: 0.1rem;
       }
 
-      //Button to toggle on Mouseover
+      //Right Button
       #mouseover-button {
-        margin-left: 1rem;
         position: relative;
-        bottom: 65%;
-        transition: all 0.5s ease;
+        top: 0.1rem;
+        margin-left: 0.06rem;
+      }
+
+      //Button Class
+      .mode-button {
+        color: v.$font-heavy;
+        background: none;
+        border: none;
 
         &:hover {
-          color: white;
-          transition: all 0.5s ease;
+          color: v.$font-light;
+          transition: color 0.5s ease;
         }
       }
     }
@@ -154,7 +127,7 @@
       top: 20vh;
     }
 
-    //Person Attending listing
+    //Person Attending listing Wrapper
     #attendance-list-wrapper {
       position: absolute;
       top: 35vh;
@@ -171,27 +144,34 @@
 
       text-align: left;
 
+      //Person Attending Item
       .attendance-list-person {
-        font-size: 0.8rem;
         position: relative;
+        margin: 0.1rem 0 0.1rem 0;
         padding: 0 0;
+
+        font-size: 0.8rem;
+        color: v.$font-heavy;
         text-align: left;
-        margin-top: 0.1rem;
-        margin-left: 0;
-        margin-bottom: 0.1rem;
+
         background: none;
+        border: none;
         transition: all 0.5s ease;
 
         &:hover {
-          color: white;
+          color: v.$font-light;
           transition: all 0.3s ease;
         }
+      }
+
+      //Class added if the person is currently selected
+      .limit-active {
+        color: v.$font-light;
       }
     }
 
     .limit-active {
-      color: white;
-      font-style: underline;
+      color: v.$font-light;
       transition: all 0.5s ease;
     }
 
@@ -199,6 +179,8 @@
     button {
       position: absolute;
       bottom: 3vh;
+
+      @include m.button-dark;
     }
   }
   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ########## %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -213,30 +195,13 @@
     height: 100vh;
     z-index: -1;
 
-    background-image:
-     linear-gradient(120deg, #abd4f8 0%, #3577c3 100%),
-     linear-gradient(276deg, #EECE13 10%, #f2a452 100%);
-
+    background-image: linear-gradient(120deg, #abd4f8 0%, #3577c3 100%);
      
     //Arrange Items Within
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-  }
-
-  //Back button for the attendance page
-  #attendance-back {
-    color: black;
-    border: solid;
-    border-radius: 5px;
-    border-width: 0.05rem;
-    border-color: v.$invisible;
-
-    &:hover {
-      transition: border-color 0.5s ease;
-      border-color: black;
-    }
   }
 
   /* ------------------------------------- &&&&&&&&&&&&&&&&&&&& ------------------------------------- */

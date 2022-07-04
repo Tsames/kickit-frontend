@@ -7,6 +7,7 @@ import { FiUsers, FiNavigation } from "react-icons/fi";
 import AttendanceChart from "../display_components/AttendanceChart";
 import EventDetails from "../display_components/EventDetails";
 import AttendForm from "../form_components/AttendForm";
+import DetailsToAttendance from '../transition_components/DetailsToAttendance';
 
 //Styling
 import '../../styles/form_styling/attend_form.scss';
@@ -19,16 +20,16 @@ const ViewEvent = ({ setRoot }) => {
   const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
   setRoot("rb-view-event");
 
-  //Stores event data
+  //Stores the data of the event in question
   const [event, setEvent] = useState(null);
 
-  //Stores data used to organize AttendanceChart.js and Grid.js
+  //Stores data used to organize the grids into blocks of adjacent days (for AttendanceChart.js and Grid.js)
   const [blocks, setBlocks] = useState([]);
 
   //States to keep track of the component that is displayed
   const [page, setPage] = useState("details");
 
-  /* %%%%%%%%%%%%%%%% Attendance Page Specific State %%%%%%%%%%%%%%%% */
+  /* %%%%%%%%%%%%%%%% Attendance Page Specific States %%%%%%%%%%%%%%%% */
 
   //Stores data from the AttendanceChart component to show who is coming at a particular time
   const [output, setOutput] = useState([]);
@@ -87,8 +88,24 @@ const ViewEvent = ({ setRoot }) => {
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page State Helper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  const togglePage = (event) => {
-    setPage(event.target.dataset.to);
+  const handleNavigate = (event) => {
+    const transitionLeft = document.getElementById("transitionLeft");
+    const transitionRight = document.getElementById("transitionRight");
+
+    console.log(transitionLeft);
+    console.log(transitionRight);
+
+    transitionLeft.className = "transition-move-left";
+    transitionRight.className = "transition-move-right";
+    setTimeout(() => {
+      setPage(event.target.dataset.to);
+    }, 1000)
+  }
+
+  const handleReturn = (event) => {
+    setTimeout(() => {
+      setPage(event.target.dataset.to);
+    }, 1000)
   }
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Output, Mode, and Limit State Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -138,6 +155,8 @@ const ViewEvent = ({ setRoot }) => {
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
 
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
   //JSX to display if event is still in the process of loading
   const eventLoading = () => {
     return (
@@ -145,7 +164,7 @@ const ViewEvent = ({ setRoot }) => {
     )
   }
 
-  //Determine which page should be displayed when event is loaded
+  //Helper - Determine which page should be displayed when event is loaded
   const eventLoaded = () => {
     if (page === "details") {
       return details()
@@ -156,22 +175,7 @@ const ViewEvent = ({ setRoot }) => {
     }
   }
 
-  //Return EventDetails.js component with proper props
-  const details = () => {
-    return (
-      <div id="details-main">
-        <div id="details-left">
-          <EventDetails event={event}/>
-        </div>
-        <div id="details-right">
-          <button className="details-button" onClick={togglePage} data-to="rsvp">Sign Up!</button>
-          <button className="details-button" onClick={togglePage} data-to="attendance">View Attendance</button>
-        </div>
-      </div>
-    )
-  }
-
-  //Helper function to attendance
+  //Helper to attendance
   const prepareBlocks = () => {
     const content = [];
 
@@ -195,6 +199,7 @@ const ViewEvent = ({ setRoot }) => {
     return content;
   }
 
+  //Helper to attendance
   const prepareListItems = () => {
     const content = [];
     if (mode) {
@@ -210,7 +215,25 @@ const ViewEvent = ({ setRoot }) => {
     return content;
   }
 
-  //Return AttendanceChart.js component with proper props
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Main Pages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+  //Details
+  const details = () => {
+    return (
+      <div id="details-main">
+        <DetailsToAttendance />
+        <div id="details-left">
+          <EventDetails event={event} />
+        </div>
+        <div id="details-right">
+          <button className="details-button" onClick={handleNavigate} data-to="rsvp">Sign Up!</button>
+          <button className="details-button" onClick={handleNavigate} data-to="attendance">View Attendance</button>
+        </div>
+      </div>
+    )
+  }
+
+  //Attendance
   const attendance = () => {
     return (
       <div id="attendance-main">
@@ -223,7 +246,7 @@ const ViewEvent = ({ setRoot }) => {
           <div id="attendance-list-wrapper">
               {prepareListItems()}
           </div>
-          <button id="attendance-back" onClick={togglePage} data-to="details">Back</button>
+          <button id="attendance-back" onClick={handleReturn} data-to="details">Back</button>
         </div>
         <div id="attendance-right">
           {prepareBlocks()}
@@ -232,11 +255,11 @@ const ViewEvent = ({ setRoot }) => {
     )
   }
 
-  //Return AttendForm.js component with proper props
+  //Rsvp
   const rsvp = () => {
     return (
       <div id="rsvp-main">
-        <AttendForm event={event} blocks={blocks} togglePage={togglePage}/>
+        <AttendForm event={event} blocks={blocks} togglePage={handleReturn}/>
       </div>
     )
   }

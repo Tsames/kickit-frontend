@@ -1,0 +1,65 @@
+@use './../variables' as v;
+@use './../mixins' as m;
+@import '../device_layout/layout';
+
+/* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Before Classes %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
+
+.transition-base-left {
+  //Position
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 25vw;
+  max-width: 0vw;
+  height: 100vh;
+  z-index: 1;
+
+  color: v.$font-heavy;
+  background-image: v.$invisible;
+
+  //Border
+  border-right: solid;
+  border-width: 0.4rem;
+  border-color: v.$invisible;
+  border-radius: 4px;
+
+  transition: all 1s ease;
+}
+
+div.transition-move {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  height: 100vh;
+
+  background: red;
+
+  width: 0vw;
+
+  transition: all 0.5s ease;
+}
+
+/* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Move Classes %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
+
+div.transition-move-left {
+  //Position
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 25vw;
+  max-width: 25vw;
+  height: 100vh;
+  z-index: 1;
+
+  color: v.$font-heavy;
+  background-image: linear-gradient(270deg, #EECE13 10%, #f4942e 100%);
+
+  //Border
+  border-right: solid;
+  border-width: 0.4rem;
+  border-color: v.$background-light;
+  border-radius: 4px;
+
+  transition: all 1s ease;
+}

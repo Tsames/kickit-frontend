@@ -1,8 +1,11 @@
 @use './../variables' as v;
 @import '../device_layout/layout';
 
-$grid-cell-width: 4rem;
-$grid-cell-height: 2.5rem;
+$grid-cell-width: 3rem;
+$grid-cell-height: 1rem;
+
+$grid-cell-min-width: 2rem;
+$grid-cell-min-height: 1rem;
 
 //Styles for the grid table in Grid.js
 .gridTable {
@@ -11,12 +14,15 @@ $grid-cell-height: 2.5rem;
 
 //Grid Wrapper
 div.gridContents {
+  max-height: 80vh;
+  // overflow: auto;
+  margin: 0 auto 0 auto;
+  padding: 0.25rem;
+
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 0 auto;
-  padding: 0rem;
 
   div.gridColumn {
     padding: 0rem;
@@ -25,8 +31,13 @@ div.gridContents {
 
   div.gridCell {
     background-color: v.$invisible;
+
     width: $grid-cell-width;
     height: $grid-cell-height;
+
+    min-width: $grid-cell-min-width;
+    min-height: $grid-cell-min-height;
+
     border-style: solid;
     border-color: v.$font-heavy;
     border-width: 0.1rem;
@@ -58,13 +69,14 @@ div.gridContents {
   border-color:v.$invisible;
   border-width: 0.1rem;
   background-color: v.$invisible;
+
   width: $grid-cell-width;
   height: $grid-cell-height;
 }
 
 .gridRowLabelText {
   position: relative;
-  bottom: 0.8rem;
+  bottom: 0.9rem;
   font-size: 0.5rem;
   color: v.$font-heavy;
   text-align: right;
@@ -93,7 +105,7 @@ div.gridContents {
 
 .gridColumnLabelText {
   position: relative;
-  top: 55%;
+  bottom: 0.2rem;
   font-size: 0.5rem;
   color: v.$font-heavy;
   text-align: center;

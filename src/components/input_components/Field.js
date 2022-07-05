@@ -8,7 +8,7 @@ const Field = ({form, type, name, text, value, doThis}) => {
 
   return (
     <label htmlFor={name} id={`${form}-${name}`} className={"custom-field"}>
-      <input type={type} name={name} value={value} onChange={doThis} />
+      <input required type={type} name={name} value={value} onChange={doThis} />
       <span className={"placeholder"}>{text}</span>
     </label>
   )

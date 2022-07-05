@@ -45,9 +45,10 @@ label.custom-field {
       color 0.3s ease;
   }
 
-  input:focus+.placeholder {
+  input:focus+.placeholder,
+  input:valid+.placeholder {
     top: 0%;
-    bottom: 100%;
+    bottom: 110%;
     left: 0.3rem;
     font-size: 10px;
     color: v.$font-heavy;

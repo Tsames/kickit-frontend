@@ -8,6 +8,7 @@ import AttendanceChart from "../display_components/AttendanceChart";
 import EventDetails from "../display_components/EventDetails";
 import AttendForm from "../form_components/AttendForm";
 import DetailsToAttendance from '../transition_components/DetailsToAttendance';
+import AttendanceToDetails from '../transition_components/AttendanceToDetails';
 
 //Styling
 import '../../styles/form_styling/attend_form.scss';
@@ -88,21 +89,23 @@ const ViewEvent = ({ setRoot }) => {
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page State Helper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
+  //Helper function that sends the page to attendance or rsvp with animation
   const handleNavigate = (event) => {
-    const transitionLeft = document.getElementById("transitionLeft");
-    const transitionRight = document.getElementById("transitionRight");
+    const transitionLeft = document.getElementById("dta-transition-left");
+    const transitionRight = document.getElementById("dta-transition-right");
 
-    console.log(transitionLeft);
-    console.log(transitionRight);
-
-    transitionLeft.className = "transition-move-left";
-    transitionRight.className = "transition-move-right";
+    transitionLeft.className = "dta-transition-left-move";
+    transitionRight.className = "dta-transition-right-move";
     setTimeout(() => {
       setPage(event.target.dataset.to);
-    }, 1000)
+    }, 2000)
   }
 
+  //Helper function that returns the page to details from attendance or rsvp with animation
   const handleReturn = (event) => {
+    const transitionBack = document.getElementById("atdTransition");
+
+    transitionBack.className = "atd-transition-move";
     setTimeout(() => {
       setPage(event.target.dataset.to);
     }, 1000)
@@ -237,6 +240,7 @@ const ViewEvent = ({ setRoot }) => {
   const attendance = () => {
     return (
       <div id="attendance-main">
+        <AttendanceToDetails />
         <div id="attendance-left">
           <div id="attendance-modes">
             <p><button id="all-button" className="mode-button" onClick={() => setMode(true)}><FiUsers></FiUsers></button>
@@ -259,6 +263,7 @@ const ViewEvent = ({ setRoot }) => {
   const rsvp = () => {
     return (
       <div id="rsvp-main">
+        <AttendanceToDetails />
         <AttendForm event={event} blocks={blocks} togglePage={handleReturn}/>
       </div>
     )

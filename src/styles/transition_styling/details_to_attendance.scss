@@ -4,18 +4,17 @@
 
 /* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Before Classes %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
 
-.transition-base-left {
+.dta-transition-left-base {
   //Position
   position: absolute;
   left: 0;
   top: 0;
-  min-width: 25vw;
-  max-width: 0vw;
+  width: 0vw;
   height: 100vh;
-  z-index: 1;
+  z-index: -1;
 
   color: v.$font-heavy;
-  background-image: v.$invisible;
+  background-image: v.$attendance-left-background-image;
 
   //Border
   border-right: solid;
@@ -26,34 +25,34 @@
   transition: all 1s ease;
 }
 
-div.transition-move {
+.dta-transition-right-base {
+  //Position
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0;
-  z-index: 5;
+  width: 75vw;
   height: 100vh;
+  z-index: -1;
 
-  background: red;
-
-  width: 0vw;
-
-  transition: all 0.5s ease;
+  opacity: 0;
+  
+  background: v.$attendance-right-background-image;
+  transition: opacity 1s 1s;
 }
 
 /* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Move Classes %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
 
-div.transition-move-left {
+div.dta-transition-left-move {
   //Position
   position: absolute;
   left: 0;
   top: 0;
-  min-width: 25vw;
-  max-width: 25vw;
+  width: 25vw;
   height: 100vh;
-  z-index: 1;
+  z-index: 2;
 
   color: v.$font-heavy;
-  background-image: linear-gradient(270deg, #EECE13 10%, #f4942e 100%);
+  background-image: v.$attendance-left-background-image;
 
   //Border
   border-right: solid;
@@ -62,4 +61,19 @@ div.transition-move-left {
   border-radius: 4px;
 
   transition: all 1s ease;
+}
+
+div.dta-transition-right-move {
+  //Position
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 75vw;
+  height: 100vh;
+  z-index: 1;
+
+  opacity: 1;
+
+  background: v.$attendance-right-background-image;
+  transition: opacity 1s 1s;
 }

@@ -3,8 +3,19 @@
 @use './../mixins' as m;
 @import '../device_layout/layout';
 
-$chart-cell-width: 4rem;
-$chart-cell-height: 2.5rem;
+$chart-cell-width: 3rem;
+$chart-cell-height: 1.5rem;
+
+$chart-cell-max-width: 3rem;
+$chart-cell-max-height: 1.5rem;
+
+$chart-cell-min-width: 2rem;
+$chart-cell-min-height: 1rem;
+
+div.attendanceChart {
+  
+}
+
 
 //Chart Wrapper
 div.chartContents {
@@ -15,21 +26,25 @@ div.chartContents {
   margin: 0 auto 0 auto;
   padding: 0rem;
 
-  max-height: 80vh;
-
   // %%%%%%%%%%%%%%%%%%%% Chart Columns and Rows Styling %%%%%%%%%%%%%%%%%%%%
 
   //Chart Columns
   div.chartColumn {
     padding: 0rem;
     margin: 0rem;
-    max-height: 80vh;
   }
 
   //Chart Cells
   div.chartCell {
     width: $chart-cell-width;
     height: $chart-cell-height;
+
+    max-width: $chart-cell-max-width;
+    max-height: $chart-cell-max-height;
+
+    min-width: $chart-cell-min-width;
+    min-height: $chart-cell-min-height;
+
     border-style: solid;
     border-color: v.$font-heavy;
     border-width: 0.1rem;
@@ -60,15 +75,21 @@ div.chartContents {
   border-color: v.$invisible;
   border-width: 0.1rem;
   background-color: v.$invisible;
+
+  min-width: $chart-cell-min-width;
   width: $chart-cell-width;
+  max-width: $chart-cell-max-width;
+
+  min-height: $chart-cell-min-height;
   height: $chart-cell-height;
+  max-height: $chart-cell-max-height;
 }
 
 //Row Label Text
 .chartRowLabelText {
   position: relative;
-  bottom: 0.85rem;
-  font-size: 0.5rem;
+  bottom: 0rem;
+  font-size: 0.4rem;
   color: v.$font-heavy;
   text-align: right;
 }
@@ -91,8 +112,14 @@ div.chartContents {
   border-color: purple;
   border-width: 0.1rem;
   margin: 0 0 0 0;
+
+  min-width: $chart-cell-min-width;
   width: $chart-cell-width;
+  max-width: $chart-cell-max-width;
+
+  min-height: $chart-cell-min-height;
   height: $chart-cell-height;
+  max-height: $chart-cell-max-height;
 }
 
 //Column Label Text

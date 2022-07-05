@@ -2,16 +2,16 @@
 import { React } from 'react';
 
 //Styling
-import '../../styles/transition_styling/details-to-attendance.scss';
+import '../../styles/transition_styling/details_to_attendance.scss';
 
-const TransitionDetailsToAttendance = ({ move }) => {
+const DetailsToAttendance = () => {
 
   return (
     <>
-      <div id="transitionLeft" className="transition-base-left"></div>
-      <div id="transitionRight" className="transition-base-right"></div>
+      <div id="dta-transition-left" className="dta-transition-left-base"></div>
+      <div id="dta-transition-right" className="dta-transition-right-base"></div>
     </>
   )
 }
 
-export default TransitionDetailsToAttendance;
+export default DetailsToAttendance;

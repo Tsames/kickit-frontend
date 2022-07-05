@@ -78,7 +78,7 @@
     padding: 0;
 
     color: v.$font-heavy;
-    background-image: linear-gradient(270deg, #EECE13 10%, #f4942e 100%);
+    background-image: v.$attendance-left-background-image;
 
     //Border
     border-right: solid;
@@ -194,8 +194,11 @@
     width: 75vw;
     height: 100vh;
     z-index: -1;
+    overflow-x: auto;
 
-    background-image: linear-gradient(120deg, #abd4f8 0%, #3577c3 100%);
+    padding-left: 10rem;
+
+    background-image: v.$attendance-right-background-image;
      
     //Arrange Items Within
     display: flex;

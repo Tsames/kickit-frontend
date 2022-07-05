@@ -19,6 +19,7 @@ const ViewEvent = ({ setRoot }) => {
 
   const id = useParams().id;
   const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
+  const REDIRECT_URL = "/share/" + id;
   setRoot("rb-view-event");
 
   //Stores the data of the event in question
@@ -264,7 +265,7 @@ const ViewEvent = ({ setRoot }) => {
     return (
       <div id="rsvp-main">
         <AttendanceToDetails />
-        <AttendForm event={event} blocks={blocks} togglePage={handleReturn}/>
+        <AttendForm URL={URL} event={event} blocks={blocks} togglePage={handleReturn}/>
       </div>
     )
   }

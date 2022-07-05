@@ -295,7 +295,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
   const handleMouseUp = () => {
     console.log(`Stopping selection...`);
     selection = false
-    console.log("selectedCells looks like this:");
+    console.log("sending selected cells to AttendForm.js like this:");
     console.log(selectedCells);
     handleAvailable(selectedCells);
   }

@@ -88,7 +88,7 @@ div.chartContents {
 //Row Label Text
 .chartRowLabelText {
   position: relative;
-  bottom: 0rem;
+  bottom: 0.7rem;
   font-size: 0.4rem;
   color: v.$font-heavy;
   text-align: right;
@@ -125,7 +125,7 @@ div.chartContents {
 //Column Label Text
 .chartColumnLabelText {
   position: relative;
-  top: 55%;
+  bottom: 0.2rem;
   font-size: 0.5rem;
   color: v.$font-heavy;
   text-align: center;

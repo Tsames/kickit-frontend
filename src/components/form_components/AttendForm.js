@@ -1,5 +1,6 @@
 //Dependencies
 import { React, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 //Import Components
 import Grid from "../input_components/Grid";
@@ -8,9 +9,10 @@ import Field from "../input_components/Field";
 //Styling
 import '../../styles/page_styling/view_event.scss';
 
-const AttendForm = ({event, blocks, togglePage}) => {
+const AttendForm = ({ URL, event, blocks, togglePage }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
+  let navigate = useNavigate();
 
   //State to store attendance data that will be submitted to the event record on the backend
   const [form, setForm] = useState({
@@ -25,26 +27,55 @@ const AttendForm = ({event, blocks, togglePage}) => {
     setForm({ ...form, "name": event.target.value });
   }
 
+  const checkPerson = () => {
+  }
+
   //Helper function - Updates the attending key:value of form
   const handleAvailable = (selectedCells) => {
-    setForm({ ...form, "available": selectedCells });
+    const newAvailable = [...form.available];
+    selectedCells.forEach((element) => {
+      const index = checkAvailable(element);
+      if (index === null) {
+        newAvailable.push(element);
+      }
+    })
+
+    console.log("Updated availability to:")
+    console.log(newAvailable);
+    setForm({ ...form, "available": newAvailable });
+  }
+
+  const checkAvailable = (item) => {
+    let exists = null;
+
+    form.available.forEach((cell, index) => {
+      if (cell[0] === item[0] && cell[1] === item[1] && cell[2] === item[2]) {
+        exists = index;
+      }
+    })
+
+    return exists;
   }
 
   //Helper function - replaces attending data if the person's record already exists, otherwise adds to it
   const prepareData = () => {
     const data = [ ...event.attending ]; let swap = false;
 
-    //If no one has yet submitted their availability data yet then just push new datat to array
+    //If no one has yet submitted their availability data yet then just push new data to array
     if (data.length === 0) {
       data.push(form);
+
     //Else check and see if the person's availability already exists
     } else {
-      data.forEach((person, index) => {
-        if (swap === false && person.name === form.name) {
+      let i = 0;
+      while (!swap && i < data.length) {
+        if (data[i].name === form.name) {
           swap = true;
-          data.splice(index, 1, form);
+          data.splice(i, 1, form);
         }
-      })
+        i++;
+      }
+
       //If we don't find an existing record then push and sort
       if (!swap) {
         data.push(form);
@@ -58,7 +89,7 @@ const AttendForm = ({event, blocks, togglePage}) => {
   //Helper function - sends put request to the appropriate backend URL
   const submitData = async (events) => {
     const newAttending = prepareData();
-    const newEventData = { ...event, "attending": newAttending };
+    const newEventData = { ...event, attending: newAttending };
     
     await fetch(URL, {
       method: "put",
@@ -70,17 +101,9 @@ const AttendForm = ({event, blocks, togglePage}) => {
   };
 
   //Helper function - the function that is run upon submission of the html form
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    submitData();
-    setForm({
-      name: "",
-      available: []
-    });
-  }
-
-  const checkPerson = () => {
-
+  const handleSubmit = async (event) => {
+    await submitData();
+    togglePage(event);
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
@@ -117,7 +140,7 @@ const AttendForm = ({event, blocks, togglePage}) => {
           <p id="rsvp-taken">{checkPerson()}</p>
           <div id="rsvp-left-data">
             <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName} />
-            <button id="rsvp-submit" onClick={handleSubmit}>Submit</button>
+            <button id="rsvp-submit" onClick={handleSubmit} data-to="details">Submit</button>
           </div>
           <button id="rsvp-back" onClick={togglePage} data-to="details">Back</button>
         </div>

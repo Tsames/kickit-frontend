@@ -131,7 +131,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
   //Helper function that assigns cells a class that colors them if limit is active
   const determineColorLimited = (whoAvailable) => {
     if (whoAvailable.includes(limit.name)) {
-      return "alotAvailable";
+      return "everyoneAvailable";
     } else {
       return  "noneAvailable";
     }

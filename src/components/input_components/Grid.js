@@ -297,7 +297,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     selection = false
     console.log("sending selected cells to AttendForm.js like this:");
     console.log(selectedCells);
-    handleAvailable(selectedCells);
+    handleAvailable(selectedCells, block);
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------*/

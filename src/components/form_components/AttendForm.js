@@ -14,11 +14,23 @@ const AttendForm = ({ URL, event, blocks, togglePage }) => {
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
   let navigate = useNavigate();
 
+  //Helper function that builds an array of arrays of length n where n is the number of blocks
+  const setUpAvailable = () => {
+    const newAvailable =[];
+    for (let i=0; i < blocks.length; i++ ) {
+      newAvailable.push([]);
+    }
+    return newAvailable;
+  }
+
   //State to store attendance data that will be submitted to the event record on the backend
   const [form, setForm] = useState({
     name: "",
-    available: []
+    available: setUpAvailable()
   });
+
+  console.log("form is:");
+  console.log(form);
 
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
 
@@ -27,58 +39,49 @@ const AttendForm = ({ URL, event, blocks, togglePage }) => {
     setForm({ ...form, "name": event.target.value });
   }
 
-  const checkPerson = () => {
-  }
-
   //Helper function - Updates the attending key:value of form
-  const handleAvailable = (selectedCells) => {
-    const newAvailable = [...form.available];
-    selectedCells.forEach((element) => {
-      const index = checkAvailable(element);
-      if (index === null) {
-        newAvailable.push(element);
-      }
-    })
+  const handleAvailable = (selectedCells, block) => {
+    const newAvailable = [ ...form.available ];
+    newAvailable.splice(block - 1, 1, selectedCells);
 
     console.log("Updated availability to:")
     console.log(newAvailable);
     setForm({ ...form, "available": newAvailable });
   }
 
-  const checkAvailable = (item) => {
-    let exists = null;
-
-    form.available.forEach((cell, index) => {
-      if (cell[0] === item[0] && cell[1] === item[1] && cell[2] === item[2]) {
-        exists = index;
-      }
-    })
-
-    return exists;
+  //Helper function that combines all of the seperate block's arrays into a single array
+  const squishAvailable = () => {
+    const newAvailable = [];
+    for (let i=0; i < form.available.length; i++) {
+      newAvailable.push(...form.available[i]);
+    }
+    newAvailable.sort();
+    return newAvailable
   }
 
   //Helper function - replaces attending data if the person's record already exists, otherwise adds to it
   const prepareData = () => {
+    const submitted = { ...form, available: squishAvailable()}
     const data = [ ...event.attending ]; let swap = false;
 
     //If no one has yet submitted their availability data yet then just push new data to array
     if (data.length === 0) {
-      data.push(form);
+      data.push(submitted);
 
     //Else check and see if the person's availability already exists
     } else {
       let i = 0;
       while (!swap && i < data.length) {
-        if (data[i].name === form.name) {
+        if (data[i].name === submitted.name) {
           swap = true;
-          data.splice(i, 1, form);
+          data.splice(i, 1, submitted);
         }
         i++;
       }
 
       //If we don't find an existing record then push and sort
       if (!swap) {
-        data.push(form);
+        data.push(submitted);
         data.sort()
       }
     }
@@ -90,6 +93,8 @@ const AttendForm = ({ URL, event, blocks, togglePage }) => {
   const submitData = async (events) => {
     const newAttending = prepareData();
     const newEventData = { ...event, attending: newAttending };
+    console.log("Sending put request to server:");
+    console.log(newEventData);
     
     await fetch(URL, {
       method: "put",
@@ -103,7 +108,7 @@ const AttendForm = ({ URL, event, blocks, togglePage }) => {
   //Helper function - the function that is run upon submission of the html form
   const handleSubmit = async (event) => {
     await submitData();
-    togglePage(event);
+    // togglePage(event);
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
@@ -137,7 +142,7 @@ const AttendForm = ({ URL, event, blocks, togglePage }) => {
       <>
         <div id="rsvp-left">
           <h2>Sign Up</h2>
-          <p id="rsvp-taken">{checkPerson()}</p>
+          <p id="rsvp-taken">{}</p>
           <div id="rsvp-left-data">
             <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName} />
             <button id="rsvp-submit" onClick={handleSubmit} data-to="details">Submit</button>

@@ -54,7 +54,7 @@ const Home = ({setRoot}) => {
     <div id="home-shell" className="page-body">
       <h2>Kick it</h2>
       <label htmlFor="search" id="search-Label">
-        <input id="search" type="text" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch} placeholder="Enter event title"/>
+        <input id="search" type="text" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch} placeholder="Enter event id"/>
         {/* <button id="search-button" onClick={handleSearch}><BiSearchAlt id="search-icon"></BiSearchAlt></button> */}
       </label>
     </div>

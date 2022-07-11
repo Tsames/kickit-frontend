@@ -17,16 +17,8 @@ const ViewEvent = ({ setRoot }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
 
-  const id = useParams().id;
-  const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/" + id;
   const REDIRECT_URL = "/share/" + id;
   setRoot("rb-view-event");
-
-  //Stores the data of the event in question
-  const [event, setEvent] = useState(null);
-
-  //Stores data used to organize the grids into blocks of adjacent days (for AttendanceChart.js and Grid.js)
-  const [blocks, setBlocks] = useState([]);
 
   //States to keep track of the component that is displayed
   const [page, setPage] = useState("details");
@@ -47,46 +39,6 @@ const ViewEvent = ({ setRoot }) => {
   })
 
   /* ------------------------------------------ State Helper Functions ------------------------------------------*/
-
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Event State Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-
-  //Helper function - Gets Event Data
-  const getEventData = async () => {
-    try {
-      //Fetch event data
-      const response = await fetch(URL);
-      const data = await response.json()
-
-      //Set block state
-      makeBlocks(data.days)
-
-      //Set event state
-      setEvent(data);
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  //Run to get relevant event data upon first loading
-  useEffect(() => getEventData(), []);
-
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Blocks State Helper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-
-  //Helper function - arranges the days array into sub arrays of only adjacent days
-  const makeBlocks = (daysArray) => {
-    const newBlocks = [], data = [...daysArray];
-    while (data.length > 0) {
-      const smallBlock = [];
-      smallBlock.push(data.shift());
-      while (Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000) {
-        smallBlock.push(data.shift());
-      }
-      newBlocks.push(smallBlock);
-    }
-
-    setBlocks(newBlocks);
-  }
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page State Helper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
@@ -166,17 +118,6 @@ const ViewEvent = ({ setRoot }) => {
     return (
       <h4 id="loading">Loading...</h4>
     )
-  }
-
-  //Helper - Determine which page should be displayed when event is loaded
-  const eventLoaded = () => {
-    if (page === "details") {
-      return details()
-    } else if (page === "attendance") {
-      return attendance();
-    } else {
-      return rsvp();
-    }
   }
 
   //Helper to attendance

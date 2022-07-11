@@ -1,17 +1,16 @@
-//Dependencies
 import { React } from 'react';
+import { useParams } from 'react-router-dom';
 
 //Styling
-import '../../styles/display_styling/event_details.scss';
+import '../../styles/conformation_styling/add_availability_success.scss';
 
-const EventDetails = ({ event }) => {
+const Peek = ({ setRoot, getEventData, event, blocks }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
 
+  const id = useParams().id;
 
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
-
-  /* ------------------------------------------ Fetch Event Data ------------------------------------------*/
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------*/
 
@@ -19,11 +18,9 @@ const EventDetails = ({ event }) => {
 
   return (
     <div>
-      <h3 className="eventDetail">{event.title}</h3>
-      <p className="eventDetail">@ {event.location}</p>
-      <p id="event-description" className="eventDetail">{event.description}</p>
+
     </div>
   )
 }
 
-export default EventDetails;
+export default Peek;

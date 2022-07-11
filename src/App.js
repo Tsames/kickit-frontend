@@ -1,18 +1,62 @@
 //Dependencies
-import React, { Component } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import { Routes, Route } from 'react-router-dom';
 
-
-//Import Page Components
+//Import Nav & Footer Components
 import Navbar from './components/page_components/Navbar';
-import Home from './components/page_components/Home';
-import CreateForm from './components/form_components/CreateForm';
-import ViewEvent from './components/page_components/ViewEvent';
 import Footer from './components/page_components/Footer';
 
-class App extends Component {
+//Import Main Pages
+import Home from './components/page_components/Home';
+import CreateForm from './components/form_components/CreateForm';
+import Share from './components/page_components/Share';
+import Attend from './components/page_components/Attend';
+import Peek from './components/page_components/Peek';
 
-  setRoot = (newClassRoot=null, newClassNav=null) => {
+//Import Confirmation Pages
+import CreateEventSuccess from './components/conformation_components/CreateEventSuccess';
+import AddAvailabilitySuccess from './components/conformation_components/AddAvailabilitySuccess';
+
+
+function App () {
+
+  /* ------------------------------------------ App Wide Variables and State ------------------------------------------*/
+
+  /* Data of the event is stored in event state at App.js to eliminate the need to repeatedly query the database.
+
+  We also store data called blocks which is data that facilitates the creation of grids in the AttendanceChart.js and Grid.js components
+  to visually represent availability */
+
+  //Stores the data of an event
+  const [event, setEvent] = useState(null);
+
+  //Stores data used to organize the display components into blocks of adjacent days
+  //(for AttendanceChart.js and Grid.js)
+  const [blocks, setBlocks] = useState([]);
+
+  const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
+
+  /* ------------------------------------------ Helper Functions ------------------------------------------*/
+
+  //Helper function - arranges the days array into sub arrays of only adjacent days and sets the result in blocks state
+  const makeBlocks = (daysArray) => {
+    const newBlocks = [], data = [...daysArray];
+    while (data.length > 0) {
+      const smallBlock = [];
+      smallBlock.push(data.shift());
+      while (Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000) {
+        smallBlock.push(data.shift());
+      }
+      newBlocks.push(smallBlock);
+    }
+
+    setBlocks(newBlocks);
+  }
+
+  /* ------------------------------------------ Passing Functions ------------------------------------------*/
+  
+  //Passing function - Sets the class of root or nav
+  const setRoot = (newClassRoot=null, newClassNav=null) => {
     //Set the class of root
     if (newClassRoot !== null) {
       const root = document.getElementById("root");
@@ -28,21 +72,41 @@ class App extends Component {
     }
   }
 
-  render() {
-    return (
-      <>
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<Home setRoot={this.setRoot}/>} />
-            <Route path='/create' element={<CreateForm setRoot={this.setRoot}/>} />
-            <Route exact path='/share/:id' match={this.props.match} element={<ViewEvent setRoot={this.setRoot} />} />
-          </Routes>
-          <Footer/>
-        </BrowserRouter>
-      </>
-    );
+  //Passing function - Gets Event Data and stores in state
+  const getEventData = async (id) => {
+    try {
+      //Fetch event data
+      const response = await fetch(URL + `${id}`);
+      const data = await response.json()
+
+      //Set block state
+      makeBlocks(data.days)
+
+      //Set event state
+      setEvent(data);
+
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  /* ------------------------------------------ Returning JSX ------------------------------------------*/
+
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home setRoot={setRoot} getEventData={getEventData}/>} />
+        <Route path='/create' element={<CreateForm setRoot={setRoot} getEventData={getEventData}/>} />
+        <Route path='/share/:id' element={<Share setRoot={setRoot} getEventData={getEventData} event={event} />} />
+        <Route path='/attend/:id' element={<Attend setRoot={setRoot} getEventData={getEventData} event={event} blocks={blocks} /> } />
+        <Route path='/peek/:id' element={<Peek setRoot={setRoot} getEventData={getEventData} event={event} blocks={blocks} />} />
+        {/* <Route path='/created/:id' element={<CreateEventSuccess setRoot={setRoot} getEventData={getEventData} />} /> */}
+        {/* <Route path='/attend/:id' element={<AddAvailabilitySuccess setRoot={setRoot} getEventData={getEventData} />} /> */}
+      </Routes>
+      <Footer/>
+    </>
+  );
 }
 
 export default App;

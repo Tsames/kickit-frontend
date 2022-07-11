@@ -29,9 +29,6 @@ const AttendForm = ({ URL, event, blocks, togglePage }) => {
     available: setUpAvailable()
   });
 
-  console.log("form is:");
-  console.log(form);
-
   /* ------------------------------------------ Helper Functions ------------------------------------------*/
 
   //Helper function - Updates the name key:value of form

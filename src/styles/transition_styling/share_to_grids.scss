@@ -4,7 +4,7 @@
 
 /* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Before Classes %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
 
-.dta-transition-left-base {
+.share-to-grid-transition-left-base {
   //Position
   position: absolute;
   left: 0;
@@ -25,7 +25,7 @@
   transition: all 1s ease;
 }
 
-.dta-transition-right-base {
+.share-to-grids-transition-right-base {
   //Position
   position: absolute;
   right: 0;
@@ -42,7 +42,7 @@
 
 /* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Move Classes %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
 
-div.dta-transition-left-move {
+div.share-to-grids-transition-left-move {
   //Position
   position: absolute;
   left: 0;
@@ -63,7 +63,7 @@ div.dta-transition-left-move {
   transition: all 1s ease;
 }
 
-div.dta-transition-right-move {
+div.share-to-grids-transition-right-move {
   //Position
   position: absolute;
   right: 0;

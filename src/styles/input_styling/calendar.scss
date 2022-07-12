@@ -55,12 +55,12 @@ div.calendarShell {
 
   //Style for Selected Items in the grid
   div.calendarSelected {
-    background-color: v.$calendar-selected-background;
-    border-color: v.$calendar-selected-border;
-    color: v.$calendar-selected-color;
-    border-style: solid;
-    border-radius: 0.2em;
-    border-width: 0em;
+    background-color: v.$calendar-selected-background !important;
+    border-color: v.$calendar-selected-border !important;
+    color: v.$calendar-selected-color !important;
+    border-style: solid !important;
+    border-radius: 0.2em !important;
+    border-width: 0em !important;
   } 
 
   div.Invisible {

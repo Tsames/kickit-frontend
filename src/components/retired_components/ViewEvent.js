@@ -6,7 +6,7 @@ import { FiUsers, FiNavigation } from "react-icons/fi";
 //Import Components
 import AttendanceChart from "../display_components/AttendanceChart";
 import EventDetails from "../display_components/EventDetails";
-import AttendForm from "../form_components/AttendForm";
+import AttendForm from "./AttendForm";
 import DetailsToAttendance from '../transition_components/DetailsToAttendance';
 import AttendanceToDetails from '../transition_components/AttendanceToDetails';
 

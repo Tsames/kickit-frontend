@@ -6,7 +6,7 @@ import '../../styles/input_styling/grid.scss';
 
 const Grid = ({ early, late, days, block, handleAvailable }) => {
 
-  /* ------------------------------------------ Grid Generator Functions & Variables ------------------------------------------*/
+  /* ------------------------------------------ Grid Generator Functions & Variables ------------------------------------------ */
 
   //Get column and row numbers from props
   let numColumns = days.length;
@@ -14,7 +14,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Labels Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  //Generate the hour text for row labels
+  //Helper functin (generateRowLabels) - generate the text for row labels
   const rowLabelHelper = (index) => {
     let label = null, moreHours = Math.floor(index / 2);
     let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
@@ -27,7 +27,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     return label;
   }
 
-  //Helper function to arrange the text for column labels
+  //Helper function (generatecolumnLabels) - generate the text for column labels
   const columnLabelHelper = (index) => {
     let label = null;
     if (index !== 0) {
@@ -40,7 +40,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Labels %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  //Generates the labels for rows
+  //Generator function - labels for rows
   const generateRowLabels = (rows) => {
     let content = [], label = null;
 
@@ -62,7 +62,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     )
   }
 
-  //Generate the labels for columns
+  //Generator function - labels for columns
   const generateColumnLabels = () => {
     let content = [], label = null;
 
@@ -86,7 +86,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Grid %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  //Generates the rows within a column
+  //Generator function - rows within a column
   const generateRows = (column) => {
     let content = []
     for (let i = 1; i <= numRows; i++) {
@@ -98,7 +98,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     return content
   }
 
-  //Main generator function that generates the columns of a grid
+  //Main generator function - generates the columns of a grid
   const generateColumns = () => {
     let content = []
     content.push(generateRowLabels());
@@ -112,7 +112,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     return content
   }
 
-  /* ------------------------------------------ Selection Event Variables ------------------------------------------*/
+  /* ------------------------------------------ Selection Event Variables ------------------------------------------ */
 
   //Component wide variables
   const [selectedCells, setSelectedCells] = useState([]);
@@ -125,9 +125,9 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
   const cellOn = "gridCell gridSelected"; //The class that highlights a cell
   const cellOff = "gridCell"; //The class for an unhighlighted cell
 
-  /* ------------------------------------------ Selection Event Helper Functions ------------------------------------------*/
+  /* ------------------------------------------ Selection Event Helper Functions ------------------------------------------ */
 
-  //Helper function - determines toggle state
+  //Helper function (handleMouseDown) - determines toggle state
   const setToggleState = target => {
     if (target.className === cellOff) {
       toggleState = true;
@@ -136,7 +136,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     }
   }
 
-  //Helper function - toggles the provided elements' class according to toggleState and manages
+  //Helper function (handleMouseDown, handleMouseover) - toggles the provided elements' class according to toggleState and manages
   //adding or removing the cell from selectedCells state
   const toggleThis = (toggleWhat) => {
     if (toggleState) {
@@ -152,7 +152,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     }
   }
 
-  //Helper function to add to selectedCells under the right conditions
+  //Helper function (toggleThis) - add to selectedCells under the right conditions
   const addToSelectedCells = (column, row) => {
     const item = [block, column, row];
 
@@ -165,7 +165,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     }
   }
 
-  //Helper function to remove from selectedCells under the right conditions
+  //Helper function (toggleThis) - remove from selectedCells under the right conditions
   const removeFromSelectedCells = (column, row) => {
     const item = [block, column, row];
     const index = searchSelectedCells(item);
@@ -177,8 +177,8 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     }
   }
 
-  //Helper function to search through selectedCells - return null if no element exists - otherwise returns
-  //index of the element being searched for
+  /* Helper function (addToSelectedCells, removeFromSelectedCells) - search through selectedCells and return
+  null if no element exists - otherwise returns index of the element being searched for */
   const searchSelectedCells = (item) => {
     let exists = null;
 
@@ -191,7 +191,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     return exists;
   }
 
-  //Helper function - determines if start or end is the bigger number
+  //Helper function (handleMouseOver) - determines what square should be passed to toggleThis
   const getCorners = () => {
 
     //Set helper variables
@@ -221,12 +221,13 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
       sizeArray.push(startColumn);
       sizeArray.push(endColumn);
     }
-    // console.log(`Endpoints are from (${sizeArray[2]}, ${sizeArray[0]}) to (${sizeArray[3]}, ${sizeArray[1]})`);
+    
     return sizeArray;
   }
 
-  /* ------------------------------------------ Selection Events Functions ------------------------------------------*/
+  /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
+  //Handler function - Start a selection and toggle mousedown target
   const handleMouseDown = e => {
     //Prevent page scrolling
     e.preventDefault();
@@ -242,7 +243,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     toggleThis([e.target]);
   }
 
-  //Determine which cells to toggle based on selection
+  //Handler function - Determine which cells to toggle based on mouseover
   const handleMouseOver = e => {
     if (selection) {
       //Console message
@@ -291,7 +292,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     }
   }
 
-  //Ends a selection when mouse up or cursor moves out of grid
+  //Handler function - ends a selection when mouse up or cursor moves out of grid
   const handleMouseUp = () => {
     console.log(`Stopping selection...`);
     selection = false
@@ -300,7 +301,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     handleAvailable(selectedCells, block);
   }
 
-  /* ------------------------------------------ Returning JSX ------------------------------------------*/
+  /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
     <div className="gridTable">

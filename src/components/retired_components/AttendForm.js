@@ -9,7 +9,7 @@ import Field from "../input_components/Field";
 //Styling
 import '../../styles/page_styling/view_event.scss';
 
-const AttendForm = ({ URL, event, blocks, togglePage }) => {
+const AttendForm = ({ URL, event, blocks }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------*/
   let navigate = useNavigate();

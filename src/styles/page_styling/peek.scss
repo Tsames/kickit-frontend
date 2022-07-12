@@ -3,7 +3,7 @@
 @use './../mixins' as m;
 @import '../device_layout/layout';
 
-#view-event-shell {
+#peek-wrapper {
 
   //Display Settings
   display: flex;
@@ -22,36 +22,8 @@
 
   /* ------------------------------------- Child Elements - Event Loaded ------------------------------------- */
 
-  /* ------------------------------------- Details Page ------------------------------------- */
 
-  #details-main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-
-  #details-left {
-    max-width: 40vw;
-  }
-
-  #details-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-
-  .details-button {
-    margin: 1.1rem 0 1.1rem 1.5rem;
-    width: 5rem;
-    height: 2.2rem;
-    @include m.button-light;
-  }
-
-  /* ------------------------------------- Attendance Page ------------------------------------- */
-
-  #attendance-main {
+  #peek-main {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -60,7 +32,7 @@
 
   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Side-bar Wrapper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  #attendance-left {
+  #peek-left {
     //Position
     position: absolute;
     left: 0;
@@ -78,7 +50,7 @@
     padding: 0;
 
     color: v.$font-heavy;
-    background-image: v.$attendance-left-background-image;
+    background-image: v.$grids-left-background-image;
 
     //Border
     border-right: solid;
@@ -89,7 +61,7 @@
     /* %%%%%%%%%%%% Children %%%%%%%%%%%% */
 
     // @@@@@@@@@@@@@ Mode Toggle Widget @@@@@@@@@@@@@
-    #attendance-modes {
+    #peek-modes {
       position: absolute;
       top: 3vh;
 
@@ -128,7 +100,7 @@
     }
 
     //Person Attending listing Wrapper
-    #attendance-list-wrapper {
+    #peek-list-wrapper {
       position: absolute;
       top: 35vh;
       height: 52vh;
@@ -145,7 +117,7 @@
       text-align: left;
 
       //Person Attending Item
-      .attendance-list-person {
+      .peek-list-person {
         position: relative;
         margin: 0.1rem 0 0.1rem 0;
         padding: 0 0;
@@ -184,10 +156,9 @@
     }
   }
 
-  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ########## %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Right Side of Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  #attendance-right {
+
+  #peek-right {
     //Position
     position: absolute;
     right: 0;
@@ -199,7 +170,7 @@
 
     padding-left: 10rem;
 
-    background-image: v.$attendance-right-background-image;
+    background-image: v.$grids-right-background-image;
 
     //Arrange Items Within
     display: flex;

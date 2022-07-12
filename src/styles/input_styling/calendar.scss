@@ -43,14 +43,14 @@ div.calendarShell {
     text-align: center;
     align-items: center;
     margin: 0.2em;
-  }
 
-  div.calendarHover {
-    color: v.$calendar-hover;
-    background-color: v.$calendar-hover-background;
-    border-style: solid;
-    border-radius: 0.2em;
-    border-width: 0em;
+    &:hover {
+      color: v.$calendar-hover;
+      background-color: v.$calendar-hover-background;
+      border-style: solid;
+      border-radius: 0.2em;
+      border-width: 0em;
+    }
   }
 
   //Style for Selected Items in the grid

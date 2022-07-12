@@ -12,7 +12,7 @@
   z-index: 1;
 
   color: v.$font-heavy;
-  background-image: v.$attendance-left-background-image;
+  background-image: v.$grids-left-background-image;
 
   //Border
   border-right: solid;
@@ -34,7 +34,7 @@
   // z-index: -1;
 
   // color: v.$font-heavy;
-  // background-image: v.$attendance-left-background-image;
+  // background-image: v.$grids-left-background-image;
 
   // //Border
   // border-right: solid;
@@ -56,7 +56,7 @@
 
   opacity: 0;
   
-  background: v.$attendance-right-background-image;
+  background: v.$grids-right-background-image;
   transition: opacity 1s 1s;
 }
 
@@ -72,7 +72,7 @@ div.share-to-grids-transition-left-move {
 //   z-index: 2;
 
 //   color: v.$font-heavy;
-//   background-image: v.$attendance-left-background-image;
+//   background-image: v.$grids-left-background-image;
 
 //   //Border
 //   border-right: solid;
@@ -94,6 +94,6 @@ div.share-to-grids-transition-right-move {
 
   opacity: 1;
 
-  background: v.$attendance-right-background-image;
+  background: v.$grids-right-background-image;
   transition: opacity 1s 1s;
 }

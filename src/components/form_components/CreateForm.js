@@ -1,23 +1,23 @@
 //Dependencies
 import { React, useState } from 'react';
 
-//Styles
-import '../../styles/form_styling/create_form.scss';
-
-//Components
+//Import Components
 import Field from '../input_components/Field';
 import TextArea from '../input_components/TextArea';
 import TimeDropdown from '../input_components/TimeDropdown';
 import Calendar from '../input_components/Calendar';
 
-const CreateForm = ({ setRoot }) => {
+//Styling
+import '../../styles/form_styling/create_form.scss';
 
-  /* ------------------------------------------ Component Variables & State ------------------------------------------*/
+const CreateForm = ({ setRoot, URL }) => {
+
+  /* ------------------------------------------ Component Variables & State ------------------------------------------ */
+  
+  //Set root style based on page
   setRoot("rb-create-event");
 
-
-  const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events";
-
+  //State that stores input
   const [newForm, setNewForm] = useState({
     title: "",
     location: "",
@@ -28,15 +28,9 @@ const CreateForm = ({ setRoot }) => {
     days: []
   });
 
-  /* ------------------------------------------ Form Logic ------------------------------------------*/
-  const handleChange = (event) => {
-    let newValue = event.target.value;
-    if (event.target.name === "early" || event.target.name === "late") {
-      newValue = Number(event.target.value)
-    }
-    setNewForm({ ...newForm, [event.target.name]: newValue });
-  };
+  /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
+  //Helper function (handleSubmit) - makes an HTTP Post request to the backend
   const createEvent = async (events) => {
     await fetch(URL, {
       method: "post",
@@ -47,6 +41,18 @@ const CreateForm = ({ setRoot }) => {
     });
   };
 
+  /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
+
+  //Handler function - Updates form state
+  const handleChange = (event) => {
+    let newValue = event.target.value;
+    if (event.target.name === "early" || event.target.name === "late") {
+      newValue = Number(event.target.value)
+    }
+    setNewForm({ ...newForm, [event.target.name]: newValue });
+  };
+
+  //Handler function - Resets state and makes an HTTP Post request to the backend upon submission
   const handleSubmit = (event) => {
     event.preventDefault();
     createEvent(newForm);
@@ -61,7 +67,8 @@ const CreateForm = ({ setRoot }) => {
     });
   }
 
-  /* ------------------------------------------ Returning JSX ------------------------------------------*/
+  /* ------------------------------------------ Returning JSX ------------------------------------------ */
+
   return (
     <div className="createFormShell pageBody">
       <form className="createForm" onSubmit={handleSubmit}>

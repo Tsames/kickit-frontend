@@ -3,16 +3,20 @@ import { React} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { RiHome2Fill } from "react-icons/ri";
 
-//Styles
+//Styling
 import '../../styles/page_styling/navbar.scss';
 
-const Navbar = (props) => {
+const Navbar = () => {
 
-  /* ------------------------------------------ Component Variables ------------------------------------------*/
+  /* ------------------------------------------ Component Variables ------------------------------------------ */
 
   const location = useLocation().pathname;
 
-  /* ------------------------------------------ Conditional JSX ------------------------------------------*/
+  /* ------------------------------------------ Conditional JSX ------------------------------------------ */
+
+  /* There was originally authentication when the app was originally built, but in this version it has been stripped.
+  The noUser function is remnants that has not yet been removed because I plan to add authentication at a later date. */
+
   const noUser = (
     <>
       <Link to='/login' className="navItem">Log In</Link>
@@ -24,7 +28,8 @@ const Navbar = (props) => {
     <Link to="/" className="navItem"><RiHome2Fill id="home" /></Link>
   )
 
-  /* ------------------------------------------ Returning JSX ------------------------------------------*/
+  /* ------------------------------------------ Returning JSX ------------------------------------------ */
+
   return (
     <nav id="navbar" className="page-top">
       <div id="navLeft">

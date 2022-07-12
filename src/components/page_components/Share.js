@@ -10,12 +10,14 @@ import '../../styles/page_styling/share.scss';
 
 const Share = ({ setRoot, getEventData, event}) => {
 
-  /* ------------------------------------------ Component Variables & State ------------------------------------------*/
+  /* ------------------------------------------ Component Variables & State ------------------------------------------ */
+  let navigate = useNavigate();
+  
   //Set root style based on page
   setRoot("rb-view-event");
 
   //Get Id from params
-  const id = useParams().id;;
+  const id = useParams().id;
 
   /* If the event stored in state does not have the same id as the id in params then call
   getEventData from App.js and get the data of the event that matches the id in params */
@@ -23,11 +25,9 @@ const Share = ({ setRoot, getEventData, event}) => {
     getEventData(id);
   }
 
-  let navigate = useNavigate();
+  /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
-  /* ------------------------------------------ Helper Functions ------------------------------------------*/
-
-  //Helper function - runs the transition animation and then navigates to either Attend.js or Peek.js
+  //Handler function - runs the transition animation and then navigates to either Attend.js or Peek.js
   const handleNavigate = (event) => {
     const transitionLeft = document.getElementById("share-to-grids-transition-left");
     const transitionRight = document.getElementById("share-to-grids-transition-right");
@@ -39,7 +39,7 @@ const Share = ({ setRoot, getEventData, event}) => {
     }, 2000)
   }
 
-  /* ------------------------------------------ Conditional JSX ------------------------------------------*/
+  /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
   //JSX to display if event is still in the process of loading
   const noEvent = () => {
@@ -48,7 +48,7 @@ const Share = ({ setRoot, getEventData, event}) => {
     )
   }
 
-  //Details
+  //Main JSX
   const share = () => {
     return (
       <div id="share-main">
@@ -66,7 +66,7 @@ const Share = ({ setRoot, getEventData, event}) => {
     )
   }
 
-  /* ------------------------------------------ Returning JSX ------------------------------------------*/
+  /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
     <div id="share-wrapper" className="page-body">

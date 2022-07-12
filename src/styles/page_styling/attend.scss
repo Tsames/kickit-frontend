@@ -3,7 +3,7 @@
 @use './../mixins' as m;
 @import '../device_layout/layout';
 
-#view-event-shell {
+#attend-wrapper {
 
   //Display Settings
   display: flex;
@@ -22,45 +22,8 @@
 
   /* ------------------------------------- Child Elements - Event Loaded ------------------------------------- */
 
-  /* ------------------------------------- Details Page ------------------------------------- */
-
-  #details-main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-
-  #details-left {
-    max-width: 40vw;
-  }
-
-  #details-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-
-  .details-button {
-    margin: 1.1rem 0 1.1rem 1.5rem;
-    width: 5rem;
-    height: 2.2rem;
-    @include m.button-light;
-  }
-
-  /* ------------------------------------- Attendance Page ------------------------------------- */
-
-  #attendance-main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-
   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Side-bar Wrapper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-  #attendance-left {
+  #attend-left {
     //Position
     position: absolute;
     left: 0;
@@ -78,7 +41,7 @@
     padding: 0;
 
     color: v.$font-heavy;
-    background-image: v.$attendance-left-background-image;
+    background-image: linear-gradient(270deg, #EECE13 10%, #f4942e 100%);
 
     //Border
     border-right: solid;
@@ -88,106 +51,33 @@
 
     /* %%%%%%%%%%%% Children %%%%%%%%%%%% */
 
-    // @@@@@@@@@@@@@ Mode Toggle Widget @@@@@@@@@@@@@
-    #attendance-modes {
-      position: absolute;
-      top: 3vh;
-
-      //Individual ajustments for each button within the widget
-      //Left Button
-      #all-button {
-        position: relative;
-        top: 0.1rem;
-        margin-right: 0.1rem;
-      }
-
-      //Right Button
-      #mouseover-button {
-        position: relative;
-        top: 0.1rem;
-        margin-left: 0.06rem;
-      }
-
-      //Button Class
-      .mode-button {
-        color: v.$font-heavy;
-        background: none;
-        border: none;
-
-        &:hover {
-          color: v.$font-light;
-          transition: color 0.5s ease;
-        }
-      }
+    button {
+      @include m.button-dark;
     }
 
-    //Attending / Mouseover Text
-    h4 {
-      position: absolute;
-      top: 20vh;
+    h2 {
+      position: relative;
+      bottom: 2rem;
     }
 
-    //Person Attending listing Wrapper
-    #attendance-list-wrapper {
-      position: absolute;
-      top: 35vh;
-      height: 52vh;
-
-      overflow-x: hidden;
-      overflow-y: auto;
+    //Name input and submit button wrapper
+    #attend-left-data {
+      position: relative;
+      bottom: 5rem;
 
       display: flex;
       flex-direction: column;
-      justify-content: top;
+      justify-content: space-evenly;
       align-items: center;
-      padding: 1rem;
 
-      text-align: left;
-
-      //Person Attending Item
-      .attendance-list-person {
-        position: relative;
-        margin: 0.1rem 0 0.1rem 0;
-        padding: 0 0;
-
-        font-size: 0.8rem;
-        color: v.$font-heavy;
-        text-align: left;
-
-        background: none;
-        border: none;
-        transition: all 0.5s ease;
-
-        &:hover {
-          color: v.$font-light;
-          transition: all 0.3s ease;
-        }
+      button {
+        margin-top: 0.5rem;
       }
-
-      //Class added if the person is currently selected
-      .limit-active {
-        color: v.$font-light;
-      }
-    }
-
-    .limit-active {
-      color: v.$font-light;
-      transition: all 0.5s ease;
-    }
-
-    //Back button
-    button {
-      position: absolute;
-      bottom: 3vh;
-
-      @include m.button-dark;
     }
   }
 
-  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ########## %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Right Side of Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  #attendance-right {
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Grid Block %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  #attend-right {
     //Position
     position: absolute;
     right: 0;
@@ -195,19 +85,15 @@
     width: 75vw;
     height: 100vh;
     z-index: -1;
-    overflow-x: auto;
 
-    padding-left: 10rem;
-
-    background-image: v.$attendance-right-background-image;
+    background-image: linear-gradient(120deg, #abd4f8 0%, #3577c3 100%);
 
     //Arrange Items Within
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
   }
 
   /* ------------------------------------- &&&&&&&&&&&&&&&&&&&& ------------------------------------- */
-
 }

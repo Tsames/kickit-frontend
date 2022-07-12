@@ -5,7 +5,8 @@ import { React } from 'react';
 import '../../styles/display_styling/attendance_chart.scss';
 
 const AttendanceChart = ({ attending, days, early, late, block, handleHover, limit }) => {
-  /* ------------------------------------------ Grid Generator Functions & Variables ------------------------------------------*/
+
+  /* ------------------------------------------ Grid Generator Functions, Variables, and their Helpers ------------------------------------------ */
 
   //Get column and row numbers from props
   const numColumns = days.length;
@@ -14,7 +15,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Labels Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  //Generate the hour text for row labels
+  //Helper function (generateRowLabels) - generate the text for row labels
   const rowLabelHelper = (index) => {
     let label = null, moreHours = Math.floor(index / 2);
     let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
@@ -27,7 +28,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     return label;
   }
 
-  //Helper function to arrange the text for column labels
+  //Helper function (generateColumnLabels) - generate the text for column labels
   const columnLabelHelper = (index) => {
     let label = null;
     if (index !== 0) {
@@ -40,7 +41,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Labels %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  //Generates the labels for rows
+  //Generator function - labels for rows
   const generateRowLabels = (rows) => {
     let content = [], label = null;
 
@@ -62,7 +63,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     )
   }
 
-  //Generate the labels for columns
+  //Generator function - labels for columns
   const generateColumnLabels = () => {
     let content = [], label = null;
 
@@ -86,7 +87,8 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  //Helper function gets an array of names of all attendees who are available at that time
+  /* Helper function (generateRows) - gets an array of names of all attendees 
+  who are available at that time */
   const determineWho = (column, row) => {
     const list =[];
 
@@ -106,8 +108,8 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     return list;
   }
 
-  //Helper function that assigns cells a class that colors them based on the percentage
-  //of total attendees that reported they are available at the time this cell represents
+  /* Helper function (generateRows) - assigns cells a class that colors them based on the percentage
+  of total attendees that reported they are available at the time this cell represents */
   const determineColor = (count) => {
     const totalCount = attending.length;
     const percentage = (count / totalCount) * 100;
@@ -128,7 +130,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     }
   }
 
-  //Helper function that assigns cells a class that colors them if limit is active
+  //Helper function (generateRows) - assigns cells a class that colors them if limit is active
   const determineColorLimited = (whoAvailable) => {
     if (whoAvailable.includes(limit.name)) {
       return "everyoneAvailable";
@@ -139,7 +141,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-  //Generates the rows within a column
+  //Generator function - rows within a column
   const generateRows = (column) => {
     let content = []
     for (let i = 1; i <= numRows; i++) {
@@ -161,7 +163,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     return content
   }
 
-  //Main generator function that generates the columns of a chart
+  //Main generator function - columns of a chart
   const generateColumns = () => {
     let content = []
     content.push(generateRowLabels());
@@ -175,11 +177,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     return content
   }
 
-  /* ------------------------------------------ Event Functions ------------------------------------------*/
-
-
-
-  /* ------------------------------------------ Returning JSX ------------------------------------------*/
+  /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
     <div className="attendanceChart">

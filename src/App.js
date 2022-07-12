@@ -20,7 +20,7 @@ import AddAvailabilitySuccess from './components/conformation_components/AddAvai
 
 function App () {
 
-  /* ------------------------------------------ App Wide Variables and State ------------------------------------------*/
+  /* ------------------------------------------ App Wide Variables and State ------------------------------------------ */
 
   /* Data of the event is stored in event state at App.js to eliminate the need to repeatedly query the database.
 
@@ -36,9 +36,10 @@ function App () {
 
   const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
 
-  /* ------------------------------------------ Helper Functions ------------------------------------------*/
+  /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
-  //Helper function - arranges the days array into sub arrays of only adjacent days and sets the result in blocks state
+  /* Helper function (getEventData) - arranges the days array into sub arrays of only adjacent
+  days and sets the result in blocks state */
   const makeBlocks = (daysArray) => {
     const newBlocks = [], data = [...daysArray];
     while (data.length > 0) {
@@ -53,7 +54,7 @@ function App () {
     setBlocks(newBlocks);
   }
 
-  /* ------------------------------------------ Passing Functions ------------------------------------------*/
+  /* ------------------------------------------ Passing Functions ------------------------------------------ */
   
   //Passing function - Sets the class of root or nav
   const setRoot = (newClassRoot=null, newClassNav=null) => {
@@ -90,16 +91,16 @@ function App () {
     }
   }
 
-  /* ------------------------------------------ Returning JSX ------------------------------------------*/
+  /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
     <>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home setRoot={setRoot} getEventData={getEventData}/>} />
-        <Route path='/create' element={<CreateForm setRoot={setRoot} getEventData={getEventData}/>} />
+        <Route path='/create' element={<CreateForm setRoot={setRoot} getEventData={getEventData} URL={URL}/>} />
         <Route path='/share/:id' element={<Share setRoot={setRoot} getEventData={getEventData} event={event} />} />
-        <Route path='/attend/:id' element={<Attend setRoot={setRoot} getEventData={getEventData} event={event} blocks={blocks} /> } />
+        <Route path='/attend/:id' element={<Attend getEventData={getEventData} event={event} blocks={blocks} URL={URL} /> } />
         <Route path='/peek/:id' element={<Peek getEventData={getEventData} event={event} blocks={blocks} />} />
         {/* <Route path='/created/:id' element={<CreateEventSuccess setRoot={setRoot} getEventData={getEventData} />} /> */}
         {/* <Route path='/attend/:id' element={<AddAvailabilitySuccess setRoot={setRoot} getEventData={getEventData} />} /> */}

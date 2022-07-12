@@ -6,10 +6,9 @@ import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import '../../styles/input_styling/calendar.scss';
 
 const Calendar = ({newForm, setNewForm}) => {
+  /* ------------------------- Component Wide Variables & State ------------------------- */
 
-  /* -------------------------  Helper Functions -------------------------*/
-
-  //Helper function that sets the hours, minutes, seconds, and miliseconds to 0
+  //Helper function (variable now) - sets the hours, minutes, seconds, and miliseconds to 0
   const cleanDate = (date) => {
     date.setHours(0);
     date.setMinutes(0);
@@ -17,17 +16,23 @@ const Calendar = ({newForm, setNewForm}) => {
     date.setMilliseconds(0);
   }
 
-  //Helper function that grabs the month of the given date in english
+  //The Page UseState keeps track of the month that the calendar should display
+  const now = new Date(Date.now()); cleanDate(now);
+  const [page, setPage] = useState(now);
+
+  /* ------------------------- Helper Functions ------------------------- */
+
+  //Helper function (returning JSX) - grabs the month of the given date in english
   const findMonth = (date) => {
     return new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date)
   }
 
-  //Helper function that grabs the day of the week of the given date in english
+  //Helper function (generateCalendar) - grabs the day of the week of the given date in english
   const findWeekDay = (date) => {
     return new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date)
   }
 
-  //Helper function (recursive binary search) that checks if a 
+  //Helper function (generateCalendar, handleClick) - recursive binary search that checks if a 
   //datetime is already in the days array and returns the index of the element if found or -1 if not found
   const checkDays = (arr, element, pivot = (arr.length - 1) / 2 | 0, index = (arr.length - 1) / 2 | 0) => {
 
@@ -56,14 +61,9 @@ const Calendar = ({newForm, setNewForm}) => {
     }
   }
 
-  /* -------------------------  Component Wide Variables & State -------------------------*/
+  /* ------------------------- Generator Function ------------------------- */
 
-  //The Page UseState keeps track of the month that the calendar should display
-  const now = new Date(Date.now()); cleanDate(now);
-  const [page, setPage] = useState(now);
-
-  /* -------------------------  Generator Function -------------------------*/
-
+  //Main generator function - generates an array of divs that represent days.
   const generateCalendar = () => {
 
     //Create helper variables and return array
@@ -84,9 +84,7 @@ const Calendar = ({newForm, setNewForm}) => {
           <div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendarItem calendarSelected" : "calendarItem"}
            key={`calendar${tracker.getDate()}${weekdays[i]}`}
            data-time={tracker.getTime()} 
-           onClick={handleClick}
-           onMouseEnter={handleMouseEnter}
-           onMouseLeave={handleMouseLeave}>
+           onClick={handleClick}>
             {tracker.getDate()}
           </div>
         )
@@ -112,8 +110,9 @@ const Calendar = ({newForm, setNewForm}) => {
     return content
   }
 
-  /* -------------------------  Event Functions -------------------------*/
+  /* ------------------------- Event Handler Functions ------------------------- */
 
+  //Handler function - increments the month of calendar
   const handleNextMonth = () => {
     const newPage = new Date(page);
     newPage.setMonth(newPage.getMonth() + 1)
@@ -121,6 +120,7 @@ const Calendar = ({newForm, setNewForm}) => {
     setPage(newPage);
   }
 
+  //Handler function - decrements the month of calendar
   const handlePrevMonth = () => {
     //Only go to the previous month if the previous month is not in the past
     if (page.getMonth() !== now.getMonth() || page.getFullYear() > now.getFullYear()) {
@@ -136,9 +136,10 @@ const Calendar = ({newForm, setNewForm}) => {
     }
   }
 
+  //Handler function - adds and remove days to and from form state of Attend.js
   const handleClick = (event) => {
     //Only if calendarSelected is not on the element already
-    if (event.target.className === "calendarItem calendarHover") {
+    if (event.target.className === "calendarItem") {
 
       //Add css class
       event.target.className = "calendarItem calendarSelected";
@@ -152,7 +153,7 @@ const Calendar = ({newForm, setNewForm}) => {
     } else {
 
       //Remove the css class
-      event.target.className = "calendarItem calendarHover"
+      event.target.className = "calendarItem"
 
       //Find index of the element in days array
       const index = checkDays(newForm.days, Number(event.target.dataset.time));
@@ -164,19 +165,8 @@ const Calendar = ({newForm, setNewForm}) => {
     }
   }
 
-  const handleMouseEnter = (event) => {
-    if (event.target.className === "calendarItem") {
-      event.target.className = "calendarItem calendarHover";
-    }
-  }
+  /* ------------------------- Returning JSX ------------------------------ */
 
-  const handleMouseLeave = (event) => {
-    if (event.target.className === "calendarItem calendarHover") {
-      event.target.className = "calendarItem";
-    }
-  }
-
-  /* ------------------------- Returning JSX ------------------------------*/
   return (
     <div className="calendarShell">
       <div className="calendarHeading">

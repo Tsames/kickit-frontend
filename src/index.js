@@ -1,3 +1,4 @@
+//Dependencies
 import * as React from "react";
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
@@ -5,11 +6,17 @@ import reportWebVitals from './reportWebVitals';
 
 //Import App
 import App from './App';
+
+//Import Styling
 import './index.css';
+
+/* ------------------------------------------ Set Root ------------------------------------------ */
 
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
+
+/* ------------------------------------------ Render Root ------------------------------------------ */
 
 root.render(
   <React.StrictMode>

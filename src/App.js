@@ -100,7 +100,7 @@ function App () {
         <Route path='/create' element={<CreateForm setRoot={setRoot} getEventData={getEventData}/>} />
         <Route path='/share/:id' element={<Share setRoot={setRoot} getEventData={getEventData} event={event} />} />
         <Route path='/attend/:id' element={<Attend setRoot={setRoot} getEventData={getEventData} event={event} blocks={blocks} /> } />
-        <Route path='/peek/:id' element={<Peek setRoot={setRoot} getEventData={getEventData} event={event} blocks={blocks} />} />
+        <Route path='/peek/:id' element={<Peek getEventData={getEventData} event={event} blocks={blocks} />} />
         {/* <Route path='/created/:id' element={<CreateEventSuccess setRoot={setRoot} getEventData={getEventData} />} /> */}
         {/* <Route path='/attend/:id' element={<AddAvailabilitySuccess setRoot={setRoot} getEventData={getEventData} />} /> */}
       </Routes>

@@ -3,15 +3,13 @@
 @import '../device_layout/layout';
 
 /* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Before Classes %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
-
-.share-to-grid-transition-left-base {
+#share-to-grids-transition-left {
   //Position
   position: absolute;
   left: 0;
   top: 0;
-  width: 0vw;
   height: 100vh;
-  z-index: -1;
+  z-index: 1;
 
   color: v.$font-heavy;
   background-image: v.$attendance-left-background-image;
@@ -21,6 +19,28 @@
   border-width: 0.4rem;
   border-color: v.$invisible;
   border-radius: 4px;
+
+  transition: all 1s ease;
+}
+
+
+.share-to-grid-transition-left-base {
+  //Position
+  // position: absolute;
+  // left: 0;
+  // top: 0;
+  width: 0vw;
+  // height: 100vh;
+  // z-index: -1;
+
+  // color: v.$font-heavy;
+  // background-image: v.$attendance-left-background-image;
+
+  // //Border
+  // border-right: solid;
+  // border-width: 0.4rem;
+  // border-color: v.$invisible;
+  // border-radius: 4px;
 
   transition: all 1s ease;
 }
@@ -44,21 +64,21 @@
 
 div.share-to-grids-transition-left-move {
   //Position
-  position: absolute;
-  left: 0;
-  top: 0;
+  // position: absolute;
+  // left: 0;
+  // top: 0;
   width: 25vw;
-  height: 100vh;
-  z-index: 2;
+//   height: 100vh;
+//   z-index: 2;
 
-  color: v.$font-heavy;
-  background-image: v.$attendance-left-background-image;
+//   color: v.$font-heavy;
+//   background-image: v.$attendance-left-background-image;
 
-  //Border
-  border-right: solid;
-  border-width: 0.4rem;
-  border-color: v.$background-light;
-  border-radius: 4px;
+//   //Border
+//   border-right: solid;
+//   border-width: 0.4rem;
+//   border-color: v.$background-light;
+//   border-radius: 4px;
 
   transition: all 1s ease;
 }

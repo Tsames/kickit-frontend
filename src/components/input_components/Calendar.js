@@ -6,6 +6,7 @@ import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import '../../styles/input_styling/calendar.scss';
 
 const Calendar = ({newForm, setNewForm}) => {
+  
   /* ------------------------- Component Wide Variables & State ------------------------- */
 
   //Helper function (variable now) - sets the hours, minutes, seconds, and miliseconds to 0

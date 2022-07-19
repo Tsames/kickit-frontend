@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 //Import Components
 import Grid from '../input_components/Grid';
 import Field from '../input_components/Field';
+import GridsToShare from '../transition_components/GridsToShare';
 
 //Styling
 import '../../styles/page_styling/attend.scss';
@@ -40,6 +41,24 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
   });
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
+
+  //Helper function(attend-taken p tag)
+  const isAvailable = () => {
+    const searchName = form.name;
+    const searchArray = event.attending;
+    let match = false;
+    let i = 0;
+
+    while (!match || i < searchArray.length) {
+      if(searchArray[i].name === searchName) {
+        match = true
+      }
+      i++
+    }
+
+    return match;
+  }
+
 
   //Helper function (prepare Data) - combines all of the seperate block's arrays into a single array
   const squishAvailable = () => {
@@ -117,7 +136,18 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
   //Handler function - the function that is run upon submission of the html form
   const handleSubmit = async (event) => {
     await submitData();
-    // togglePage(event);
+    getEventData(id);
+    navigate(`/attend/submitted/${id}`);
+  }
+
+  //Handler function - returns the page to Share.js with animation
+  const handleReturn = (event) => {
+    const transitionBack = document.getElementById("grids-to-share-transition");
+
+    transitionBack.className = "grids-to-share-transition-move";
+    setTimeout(() => {
+      navigate(`/share/${id}`);
+    }, 1000)
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
@@ -151,14 +181,15 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
 
     return (
       <div id="attend-main">
+        <GridsToShare />
         <div id="attend-left">
           <h2>Sign Up</h2>
-          <p id="attend-taken">{ }</p>
+          <p id="attend-taken">{}</p>
           <div id="attend-left-data">
             <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName} />
             <button id="attend-submit" onClick={handleSubmit} data-to="details">Submit</button>
           </div>
-          <button id="attend-back" data-to="details">Back</button>
+          <button id="attend-back" data-to="details" onClick={handleReturn}>Back</button>
         </div>
         <div id="attend-right">
           {grids}

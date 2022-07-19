@@ -8,8 +8,8 @@ const ShareToGrids = () => {
 
   return (
     <>
-      <div id="share-to-grids-transition-left" className="share-to-grids-transition-left-base"></div>
-      <div id="share-to-grids-transition-right" className="share-to-grids-transition-right-base"></div>
+      <div id="share-to-grids-transition-left" className=""></div>
+      <div id="share-to-grids-transition-right" className=""></div>
     </>
   )
 }

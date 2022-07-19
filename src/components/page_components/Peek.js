@@ -5,7 +5,7 @@ import { FiUsers, FiNavigation } from "react-icons/fi";
 
 //Import Components
 import AttendanceChart from "../display_components/AttendanceChart";
-import AttendanceToDetails from '../transition_components/ShareToGrids';
+import GridsToShare from '../transition_components/GridsToShare';
 
 //Styling
 import '../../styles/page_styling/peek.scss';
@@ -73,25 +73,25 @@ const Peek = ({ getEventData, event, blocks }) => {
     const name = target.dataset.name;
 
     if (limit.active && name === limit.name) {
-      target.className = "attendance-list-person";
+      target.className = "peek-list-person";
       noLimit();
     } else if (limit.active) {
       activateLimit(name, target);
       if (limit.node !== null) {
-        limit.node.className = "attendance-list-person"
+        limit.node.className = "peek-list-person"
       }
-      target.className = "attendance-list-person limit-active"
+      target.className = "peek-list-person limit-active"
     } else {
-      target.className = "attendance-list-person limit-active"
+      target.className = "peek-list-person limit-active"
       activateLimit(name, target);
     }
   }
 
-  //Handler function - returns the page to details from attendance or rsvp with animation
+  //Handler function - returns the page to Share.js with animation
   const handleReturn = (event) => {
-    const transitionBack = document.getElementById("atdTransition");
+    const transitionBack = document.getElementById("grids-to-share-transition");
 
-    transitionBack.className = "atd-transition-move";
+    transitionBack.className = "grids-to-share-transition-move";
     setTimeout(() => {
       navigate(`/share/${id}`);
     }, 1000)
@@ -129,11 +129,11 @@ const Peek = ({ getEventData, event, blocks }) => {
     const content = [];
     if (mode) {
       event.attending.forEach((person, index) => {
-        content.push(<button key={index} className="attendance-list-person" data-name={person.name} onClick={handlePersonClick}>{person.name}</button>);
+        content.push(<button key={index} className="peek-list-person" data-name={person.name} onClick={handlePersonClick}>{person.name}</button>);
       })
     } else {
       output.forEach((person, index) => {
-        content.push(<p key={index} className="attendance-list-person">{person}</p>);
+        content.push(<p key={index} className="peek-list-person">{person}</p>);
       })
     }
 
@@ -153,7 +153,7 @@ const Peek = ({ getEventData, event, blocks }) => {
   const peek = () => {
     return (
       <div id="peek-main">
-        <AttendanceToDetails />
+        <GridsToShare />
         <div id="peek-left">
           <div id="peek-modes">
             <p><button id="all-button" className="mode-button" onClick={() => setMode(true)}><FiUsers></FiUsers></button>

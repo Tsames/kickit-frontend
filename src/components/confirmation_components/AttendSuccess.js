@@ -1,12 +1,18 @@
+//Dependencies
 import { React } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 //Styling
-import '../../styles/conformation_styling/add_availability_success.scss';
+import '../../styles/confirmation_styling/attend_success.scss';
 
-const AddAvailabilitySuccess = () => {
+const AttendSuccess = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
+  
+  //Get Id from params
+  const id = useParams().id;
 
+  let navigate = useNavigate();
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -15,10 +21,10 @@ const AddAvailabilitySuccess = () => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div>
-
+    <div className="attend-success-wrapper">
+    
     </div>
   )
 }
 
-export default AddAvailabilitySuccess;
+export default AttendSuccess;

@@ -14,8 +14,9 @@ import Attend from './components/page_components/Attend';
 import Peek from './components/page_components/Peek';
 
 //Import Confirmation Pages
-import CreateEventSuccess from './components/conformation_components/CreateEventSuccess';
-import AddAvailabilitySuccess from './components/conformation_components/AddAvailabilitySuccess';
+import CreateEventSuccess from './components/confirmation_components/CreateEventSuccess';
+import AddAvailabilitySuccess from './components/confirmation_components/AttendSuccess';
+import AttendSuccess from "./components/confirmation_components/AttendSuccess";
 
 
 function App () {
@@ -34,7 +35,8 @@ function App () {
   //(for AttendanceChart.js and Grid.js)
   const [blocks, setBlocks] = useState([]);
 
-  const URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
+  const FRONTEND_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -98,12 +100,12 @@ function App () {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home setRoot={setRoot} getEventData={getEventData}/>} />
-        <Route path='/create' element={<CreateForm setRoot={setRoot} getEventData={getEventData} URL={URL}/>} />
+        <Route path='/create' element={<CreateForm setRoot={setRoot} getEventData={getEventData} URL={BACKEND_URL}/>} />
         <Route path='/share/:id' element={<Share setRoot={setRoot} getEventData={getEventData} event={event} />} />
-        <Route path='/attend/:id' element={<Attend getEventData={getEventData} event={event} blocks={blocks} URL={URL} /> } />
+        <Route path='/attend/:id' element={<Attend getEventData={getEventData} event={event} blocks={blocks} URL={BACKEND_URL} /> } />
         <Route path='/peek/:id' element={<Peek getEventData={getEventData} event={event} blocks={blocks} />} />
-        {/* <Route path='/created/:id' element={<CreateEventSuccess setRoot={setRoot} getEventData={getEventData} />} /> */}
-        {/* <Route path='/attend/:id' element={<AddAvailabilitySuccess setRoot={setRoot} getEventData={getEventData} />} /> */}
+        <Route path='/created/:id' element={<CreateEventSuccess setRoot={setRoot} getEventData={getEventData} event={event} URL={FRONTEND_URL} />} />
+        <Route path='/attend/submitted/:id' element={<AttendSuccess setRoot={setRoot} getEventData={getEventData} />} />
       </Routes>
       <Footer/>
     </>

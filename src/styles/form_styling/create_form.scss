@@ -1,0 +1,104 @@
+@use './../variables' as v;
+@use './../device' as d;
+
+#createFormShell {
+  //--------------------------------------------------- Wrapper Styles ---------------------------------------------------
+  text-align: center;
+
+  //--------------------------------------------------- Single Elements ---------------------------------------------------
+
+  //Event Title Field at the top of the page
+  #createForm-title {
+    input {
+      border: none;
+      font-size: 1.75rem;
+      color: v.$font-heavy;
+      text-align: center;
+      background:
+      linear-gradient(360deg, v.$font-heavy, v.$font-heavy) center bottom/0% 5% no-repeat;
+
+      transition: background-size 0.3s ease;
+
+      &::placeholder {
+        color: v.$font-heavy;
+        opacity: 100;
+        font-size: 1.75rem;
+      }
+
+      &:focus {
+        background-size: 100% 5%;
+
+        &::placeholder {
+          opacity: 0;
+        }
+      }
+
+      &:valid {
+
+        &::placeholder {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  //--------------------------------------------------- Major Page Elements ---------------------------------------------------
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    //Middle of Form
+    #section-mid {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+
+      #section-mid-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+  
+      #section-mid-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        #gridControls {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+
+          padding: 0.4rem;
+        }
+
+        .calendarShell {
+          padding: 0.4rem;
+        }
+      }
+    }
+
+
+    .drop-down {
+      font-size: 14px;
+      margin: 1rem;
+    }
+
+
+    #createForm-submit {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 3;
+      grid-row-end: 4;
+      margin: auto;
+    }
+  }
+}
+

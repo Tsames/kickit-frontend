@@ -1,0 +1,104 @@
+//Imports
+@use './../variables' as v;
+@use './../mixins' as m;
+@use './../device' as d;
+
+#attend-wrapper {
+
+  //Display Settings
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+  z-index: 5;
+
+  /* ------------------------------------- Child Elements - Event Loading ------------------------------------- */
+
+  #loading {
+    margin: 0 auto;
+  }
+
+  /* ------------------------------------- Child Elements - Event Loaded ------------------------------------- */
+
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Side-bar Wrapper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  #attend-left {
+    //Position
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 25vw;
+    max-width: 25vw;
+    height: 100vh;
+    z-index: 1;
+
+    //Arrange Items Within
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0;
+
+    color: v.$font-heavy;
+    background-image: linear-gradient(270deg, #EECE13 10%, #f4942e 100%);
+
+    //Border
+    border-right: solid;
+    border-width: 0.4rem;
+    border-color: v.$background-light;
+    border-radius: 4px;
+
+    /* %%%%%%%%%%%% Children %%%%%%%%%%%% */
+
+    button {
+      @include m.button-dark;
+    }
+
+    h2 {
+      position: relative;
+      bottom: 2rem;
+    }
+
+    //Name input and submit button wrapper
+    #attend-left-data {
+      position: relative;
+      bottom: 10rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+
+      input {
+
+      }
+
+      button {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Grid Block %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  #attend-right {
+    //Position
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 75vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: auto;
+
+    background-image: linear-gradient(120deg, #abd4f8 0%, #3577c3 100%);
+
+    //Arrange Items Within
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  /* ------------------------------------- &&&&&&&&&&&&&&&&&&&& ------------------------------------- */
+}

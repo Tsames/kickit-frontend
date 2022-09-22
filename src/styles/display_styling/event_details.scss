@@ -1,0 +1,10 @@
+//Imports
+@use './../variables' as v;
+@use './../device' as d;
+
+#event-description {
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: left;
+  max-height: 25vh;
+}

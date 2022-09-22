@@ -1,0 +1,28 @@
+@use './../variables' as v;
+@use './../mixins' as m;
+@use './../device' as d;
+
+/* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Before Styling %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
+
+#grids-to-share-transition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+
+  opacity: 0;
+
+  background-color: v.$details-background-color;
+  background-image: v.$details-background-image;
+
+  transition: opacity 1s ease;
+}
+
+/* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Move Class %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
+
+.grids-to-share-transition-move {
+  z-index: 2 !important;
+  opacity: 1 !important;
+}

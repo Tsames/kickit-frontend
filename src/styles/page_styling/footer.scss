@@ -1,0 +1,58 @@
+//Imports
+@use './../variables' as v;
+@use './../mixins' as m;
+@use './../device' as d;
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#footer-shell {
+  background-color: v.$invisible;
+
+  //Size and Position
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+
+  //Container Styles
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: flex-end;
+
+  //Mobile Sizing
+  @include d.for-phone-only {
+    
+  }
+
+  //Desktop Sizing
+  @include d.for-desktop-up {
+    height: 10vh;
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  p {
+    color: v.$font-light;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      
+    }
+
+    //Desktop Sizing
+    @include d.for-desktop-up {
+      margin-right: 2rem;
+    }
+
+    #footerLink {
+      color: v.$font-light;
+      text-decoration: none;
+      @include m.hover-underline(v.$font-light, 8%);
+      transition: background-size 0.4s ease;
+    }
+  }
+
+}

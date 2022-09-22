@@ -1,0 +1,61 @@
+@use './../variables' as v;
+@use './../device' as d;
+
+$input-background: rgba(233, 232, 232, 0.55);
+
+label.custom-field-ta {
+  position: relative;
+  padding: 0.8rem 0.2rem 0.2rem 0.2rem;
+  border: none;
+  
+  //Input inside our custom field
+  textarea {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+
+
+    color: v.$font-heavy;
+    border-radius: 3px;
+    padding: 0.5rem;
+    background: $input-background;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    outline: none;
+    resize: none;
+    width: 200px;
+  }
+
+  //Span placeholder inside our custom field
+  .placeholder-ta {
+    position: absolute;
+    font-size: 0.7rem;
+    left: 0.5rem;
+    top: 9%;
+    font-weight: normal;
+    color: rgb(99, 94, 94);
+    transition:
+      top 0.3s ease,
+      bottom 0.3s ease,
+      font-size 0.3s ease,
+      color 0.3s ease;
+  }
+
+  textarea:focus {
+    border: solid;
+    border-color: v.$font-heavy;
+    border-width: 0.05rem;
+  }
+
+  textarea:focus+.placeholder-ta,
+  textarea:valid+.placeholder-ta {
+    top: -5%;
+    bottom: 100%;
+    left: 0.3rem;
+    color: #222;
+  }
+}

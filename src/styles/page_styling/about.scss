@@ -1,0 +1,64 @@
+//Imports
+@use './../variables' as v;
+@use './../device' as d;
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+#about-shell {
+    //--------------------------------------------------- Wrapper Styles ---------------------------------------------------
+    
+    color: v.$font-light;
+
+    //--------------------------------------------------- Reused Classes ---------------------------------------------------
+
+    .aboutClickables {
+        background: v.$invisible;
+        border: none;
+        color: v.$font-light;
+    }
+
+    .aboutSectionActive {
+        text-decoration: underline;
+    }
+    //--------------------------------------------------- Specific Elements ---------------------------------------------------
+
+    #HIWAsterisk {
+        font-size: 0.6rem;
+    }
+
+    //--------------------------------------------------- Major Page Elements ---------------------------------------------------
+
+    //Welcome Heading
+    #welcome-heading {
+        text-align: center;
+    }
+
+    //Section Selection
+    #aboutSections {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 20vw;
+        margin: auto;
+    }
+
+    .aboutLink {
+        text-decoration: none;
+        color: v.$font-light;
+        font-weight: 600;
+        transition: ease 0.5s;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    //Author Section
+    div#author-block {
+
+    }
+
+
+}

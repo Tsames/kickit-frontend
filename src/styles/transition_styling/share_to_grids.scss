@@ -1,0 +1,53 @@
+@use './../variables' as v;
+@use './../mixins' as m;
+@use './../device' as d;
+
+/* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Before Styling %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
+
+#share-to-grids-transition-left {
+  //Position
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0vw;
+  height: 100vh;
+  z-index: -5;
+
+  color: v.$font-heavy;
+  background-image: v.$grids-left-background-image;
+
+  //Border
+  border-right: solid;
+  border-width: 0.4rem;
+  border-color: v.$invisible;
+  border-radius: 4px;
+
+  transition: width 1s ease;
+}
+
+#share-to-grids-transition-right {
+  //Position
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 75vw;
+  height: 100vh;
+  z-index: -5;
+
+  opacity: 0;
+  
+  background: v.$grids-right-background-image;
+  transition: opacity 1s 1s;
+}
+
+/* &%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Move Classes %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%& */
+
+.share-to-grids-transition-left-move {
+  z-index: 2 !important;
+  width: 25vw !important;
+}
+
+.share-to-grids-transition-right-move {
+  z-index: 1 !important;
+  opacity: 1 !important;
+}

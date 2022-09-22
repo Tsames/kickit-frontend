@@ -1,0 +1,115 @@
+/* This stylesheet is intended to set variables that the rest of the stylesheets pull from
+making it simple to make small or large tweaks to many aspects of the web app */
+
+/* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Fonts %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+$home-page-branding: 'Dancing Script', cursive;
+$nav-items: 'Pacifico', cursive;
+$footer-items: 'Pacifico', cursive;
+$standard-font: 'Arvo', serif;
+
+/* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Colors %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
+
+$invisible: rgba(0, 0, 0, 0);
+
+$font-light: rgb(255, 255, 255);
+$font-heavy: rgba(55, 53, 53, 0.8);
+
+$background-light: rgba(242, 242, 242, 0.35);
+
+/* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Component-specific Colors %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
+
+/* !-!-!-!-!-!-!-!-!-! Peek Event Colors !-!-!-!-!-!-!-!-!-! */
+
+/* Attendance Cell Color Classes based on percentage
+of attendees available at that time slot */
+
+// 0% - 10%
+.noneAvailable {
+  background: $invisible;
+  transition: all 0.5s ease;
+}
+
+// 11% - 25%
+.veryFewAvailable {
+  background: rgb(241, 6, 6);
+  transition: all 0.5s ease;
+}
+
+// 26% - 40%
+.fewAvailable {
+  background: rgb(243, 120, 6);
+  transition: all 0.5s ease;
+}
+
+//41% - 55%
+.someAvailable {
+  background: rgb(255, 213, 0);
+  transition: all 0.5s ease;
+}
+
+//56% - 70%
+.manyAvailable {
+  background: rgb(217, 255, 0);
+  transition: all 0.5s ease;
+}
+
+//71% - 85%
+.alotAvailable {
+  background: rgb(149, 239, 84);
+  transition: all 0.5s ease;
+}
+
+// 86% - 100%
+.everyoneAvailable {
+  background: rgb(8, 251, 81);
+  transition: all 0.5s ease;
+}
+
+/* !-!-!-!-!-!-!-!-!-! Share Page Colors (Also used in transitions) !-!-!-!-!-!-!-!-!-! */
+
+$details-background-color: #319ae6;
+$details-background-image: linear-gradient(180deg, #319ae6 0%, #5285db 20%, #7b99f2 40%, #a869c9 60%, #6e36d7 80%, #1800ff 100%);
+
+//Peek and Attend Colors (Also used in transitions)
+
+$grids-left-background-image: linear-gradient(270deg, #EECE13 10%, #f4942e 100%);
+$grids-right-background-image: linear-gradient(120deg, #abd4f8 0%, #3577c3 100%);
+
+/* --------------------------------------- Grid Component Colors --------------------------------------- */
+
+$grid-active: rgb(96, 201, 149);
+
+/* --------------------------------------- Calendar Component Colors --------------------------------------- */
+
+//Hover Class
+$calendar-hover: white;
+$calendar-hover-background: rgb(68, 131, 160, 0.3);
+
+//Selected Class
+$calendar-selected-background: rgb(68, 131, 160);
+$calendar-selected-border: rgb(68, 131, 160);
+$calendar-selected-color: white;
+
+/* -!-!-!-!-!-!-!-!-!-!-!-!-!  Root Background Class Styles !-!-!-!-!-!-!-!-!-!-!-!-!- */
+
+//Landing Page
+.rb-landing {
+  background-image: linear-gradient(62deg, #dd966d 0%, #dfae31 33%, #c32727 66%, #bc53d1 100%);
+}
+
+//View Event - Details Page
+.rb-view-event {
+  background-color: $details-background-color;
+  background-image: $details-background-image;
+}
+
+//Create Event
+.rb-create-event {
+  background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+}
+
+/* -!-!-!-!-!-!-!-!-!-!-!-!-!  &%$#&%$#&%$#&%$# !-!-!-!-!-!-!-!-!-!-!-!-!- */

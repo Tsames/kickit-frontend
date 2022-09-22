@@ -1,0 +1,37 @@
+@use './../variables' as v;
+@use './../device' as d;
+
+$input-background: rgba(233, 232, 232, 0.55);
+
+//Container Styles
+label.time-drop-down {
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  padding: 0.8rem 0.2rem 0.2rem 0.2rem;
+  border: none;
+
+  /* -------------------------- Child Elements -------------------------- */
+
+  span {
+    font-size: 0.5rem;
+    color: rgb(99, 94, 94);
+    padding: 0 0.2rem 0 0.2rem;
+  }
+
+  select {
+    border: none;
+    color: rgb(99, 94, 94);
+    font-size: 0.5rem;
+    border-radius: 3px;
+    background: $input-background;
+    outline: none;
+    resize: none;
+  }
+}

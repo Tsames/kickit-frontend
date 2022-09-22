@@ -1,0 +1,60 @@
+@use './../variables' as v;
+@use './../device' as d;
+
+$input-background: rgba(233, 232, 232, 0.55);
+
+label.custom-field {
+  position: relative;
+  padding: 0.6rem 0.2rem 0.2rem 0.2rem;
+  border: none;
+
+  //Input inside our custom field
+  Input {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+
+    color: v.$font-heavy;
+
+    border-radius: 3px;
+    padding: 0.3rem;
+    background: $input-background;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    outline: none;
+    resize: none;
+  }
+
+  //Span placeholder inside our custom field
+  .placeholder {
+    position: absolute;
+    font-size: 0.7rem;
+    left: 0.5rem;
+    top: 45%;
+    font-weight: normal;
+    color: v.$font-heavy;
+    transition:
+      top 0.3s ease,
+      bottom 0.3s ease,
+      font-size 0.3s ease,
+      color 0.3s ease;
+  }
+
+  input:focus {
+    border: solid;
+    border-color: v.$font-heavy;
+    border-width: 0.05rem;
+  }
+
+  input:focus+.placeholder,
+  input:valid+.placeholder {
+    top: -20%;
+    bottom: 0rem;
+    left: 0.3rem;
+    color: #222;
+  }
+}

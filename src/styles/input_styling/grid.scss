@@ -1,0 +1,124 @@
+@use './../variables' as v;
+@use './../device' as d;
+
+$grid-cell-width: 4.3rem;
+$grid-cell-height: 2rem;
+
+//Styles for the grid table in Grid.js
+.gridTable {
+  height: 90vh;
+  margin: 0.3rem;
+  padding: 0.5rem 0.4rem 0.5rem 0rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+//Grid Wrapper
+div.gridContents {
+  min-height: 0px;
+  // margin: 0 auto 0 auto;
+  // padding: 0.25rem;
+  // overflow-y:auto;
+
+  display: flex;
+  flex: 1;
+}
+
+div.overflow-container {
+  flex: 1;
+  overflow: auto;
+}
+
+div.overflow-content {
+
+  display: flex;
+  flex-direction: row;
+  padding: 0.3rem;
+
+  div.gridColumn {
+    padding: 0rem;
+    margin: 0rem;
+  }
+
+  div.gridCell {
+    background-color: v.$invisible;
+
+    width: $grid-cell-width;
+    height: $grid-cell-height;
+
+    border-style: solid;
+    border-color: v.$font-heavy;
+    border-width: 0.1rem;
+    margin: 0;
+    padding: 0;
+
+    &:hover {
+      border-color: v.$font-light;
+      transition: border-color 0.5s ease;
+    }
+  }
+
+  div.gridSelected {
+    background-color: v.$grid-active;
+  }
+
+}
+
+//Row Label Styling ------------------ $
+
+.gridRowLabels {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gridRowLabelCell {
+  border: solid;
+  border-color:v.$invisible;
+  border-width: 0.1rem;
+  background-color: v.$invisible;
+
+  width: $grid-cell-width;
+  height: $grid-cell-height;
+}
+
+.gridRowLabelText {
+  position: relative;
+  bottom: 1.15rem;
+  font-size: 0.7rem;
+  color: v.$font-heavy;
+  text-align: right;
+}
+//--------------------------------------- $
+
+//Column Label Styling ------------------ $
+
+.gridColumnLabels {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem;
+  padding-right: 0.8rem;
+}
+
+.gridColumnLabelCell {
+  border: none;
+  border-color: purple;
+  border-width: 0.1rem;
+  margin: 0 0.1rem 0 0.1rem;
+  width: $grid-cell-width;
+  height: $grid-cell-height;
+}
+
+.gridColumnLabelText {
+  position: relative;
+  bottom: 0.2rem;
+  font-size: 0.8rem;
+  color: v.$font-heavy;
+  text-align: center;
+}
+
+//--------------------------------------- $

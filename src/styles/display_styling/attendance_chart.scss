@@ -1,0 +1,132 @@
+//Imports
+@use './../variables' as v;
+@use './../mixins' as m;
+@use './../device' as d;
+
+$chart-cell-width: 3rem;
+$chart-cell-height: 1.5rem;
+
+$chart-cell-max-width: 3rem;
+$chart-cell-max-height: 1.5rem;
+
+$chart-cell-min-width: 2rem;
+$chart-cell-min-height: 1rem;
+
+div.attendanceChart {
+  
+}
+
+
+//Chart Wrapper
+div.chartContents {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 0 auto;
+  padding: 0rem;
+
+  // %%%%%%%%%%%%%%%%%%%% Chart Columns and Rows Styling %%%%%%%%%%%%%%%%%%%%
+
+  //Chart Columns
+  div.chartColumn {
+    padding: 0rem;
+    margin: 0rem;
+  }
+
+  //Chart Cells
+  div.chartCell {
+    width: $chart-cell-width;
+    height: $chart-cell-height;
+
+    max-width: $chart-cell-max-width;
+    max-height: $chart-cell-max-height;
+
+    min-width: $chart-cell-min-width;
+    min-height: $chart-cell-min-height;
+
+    border-style: solid;
+    border-color: v.$font-heavy;
+    border-width: 0.1rem;
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s ease;
+
+    &:hover {
+      border-color: v.$font-light;
+      transition: border-color 0.5s ease;
+    }
+  }
+}
+
+// %%%%%%%%%%%%%%%%%%%% Row Label Styling %%%%%%%%%%%%%%%%%%%%
+
+//Row Label Wrapper
+.chartRowLabels {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+//Row Label Cell
+.chartRowLabelCell {
+  border: solid;
+  border-color: v.$invisible;
+  border-width: 0.1rem;
+  background-color: v.$invisible;
+
+  min-width: $chart-cell-min-width;
+  width: $chart-cell-width;
+  max-width: $chart-cell-max-width;
+
+  min-height: $chart-cell-min-height;
+  height: $chart-cell-height;
+  max-height: $chart-cell-max-height;
+}
+
+//Row Label Text
+.chartRowLabelText {
+  position: relative;
+  bottom: 0.7rem;
+  font-size: 0.4rem;
+  color: v.$font-heavy;
+  text-align: right;
+}
+
+// %%%%%%%%%%%%%%%%%%%% Column Label Styling %%%%%%%%%%%%%%%%%%%%
+
+//Column Label Wrapper
+.chartColumnLabels {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem;
+  padding: 0rem;
+}
+
+//Column Label Cell
+.chartColumnLabelCell {
+  border: none;
+  border-color: purple;
+  border-width: 0.1rem;
+  margin: 0 0 0 0;
+
+  min-width: $chart-cell-min-width;
+  width: $chart-cell-width;
+  max-width: $chart-cell-max-width;
+
+  min-height: $chart-cell-min-height;
+  height: $chart-cell-height;
+  max-height: $chart-cell-max-height;
+}
+
+//Column Label Text
+.chartColumnLabelText {
+  position: relative;
+  bottom: 0.2rem;
+  font-size: 0.5rem;
+  color: v.$font-heavy;
+  text-align: center;
+}

@@ -1,0 +1,44 @@
+@use './variables' as v;
+
+/* -!-!-!-!-!-!-!-!-!-!-!-!-!  Mixins !-!-!-!-!-!-!-!-!-!-!-!-!- */
+
+/* %*%*%*% Buttons %*%*%*% */
+
+@mixin button-light() {
+  appearance: none;
+  color: v.$font-light;
+  background: v.$background-light;
+
+  border: solid;
+  border-radius: 5px;
+  border-width: 0.05rem;
+  border-color: v.$invisible;
+
+  &:hover {
+    transition: border-color 0.5s ease;
+    border-color: v.$font-light;
+  }
+}
+
+@mixin button-dark() {
+  color: v.$font-heavy;
+  background: v.$background-light;
+
+  border: solid;
+  border-radius: 5px;
+  border-width: 0.05rem;
+  border-color: v.$invisible;
+
+  &:hover {
+    transition: border-color 0.5s ease;
+    border-color: v.$font-heavy;
+  }
+}
+
+@mixin hover-underline($color, $height: 5%, $anchorOne:left, $anchorTwo:bottom) {
+  background: linear-gradient(360deg, $color, $color) $anchorOne $anchorTwo/0% $height no-repeat;
+
+  &:hover {
+    background-size: 100% $height;
+  }
+}

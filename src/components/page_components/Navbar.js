@@ -1,5 +1,5 @@
 //Dependencies
-import { React, useEffect} from 'react';
+import { React, useEffect, useRef} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { RiHome2Fill } from "react-icons/ri";
 
@@ -10,21 +10,27 @@ const Navbar = () => {
 
   /* ------------------------------------------ Component Variables ------------------------------------------ */
 
-  const pages = ['/', '/create', '/share/632a01e22b0d76ae11f716bd', '/about']
-  const buttons = ['navbarHomeButton', 'navbarCreateButton', 'navbarExampleButton', 'navbarAboutButton'];
+  const pages = ['/', '/create', '/share/632a01e22b0d76ae11f716bd', '/about/how', '/about/who']
+  const buttons = ['navbarHomeButton', 'navbarCreateButton', 'navbarExampleButton', 'navbarAboutButton', 'navbarAboutButton'];
 
   const location = useLocation().pathname;
+  const lastLocation = useRef(null);
+
 
   useEffect(() => helperOnPage());
 
   const helperOnPage = () => {
+    let buttonChecker;
     pages.forEach((element, index) => {
       if (location === element) {
         document.getElementById(buttons[index]).classList.add('navOnPage');
-      } else {
+        buttonChecker = buttons[index];
+      } else if (element === lastLocation.current && buttonChecker !== buttons[index]) {
         document.getElementById(buttons[index]).classList.remove('navOnPage');
       }
     });
+
+    lastLocation.current = location;
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
@@ -39,7 +45,7 @@ const Navbar = () => {
       <div id="navRight">
         <Link to="/create"><button id="navbarCreateButton" className="navItem hoverEffect">Create</button></Link>
         <Link to="/share/632a01e22b0d76ae11f716bd"><button id="navbarExampleButton" className="navItem hoverEffect">Example</button></Link>
-        <Link to="/about"><button id="navbarAboutButton" className="navItem hoverEffect">About</button></Link>
+        <Link to="/about/how"><button id="navbarAboutButton" className="navItem hoverEffect">About</button></Link>
       </div>
     </nav>
   );

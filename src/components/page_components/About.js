@@ -1,45 +1,34 @@
 //Dependencies
-import { React, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { React, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 //Styling
 import '../../styles/page_styling/about.scss';
 
-const About = (startingSection = true) => {
+const About = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
   //Get desired section from params
-  const paramSection = useParams().section;
-  let goToSection;
-
-  paramSection === "AAT" ? goToSection = false : goToSection = true;
-
-
-  //Stores data to determine the text to display
-  const [section, setSection] = useState(goToSection);
+  const selectedPage = useLocation().pathname;
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
-  const showHIW = () => {
-    if(section) {
-      document.getElementById('aboutHIWSection').className = "aboutClickables aboutSection";
-      document.getElementById('aboutAATSection').className = "aboutClickables aboutSection aboutSectionActive";
-      setSection(false);
-    }
-  }
+  useEffect(() => helperOnPage());
 
-  const showAAT = (e) => {
-    if(!section) {
-      document.getElementById('aboutHIWSection').className = "aboutClickables aboutSection aboutSectionActive";
-      document.getElementById('aboutAATSection').className = "aboutClickables aboutSection";
-      setSection(true);
+  const helperOnPage = () => {
+    if (selectedPage === '/about/how') {
+      document.getElementById('toAboutHow').classList.add('aboutSectionActive');
+      document.getElementById('toAboutWho').classList.remove('aboutSectionActive');
+    } else {
+      document.getElementById('toAboutWho').classList.add('aboutSectionActive');
+      document.getElementById('toAboutHow').classList.remove('aboutSectionActive');
     }
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
-  const howItWorks = () => {
+  const aboutHow = () => {
     return (
       <div id="howItWorks-block">
         <h3>How It Works</h3>
@@ -73,7 +62,7 @@ const About = (startingSection = true) => {
     )
   }
 
-  const authorAndTech = () => {
+  const aboutWho = () => {
     return (
       <>
         <div id="author-block">
@@ -97,13 +86,13 @@ const About = (startingSection = true) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div id="about-shell" className="page-body">
+    <div id="about-shell">
       <h1 id="welcome-heading">Welcome to Kick-it</h1>
       <div id="aboutSections">
-        <button id="aboutHIWSection" className="aboutClickables aboutSection aboutSectionActive" onClick={showHIW}>How its Works</button>
-        <button id="aboutAATSection" className="aboutClickables aboutSection" onClick={showAAT}>Author & Tech</button>
+        <Link to="/about/how"><button id="toAboutHow" className="aboutClickables aboutSection">How its Works</button></Link>
+        <Link to="/about/who"><button id="toAboutWho" className="aboutClickables aboutSection">Author & Tech</button></Link>
       </div>
-      { section ? howItWorks() : authorAndTech() }
+      { selectedPage === '/about/how' ? aboutHow() : aboutWho() }
     </div>
   )
 }

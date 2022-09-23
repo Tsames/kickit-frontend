@@ -108,8 +108,8 @@ function App () {
         <Route path='/peek/:id' element={<Peek getEventData={getEventData} event={event} blocks={blocks} />} />
         <Route path='/created/:id' element={<CreateEventSuccess setRoot={setRoot} getEventData={getEventData} event={event} URL={FRONTEND_URL} />} />
         <Route path='/attend/submitted/:id' element={<AttendSuccess setRoot={setRoot} getEventData={getEventData} />} />
-        <Route path='/about/how' element={<About page={1}/>} />
-        <Route path='/about/who' element={<About page={2}/>} />
+        <Route path='/about/how' element={<About setRoot={setRoot} page={1}/>} />
+        <Route path='/about/who' element={<About setRoot={setRoot} page={2}/>} />
         <Route path='/create/success/:id' element={<CreateEventSuccess setRoot={setRoot} getEventData={getEventData} event={event}/>} />
       </Routes>
       <Footer/>

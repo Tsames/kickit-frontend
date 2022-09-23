@@ -98,7 +98,7 @@ $calendar-selected-color: white;
 
 //Landing Page
 .rb-landing {
-  background-image: linear-gradient(62deg, #dd966d 0%, #dfae31 33%, #c32727 66%, #bc53d1 100%);
+  background-image: linear-gradient(62deg, #dfae31 0%, #e8712b 33%, #c32727 66%, #bc53d1 100%);
 }
 
 //View Event - Details Page
@@ -110,6 +110,11 @@ $calendar-selected-color: white;
 //Create Event
 .rb-create-event {
   background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+}
+
+//About Page
+.rb-about {
+  background: linear-gradient(30deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
 }
 
 /* -!-!-!-!-!-!-!-!-!-!-!-!-!  &%$#&%$#&%$#&%$# !-!-!-!-!-!-!-!-!-!-!-!-!- */

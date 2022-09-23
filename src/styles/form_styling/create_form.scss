@@ -1,104 +1,185 @@
+//Imports
 @use './../variables' as v;
+@use './../mixins' as m;
 @use './../device' as d;
 
-#createFormShell {
-  //--------------------------------------------------- Wrapper Styles ---------------------------------------------------
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#createform-shell {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  margin: 0 auto;
 
-  //--------------------------------------------------- Single Elements ---------------------------------------------------
-
-  //Event Title Field at the top of the page
-  #createForm-title {
-    input {
-      border: none;
-      font-size: 1.75rem;
-      color: v.$font-heavy;
-      text-align: center;
-      background:
-      linear-gradient(360deg, v.$font-heavy, v.$font-heavy) center bottom/0% 5% no-repeat;
-
-      transition: background-size 0.3s ease;
-
-      &::placeholder {
-        color: v.$font-heavy;
-        opacity: 100;
-        font-size: 1.75rem;
-      }
-
-      &:focus {
-        background-size: 100% 5%;
-
-        &::placeholder {
-          opacity: 0;
-        }
-      }
-
-      &:valid {
-
-        &::placeholder {
-          opacity: 0;
-        }
-      }
-    }
+  //Mobile Sizing
+  @include d.for-phone-only {
+    height: 15vh;
+    width: 100vw;
   }
 
-  //--------------------------------------------------- Major Page Elements ---------------------------------------------------
+  //Desktop Sizing
+  @include d.for-desktop-up {
+    height: 80vh;
+    width: 100vw;
+  }
 
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Form Element that Contains the Entire page
   form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: 40%;
+      width: 100%;
+      margin-top: 50%;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 40%;
+      width: 100%;
+      margin-top: 5%;
+    }
+  }
+
+  #section-top {
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      width: 100%;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 100%;
+    }
+  }
+
+
+  //Middle of Form
+  #section-mid {
+    display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 
-    //Middle of Form
-    #section-mid {
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      width: 100%;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 100%;
+    }
+
+    #section-mid-left {
       display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    #section-mid-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
 
-      #section-mid-left {
+      #calendarHours {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        flex-direction: row;
+        justify-content: space-evenly;
         align-items: center;
+
+        padding: 0.4rem;
       }
-  
-      #section-mid-right {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
 
-        #gridControls {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-evenly;
-          align-items: center;
-
-          padding: 0.4rem;
-        }
-
-        .calendarShell {
-          padding: 0.4rem;
-        }
+      .calendarShell {
+        padding: 0.4rem;
       }
     }
 
 
-    .drop-down {
-      font-size: 14px;
-      margin: 1rem;
-    }
-
-
-    #createForm-submit {
-      grid-column-start: 1;
-      grid-column-end: 3;
-      grid-row-start: 3;
-      grid-row-end: 4;
-      margin: auto;
-    }
   }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  .drop-down {
+    font-size: 14px;
+    margin: 1rem;
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+    //Event Title Field at the top of the page
+    #createForm-title {
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        width: 100%
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+        width: 100%;
+      }
+
+      input {
+        border: none;
+        color: v.$font-light;
+        border: solid;
+        text-align: center;
+        background: linear-gradient(360deg, v.$font-light, v.$font-light) center bottom/0% 5% no-repeat;
+        transition: background-size 0.3s ease;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+          font-size: 3rem;
+          width: 100%
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+          font-size: 2.5rem;
+          width: 50%;
+        }
+
+        &::placeholder {
+          color: v.$font-light;
+          opacity: 100;
+
+          //Mobile Sizing & Positioning
+          @include d.for-phone-only {
+            font-size: 3rem;
+          }
+
+          //Desktop Sizing & Positioning
+          @include d.for-desktop-up {
+            font-size: 2.5rem;
+          }
+        }
+  
+        &:focus {
+          background-size: 60% 5%;
+  
+          &::placeholder {
+            opacity: 0;
+          }
+        }
+  
+        &:valid {
+  
+          &::placeholder {
+            opacity: 0;
+          }
+        }
+      }
+    }
 }
 

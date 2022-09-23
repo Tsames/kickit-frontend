@@ -70,8 +70,8 @@ const CreateForm = ({ setRoot, URL }) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div id="createFormShell" className="pageBody">
-      <form className="createForm" onSubmit={handleSubmit}>
+    <div id="createform-shell">
+      <form onSubmit={handleSubmit}>
         <div id="section-top">
           <Field id="eventTitle" form="createForm" type="text" name="title" placeholder="Event Title" text="" value={newForm.title} doThis={handleChange} />
         </div>
@@ -82,7 +82,7 @@ const CreateForm = ({ setRoot, URL }) => {
             {/* <Field form="createForm" type="text" name="cost" text="Cost" value={newForm.cost} doThis={handleChange} /> */}
           </div>
           <div id="section-mid-right">
-            <div id="gridControls">
+            <div id="calendarHours">
               <TimeDropdown form="createForm" name="early" text="No earlier than" value={newForm.early} doThis={handleChange} />
               <TimeDropdown form="createForm" name="late" text="No later than" value={newForm.late} doThis={handleChange} />
             </div>

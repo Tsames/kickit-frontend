@@ -10,7 +10,12 @@ const Footer = () => {
 
   /* ------------------------------------------ Component Variables ------------------------------------------ */
 
-  const location = useLocation().pathname === "/";
+  const location = useLocation().pathname;
+  const rightPlace = ['/', '/create']
+  
+  const shouldFoot = () => {
+    return rightPlace.includes(location);
+  }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
@@ -26,7 +31,7 @@ const Footer = () => {
 
   return (
     <>
-      { location ? display() : null}
+      { shouldFoot ? display() : null}
     </>
   )
 }

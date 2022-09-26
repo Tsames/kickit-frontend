@@ -17,6 +17,9 @@ label.custom-field-ta {
     appearance: none;
     box-sizing: border-box;
 
+    width: 100%;
+    height: 100%;
+
 
     color: v.$font-heavy;
     border-radius: 3px;
@@ -27,7 +30,7 @@ label.custom-field-ta {
     text-overflow: ellipsis;
     outline: none;
     resize: none;
-    width: 200px;
+    wrap: hard;
   }
 
   //Span placeholder inside our custom field

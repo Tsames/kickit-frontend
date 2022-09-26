@@ -3,7 +3,7 @@
 @use './../device' as d;
 
 //Wrapper
-div.calendarShell {
+#calendarShell {
   //General Styling in Calendar
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@ div.calendarShell {
   font-weight: lighter;
 
   //Calendar Heading Styling
-  div.calendarHeading {
+  #calendarHeading {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -33,7 +33,7 @@ div.calendarShell {
   }
 
   //Grid Layout with 7 columns
-  div.calendarBody {
+  #calendarBody {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
   }

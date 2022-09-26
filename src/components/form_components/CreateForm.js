@@ -79,7 +79,6 @@ const CreateForm = ({ setRoot, URL }) => {
           <div id="section-mid-left">
             <Field form="createForm" type="text" name="location" text="Location" value={newForm.location} doThis={handleChange} />
             <TextArea form="createForm" rows="10" cols="30" name="description" text="Description" value={newForm.description} doThis={handleChange} />
-            {/* <Field form="createForm" type="text" name="cost" text="Cost" value={newForm.cost} doThis={handleChange} /> */}
           </div>
           <div id="section-mid-right">
             <div id="calendarHours">

@@ -10,18 +10,23 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 0 auto;
+  overflow: scroll;
 
   //Mobile Sizing
   @include d.for-phone-only {
-    height: 15vh;
-    width: 100vw;
+    height: 77vh;
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
   }
 
   //Desktop Sizing
   @include d.for-desktop-up {
     height: 80vh;
-    width: 100vw;
+    width: 80vw;
+    margin-top: 5vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -30,15 +35,14 @@
   form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      height: 40%;
+      height: 100%;
       width: 100%;
-      margin-top: 50%;
+      justify-content: space-evenly;
     }
 
     //Desktop Sizing & Positioning
@@ -53,6 +57,7 @@
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       width: 100%;
+      margin-bottom: 2rem;
     }
 
     //Desktop Sizing & Positioning
@@ -65,33 +70,92 @@
   //Middle of Form
   #section-mid {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    width: 100%;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      width: 100%;
+      flex-direction: column;
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      width: 100%;
+      flex-direction: row;
     }
 
+    //Middle-left of Form
     #section-mid-left {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
       align-items: center;
+      width: 100%;
+      overflow: visible;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        justify-content: space-between;
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+        justify-content: flex-start;
+      }
+
+      //Location Field
+      #createForm-location {
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+          width: 90%;
+          height: 4rem;
+          margin-bottom: 1rem;
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+        }
+      }
+
+      //Description Field
+      #createForm-description{
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+          width: 90%;
+          height: 8rem;
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+        }
+      }
     }
 
+    //Middle-right of form
     #section-mid-right {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
       align-items: center;
+      overflow: visible;
 
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+        justify-content: flex-start;
+      }
+      
+
+      //Hour Dropdowns
       #calendarHours {
         display: flex;
         flex-direction: row;
@@ -101,8 +165,17 @@
         padding: 0.4rem;
       }
 
-      .calendarShell {
-        padding: 0.4rem;
+      //Calendar Component
+      #calendarShell {
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+          width: 90%;
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
       }
     }
 
@@ -122,7 +195,7 @@
     #createForm-title {
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
-        width: 100%
+        width: 100%;
       }
 
       //Desktop Sizing & Positioning
@@ -132,16 +205,15 @@
 
       input {
         border: none;
-        color: v.$font-light;
-        border: solid;
+        color: v.$font-heavy;
         text-align: center;
-        background: linear-gradient(360deg, v.$font-light, v.$font-light) center bottom/0% 5% no-repeat;
+        background: linear-gradient(360deg, v.$font-heavy, v.$font-heavy) center bottom/0% 5% no-repeat;
         transition: background-size 0.3s ease;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-          font-size: 3rem;
-          width: 100%
+          font-size: 2rem;
+          width: 90%
         }
 
         //Desktop Sizing & Positioning
@@ -151,7 +223,7 @@
         }
 
         &::placeholder {
-          color: v.$font-light;
+          color: v.$font-heavy;
           opacity: 100;
 
           //Mobile Sizing & Positioning
@@ -166,7 +238,7 @@
         }
   
         &:focus {
-          background-size: 60% 5%;
+          background-size: 100% 5%;
   
           &::placeholder {
             opacity: 0;

@@ -5,11 +5,13 @@ making it simple to make small or large tweaks to many aspects of the web app */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&display=swap');
 
 $home-page-branding: 'Dancing Script', cursive;
 $nav-items: 'Pacifico', cursive;
 $footer-items: 'Pacifico', cursive;
-$standard-font: 'Arvo', serif;
+$standard-font: 'Aref Ruqaa Ink', serif;
+// $standard-font: 'Arvo', serif;
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Colors %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
@@ -17,6 +19,7 @@ $invisible: rgba(0, 0, 0, 0);
 
 $font-light: rgb(255, 255, 255);
 $font-heavy: rgba(55, 53, 53, 0.8);
+$font-heavier: #222;
 
 $background-light: rgba(242, 242, 242, 0.35);
 
@@ -90,9 +93,9 @@ $calendar-hover: white;
 $calendar-hover-background: rgb(68, 131, 160, 0.3);
 
 //Selected Class
-$calendar-selected-background: rgb(68, 131, 160);
-$calendar-selected-border: rgb(68, 131, 160);
-$calendar-selected-color: white;
+$calendar-selected-background: $font-heavy;
+$calendar-selected-border: $font-heavier;
+$calendar-selected-color: $font-light;
 
 /* -!-!-!-!-!-!-!-!-!-!-!-!-!  Root Background Class Styles !-!-!-!-!-!-!-!-!-!-!-!-!- */
 

@@ -169,13 +169,13 @@ const Calendar = ({newForm, setNewForm}) => {
   /* ------------------------- Returning JSX ------------------------------ */
 
   return (
-    <div className="calendarShell">
-      <div className="calendarHeading">
+    <div id="calendarShell">
+      <div id="calendarHeading">
         <BiLeftArrow id="calendarPrevMonth" className="calendarHeadingButton" onClick={handlePrevMonth}>{'<'}</BiLeftArrow>
         <h4>{`${findMonth(page)} ${page.getFullYear()}`}</h4>
         <BiRightArrow id="calendarNextMonth" className="calendarHeadingButton" onClick={handleNextMonth}>{'>'}</BiRightArrow>
       </div>
-      <div className="calendarBody">
+      <div id="calendarBody">
         <div id="sunday" className="calendarDayLabel calendarItem">Sun</div>
         <div id="monday" className="calendarDayLabel calendarItem">Mon</div>
         <div id="tuesday" className="calendarDayLabel calendarItem">Tue</div>

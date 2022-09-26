@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  overflow: scroll;
+  overflow-y: auto;
 
   //Mobile Sizing
   @include d.for-phone-only {
@@ -57,7 +57,7 @@
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       width: 100%;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     //Desktop Sizing & Positioning
@@ -89,12 +89,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100%;
       overflow: visible;
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
         justify-content: space-between;
+        width: 100%;
       }
 
       //Desktop Sizing & Positioning
@@ -162,7 +162,40 @@
         justify-content: space-evenly;
         align-items: center;
 
-        padding: 0.4rem;
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+          width: 90%;
+          margin-bottom: 1rem;
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
+
+        //Class that covers both dropdowns
+        .time-drop-down {
+          //Mobile Sizing & Positioning
+          @include d.for-phone-only {
+            width:50%;
+            height: 2.5rem;
+
+            //Text Above
+            span{
+              font-size: 0.8rem;
+            }
+            
+            //Field
+            select {
+              font-size: 0.8rem;
+            }
+          }
+
+          //Desktop Sizing & Positioning
+          @include d.for-desktop-up {
+
+          }
+        }
       }
 
       //Calendar Component
@@ -178,80 +211,120 @@
         }
       }
     }
+  }
 
+  //Bottom of Form
+  #section-bottom {
 
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      width: 100%
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 100%;
+    }
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  .drop-down {
-    font-size: 14px;
-    margin: 1rem;
-  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-    //Event Title Field at the top of the page
-    #createForm-title {
+  //Event Title Field at the top of the page
+  #createForm-title {
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      width: 100%;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 100%;
+    }
+
+    input {
+      border: none;
+      color: v.$font-heavy;
+      text-align: center;
+      background: linear-gradient(360deg, v.$font-heavy, v.$font-heavy) center bottom/0% 5% no-repeat;
+      transition: background-size 0.3s ease;
+
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
-        width: 100%;
+        font-size: 2rem;
+        width: 90%
       }
 
       //Desktop Sizing & Positioning
       @include d.for-desktop-up {
-        width: 100%;
+        font-size: 2.5rem;
+        width: 50%;
       }
 
-      input {
-        border: none;
+      &::placeholder {
         color: v.$font-heavy;
-        text-align: center;
-        background: linear-gradient(360deg, v.$font-heavy, v.$font-heavy) center bottom/0% 5% no-repeat;
-        transition: background-size 0.3s ease;
+        opacity: 100;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-          font-size: 2rem;
-          width: 90%
+          font-size: 3rem;
         }
 
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
           font-size: 2.5rem;
-          width: 50%;
         }
+      }
 
+      &:focus {
+        background-size: 100% 5%;
         &::placeholder {
-          color: v.$font-heavy;
-          opacity: 100;
-
-          //Mobile Sizing & Positioning
-          @include d.for-phone-only {
-            font-size: 3rem;
-          }
-
-          //Desktop Sizing & Positioning
-          @include d.for-desktop-up {
-            font-size: 2.5rem;
-          }
+          opacity: 0;
         }
-  
-        &:focus {
-          background-size: 100% 5%;
-  
-          &::placeholder {
-            opacity: 0;
-          }
-        }
-  
-        &:valid {
-  
-          &::placeholder {
-            opacity: 0;
-          }
+      }
+
+      &:valid {
+        &::placeholder {
+          opacity: 0;
         }
       }
     }
+  }
+
+  //Create Button
+  #createForm-submit {
+    border: solid;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      width: 100%;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 50%;
+    }
+
+    input {
+      border: none;
+      color: v.$font-light !important;
+      @include m.hover-underline(v.$font-light, 8%);
+  
+      font-family: v.$fancy-font;
+      transition: background-size 0.45s ease;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        font-size: 1.5rem;
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+        font-size: 2.5rem;
+      }
+    }
+  }
 }
 

@@ -11,6 +11,7 @@ $home-page-branding: 'Dancing Script', cursive;
 $nav-items: 'Pacifico', cursive;
 $footer-items: 'Pacifico', cursive;
 $standard-font: 'Aref Ruqaa Ink', serif;
+$fancy-font: 'Pacifico', cursive;
 // $standard-font: 'Arvo', serif;
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Colors %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
@@ -18,8 +19,8 @@ $standard-font: 'Aref Ruqaa Ink', serif;
 $invisible: rgba(0, 0, 0, 0);
 
 $font-light: rgb(255, 255, 255);
-$font-heavy: rgba(55, 53, 53, 0.8);
-$font-heavier: #222;
+$font-heavy: rgb(55, 53, 53);
+$font-heavier: rgb(34, 34, 34);
 
 $background-light: rgba(242, 242, 242, 0.35);
 

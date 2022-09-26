@@ -7,7 +7,7 @@ import '../../styles/input_styling/time_drop_down.scss';
 const TimeDropdown = ({form, name, text, value, doThis}) => {
 
   return (
-    <label id={`${form}${name}`} for={name} className={"time-drop-down"}>
+    <label id={`${form}-${name}`} for={name} className={"time-drop-down"}>
       <span>{text}</span>
       <select name={name} value={value} onChange={doThis}>
         <option value="1">1:00 AM</option>

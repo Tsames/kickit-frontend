@@ -5,7 +5,6 @@ $input-background: rgba(233, 232, 232, 0.55);
 
 label.custom-field {
   position: relative;
-  padding: 0.6rem 0.2rem 0.2rem 0.2rem;
   border: none;
 
   //Input inside our custom field
@@ -19,11 +18,10 @@ label.custom-field {
 
     height: 100%;
     width: 100%;
+    font-size: 1rem;
 
-    color: v.$font-heavy;
-
+    color: v.$font-heavier;
     border-radius: 3px;
-    padding: 0.3rem;
     background: $input-background;
     overflow: hidden;
     white-space: nowrap;
@@ -35,11 +33,11 @@ label.custom-field {
   //Span placeholder inside our custom field
   .placeholder {
     position: absolute;
-    font-size: 0.7rem;
-    left: 0.5rem;
-    top: 45%;
+    font-size: 1rem;
+    left: 5%;
+    top: calc(55% - 1rem);
     font-weight: normal;
-    color: v.$font-heavy;
+    color: v.$font-heavier;
     transition:
       top 0.3s ease,
       bottom 0.3s ease,
@@ -49,15 +47,16 @@ label.custom-field {
 
   input:focus {
     border: solid;
-    border-color: v.$font-heavy;
+    border-color: v.$font-heavier;
     border-width: 0.05rem;
   }
 
   input:focus+.placeholder,
   input:valid+.placeholder {
-    top: -20%;
+    font-size: 0.75rem;
+    top: calc(-10% - 1rem);
     bottom: 0rem;
-    left: 0.3rem;
+    left: 2%;
     color: #222;
   }
 }

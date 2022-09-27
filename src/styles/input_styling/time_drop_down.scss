@@ -14,20 +14,18 @@ label.time-drop-down {
   flex-direction: column;
   justify-content: space-evenly;
 
-  padding: 0.8rem 0.2rem 0.2rem 0.2rem;
   border: none;
 
   /* -------------------------- Child Elements -------------------------- */
 
-  span {
+  span { 
     font-size: 0.5rem;
-    color: rgb(99, 94, 94);
-    padding: 0 0.2rem 0 0.2rem;
+    color: v.$font-heavier;
   }
 
   select {
     border: none;
-    color: rgb(99, 94, 94);
+    color: v.$font-heavier;
     font-size: 0.5rem;
     text-align: center;
     border-radius: 3px;

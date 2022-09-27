@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  overflow-y: auto;
+  font-family: v.$standard-font;
 
   //Mobile Sizing
   @include d.for-phone-only {
@@ -18,15 +18,16 @@
     width: 90vw;
     margin-left: 5vw;
     margin-right: 5vw;
+    overflow-y: scroll;
   }
 
   //Desktop Sizing
   @include d.for-desktop-up {
     height: 80vh;
     width: 80vw;
-    margin-top: 5vh;
     margin-left: 10vw;
     margin-right: 10vw;
+    overflow-y: scroll;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -47,9 +48,11 @@
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      height: 40%;
+      height: 100%;
       width: 100%;
-      margin-top: 5%;
+      justify-content: space-evenly;
+      padding-top: 5%;
+      overflow-y: scroll;
     }
   }
 
@@ -57,7 +60,7 @@
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       width: 100%;
-      margin-bottom: 1.5rem;
+      margin: 0 0 2.75rem 0;
     }
 
     //Desktop Sizing & Positioning
@@ -76,6 +79,7 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      margin: 0 0 1.5rem 0;
       flex-direction: column;
     }
 
@@ -100,6 +104,7 @@
       //Desktop Sizing & Positioning
       @include d.for-desktop-up {
         justify-content: flex-start;
+        width: 50%;
       }
 
       //Location Field
@@ -108,14 +113,18 @@
         @include d.for-phone-only {
           width: 90%;
           height: 4rem;
-          margin-bottom: 1rem;
+          margin: 0 0 2.5rem 0;
         }
 
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-          display: flex;
-          flex-direction: row;
           width: 100%;
+          height: 5rem;
+          margin: 0 0 3.5rem 0;
+
+          input {
+            padding-left: 5%;
+          }
         }
       }
 
@@ -125,13 +134,27 @@
         @include d.for-phone-only {
           width: 90%;
           height: 8rem;
+          margin: 0 0 1.5rem 0;
         }
 
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-          display: flex;
-          flex-direction: row;
           width: 100%;
+          height: 18rem;
+          margin: 0 0 1.5rem 0;
+
+          textarea {
+            padding: 5% 5% 5% 5%;
+          }
+
+          .placeholder-ta {
+            top: calc(5% + 1rem) !important;
+          }
+
+          textarea:focus+.placeholder-ta,
+          textarea:valid+.placeholder-ta {
+            top: calc(-5% - 1rem) !important;
+          }
         }
       }
     }
@@ -152,6 +175,7 @@
       //Desktop Sizing & Positioning
       @include d.for-desktop-up {
         justify-content: flex-start;
+        width: 50%;
       }
       
 
@@ -165,7 +189,7 @@
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
           width: 90%;
-          margin-bottom: 1rem;
+          margin-bottom: 1.5rem;
         }
 
         //Desktop Sizing & Positioning
@@ -177,17 +201,18 @@
         .time-drop-down {
           //Mobile Sizing & Positioning
           @include d.for-phone-only {
-            width:50%;
-            height: 2.5rem;
+            width: 45%;
+            height: 3rem;
 
             //Text Above
             span{
-              font-size: 0.8rem;
+              font-size: 0.9rem;
+              margin: 0 0 0.3rem 0;
             }
             
             //Field
             select {
-              font-size: 0.8rem;
+              font-size: 0.9rem;
             }
           }
 
@@ -295,20 +320,21 @@
 
   //Create Button
   #createForm-submit {
-    border: solid;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       width: 100%;
+      margin-top: 1rem;
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      width: 50%;
+      width: 100%;
     }
 
     input {
       border: none;
+      border: solid;
       color: v.$font-light !important;
       @include m.hover-underline(v.$font-light, 8%);
   
@@ -318,11 +344,13 @@
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
         font-size: 1.5rem;
+        width: 30%;
       }
 
       //Desktop Sizing & Positioning
       @include d.for-desktop-up {
         font-size: 2.5rem;
+        width: 15%;
       }
     }
   }

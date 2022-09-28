@@ -1,5 +1,5 @@
 //Dependencies
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 //Import Components
@@ -14,7 +14,9 @@ const Share = ({ setRoot, getEventData, event}) => {
   let navigate = useNavigate();
   
   //Set root style based on page
-  setRoot("rb-view-event");
+  useEffect(() => {
+    document.getElementById('root').className = 'rb-share';
+  });
 
   //Get Id from params
   const id = useParams().id;

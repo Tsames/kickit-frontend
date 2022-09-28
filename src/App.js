@@ -32,8 +32,8 @@ function App () {
   //Stores the data of an event
   const [event, setEvent] = useState(null);
 
-  //Stores data used to organize the display components into blocks of adjacent days
-  //(for AttendanceChart.js and Grid.js)
+  /*Stores data used to organize the display components into blocks of adjacent days
+  (for AttendanceChart.js and Grid.js) */
   const [blocks, setBlocks] = useState([]);
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
@@ -58,23 +58,6 @@ function App () {
   }
 
   /* ------------------------------------------ Passing Functions ------------------------------------------ */
-  
-  //Passing function - Sets the class of root or nav
-  const setRoot = (newClassRoot=null, newClassNav=null) => {
-    //Set the class of root
-    if (newClassRoot !== null) {
-      const root = document.getElementById("root");
-      root.className = "";
-      root.className = newClassRoot;
-    }
-
-    //Set the class of Nav
-    if (newClassNav !== null) {
-      const navbar = document.getElementById("navbar");
-      navbar.className = "";
-      navbar.className = newClassNav;
-    }
-  }
 
   //Passing function - Gets Event Data and stores in state
   const getEventData = async (id) => {
@@ -101,16 +84,16 @@ function App () {
     <>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home setRoot={setRoot} getEventData={getEventData}/>} />
-        <Route path='/create' element={<CreateForm setRoot={setRoot} getEventData={getEventData} URL={BACKEND_URL}/>} />
-        <Route path='/share/:id' element={<Share setRoot={setRoot} getEventData={getEventData} event={event} />} />
+        <Route path='/' element={<Home getEventData={getEventData}/>} />
+        <Route path='/create' element={<CreateForm getEventData={getEventData} URL={BACKEND_URL}/>} />
+        <Route path='/share/:id' element={<Share getEventData={getEventData} event={event} />} />
         <Route path='/attend/:id' element={<Attend getEventData={getEventData} event={event} blocks={blocks} URL={BACKEND_URL} /> } />
         <Route path='/peek/:id' element={<Peek getEventData={getEventData} event={event} blocks={blocks} />} />
-        <Route path='/created/:id' element={<CreateEventSuccess setRoot={setRoot} getEventData={getEventData} event={event} URL={FRONTEND_URL} />} />
-        <Route path='/attend/submitted/:id' element={<AttendSuccess setRoot={setRoot} getEventData={getEventData} />} />
-        <Route path='/about/how' element={<About setRoot={setRoot} page={1}/>} />
-        <Route path='/about/who' element={<About setRoot={setRoot} page={2}/>} />
-        <Route path='/create/success/:id' element={<CreateEventSuccess setRoot={setRoot} getEventData={getEventData} event={event}/>} />
+        <Route path='/created/:id' element={<CreateEventSuccess getEventData={getEventData} event={event} URL={FRONTEND_URL} />} />
+        <Route path='/attend/submitted/:id' element={<AttendSuccess getEventData={getEventData} />} />
+        <Route path='/about/how' element={<About/>} />
+        <Route path='/about/who' element={<About/>} />
+        <Route path='/create/success/:id' element={<CreateEventSuccess getEventData={getEventData} event={event}/>} />
       </Routes>
       <Footer/>
     </>

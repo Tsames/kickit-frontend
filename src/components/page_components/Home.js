@@ -1,17 +1,19 @@
 //Dependencies
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 //Styling
 import '../../styles/page_styling/home.scss';
 
-const Home = ({setRoot}) => {
+const Home = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
   let navigate = useNavigate();
 
-  //Set root style based on page
-  setRoot("rb-landing");
+  //Set root style
+  useEffect(() => {
+    document.getElementById('root').className = 'rb-home';
+  });
 
   //State that stores the input for the search bar
   const [search, setSearch] = useState(""); 

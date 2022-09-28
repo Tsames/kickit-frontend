@@ -24,6 +24,13 @@ $font-heavier: rgb(34, 34, 34);
 
 $background-light: rgba(233, 232, 232, 0.45);
 
+.invisible {
+  color: $invisible;
+  background-color: $invisible;
+  border-color: $invisible;
+  opacity: 0;
+}
+
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Component-specific Colors %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
 /* !-!-!-!-!-!-!-!-!-! Peek Event Colors !-!-!-!-!-!-!-!-!-! */
@@ -101,24 +108,24 @@ $calendar-selected-color: $font-light;
 /* -!-!-!-!-!-!-!-!-!-!-!-!-!  Root Background Class Styles !-!-!-!-!-!-!-!-!-!-!-!-!- */
 
 //Landing Page
-.rb-landing {
+.rb-home {
   background-image: linear-gradient(62deg, #dfae31 0%, #e8712b 33%, #c32727 66%, #bc53d1 100%);
 }
 
 //View Event - Details Page
-.rb-view-event {
+.rb-share {
   background-color: $details-background-color;
   background-image: $details-background-image;
 }
 
 //Create Event
-.rb-create-event {
-  background: linear-gradient(210deg, rgba(246,128,132,1) 0%, rgba(209,107,161,1) 25%, rgba(166,192,254,1) 50%, rgba(133,126,199,1) 75%, rgba(192,119,226,1) 100%);
+.rb-create {
+  background-image: linear-gradient(210deg, rgba(246,128,132,1) 0%, rgba(209,107,161,1) 25%, rgba(166,192,254,1) 50%, rgba(133,126,199,1) 75%, rgba(192,119,226,1) 100%);
 }
 
 //About Page
 .rb-about {
-  background: linear-gradient(30deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  background-image: linear-gradient(214deg, rgba(34,193,195,1) 0%, rgba(87,191,167,1) 25%, rgba(100,182,100,1) 50%, rgba(179,185,86,1) 75%, rgba(253,187,45,1) 100%);
 }
 
 /* -!-!-!-!-!-!-!-!-!-!-!-!-!  &%$#&%$#&%$#&%$# !-!-!-!-!-!-!-!-!-!-!-!-!- */

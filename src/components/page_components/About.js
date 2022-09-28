@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 //Styling
 import '../../styles/page_styling/about.scss';
 
-const About = ({ setRoot }) => {
+const About = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
@@ -14,8 +14,10 @@ const About = ({ setRoot }) => {
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
-  useEffect(() => helperOnPage());
-  setRoot('rb-about');
+  useEffect(() => {
+    helperOnPage();
+    document.getElementById('root').className = 'rb-about';
+  });
 
   const helperOnPage = () => {
     if (selectedPage === '/about/how') {

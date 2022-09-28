@@ -1,5 +1,5 @@
 //Dependencies
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 
 //Import Components
 import Field from '../input_components/Field';
@@ -15,7 +15,9 @@ const CreateForm = ({ setRoot, URL }) => {
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
   
   //Set root style based on page
-  setRoot("rb-create-event");
+  useEffect(() => {
+    document.getElementById('root').className = 'rb-create';
+  });
 
   //State that stores input
   const [newForm, setNewForm] = useState({

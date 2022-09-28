@@ -1,37 +1,68 @@
 //Imports
 @use './../variables' as v;
+@use './../mixins' as m;
 @use './../device' as d;
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
-
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #about-shell {
-    //--------------------------------------------------- Wrapper Styles ---------------------------------------------------
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 
     color: v.$font-light;
 
-    //--------------------------------------------------- Reused Classes ---------------------------------------------------
-
-    .aboutClickables {
-        background: v.$invisible;
-        border: none;
-        color: v.$font-light;
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+        height: 77vh;
     }
 
-    .aboutSectionActive {
-        text-decoration: underline;
-    }
-    //--------------------------------------------------- Specific Elements ---------------------------------------------------
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
 
-    #HIWAsterisk {
-        font-size: 0.6rem;
+    }
+    
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+  
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+        height: 80vh;
+        margin-left: 12vw;
+        margin-right: 12vw;
+        padding-top: 8vh;
+        overflow-y: auto;
     }
 
-    //--------------------------------------------------- Major Page Elements ---------------------------------------------------
+    //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
     //Welcome Heading
     #welcome-heading {
+        font-family: v.$home-page-branding;
         text-align: center;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+        
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+    
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+            font-size: 4rem;
+            margin: 0 0 1rem 0;
+        }
     }
 
     //Section Selection
@@ -40,24 +71,65 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        font-family: v.$fancy-font;
 
-        width: 20vw;
-        margin: auto;
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+        
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+    
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
     }
 
-    .aboutLink {
+    .aboutClickables {
+        border: none;
         text-decoration: none;
         color: v.$font-light;
         font-weight: 600;
-        transition: ease 0.5s;
-        &:hover {
-            text-decoration: underline;
-        }
+
+        @include m.hover-underline(v.$font-light, 8%);
+        transition: background-size ease 0.4s;
     }
 
     //Author Section
     div#author-block {
 
+    }
+
+    //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+    .aboutClickables {
+        border: none;
+        text-decoration: none;
+        color: v.$font-light;
+        font-weight: 600;
+        margin: 0 1rem 0 1rem;
+
+        @include m.hover-underline(v.$font-light, 8%);
+        transition: background-size ease 0.4s;
+    }
+
+
+    .aboutSectionActive {
+        background-size: 100% 8%;
+    }
+
+    //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+    #HIWAsterisk {
+        font-size: 0.6rem;
     }
 
 

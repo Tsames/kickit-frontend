@@ -2,30 +2,35 @@
 @use './../mixins' as m;
 @use './../device' as d;
 
-//Wrapper
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #calendarShell {
-  //General Styling in Calendar
+
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   
+  color: v.$font-heavier;
+  font-size: 14px;
+  font-weight: lighter;
   background-color: v.$background-light;
+
   border-style: none;
   border-radius: 0.3rem;
-  max-width: 20em;
-  padding: 0.5em;
-  font-size: 14px;
-  color: v.$font-heavy;
-  font-weight: lighter;
 
-  //Calendar Heading Styling
+  padding: 0.5rem;
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Calendar Header
   #calendarHeading {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     color: v.$font-heavy;
+
+    width: 100%;
 
     .calendarHeadingButton {
       margin: 1em;
@@ -36,15 +41,34 @@
   #calendarBody {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    width: 100%;
   }
 
   //Style for Individual Items in the grid
   div.calendarItem {
     text-align: center;
     align-items: center;
-    padding: 0 0 0.2rem 0;
-    margin: 0.2em;
+    margin: 0.1rem;
+    padding: 0.1rem;
+  }
 
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Style for Selected Items in the grid
+  .calendarSelected {
+    background-color: v.$calendar-selected-background !important;
+    border-color: v.$calendar-selected-border !important;
+    color: v.$calendar-selected-color !important;
+    border-style: solid !important;
+    border-radius: 0.2em !important;
+    border-width: 0em !important;
+  }
+
+  .calendarDayLabel {
+    pointer-events: none;
+  }
+
+  .selectable {
     &:hover {
       color: v.$calendar-hover;
       background-color: v.$calendar-hover-background;
@@ -54,17 +78,10 @@
     }
   }
 
-  //Style for Selected Items in the grid
-  div.calendarSelected {
-    background-color: v.$calendar-selected-background !important;
-    border-color: v.$calendar-selected-border !important;
-    color: v.$calendar-selected-color !important;
-    border-style: solid !important;
-    border-radius: 0.2em !important;
-    border-width: 0em !important;
-  } 
-
-  div.Invisible {
+  .Invisible {
     color: v.$invisible;
   }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
 }

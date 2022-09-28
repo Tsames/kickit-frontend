@@ -82,7 +82,7 @@ const Calendar = ({newForm, setNewForm}) => {
       //If tracker is on the same day of the week as the index add a non-dummy div and increment tracker
       if (todayIs === weekdays[i]) {
         content.push(
-          <div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendarItem calendarSelected" : "calendarItem"}
+          <div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendarItem selectable calendarSelected" : "calendarItem selectable"}
            key={`calendar${tracker.getDate()}${weekdays[i]}`}
            data-time={tracker.getTime()} 
            onClick={handleClick}>
@@ -140,10 +140,10 @@ const Calendar = ({newForm, setNewForm}) => {
   //Handler function - adds and remove days to and from form state of Attend.js
   const handleClick = (event) => {
     //Only if calendarSelected is not on the element already
-    if (event.target.className === "calendarItem") {
+    if (event.target.className === "calendarItem selectable") {
 
       //Add css class
-      event.target.className = "calendarItem calendarSelected";
+      event.target.classList.add("calendarSelected");
 
       //Add element to days array
       const newDays = [...newForm.days, Number(event.target.dataset.time)];
@@ -154,7 +154,7 @@ const Calendar = ({newForm, setNewForm}) => {
     } else {
 
       //Remove the css class
-      event.target.className = "calendarItem"
+      event.target.classList.remove("calendarSelected");
 
       //Find index of the element in days array
       const index = checkDays(newForm.days, Number(event.target.dataset.time));

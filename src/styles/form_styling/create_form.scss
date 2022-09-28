@@ -43,7 +43,7 @@
     @include d.for-phone-only {
       height: 100%;
       width: 100%;
-      justify-content: space-evenly;
+      justify-content: flex-start;
     }
 
     //Desktop Sizing & Positioning
@@ -86,9 +86,10 @@
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
       flex-direction: row;
+      height: 50vh;
     }
 
-    //Middle-left of Form
+    // ------ Middle-left of Form ------
     #section-mid-left {
       display: flex;
       flex-direction: column;
@@ -104,7 +105,9 @@
       //Desktop Sizing & Positioning
       @include d.for-desktop-up {
         justify-content: flex-start;
-        width: 50%;
+        width: 49%;
+        height: 100%;
+        padding-right: 1%;
       }
 
       //Location Field
@@ -114,6 +117,10 @@
           width: 90%;
           height: 4rem;
           margin: 0 0 2.5rem 0;
+
+          input {
+            padding-left: 5%;
+          }
         }
 
         //Desktop Sizing & Positioning
@@ -135,6 +142,19 @@
           width: 90%;
           height: 8rem;
           margin: 0 0 1.5rem 0;
+
+          textarea {
+            padding: 5% 5% 5% 5%;
+          }
+
+          .placeholder-ta {
+            top: calc(5% + 1rem) !important;
+          }
+
+          textarea:focus+.placeholder-ta,
+          textarea:valid+.placeholder-ta {
+            top: calc(-5% - 1rem) !important;
+          }
         }
 
         //Desktop Sizing & Positioning
@@ -159,7 +179,7 @@
       }
     }
 
-    //Middle-right of form
+    // ------ Middle-right of form ------
     #section-mid-right {
       display: flex;
       flex-direction: column;
@@ -175,7 +195,10 @@
       //Desktop Sizing & Positioning
       @include d.for-desktop-up {
         justify-content: flex-start;
-        width: 50%;
+        width: 49%;
+        height: 100%;
+        padding-left: 1%;
+        padding-top: 9%;
       }
       
 
@@ -194,7 +217,8 @@
 
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-
+          width: 100%;
+          margin-bottom: 1.5rem;
         }
 
         //Class that covers both dropdowns
@@ -218,7 +242,19 @@
 
           //Desktop Sizing & Positioning
           @include d.for-desktop-up {
+            width: 40%;
+            height: 3rem;
 
+            //Text Above
+            span{
+              font-size: 0.9rem;
+              margin: 0 0 0.3rem 0;
+            }
+            
+            //Field
+            select {
+              font-size: 0.9rem;
+            }
           }
         }
       }
@@ -227,12 +263,27 @@
       #calendarShell {
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-          width: 90%;
+          width: 85%;
+          height: 15rem;
+
+          font-size: 16px;
+          
+          #calendar-body {
+            padding: 0.5rem;
+          }
+
         }
 
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
+          width: 85%;
+          height: 18rem;
 
+          font-size: 20px;
+          
+          #calendar-body {
+            padding: 0.5rem;
+          }
         }
       }
     }

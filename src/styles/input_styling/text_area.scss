@@ -1,7 +1,6 @@
+//Imports
 @use './../variables' as v;
 @use './../device' as d;
-
-$input-background: rgba(233, 232, 232, 0.55);
 
 label.custom-field-ta {
   position: relative;
@@ -23,7 +22,7 @@ label.custom-field-ta {
 
     color: v.$font-heavier;
     border-radius: 3px;
-    background: $input-background;
+    background: v.$background-light;
     overflow: hidden;
     white-space: normal;
     text-overflow: ellipsis;

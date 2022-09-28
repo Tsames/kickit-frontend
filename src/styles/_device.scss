@@ -17,3 +17,28 @@
 @mixin for-big-desktop-up {
     @media (min-width: 1800px) { @content; }
 }
+
+
+/*
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+    
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+  
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+*/

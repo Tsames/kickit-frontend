@@ -37,22 +37,21 @@
     }
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
-
-    //Welcome Heading
-    #welcome-heading {
-        font-family: v.$home-page-branding;
-        text-align: center;
+   
+   //Styles for the top Heading & Page Buttons
+    #about-top {
+        width: 100%;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
 
         }
-
+    
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
 
         }
-        
+    
         //Tablet Landscape Sizing & Positioning
         @include d.for-tablet-landscape-up {
 
@@ -60,10 +59,10 @@
     
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-            font-size: 4rem;
-            margin: 0 0 1rem 0;
+            
         }
     }
+
 
     //Section Selection
     #aboutSections {
@@ -94,20 +93,7 @@
         }
     }
 
-    .aboutClickables {
-        border: none;
-        text-decoration: none;
-        color: v.$font-light;
-        font-weight: 600;
 
-        @include m.hover-underline(v.$font-light, 8%);
-        transition: background-size ease 0.4s;
-    }
-
-    //Author Section
-    div#author-block {
-
-    }
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
     .aboutClickables {
@@ -127,6 +113,33 @@
     }
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+    //Welcome Heading
+    #welcome-heading {
+        font-family: v.$home-page-branding;
+        text-align: center;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+        
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+    
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+            font-size: 4rem;
+            margin: 0 0 1rem 0;
+        }
+    }
 
     #HIWAsterisk {
         font-size: 0.6rem;

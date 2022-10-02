@@ -31,7 +31,7 @@ const Footer = () => {
 
   return (
     <>
-      { shouldFoot ? display() : null}
+      { shouldFoot() ? display() : null}
     </>
   )
 }

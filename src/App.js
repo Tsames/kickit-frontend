@@ -86,9 +86,7 @@ function App () {
       <Routes>
         <Route path='/' element={<Home getEventData={getEventData}/>} />
         <Route path='/create' element={<CreateForm getEventData={getEventData} URL={BACKEND_URL}/>} />
-        <Route path='/share/:id' element={<Share getEventData={getEventData} event={event} />} />
-        <Route path='/attend/:id' element={<Attend getEventData={getEventData} event={event} blocks={blocks} URL={BACKEND_URL} /> } />
-        <Route path='/peek/:id' element={<Peek getEventData={getEventData} event={event} blocks={blocks} />} />
+        <Route path='/share/:id' element={<Share getEventData={getEventData} event={event} blocks={blocks} URL={BACKEND_URL}/>} />
         <Route path='/created/:id' element={<CreateEventSuccess getEventData={getEventData} event={event} URL={FRONTEND_URL} />} />
         <Route path='/attend/submitted/:id' element={<AttendSuccess getEventData={getEventData} />} />
         <Route path='/about/how' element={<About/>} />

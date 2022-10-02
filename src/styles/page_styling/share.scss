@@ -4,6 +4,7 @@
 @use './../device' as d;
 
 
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #share-wrapper {
   appearance: none;
   display: flex;
@@ -13,13 +14,7 @@
 
   margin: auto;
 
-  /* ------------------------------------- Child Elements - Event Loading ------------------------------------- */
-
-  #loading {
-    margin: 0 auto;
-  }
-
-  /* ------------------------------------- Child Elements - Event Loaded ------------------------------------- */
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   #share-main {
     //Display Settings
@@ -36,26 +31,15 @@
   }
 
 
-  #share-left {
+  #share-event {
     max-width: 40vw;
     overflow-x: hidden;
     overflow-y: auto;
     text-align: left;
   }
 
-  #share-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-  }
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  .share-button {
-    margin: 1.1rem 0 1.1rem 1.5rem;
-    width: 5rem;
-    height: 2.2rem;
-    @include m.button-light;
-  }
 
-  /* ------------------------------------- &&&&&&&&&&&&&&&&&&&& ------------------------------------- */
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 }

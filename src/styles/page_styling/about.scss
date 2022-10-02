@@ -29,17 +29,18 @@
   
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-        height: 80vh;
+        height: v.$desktop-body-height;
         margin-left: 12vw;
         margin-right: 12vw;
-        padding-top: 8vh;
-        overflow-y: auto;
     }
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
    
    //Styles for the top Heading & Page Buttons
     #about-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 100%;
 
         //Mobile Sizing & Positioning
@@ -59,16 +60,19 @@
     
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-            
+            margin-bottom: 5%;
+            h1 {
+                width: 100%;
+                margin-bottom: 4%;
+            }
         }
     }
-
 
     //Section Selection
     #aboutSections {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         font-family: v.$fancy-font;
 
@@ -89,7 +93,35 @@
     
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
+            width: 50%;
+        }
+    }
 
+    #about-body{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-y: visible;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+            width: 80%;
+            padding-bottom: 5rem;
         }
     }
 

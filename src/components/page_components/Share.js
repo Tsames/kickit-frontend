@@ -1,18 +1,20 @@
 //Dependencies
-import { React, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { React, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 //Import Components
-import ShareToGrids from '../transition_components/ShareToGrids';
+import Peek from './Peek';
+import Attend from './Attend';
 
 //Styling
 import '../../styles/page_styling/share.scss';
 
-const Share = ({ setRoot, getEventData, event}) => {
+const Share = ({ getEventData, event, blocks, URL }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
-  let navigate = useNavigate();
-  
+  //State to track which grid to show
+  const [action, setAction] = useState("peek");
+
   //Set root style based on page
   useEffect(() => {
     document.getElementById('root').className = 'rb-share';
@@ -29,17 +31,6 @@ const Share = ({ setRoot, getEventData, event}) => {
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
-  //Handler function - runs the transition animation and then navigates to either Attend.js or Peek.js
-  const handleNavigate = (event) => {
-    const transitionLeft = document.getElementById("share-to-grids-transition-left");
-    const transitionRight = document.getElementById("share-to-grids-transition-right");
-
-    transitionLeft.className = "share-to-grids-transition-left-move";
-    transitionRight.className = "share-to-grids-transition-right-move";
-    setTimeout(() => {
-      navigate(`/${event.target.dataset.to}/${id}`)
-    }, 2000)
-  }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
@@ -53,18 +44,17 @@ const Share = ({ setRoot, getEventData, event}) => {
   //Main JSX
   const share = () => {
     return (
-      <div id="share-main">
-        <ShareToGrids />
-        <div id="share-left">
+      <>
+        <div id="share-event">
           <h3>{event.title}</h3>
           <p>@ {event.location}</p>
           <p id="event-description">{event.description}</p>
         </div>
-        <div id="share-right">
-          <button className="share-button" onClick={handleNavigate} data-to="attend">Sign Up!</button>
-          <button className="share-button" onClick={handleNavigate} data-to="peek">View Attendance</button>
+        <div id="share-pageSelection">
+
         </div>
-      </div>
+        <Peek event={event} blocks={blocks}/>
+      </>
     )
   }
 

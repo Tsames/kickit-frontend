@@ -25,7 +25,7 @@
 
   //Desktop Sizing
   @include d.for-desktop-up {
-    height: 10vh;
+    height: v.$desktop-footer-height;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%

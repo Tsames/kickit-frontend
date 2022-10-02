@@ -24,7 +24,7 @@ nav {
 
   //Desktop Sizing
   @include d.for-desktop-up {
-    height: 10vh;
+    height: v.$desktop-nav-height;
     width: 100vw;
   }
 

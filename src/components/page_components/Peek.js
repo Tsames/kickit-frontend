@@ -183,14 +183,14 @@ const Peek = ({ event, blocks }) => {
           {prepareListItems()}
         </div>
       </div>
-      <div id="peek-blocks">
+      <div id="peek-right">
         <div id="peek-block-index">
           {prepareBlockIndex()}
         </div>
         <div id="peek-current-block">
-          <button id="next-block" onClick={nextBlock}>Next</button>
-          {prepareBlocks()[blockIndex]}
           <button id="prev-block" onClick={prevBlock}>Prev</button>
+          {prepareBlocks()[blockIndex]}
+          <button id="next-block" onClick={nextBlock}>Next</button>
         </div>
       </div>
     </div>

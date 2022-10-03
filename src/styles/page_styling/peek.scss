@@ -37,6 +37,8 @@
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+  
+  // ------------------ Left Side Wrapper ------------------
   #peek-left {
     display: flex;
     flex-direction: column;
@@ -60,7 +62,7 @@
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      width: 40%;
+      width: 30%;
       height: 100%;
 
       h4{
@@ -74,6 +76,7 @@
     }
   }
 
+  // ------------------ Mode Selection ------------------
   #peek-modes {
     width: 100%;
     text-align: center;
@@ -99,7 +102,7 @@
     }
   }
 
-
+  // ------------------ People List ------------------
   #peek-list {
     display: flex;
     flex-direction: column;
@@ -129,8 +132,91 @@
     }
   }
 
-  #peek
+  // ------------------ Right side Wrapper ------------------
+  #peek-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 60%;
+      height: 100%;
+    }
+  }
+
+  // ------------------ Block Index ------------------
+  #peek-block-index {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 40%;
+      margin-top: 5%;
+    }
+  }
+
+  // ------------------ Current Block (including page buttons) ------------------
+  #peek-current-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 

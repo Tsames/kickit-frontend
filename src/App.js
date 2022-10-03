@@ -37,7 +37,7 @@ function App () {
   const [blocks, setBlocks] = useState([]);
 
   //Stores the maximum number of days that a block can posses
-  const [blockMax, setBlockMax] = useState(Number.POSITIVE_INFINITY);
+  const [blockMax, setBlockMax] = useState(7);
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
   const FRONTEND_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
@@ -57,7 +57,8 @@ function App () {
     while (data.length > 0) {
       const smallBlock = []; let max = blockMax;
       smallBlock.push(data.shift());
-      while (Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000 && max > 0) {
+      //Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000
+      while (max > 0) {
         smallBlock.push(data.shift());
         max --;
       }

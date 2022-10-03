@@ -17,6 +17,9 @@ const Peek = ({ event, blocks }) => {
   //Stores data to determine the mode for interacting with the Availability Chart component (All Attending or Mouseover).
   const [mode, setMode] = useState("all");
 
+  //Stores data about the block that should be displayed - defaults to the first block
+  const [blockIndex, setBlockIndex] = useState(0);
+
   //Mouseover mode - stores the names of the attendees that are available in the cell that the mouse is over.
   const [output, setOutput] = useState([]);
 
@@ -85,6 +88,24 @@ const Peek = ({ event, blocks }) => {
     }
   }
 
+  //Handler Function - Adds One to BlockIndex if appropriate
+  const nextBlock = () => {
+    if (blockIndex < blocks.length - 1) {
+      setBlockIndex(blockIndex + 1);
+    }
+  }
+
+  //Handler Function - Subtracts One to BlockIndex if appropriate
+  const prevBlock = () => {
+    if (blockIndex > 0) {
+      setBlockIndex(blockIndex - 1);
+    }
+  }
+
+  const goToIndex = (e) => {
+    setBlockIndex(Number(e.target.dataset.index));
+  }
+
   /* ------------------------------------------ Conditional JSX Helpers ------------------------------------------ */
 
   //Helper function (peek) - creates an array of attendance charts, one for each block
@@ -111,6 +132,25 @@ const Peek = ({ event, blocks }) => {
     return content;
   }
 
+  /* Helper function (peek) - creates a visual for which block the user is viewing */
+  const prepareBlockIndex = () => {
+    const content = [];
+
+    if (blocks.length > 1) {
+      blocks.forEach((element, index) => {
+        content.push(<div
+          key={index}
+          id={`block-index-${index}`}
+          className={ index === blockIndex ? "block-index-indicator index-active" : "block-index-indicator"}
+          data-index={index}
+          onClick={goToIndex}
+        />)
+      });
+    }
+
+    return content
+  }
+
   /* Helper function (peek) - create a listing for each person attending the event for both all attending
   and mouseover modes */
   const prepareListItems = () => {
@@ -129,22 +169,29 @@ const Peek = ({ event, blocks }) => {
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
-
-
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div id="peek-main">
-      <div id="peek-modes">
+    <div id="peek-wrapper">
+      <div id="peek-left">
         <h4>{mode === "all" ? "All Attending" : "Mouseover"}</h4>
-        <button id="all-button" className="mode-button" onClick={() => setMode("all")}><FiUsers></FiUsers></button>
-        <button id="mouseover-button" className="mode-button" onClick={() => setMode("mouse")}><FiNavigation></FiNavigation></button>
-      </div>
-      <div id="peek-list">
-        {prepareListItems()}
+        <div id="peek-modes">
+          <button id="all-button" className="mode-button" onClick={() => setMode("all")}><FiUsers></FiUsers></button>
+          <button id="mouseover-button" className="mode-button" onClick={() => setMode("mouse")}><FiNavigation></FiNavigation></button>
+        </div>
+        <div id="peek-list">
+          {prepareListItems()}
+        </div>
       </div>
       <div id="peek-blocks">
-        {prepareBlocks()}
+        <div id="peek-block-index">
+          {prepareBlockIndex()}
+        </div>
+        <div id="peek-current-block">
+          <button id="next-block" onClick={nextBlock}>Next</button>
+          {prepareBlocks()[blockIndex]}
+          <button id="prev-block" onClick={prevBlock}>Prev</button>
+        </div>
       </div>
     </div>
   )

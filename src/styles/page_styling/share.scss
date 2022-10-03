@@ -8,38 +8,172 @@
 #share-wrapper {
   appearance: none;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  overflow: visible;
 
-  margin: auto;
+  //Mobile Sizing & Positioning
+  @include d.for-phone-only {
+
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+
+  }
+
+  //Desktop Sizing & Positioning
+  @include d.for-desktop-up {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 85vw;
+    margin-left: 7.5vw;
+    margin-right: 7.5vw;
+    margin-bottom: 5vh;
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  #share-main {
+  // ------------------ Event Details ------------------
+  #share-event {
     //Display Settings
+    display: flex;
+
+    color: v.$font-light;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: left;
+
+      width: 100%;
+
+      margin-top: 5%;
+
+      h1 {
+        font-size: 3.5rem;
+        margin-bottom: 0;
+      }
+
+      h4 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top: 4%;
+      }
+
+      p {
+        min-height: 10rem;
+        max-height: 15rem;
+        width: 60%;
+        font-size: 1.3rem;
+      }
+    }
+
+    h1 {
+      text-align: center;
+      font-family: v.$standard-font;
+    }
+
+    h4 {
+      text-align: center;
+      font-family: v.$standard-font;
+    }
+
+    p {
+      text-align: left;
+      font-family: v.$standard-font;
+      margin: auto;
+      overflow-y: auto;
+    }
+  }
+
+  // ------------------ Action Toggling Buttons ------------------
+  #share-select{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 
-    margin: auto;
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
 
-    color: v.$font-light;
-    font-size: 1rem;
-    z-index: 0;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      width: 30%;
+      margin: auto;
+      margin-bottom: 2%;
+    }
   }
 
+  // ------------------ Peek & Attend Wrapper ------------------
+  #share-grids {
 
-  #share-event {
-    max-width: 40vw;
-    overflow-x: hidden;
-    overflow-y: auto;
-    text-align: left;
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 100%;
+
+      margin-top: 0%;
+    }
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  .share-action-button {
+    background: none;
+    border: none;
+    color: v.$font-light;
+    font-family: v.$fancy-font;
+
+    @include m.hover-underline(v.$font-light, 8%);
+    transition: background-size ease 0.4s;
+  }
+
+  .active-action {
+    background-size: 100% 8% !important;
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 }

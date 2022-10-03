@@ -10,16 +10,172 @@
   //Display Settings
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: white;
   font-size: 1rem;
-  z-index: 5;
+
+  //Mobile Sizing & Positioning
+  @include d.for-phone-only {
+
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+
+  }
+
+  //Desktop Sizing & Positioning
+  @include d.for-desktop-up {
+    width: 100%;
+    height: 50rem;
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+  #peek-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 40%;
+      height: 100%;
+
+      h4{
+        margin-bottom: 5%;
+      }
+    }
+
+    h4 {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  #peek-modes {
+    width: 100%;
+    text-align: center;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      margin-bottom: 15%;
+    }
+  }
+
+
+  #peek-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+
+    width: 100%;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+  }
+
+  #peek
 
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Buttons responsible for switching modes for Peek
+  .mode-button {
+    background: none;
+    border: none;
+    color: v.$font-light;
+
+    @include m.hover-underline(v.$font-light, 8%);
+    transition: background-size ease 0.4s;
+  }
+
+  .mode-active {
+    background-size: 100% 8%;
+  }
+  // ---------------------------------------------------------
+
+  //People Listed in All Attending Mode ----
+  .peek-list-person {
+    background: none;
+    border: none;
+    color: v.$font-light;
+
+    @include m.hover-underline(v.$font-light, 8%);
+    transition: background-size ease 0.4s;
+  }
+
+  .limit-active {
+    background-size: 100% 8%;
+  }
+  // ---------------------------------------------------------
+
+  //Carousel Like Indicators at the top of the grid ----
+  .block-index-indicator {
+    width: 1.5rem;
+    height: 0.4rem;
+    border-radius: 3px;
+    background-color: v.$background-light;
+  }
+
+  .index-active {
+    background-color: v.$font-light;
+  }
+  // ---------------------------------------------------------
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 

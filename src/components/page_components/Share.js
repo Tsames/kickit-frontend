@@ -12,13 +12,24 @@ import '../../styles/page_styling/share.scss';
 const Share = ({ getEventData, event, blocks, URL }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
-  //State to track which grid to show
+  //State to track which component to show - default is peek
   const [action, setAction] = useState("peek");
 
   //Set root style based on page
   useEffect(() => {
     document.getElementById('root').className = 'rb-share';
+    if (event) helper();
   });
+
+  const helper = () => {
+    if (action === "peek") {
+      document.getElementById("action-peek").classList.add("active-action");
+      document.getElementById("action-attend").classList.remove("active-action");
+    } else {
+      document.getElementById("action-attend").classList.add("active-action");
+      document.getElementById("action-peek").classList.remove("active-action");
+    }
+  }
 
   //Get Id from params
   const id = useParams().id;
@@ -46,12 +57,13 @@ const Share = ({ getEventData, event, blocks, URL }) => {
     return (
       <>
         <div id="share-event">
-          <h3>{event.title}</h3>
-          <p>@ {event.location}</p>
+          <h1>{event.title}</h1>
+          <h4>@ {event.location}</h4>
           <p id="event-description">{event.description}</p>
-        </div>
-        <div id="share-pageSelection">
-
+          <div id="share-select">
+            <button id="action-peek" className="share-action-button" onClick={() => setAction("peek")}>View Attendance</button>
+            <button id="action-attend" className="share-action-button" onClick={() => setAction("attend")}>Sign Up!</button>
+          </div>
         </div>
         <Peek event={event} blocks={blocks}/>
       </>
@@ -61,8 +73,8 @@ const Share = ({ getEventData, event, blocks, URL }) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div id="share-wrapper" className="page-body">
-      {event === null ? noEvent() : share()}
+    <div id="share-wrapper">
+      { event ? share(): noEvent() }
     </div>
   )
 }

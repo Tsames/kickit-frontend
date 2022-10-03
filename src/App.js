@@ -1,5 +1,5 @@
 //Dependencies
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from 'react-router-dom';
 
 //Import Nav & Footer Components
@@ -36,8 +36,17 @@ function App () {
   (for AttendanceChart.js and Grid.js) */
   const [blocks, setBlocks] = useState([]);
 
+  //Stores the maximum number of days that a block can posses
+  const [blockMax, setBlockMax] = useState(Number.POSITIVE_INFINITY);
+
   const BACKEND_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
   const FRONTEND_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
+
+  //Set blockMax based on the device the app is being viewed on.
+  useEffect(() => {
+    const deviceWidth = window.matchMedia("(max-width: 599px)");
+    if (deviceWidth) setBlockMax(2);
+  }, []);
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -46,10 +55,11 @@ function App () {
   const makeBlocks = (daysArray) => {
     const newBlocks = [], data = [...daysArray];
     while (data.length > 0) {
-      const smallBlock = [];
+      const smallBlock = []; let max = blockMax;
       smallBlock.push(data.shift());
-      while (Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000) {
+      while (Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000 && max > 0) {
         smallBlock.push(data.shift());
+        max --;
       }
       newBlocks.push(smallBlock);
     }

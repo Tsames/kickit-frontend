@@ -45,6 +45,9 @@
     justify-content: flex-start;
     align-items: center;
 
+    border: solid;
+    border-color: white;
+
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
 
@@ -109,8 +112,6 @@
     justify-content: flex-start;
     align-items: left;
 
-    width: 100%;
-
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
 
@@ -156,7 +157,7 @@
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      width: 60%;
+      width: 70%;
       height: 100%;
     }
   }
@@ -185,8 +186,9 @@
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      width: 40%;
-      margin-top: 5%;
+      width: 90%;
+      margin: 5% 5% 0% 5%;
+      height: 5%;
     }
   }
 
@@ -196,7 +198,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
+
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
 
@@ -214,7 +216,9 @@
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-
+      margin: 5%;
+      width: 90%;
+      height: 80%;
     }
   }
 
@@ -241,7 +245,7 @@
     border: none;
     color: v.$font-light;
 
-    @include m.hover-underline(v.$font-light, 8%);
+    @include m.hover-underline();
     transition: background-size ease 0.4s;
   }
 
@@ -263,6 +267,20 @@
   }
   // ---------------------------------------------------------
 
-  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+  //Carousel Like Indicators at the top of the grid ----
+  .index-button {
+    border: none;
+    color: v.$background-light;
+    font-size: 1.5rem;
+    border-radius: 3px;
+    background-color: v.$invisible;
+    transition: color 0.4s ease;
 
+    &:hover {
+      color: v.$font-light;
+    }
+  }
+  // ---------------------------------------------------------
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 }

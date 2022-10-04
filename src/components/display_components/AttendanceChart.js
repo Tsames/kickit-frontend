@@ -1,5 +1,5 @@
 //Dependencies
-import { React } from 'react';
+import { React, useEffect } from 'react';
 
 //Styling
 import '../../styles/display_styling/attendance_chart.scss';
@@ -12,6 +12,14 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
   const numColumns = days.length;
   const numRows = Math.abs(late - early) * 2;
 
+  //Adjust Cell Width and Height based on numRows & numColumns
+  useEffect(() => {
+    const columnWidth =  Math.floor(90 / (numColumns + 1));
+    const cellHeight = Math.floor(90 / (numRows));
+
+    document.getElementById("attendance-wrapper").style.setProperty("--column-width", `${columnWidth}%`);
+    document.getElementById("attendance-wrapper").style.setProperty("--cell-height", `${cellHeight}%`);
+  })
 
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Labels Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
@@ -21,9 +29,9 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
     let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
     if (index % 2 === 0) {
-      label = <p className="chartRowLabelText">{`${base}:00 ${suffix}`}</p>
+      label = <p className="rowLabelText">{`${base}:00 ${suffix}`}</p>
     } else {
-      label = <p className="chartRowLabelText">{`${base}:30 ${suffix}`}</p>
+      label = <p className="rowLabelText">{`${base}:30 ${suffix}`}</p>
     }
     return label;
   }
@@ -34,7 +42,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     if (index !== 0) {
       const day = new Date(days[index - 1]);
       let text = day.toDateString().substring(0, 10);
-      label = <p className="chartColumnLabelText">{text}</p>
+      label = <p className="columnLabelText">{text}</p>
     }
     return label;
   }
@@ -49,7 +57,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
     for (let i = 0; i < numRows; i++) {
       label = rowLabelHelper(i);
       content.push(
-        <div key={`${i}`} data-row={i} className="chartRowLabelCell">
+        <div key={`${i}`} data-row={i} className="rowLabelCell">
           {label}
         </div>
       )
@@ -57,7 +65,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
 
     //Return the array of row labels we made above wrapped inside a container div
     return (
-      <div key={"rowLabels"} className="chartRowLabels">
+      <div key={"rowLabels"} id="rowLabels">
         {content}
       </div>
     )
@@ -69,17 +77,24 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
 
     //Generate an array of column labels
     for (let i = 0; i <= numColumns; i++) {
-      label = columnLabelHelper(i)
-      content.push(
-        <div key={`${i}`} data-column={i} className="chartColumnLabelCell">
-          {label}
-        </div>
-      )
+      if (days[i - 1] !== null) {
+        label = columnLabelHelper(i);
+        content.push(
+          <div key={`${i}`} data-column={i} className="columnLabelCell">
+            {label}
+          </div>
+        )
+      } else {
+        content.push(
+          <div key={`${i}`} data-column={i} className="columnLabelCell empty">
+          </div>
+        )
+      }
     }
 
     //Return the array of column labels we made above wrapped inside a container div
     return (
-      <div key={"columnLabels"} className="chartColumnLabels">
+      <div key={"columnLabels"} id="column-labels">
         {content}
       </div>
     )
@@ -91,6 +106,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
   who are available at that time */
   const determineWho = (column, row) => {
     const list =[];
+    console.log(attending);
 
     attending.forEach((person) => {
       person.available.every((time) => {
@@ -142,20 +158,25 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
   //Generator function - rows within a column
-  const generateRows = (column) => {
+  const generateRows = (column, empty = false) => {
     let content = []
+
     for (let i = 1; i <= numRows; i++) {
-      const whoAvailable = determineWho(column, i);
-      if (limit.active) {
-        const whatColor = determineColorLimited(whoAvailable);
+
+      //If the column is not null
+      if (!empty) {
+        const whoAvailable = determineWho(column, i);
+        //Class that determines color of the cell assigned by helper functions based on whether or not a limit is active
+        const whatColor = limit.active ? determineColorLimited(whoAvailable) : determineColor(whoAvailable.length);
         content.push(
           <div className={`chartCell ${whatColor}`} key={`${i}`} data-block={block} data-column={column} data-row={i} data-who={whoAvailable} onMouseEnter={handleHover}>
           </div>
         )
+
+      //Each cell of column should be invisible
       } else {
-        const whatColor = determineColor(whoAvailable.length);
         content.push(
-          <div className={`chartCell ${whatColor}`} key={`${i}`} data-block={block} data-column={column} data-row={i} data-who={whoAvailable} onMouseEnter={handleHover}>
+          <div className={`chartCell empty`} key={`${i}`} data-block={block} data-column={column} data-row={i}>
           </div>
         )
       }
@@ -167,12 +188,24 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
   const generateColumns = () => {
     let content = []
     content.push(generateRowLabels());
+
     for (let i = 1; i <= numColumns; i++) {
-      content.push(
-        <div key={`${i}`} data-block={block} data-column={i} className="chartColumn">
-          {generateRows(i)}
-        </div>
-      )
+      //If the column's corresponding date is not null
+      if (days[i - 1] !== null) {
+        content.push(
+          <div key={`${i}`} data-block={block} data-column={i} className="chartColumn">
+            {generateRows(i)}
+          </div>
+        )
+      //If the column should represent a null date (empty column)
+      } else {
+        content.push(
+          <div key={`${i}`} data-block={block} data-column={i} className="chartColumn emptyColumn">
+            {generateRows(i, true)}
+          </div>
+        )
+      }
+
     }
     return content
   }
@@ -180,9 +213,9 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div className="attendanceChart">
+    <div id="attendance-wrapper">
       {generateColumnLabels()}
-      <div className="chartContents">
+      <div id="attendance-contents">
         {generateColumns()}
       </div>
     </div>

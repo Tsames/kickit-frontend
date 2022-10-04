@@ -35,7 +35,7 @@
   }
 }
 
-@mixin hover-underline($color, $height: 5%, $anchorOne:left, $anchorTwo:bottom) {
+@mixin hover-underline($color: v.$font-light, $height: 5%, $anchorOne:left, $anchorTwo:bottom) {
   background: linear-gradient(360deg, $color, $color) $anchorOne $anchorTwo/0% $height no-repeat;
 
   &:hover {

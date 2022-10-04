@@ -3,130 +3,175 @@
 @use './../mixins' as m;
 @use './../device' as d;
 
-$chart-cell-width: 3rem;
-$chart-cell-height: 1.5rem;
-
-$chart-cell-max-width: 3rem;
-$chart-cell-max-height: 1.5rem;
-
-$chart-cell-min-width: 2rem;
-$chart-cell-min-height: 1rem;
-
-div.attendanceChart {
-  
-}
-
-
-//Chart Wrapper
-div.chartContents {
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#attendance-wrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  margin: 0 auto 0 auto;
-  padding: 0rem;
 
-  // %%%%%%%%%%%%%%%%%%%% Chart Columns and Rows Styling %%%%%%%%%%%%%%%%%%%%
+  height: 100%;
+  width: 100%;
 
-  //Chart Columns
-  div.chartColumn {
+  //These Values are set in AttendanceChart.js based on the number of cells
+  --column-width: 0rem;
+  --column-label-height: 0rem;
+  --chart-height: 0rem;
+  --cell-height: 0rem;
+
+  //Mobile Sizing & Positioning
+  @include d.for-phone-only {
+
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+
+  }
+
+  //Desktop Sizing & Positioning
+  @include d.for-desktop-up {
+  }
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  #column-labels {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+
+    width: 100%;
+    height: 7%;
+
+    border: solid;
+    // border-color: white;
+    border-color: v.$invisible;
+  }
+
+  #attendance-contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: solid;
+    // border-color: green;
+    border-color: v.$invisible;
+
+    padding-top: 2%;
+
+    width: 100%;
+    max-height: 90%;
+
+    overflow-y: auto;
+  }
+
+  #rowLabels {
     padding: 0rem;
     margin: 0rem;
+
+    width: var(--column-width);
+    height: 100%;
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  // ------------- General Column and Cell Styling -------------
+
+  //Chart Columns
+  .chartColumn {
+    padding: 0rem;
+    margin: 0rem;
+
+    border: solid;
+    border-color: v.$invisible;
+    // border-color: red;
+    border-width: 0.1rem;
+
+    width: var(--column-width);
+    height: 98%;
   }
 
   //Chart Cells
-  div.chartCell {
-    width: $chart-cell-width;
-    height: $chart-cell-height;
-
-    max-width: $chart-cell-max-width;
-    max-height: $chart-cell-max-height;
-
-    min-width: $chart-cell-min-width;
-    min-height: $chart-cell-min-height;
-
+  .chartCell {
     border-style: solid;
-    border-color: v.$font-heavy;
+    border-color: v.$font-light;
     border-width: 0.1rem;
     margin: 0;
     padding: 0;
     transition: all 0.5s ease;
 
+    width: 100%;
+    height: var(--cell-height);
+
     &:hover {
-      border-color: v.$font-light;
+      border-color: v.$font-heavier;
       transition: border-color 0.5s ease;
     }
   }
-}
 
-// %%%%%%%%%%%%%%%%%%%% Row Label Styling %%%%%%%%%%%%%%%%%%%%
+  // ------------- Row Label Styling -------------
 
-//Row Label Wrapper
-.chartRowLabels {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+  //Row Label Cell
+  .rowLabelCell {
+    border: solid;
+    border-color: v.$invisible;
+    border-width: 0.1rem;
+    background-color: v.$invisible;
 
-//Row Label Cell
-.chartRowLabelCell {
-  border: solid;
-  border-color: v.$invisible;
-  border-width: 0.1rem;
-  background-color: v.$invisible;
+    width: 100%;
+    height: var(--cell-height);
+  }
 
-  min-width: $chart-cell-min-width;
-  width: $chart-cell-width;
-  max-width: $chart-cell-max-width;
+  //Row Label Text
+  .rowLabelText {
+    position: relative;
+    bottom: 40%;
+    right: 10%;
+    font-size: 0.8rem;
+    color: v.$font-light;
+    text-align: right;
+  }
 
-  min-height: $chart-cell-min-height;
-  height: $chart-cell-height;
-  max-height: $chart-cell-max-height;
-}
+  // ------------- Column Label Styling -------------
 
-//Row Label Text
-.chartRowLabelText {
-  position: relative;
-  bottom: 0.7rem;
-  font-size: 0.4rem;
-  color: v.$font-heavy;
-  text-align: right;
-}
+  //Column Label Cell
+  .columnLabelCell {
+    border: solid;
+    border-color: v.$invisible;
+    // border-color: black;
+    border-width: 0.1rem;
+    margin: 0 0 0 0;
 
-// %%%%%%%%%%%%%%%%%%%% Column Label Styling %%%%%%%%%%%%%%%%%%%%
+    height: 100%;
+    width: var(--column-width);
+  }
 
-//Column Label Wrapper
-.chartColumnLabels {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 0rem;
-  padding: 0rem;
-}
+  //Column Label Text
+  .columnLabelText {
+    position: relative;
+    bottom: 0.2rem;
+    font-size: 0.8rem;
+    color: v.$font-light;
+    text-align: center;
+  }
 
-//Column Label Cell
-.chartColumnLabelCell {
-  border: none;
-  border-color: purple;
-  border-width: 0.1rem;
-  margin: 0 0 0 0;
+  // ------------- Empty Class -------------
 
-  min-width: $chart-cell-min-width;
-  width: $chart-cell-width;
-  max-width: $chart-cell-max-width;
+  .empty {
+    border-color: v.$invisible !important;
+    background: v.$invisible !important;
+    color: v.$invisible !important;
+    pointer-events: none !important;
+  }
 
-  min-height: $chart-cell-min-height;
-  height: $chart-cell-height;
-  max-height: $chart-cell-max-height;
-}
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-//Column Label Text
-.chartColumnLabelText {
-  position: relative;
-  bottom: 0.2rem;
-  font-size: 0.5rem;
-  color: v.$font-heavy;
-  text-align: center;
 }

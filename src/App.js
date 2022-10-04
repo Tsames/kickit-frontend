@@ -45,7 +45,7 @@ function App () {
   //Set blockMax based on the device the app is being viewed on.
   useEffect(() => {
     const deviceWidth = window.matchMedia("(max-width: 599px)");
-    if (deviceWidth) setBlockMax(2);
+    if (deviceWidth.matches) setBlockMax(3);
   }, []);
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
@@ -54,14 +54,36 @@ function App () {
   days and sets the result in blocks state */
   const makeBlocks = (daysArray) => {
     const newBlocks = [], data = [...daysArray];
+
+    //Iteratie while there is still data
     while (data.length > 0) {
-      const smallBlock = []; let max = blockMax;
-      smallBlock.push(data.shift());
-      //Number(data[0]) - Number(smallBlock[smallBlock.length - 1]) <= 86400000
-      while (max > 0) {
-        smallBlock.push(data.shift());
-        max --;
+
+      //Helper Variable & Return Array
+      let lastDate = data.shift()
+      const smallBlock = [];
+
+      //Add the first date to new block
+      smallBlock.push(lastDate);
+
+      //Iterate for blockMax
+      for(let i=1; i < blockMax; i++) {
+        //If lastDate helper is null then push the first element of data
+        if (data.length > 0 && lastDate === null) {
+          lastDate = data.shift()
+          smallBlock.push(lastDate);
+        }
+        //If the first element of data is within one day of the last element push it to smallBlock
+        else if (data.length > 0 && Number(data[0]) - Number(lastDate) <= 86400000) {
+          lastDate = data.shift()
+          smallBlock.push(lastDate);
+        } 
+        //Else add null to the smallBlock (representing empty column) and set lastDate to null
+        else if (data.length > 0) {
+          lastDate = null;
+          smallBlock.push(lastDate);
+        }
       }
+
       newBlocks.push(smallBlock);
     }
 

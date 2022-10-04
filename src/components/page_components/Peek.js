@@ -1,6 +1,7 @@
 //Dependencies
 import { React, useState } from 'react';
 import { FiUsers, FiNavigation } from "react-icons/fi";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight  } from "react-icons/md";
 
 //Import Components
 import AttendanceChart from "../display_components/AttendanceChart";
@@ -116,7 +117,6 @@ const Peek = ({ event, blocks }) => {
       blocks.forEach((singleBlock, index) => {
         content.push(<AttendanceChart
           key={singleBlock[0]}
-          className={"attendance-chart"}
           attending={event.attending}
           days={blocks[index]}
           early={event.early}
@@ -185,12 +185,12 @@ const Peek = ({ event, blocks }) => {
       </div>
       <div id="peek-right">
         <div id="peek-block-index">
+          <button id="prev-block" className="index-button" onClick={prevBlock}><MdKeyboardArrowLeft/></button>
           {prepareBlockIndex()}
+          <button id="next-block" className="index-button" onClick={nextBlock}><MdKeyboardArrowRight id="index-next"/></button>
         </div>
         <div id="peek-current-block">
-          <button id="prev-block" onClick={prevBlock}>Prev</button>
           {prepareBlocks()[blockIndex]}
-          <button id="next-block" onClick={nextBlock}>Next</button>
         </div>
       </div>
     </div>

@@ -46,7 +46,8 @@
     align-items: center;
 
     border: solid;
-    border-color: white;
+    border-color: v.$font-ghost;
+    border-radius: 1rem;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -68,12 +69,14 @@
       width: 30%;
       height: 100%;
 
-      h4{
-        margin-bottom: 5%;
+      h2 {
+        font-size: 2rem;
+        margin-top: 30%;
+        margin-bottom: 10%;
       }
     }
 
-    h4 {
+    h2 {
       width: 100%;
       text-align: center;
     }
@@ -81,7 +84,10 @@
 
   // ------------------ Mode Selection ------------------
   #peek-modes {
-    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 50%;
     text-align: center;
 
     //Mobile Sizing & Positioning
@@ -102,6 +108,10 @@
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
       margin-bottom: 15%;
+
+      button {
+        font-size: 1.5rem;
+      }
     }
   }
 
@@ -267,7 +277,7 @@
   }
   // ---------------------------------------------------------
 
-  //Carousel Like Indicators at the top of the grid ----
+  //Carousel Prev and Next Buttons at the top of the grid ----
   .index-button {
     border: none;
     color: v.$background-light;

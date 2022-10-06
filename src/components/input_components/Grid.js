@@ -4,7 +4,7 @@ import { React, useState, useEffect } from 'react';
 //Styles
 import '../../styles/input_styling/grid.scss';
 
-const Grid = ({ early, late, days, block, handleAvailable }) => {
+const Grid = ({ early, late, days, block, handleAvailable, active }) => {
 
   /* ------------------------------------------ Grid Generator Functions & Variables ------------------------------------------ */
 
@@ -107,13 +107,19 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     let content = []
     for (let i = 1; i <= numRows; i++) {
 
-      //If the column is not null
-      if (!empty) {
+      //Generate highlighted cells according to passed active array
+      if (!empty && active.find(cell => cell[1] === column && cell[2] === i)) {
+        content.push(
+          <div key={`${i}`} data-block={block} data-column={column} data-row={i} className="gridCell gridSelected" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
+          </div>
+        )
+      //Generate a normal cell
+      } else if (!empty) {
         content.push(
           <div key={`${i}`} data-block={block} data-column={column} data-row={i} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
           </div>
         )
-      //Each cell of column should be invisible
+      //Generate an invisible empty cell
       } else {
         content.push(
           <div key={`${i}`} data-block={block} data-column={column} data-row={i} className="gridCell empty">

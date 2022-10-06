@@ -115,6 +115,10 @@
     }
   }
 
+  .gridSelected {
+    background: rgb(149, 239, 84) !important;
+  }
+
   // ------------- Row Label Styling -------------
 
   //Row Label Cell
@@ -131,7 +135,7 @@
   //Row Label Text
   .rowLabelText {
     position: relative;
-    bottom: 40%;
+    bottom: 47.5%;
     right: 10%;
     font-size: 0.8rem;
     color: v.$font-light;
@@ -159,15 +163,6 @@
     font-size: 0.8rem;
     color: v.$font-light;
     text-align: center;
-  }
-
-  // ------------- Empty Class -------------
-
-  .empty {
-    border-color: v.$invisible !important;
-    background: v.$invisible !important;
-    color: v.$invisible !important;
-    pointer-events: none !important;
   }
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%

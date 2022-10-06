@@ -107,7 +107,7 @@ const Peek = ({ event, blocks }) => {
     setBlockIndex(Number(e.target.dataset.index));
   }
 
-  /* ------------------------------------------ Conditional JSX Helpers ------------------------------------------ */
+  /* ------------------------------------------ JSX Helpers ------------------------------------------ */
 
   /* Helper function (peek) - creates a visual for which block the user is viewing */
   const prepareBlockIndex = () => {
@@ -168,13 +168,12 @@ const Peek = ({ event, blocks }) => {
     return content;
   }
 
-  /* ------------------------------------------ Conditional JSX ------------------------------------------ */
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
     <div id="peek-wrapper">
       <div id="peek-left">
-        <h4>{mode === "all" ? "All Attending" : "Mouseover"}</h4>
+        <h2>{mode === "all" ? "All Attending" : "Mouseover"}</h2>
         <div id="peek-modes">
           <button id="all-button" className="mode-button" onClick={() => setMode("all")}><FiUsers></FiUsers></button>
           <button id="mouseover-button" className="mode-button" onClick={() => setMode("mouse")}><FiNavigation></FiNavigation></button>

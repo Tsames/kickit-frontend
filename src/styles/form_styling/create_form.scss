@@ -322,9 +322,9 @@
 
     input {
       border: none;
-      color: v.$font-heavy;
+      color: v.$font-light;
       text-align: center;
-      background: linear-gradient(360deg, v.$font-heavy, v.$font-heavy) center bottom/0% 5% no-repeat;
+      background: linear-gradient(360deg, v.$font-light, v.$font-light) center bottom/0% 5% no-repeat;
       transition: background-size 0.3s ease;
 
       //Mobile Sizing & Positioning
@@ -340,7 +340,7 @@
       }
 
       &::placeholder {
-        color: v.$font-heavy;
+        color: v.$font-light;
         opacity: 100;
 
         //Mobile Sizing & Positioning

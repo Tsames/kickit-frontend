@@ -3,6 +3,7 @@
 @use './../mixins' as m;
 @use './../device' as d;
 
+
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #attend-wrapper {
 
@@ -37,9 +38,321 @@
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
   
+  // ------------------ Left Side Wrapper ------------------
+  #attend-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: solid;
+    border-color: v.$font-ghost;
+    border-radius: 1rem;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 30%;
+      height: 100%;
+
+      h2{
+        font-size: 2.5rem;
+        margin-top: 30%;
+        margin-bottom: 5%;
+      }
+
+      p {
+        font-size: 0.8rem;
+        height: 10%;
+        margin-bottom: 5%;
+      }
+    }
+
+    p {
+      width: 80%;
+      text-align: left;
+    }
+
+    h2 {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  // ------------------ Name & Submit Button Wrapper ------------------
+
+  #attend-left-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 30%;
+    }
+  }
+
+  // ------------------ Right side Wrapper ------------------
+  #attend-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 70%;
+      height: 100%;
+    }
+  }
+
+  // ------------------ Block Index ------------------
+  #attend-block-index {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 90%;
+      margin: 5% 5% 0% 5%;
+      height: 5%;
+    }
+  }
+
+  // ------------------ Current Block (including page buttons) ------------------
+  #attend-current-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      margin: 5%;
+      width: 90%;
+      height: 80%;
+    }
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  //Carousel Like Indicators at the top of the grid ----
+  .block-index-indicator {
+    width: 1.5rem;
+    height: 0.4rem;
+    border-radius: 3px;
+    background-color: v.$font-ghost;
+  }
+
+  .index-active {
+    background-color: v.$font-light;
+  }
+  // ---------------------------------------------------------
+
+  //Carousel Prev and Next Buttons at the top of the grid ----
+  .index-button {
+    border: none;
+    color: v.$font-ghost;
+    font-size: 1.5rem;
+    border-radius: 3px;
+    background-color: v.$invisible;
+    transition: color 0.4s ease;
+
+    &:hover {
+      color: v.$font-light;
+    }
+  }
+  // ---------------------------------------------------------
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Name Field
+  #attend-name {
+    height: 50%;
+    width: 100%;
+    text-align: center;
+
+    input {
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+
+      }
+
+      //Tablet Landscape Sizing & Positioning
+      @include d.for-tablet-landscape-up {
+
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+        padding-left: 5%;
+        width: 80%;
+        height: 45%;
+      }
+    }
+
+    .placeholder {
+      pointer-events: none;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+
+      }
+
+      //Tablet Landscape Sizing & Positioning
+      @include d.for-tablet-landscape-up {
+
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+        left: 14% !important;
+        top: 15%;
+      }
+    }
+
+    input:focus+.placeholder,
+    input:valid+.placeholder {
+
+      top: -15%;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+
+      }
+
+      //Tablet Landscape Sizing & Positioning
+      @include d.for-tablet-landscape-up {
+
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+
+      }
+    }
+  }
+
+
+  //Submit Button
+  button#attend-submit {
+    background: none;
+    border-radius: 3px;
+    border-color: v.$invisible;
+    color: v.$font-light;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+  }
 }

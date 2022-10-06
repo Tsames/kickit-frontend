@@ -1,7 +1,7 @@
+//Imports
 @use './../variables' as v;
 @use './../device' as d;
 
-$input-background: rgba(233, 232, 232, 0.55);
 
 //Container Styles
 label.time-drop-down {
@@ -20,16 +20,16 @@ label.time-drop-down {
 
   span { 
     font-size: 0.5rem;
-    color: v.$font-heavier;
+    color: v.$font-light;
   }
 
   select {
     border: none;
-    color: v.$font-heavier;
+    color: v.$font-light;
     font-size: 0.5rem;
     text-align: center;
     border-radius: 3px;
-    background: $input-background;
+    background: v.$background-light;
     outline: none;
     resize: none;
 

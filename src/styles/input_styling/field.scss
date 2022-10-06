@@ -19,7 +19,7 @@ label.custom-field {
     width: 100%;
     font-size: 1rem;
 
-    color: v.$font-heavier;
+    color: v.$font-light;
     border-radius: 3px;
     background: v.$background-light;
     overflow: hidden;
@@ -36,7 +36,7 @@ label.custom-field {
     left: 5%;
     top: calc(55% - 1rem);
     font-weight: normal;
-    color: v.$font-heavier;
+    color: v.$font-light;
     transition:
       top 0.3s ease,
       bottom 0.3s ease,
@@ -46,7 +46,7 @@ label.custom-field {
 
   input:focus {
     border: solid;
-    border-color: v.$font-heavier;
+    border-color: v.$font-light;
     border-width: 0.05rem;
   }
 
@@ -56,6 +56,6 @@ label.custom-field {
     top: calc(-10% - 1rem);
     bottom: 0rem;
     left: 2%;
-    color: #222;
+    color: v.$font-light;
   }
 }

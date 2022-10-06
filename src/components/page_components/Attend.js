@@ -39,21 +39,22 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
-  //Helper function(attend-taken p tag)
-  const isAvailable = () => {
-    const searchName = form.name;
-    const searchArray = event.attending;
-    let match = false;
-    let i = 0;
+  //The message displayed when there is match in isAvailable()
+  const doubleSignUpMessage = "*Someone has already signed up for this event under this name. If you submit under this name you will replace their record!"
 
-    while (!match || i < searchArray.length) {
-      if(searchArray[i].name === searchName) {
-        match = true
+  //Helper function(attend-taken JSX) checks if the name input into the field already matches an attendee's
+  const isAvailable = () => {
+
+    const searchName = form.name.toLowerCase();
+    const searchArray = event.attending;
+
+    for (let i=0; i < searchArray.length; i++) {
+      if (searchArray[i].name.toLowerCase() === searchName) {
+        return true
       }
-      i++
     }
 
-    return match;
+    return false;
   }
 
 
@@ -125,8 +126,8 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
     const newAvailable = [...form.available];
     newAvailable.splice(block - 1, 1, selectedCells);
 
-    console.log("Updated availability to:")
-    console.log(newAvailable);
+    // console.log("Updated availability to:")
+    // console.log(newAvailable);
     setForm({ ...form, "available": newAvailable });
   }
 
@@ -155,7 +156,7 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
     setBlockIndex(Number(e.target.dataset.index));
   }
 
-  /* ------------------------------------------ Conditional JSX Helpers ------------------------------------------ */
+  /* ------------------------------------------ JSX Helpers ------------------------------------------ */
 
   /* Helper function (attend) - creates a visual for which block the user is viewing */
   const prepareBlockIndex = () => {
@@ -190,7 +191,8 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
           late={event.late}
           days={singleBlock}
           block={index + 1}
-          handleAvailable={handleAvailable} />
+          handleAvailable={handleAvailable}
+          active={form.available[index]} />
         )
       });
     }
@@ -198,46 +200,28 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
     return content
   }
 
-  /* ------------------------------------------ Conditional JSX ------------------------------------------ */
-
-  //JSX to display if event is still in the process of loading
-  const noEvent = () => {
-    return (
-      <h4 id="loading">Loading...</h4>
-    )
-  }
-
-  //Main JSX
-  const attend = () => {
-    return (
-      <div id="attend-wrapper">
-        <div id="attend-left">
-          <h2>Sign Up</h2>
-          <p id="attend-taken">{}</p>
-          <div id="attend-left-data">
-            <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName}/>
-            <button id="attend-submit" onClick={handleSubmit} data-to="details">Submit</button>
-          </div>
-        </div>
-        <div id="attend-right">
-          <div id="attend-block-index">
-            <button id="prev-block" className="index-button" onClick={prevBlock}><MdKeyboardArrowLeft/></button>
-            {prepareBlockIndex()}
-            <button id="next-block" className="index-button" onClick={nextBlock}><MdKeyboardArrowRight/></button>
-          </div>
-          <div id="attend-current-block">
-          {prepareBlocks()[blockIndex]}
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div id="attend-wrapper" className="page-body">
-      {event === null ? noEvent() : attend()}
+    <div id="attend-wrapper">
+      <div id="attend-left">
+        <h2>Sign Up</h2>
+        <p id="attend-taken">{ isAvailable() ? doubleSignUpMessage : ""}</p>
+        <div id="attend-left-data">
+          <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName}/>
+          <button id="attend-submit" onClick={handleSubmit} data-to="details">Submit</button>
+        </div>
+      </div>
+      <div id="attend-right">
+        <div id="attend-block-index">
+          <button id="prev-block" className="index-button" onClick={prevBlock}><MdKeyboardArrowLeft/></button>
+          {prepareBlockIndex()}
+          <button id="next-block" className="index-button" onClick={nextBlock}><MdKeyboardArrowRight/></button>
+        </div>
+        <div id="attend-current-block">
+        {prepareBlocks()[blockIndex]}
+        </div>
+      </div>
     </div>
   )
 }

@@ -106,7 +106,6 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
   who are available at that time */
   const determineWho = (column, row) => {
     const list =[];
-    console.log(attending);
 
     attending.forEach((person) => {
       person.available.every((time) => {

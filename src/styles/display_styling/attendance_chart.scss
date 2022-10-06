@@ -15,8 +15,6 @@
 
   //These Values are set in AttendanceChart.js based on the number of cells
   --column-width: 0rem;
-  --column-label-height: 0rem;
-  --chart-height: 0rem;
   --cell-height: 0rem;
 
   //Mobile Sizing & Positioning
@@ -73,7 +71,7 @@
     overflow-y: auto;
   }
 
-  #rowLabels {
+  #row-labels {
     padding: 0rem;
     margin: 0rem;
 

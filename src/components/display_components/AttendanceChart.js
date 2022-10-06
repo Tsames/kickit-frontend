@@ -65,7 +65,7 @@ const AttendanceChart = ({ attending, days, early, late, block, handleHover, lim
 
     //Return the array of row labels we made above wrapped inside a container div
     return (
-      <div key={"rowLabels"} id="rowLabels">
+      <div key={"rowLabels"} id="row-labels">
         {content}
       </div>
     )

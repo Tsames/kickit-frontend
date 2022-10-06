@@ -1,124 +1,175 @@
+//Imports
 @use './../variables' as v;
+@use './../mixins' as m;
 @use './../device' as d;
 
-$grid-cell-width: 4.3rem;
-$grid-cell-height: 2rem;
-
-//Styles for the grid table in Grid.js
-.gridTable {
-  height: 90vh;
-  margin: 0.3rem;
-  padding: 0.5rem 0.4rem 0.5rem 0rem;
-
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#grid-wrapper {
   display: flex;
   flex-direction: column;
-}
+  justify-content: flex-start;
+  align-items: center;
 
-//Grid Wrapper
-div.gridContents {
-  min-height: 0px;
-  // margin: 0 auto 0 auto;
-  // padding: 0.25rem;
-  // overflow-y:auto;
+  height: 100%;
+  width: 100%;
 
-  display: flex;
-  flex: 1;
-}
+  //These Values are set in Grid.js based on the number of cells
+  --column-width: 0rem;
+  --cell-height: 0rem;
 
-div.overflow-container {
-  flex: 1;
-  overflow: auto;
-}
+  //Mobile Sizing & Positioning
+  @include d.for-phone-only {
 
-div.overflow-content {
-
-  display: flex;
-  flex-direction: row;
-  padding: 0.3rem;
-
-  div.gridColumn {
-    padding: 0rem;
-    margin: 0rem;
   }
 
-  div.gridCell {
-    background-color: v.$invisible;
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
 
-    width: $grid-cell-width;
-    height: $grid-cell-height;
+  }
 
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+
+  }
+
+  //Desktop Sizing & Positioning
+  @include d.for-desktop-up {
+  }
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  #column-labels {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+
+    width: 100%;
+    height: 7%;
+
+    border: solid;
+    // border-color: white;
+    border-color: v.$invisible;
+  }
+
+  #grid-contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: solid;
+    // border-color: green;
+    border-color: v.$invisible;
+
+    padding-top: 2%;
+
+    width: 100%;
+    max-height: 90%;
+
+    overflow-y: auto;
+  }
+
+  #row-labels {
+    padding: 0rem;
+    margin: 0rem;
+
+    width: var(--column-width);
+    height: 100%;
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  // ------------- General Column and Cell Styling -------------
+
+  //Grid Columns
+  .gridColumn {
+    padding: 0rem;
+    margin: 0rem;
+
+    border: solid;
+    border-color: v.$invisible;
+    // border-color: red;
+    border-width: 0.1rem;
+
+    width: var(--column-width);
+    height: 98%;
+  }
+
+  //Grid Cells
+  .gridCell {
     border-style: solid;
-    border-color: v.$font-heavy;
+    border-color: v.$font-light;
     border-width: 0.1rem;
     margin: 0;
     padding: 0;
+    transition: all 0.5s ease;
+
+    width: 100%;
+    height: var(--cell-height);
 
     &:hover {
-      border-color: v.$font-light;
+      border-color: v.$font-heavier;
       transition: border-color 0.5s ease;
     }
   }
 
-  div.gridSelected {
-    background-color: v.$grid-active;
+  // ------------- Row Label Styling -------------
+
+  //Row Label Cell
+  .rowLabelCell {
+    border: solid;
+    border-color: v.$invisible;
+    border-width: 0.1rem;
+    background-color: v.$invisible;
+
+    width: 100%;
+    height: var(--cell-height);
   }
 
+  //Row Label Text
+  .rowLabelText {
+    position: relative;
+    bottom: 40%;
+    right: 10%;
+    font-size: 0.8rem;
+    color: v.$font-light;
+    text-align: right;
+  }
+
+  // ------------- Column Label Styling -------------
+
+  //Column Label Cell
+  .columnLabelCell {
+    border: solid;
+    border-color: v.$invisible;
+    // border-color: black;
+    border-width: 0.1rem;
+    margin: 0 0 0 0;
+
+    height: 100%;
+    width: var(--column-width);
+  }
+
+  //Column Label Text
+  .columnLabelText {
+    position: relative;
+    bottom: 0.2rem;
+    font-size: 0.8rem;
+    color: v.$font-light;
+    text-align: center;
+  }
+
+  // ------------- Empty Class -------------
+
+  .empty {
+    border-color: v.$invisible !important;
+    background: v.$invisible !important;
+    color: v.$invisible !important;
+    pointer-events: none !important;
+  }
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
 }
-
-//Row Label Styling ------------------ $
-
-.gridRowLabels {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.gridRowLabelCell {
-  border: solid;
-  border-color:v.$invisible;
-  border-width: 0.1rem;
-  background-color: v.$invisible;
-
-  width: $grid-cell-width;
-  height: $grid-cell-height;
-}
-
-.gridRowLabelText {
-  position: relative;
-  bottom: 1.15rem;
-  font-size: 0.7rem;
-  color: v.$font-heavy;
-  text-align: right;
-}
-//--------------------------------------- $
-
-//Column Label Styling ------------------ $
-
-.gridColumnLabels {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 0rem;
-  padding-right: 0.8rem;
-}
-
-.gridColumnLabelCell {
-  border: none;
-  border-color: purple;
-  border-width: 0.1rem;
-  margin: 0 0.1rem 0 0.1rem;
-  width: $grid-cell-width;
-  height: $grid-cell-height;
-}
-
-.gridColumnLabelText {
-  position: relative;
-  bottom: 0.2rem;
-  font-size: 0.8rem;
-  color: v.$font-heavy;
-  text-align: center;
-}
-
-//--------------------------------------- $

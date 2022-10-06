@@ -1,5 +1,5 @@
 //Dependencies
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 
 //Styles
 import '../../styles/input_styling/grid.scss';
@@ -12,6 +12,15 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
   let numColumns = days.length;
   let numRows = Math.abs(late - early) * 2;
 
+  //Adjust Cell Width and Height based on numRows & numColumns
+  useEffect(() => {
+    const columnWidth =  Math.floor(90 / (numColumns + 1));
+    const cellHeight = Math.floor(90 / (numRows));
+
+    document.getElementById("grid-wrapper").style.setProperty("--column-width", `${columnWidth}%`);
+    document.getElementById("grid-wrapper").style.setProperty("--cell-height", `${cellHeight}%`);
+  })
+
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Labels Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
   //Helper functin (generateRowLabels) - generate the text for row labels
@@ -20,9 +29,9 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     let suffix = (early + moreHours) > 11 && (early + moreHours) < 24 ? "PM" : "AM";
     let base = (early + moreHours) > 12 ? (early + moreHours) - 12 : early + moreHours;
     if (index % 2 === 0) {
-      label = <p className="gridRowLabelText">{`${base}:00 ${suffix}`}</p>
+      label = <p className="rowLabelText">{`${base}:00 ${suffix}`}</p>
     } else {
-      label = <p className="gridRowLabelText">{`${base}:30 ${suffix}`}</p>
+      label = <p className="rowLabelText">{`${base}:30 ${suffix}`}</p>
     }
     return label;
   }
@@ -33,7 +42,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     if (index !== 0) {
       const day = new Date(days[index - 1]);
       let text = day.toDateString().substring(0, 10);
-      label = <p className="gridColumnLabelText">{text}</p>
+      label = <p className="columnLabelText">{text}</p>
     }
     return label;
   }
@@ -48,7 +57,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     for (let i = 0; i <= numRows; i++) {
       label = rowLabelHelper(i);
       content.push(
-        <div key={`${i}`} data-row={i} className="gridRowLabelCell">
+        <div key={`${i}`} data-row={i} className="rowLabelCell">
           {label}
         </div>
       )
@@ -56,7 +65,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
 
     //Return the array of row labels we made above wrapped inside a container div
     return (
-      <div key={"rowLabels"} className="gridRowLabels">
+      <div key={"rowLabels"} id="row-labels">
         {content}
       </div>
     )
@@ -68,17 +77,24 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
 
     //Generate an array of column labels
     for (let i = 0; i <= numColumns; i++) {
-      label = columnLabelHelper(i)
-      content.push(
-        <div key={`${i}`} data-column={i} className="gridColumnLabelCell">
-          {label}
-        </div>
-      )
+      if (days[i - 1] !== null) {
+        label = columnLabelHelper(i)
+        content.push(
+          <div key={`${i}`} data-column={i} className="columnLabelCell">
+            {label}
+          </div>
+        )
+      } else {
+        content.push(
+          <div key={`${i}`} data-column={i} className="columnLabelCell empty">
+          </div>
+        )
+      }
     }
 
     //Return the array of column labels we made above wrapped inside a container div
     return (
-      <div key={"columnLabels"} className="gridColumnLabels">
+      <div key={"columnLabels"} id="column-labels">
         {content}
       </div>
     )
@@ -87,13 +103,23 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Grid %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
   //Generator function - rows within a column
-  const generateRows = (column) => {
+  const generateRows = (column, empty = false) => {
     let content = []
     for (let i = 1; i <= numRows; i++) {
-      content.push(
-        <div key={`${i}`} data-block={block} data-column={column} data-row={i} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
-        </div>
-      )
+
+      //If the column is not null
+      if (!empty) {
+        content.push(
+          <div key={`${i}`} data-block={block} data-column={column} data-row={i} className="gridCell" onMouseDown={handleMouseDown} onMouseOver={handleMouseOver} onMouseUp={handleMouseUp}>
+          </div>
+        )
+      //Each cell of column should be invisible
+      } else {
+        content.push(
+          <div key={`${i}`} data-block={block} data-column={column} data-row={i} className="gridCell empty">
+          </div>
+        )
+      }
     }
     return content
   }
@@ -102,12 +128,23 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
   const generateColumns = () => {
     let content = []
     content.push(generateRowLabels());
+
     for (let i = 1; i <= numColumns; i++) {
-      content.push(
-        <div key={`${i}`} data-block={block} data-column={i} data-time={days[i-1]} className="gridColumn">
-          {generateRows(i)}
-        </div>
-      )
+      //If the column's corresponding date is not null
+      if (days[i - 1] !== null) {
+        content.push(
+          <div key={`${i}`} data-block={block} data-column={i} data-time={days[i-1]} className="gridColumn">
+            {generateRows(i)}
+          </div>
+        )
+      //If the column should represent a null date (empty column)
+      } else {
+        content.push(
+          <div key={`${i}`} data-block={block} data-column={i} className="gridColumn emptyColumn">
+            {generateRows(i, true)}
+          </div>
+        )
+      }
     }
     return content
   }
@@ -122,14 +159,11 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
   let selectionEnd; //Tracks where the selection is ending
   let toggleState = true; //Tracks if the gridSelected class should be added or removed
 
-  const cellOn = "gridCell gridSelected"; //The class that highlights a cell
-  const cellOff = "gridCell"; //The class for an unhighlighted cell
-
   /* ------------------------------------------ Selection Event Helper Functions ------------------------------------------ */
 
   //Helper function (handleMouseDown) - determines toggle state
   const setToggleState = target => {
-    if (target.className === cellOff) {
+    if (target.className === "gridCell") {
       toggleState = true;
     } else {
       toggleState = false;
@@ -141,12 +175,12 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
   const toggleThis = (toggleWhat) => {
     if (toggleState) {
       toggleWhat.forEach((element) => {
-        element.className = cellOn;
+        element.classList.add("gridSelected");
         addToSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
       });
     } else {
       toggleWhat.forEach((element) => {
-        element.className = cellOff;
+        element.classList.remove("gridSelected");
         removeFromSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
       });
     }
@@ -157,7 +191,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     const item = [block, column, row];
 
     if (selectedCells.length === 0 || searchSelectedCells(item) === null) {
-      console.log(`Adding (${block}, ${column}, ${row}) to selectedCells`);
+      // console.log(`Adding (${block}, ${column}, ${row}) to selectedCells`);
       const newCells = selectedCells;
       newCells.push(item);
       newCells.sort();
@@ -171,7 +205,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     const index = searchSelectedCells(item);
 
     if (index !== null) {
-      console.log(`Removing (${block}, ${column}, ${row}) from selectedCells`);
+      // console.log(`Removing (${block}, ${column}, ${row}) from selectedCells`);
       const newCells = selectedCells; newCells.splice(index, 1);
       setSelectedCells(newCells);
     }
@@ -233,7 +267,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
     e.preventDefault();
 
     //Console message
-    console.log(`Starting at (${block}, ${e.target.dataset.column}, ${e.target.dataset.row})...`);
+    // console.log(`Starting at (${block}, ${e.target.dataset.column}, ${e.target.dataset.row})...`);
 
     //Set component wide variables that track a selection
     selection = true;
@@ -247,7 +281,7 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
   const handleMouseOver = e => {
     if (selection) {
       //Console message
-      console.log(`Mouse over at (${block}, ${e.target.dataset.column}, ${e.target.dataset.row})...`);
+      // console.log(`Mouse over at (${block}, ${e.target.dataset.column}, ${e.target.dataset.row})...`);
 
       //Set new end
       selectionEnd = e.target;
@@ -294,24 +328,20 @@ const Grid = ({ early, late, days, block, handleAvailable }) => {
 
   //Handler function - ends a selection when mouse up or cursor moves out of grid
   const handleMouseUp = () => {
-    console.log(`Stopping selection...`);
+    // console.log(`Stopping selection...`);
     selection = false
-    console.log("sending selected cells to AttendForm.js:");
-    console.log(selectedCells);
+    // console.log("sending selected cells to AttendForm.js:");
+    // console.log(selectedCells);
     handleAvailable(selectedCells, block);
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div className="gridTable">
+    <div id="grid-wrapper">
       {generateColumnLabels()}
-      <div className="gridContents" onMouseLeave={selection ? handleMouseUp() : null}>
-        <div class="overflow-container">
-          <div class="overflow-content">
-            {generateColumns()}
-          </div>
-        </div>
+      <div id="grid-contents" onMouseLeave={selection ? handleMouseUp() : null}>
+        {generateColumns()}
       </div>
     </div>
   );

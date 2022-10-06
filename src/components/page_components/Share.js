@@ -19,6 +19,12 @@ const Share = ({ getEventData, event, blocks, URL }) => {
   useEffect(() => {
     document.getElementById('root').className = 'rb-share';
     if (event) helper();
+
+    /* If the event stored in state does not have the same id as the id in params then call
+    getEventData from App.js and get the data of the event that matches the id in params */
+    if (event === null || id !== event._id) {
+      getEventData(id);
+    }
   });
 
   const helper = () => {
@@ -34,12 +40,6 @@ const Share = ({ getEventData, event, blocks, URL }) => {
   //Get Id from params
   const id = useParams().id;
 
-  /* If the event stored in state does not have the same id as the id in params then call
-  getEventData from App.js and get the data of the event that matches the id in params */
-  if (event === null || id !== event._id) {
-    getEventData(id);
-  }
-
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
 
@@ -49,6 +49,18 @@ const Share = ({ getEventData, event, blocks, URL }) => {
   const noEvent = () => {
     return (
       <h4 id="loading">Loading...</h4>
+    )
+  }
+
+  const showPeek = () => {
+    return(
+      <Peek event={event} blocks={blocks}/>
+    )
+  }
+
+  const showAttend = () => {
+    return(
+      <Attend event={event} blocks={blocks} URL={URL}/>
     )
   }
 
@@ -65,7 +77,7 @@ const Share = ({ getEventData, event, blocks, URL }) => {
             <button id="action-attend" className="share-action-button" onClick={() => setAction("attend")}>Sign Up!</button>
           </div>
         </div>
-        <Peek event={event} blocks={blocks}/>
+        { action === "peek" ? showPeek() : showAttend()}
       </>
     )
   }

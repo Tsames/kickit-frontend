@@ -1,11 +1,11 @@
 //Dependencies
 import { React, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight  } from "react-icons/md";
 
 //Import Components
 import Grid from '../input_components/Grid';
 import Field from '../input_components/Field';
-import GridsToShare from '../transition_components/GridsToShare';
 
 //Styling
 import '../../styles/page_styling/attend.scss';
@@ -17,12 +17,6 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
 
   //Get Id from params
   const id = useParams().id;
-
-  /* If the event stored in state does not have the same id as the id in params then call
-  getEventData from App.js and get the data of the event that matches the id in params */
-  if (event === null || id !== event._id) {
-    getEventData(id);
-  }
 
   /* Helper function (form.available state) - builds an array of arrays of length n where
   n is the number of blocks */
@@ -39,6 +33,9 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
     name: "",
     available: setUpAvailable()
   });
+
+  //Stores data about the block that should be displayed - defaults to the first block
+  const [blockIndex, setBlockIndex] = useState(0);
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -140,15 +137,65 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
     navigate(`/attend/submitted/${id}`);
   }
 
-  //asdf
-  //Handler function - returns the page to Share.js with animation
-  const handleReturn = (event) => {
-    const transitionBack = document.getElementById("grids-to-share-transition");
+  //Handler Function - Adds One to BlockIndex if appropriate
+  const nextBlock = () => {
+    if (blockIndex < blocks.length - 1) {
+      setBlockIndex(blockIndex + 1);
+    }
+  }
 
-    transitionBack.className = "grids-to-share-transition-move";
-    setTimeout(() => {
-      navigate(`/share/${id}`);
-    }, 1000)
+  //Handler Function - Subtracts One to BlockIndex if appropriate
+  const prevBlock = () => {
+    if (blockIndex > 0) {
+      setBlockIndex(blockIndex - 1);
+    }
+  }
+
+  const goToIndex = (e) => {
+    setBlockIndex(Number(e.target.dataset.index));
+  }
+
+  /* ------------------------------------------ Conditional JSX Helpers ------------------------------------------ */
+
+  /* Helper function (attend) - creates a visual for which block the user is viewing */
+  const prepareBlockIndex = () => {
+    const content = [];
+
+    if (blocks.length > 1) {
+      blocks.forEach((element, index) => {
+        content.push(<div
+          key={index}
+          id={`block-index-${index}`}
+          className={ index === blockIndex ? "block-index-indicator index-active" : "block-index-indicator"}
+          data-index={index}
+          onClick={goToIndex}
+        />)
+      });
+    }
+
+    return content
+  }
+
+  //Helper function (attend) - creates an array of grid components, one for each block
+  const prepareBlocks = () => {
+    //Create an array of grid components for the number of blocks for this event
+    const content = [];
+
+    if (blocks.length !== 0) {
+      blocks.forEach((singleBlock, index) => {
+        content.push(<Grid
+          key={singleBlock[0]}
+          className={"attend-grid-input"}
+          early={event.early}
+          late={event.late}
+          days={singleBlock}
+          block={index + 1}
+          handleAvailable={handleAvailable} />
+        )
+      });
+    }
+
+    return content
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
@@ -162,38 +209,25 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
 
   //Main JSX
   const attend = () => {
-
-    //Create an array of grid components for the number of blocks for this event
-    const grids = [];
-
-    if (blocks.length !== 0) {
-      blocks.forEach((singleBlock, index) => {
-        grids.push(<Grid
-          className={"attend-grid-input"}
-          key={singleBlock[0]}
-          early={event.early}
-          late={event.late}
-          days={singleBlock}
-          block={index + 1}
-          handleAvailable={handleAvailable} />
-        )
-      });
-    }
-
     return (
-      <div id="attend-main">
-        <GridsToShare />
+      <div id="attend-wrapper">
         <div id="attend-left">
           <h2>Sign Up</h2>
           <p id="attend-taken">{}</p>
           <div id="attend-left-data">
-            <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName} inputHeight='5rem' inputWidth='15rem'/>
+            <Field form={"attend"} type={"text"} name={"name"} text={"Your Name"} value={form.name} doThis={handleName}/>
             <button id="attend-submit" onClick={handleSubmit} data-to="details">Submit</button>
           </div>
-          <button id="attend-back" data-to="details" onClick={handleReturn}>Back</button>
         </div>
         <div id="attend-right">
-          {grids}
+          <div id="attend-block-index">
+            <button id="prev-block" className="index-button" onClick={prevBlock}><MdKeyboardArrowLeft/></button>
+            {prepareBlockIndex()}
+            <button id="next-block" className="index-button" onClick={nextBlock}><MdKeyboardArrowRight/></button>
+          </div>
+          <div id="attend-current-block">
+          {prepareBlocks()[blockIndex]}
+          </div>
         </div>
       </div>
     )

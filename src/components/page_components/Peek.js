@@ -109,6 +109,25 @@ const Peek = ({ event, blocks }) => {
 
   /* ------------------------------------------ Conditional JSX Helpers ------------------------------------------ */
 
+  /* Helper function (peek) - creates a visual for which block the user is viewing */
+  const prepareBlockIndex = () => {
+    const content = [];
+
+    if (blocks.length > 1) {
+      blocks.forEach((element, index) => {
+        content.push(<div
+          key={index}
+          id={`block-index-${index}`}
+          className={ index === blockIndex ? "block-index-indicator index-active" : "block-index-indicator"}
+          data-index={index}
+          onClick={goToIndex}
+        />)
+      });
+    }
+
+    return content
+  }
+
   //Helper function (peek) - creates an array of attendance charts, one for each block
   const prepareBlocks = () => {
     const content = [];
@@ -130,25 +149,6 @@ const Peek = ({ event, blocks }) => {
     }
 
     return content;
-  }
-
-  /* Helper function (peek) - creates a visual for which block the user is viewing */
-  const prepareBlockIndex = () => {
-    const content = [];
-
-    if (blocks.length > 1) {
-      blocks.forEach((element, index) => {
-        content.push(<div
-          key={index}
-          id={`block-index-${index}`}
-          className={ index === blockIndex ? "block-index-indicator index-active" : "block-index-indicator"}
-          data-index={index}
-          onClick={goToIndex}
-        />)
-      });
-    }
-
-    return content
   }
 
   /* Helper function (peek) - create a listing for each person attending the event for both all attending
@@ -187,7 +187,7 @@ const Peek = ({ event, blocks }) => {
         <div id="peek-block-index">
           <button id="prev-block" className="index-button" onClick={prevBlock}><MdKeyboardArrowLeft/></button>
           {prepareBlockIndex()}
-          <button id="next-block" className="index-button" onClick={nextBlock}><MdKeyboardArrowRight id="index-next"/></button>
+          <button id="next-block" className="index-button" onClick={nextBlock}><MdKeyboardArrowRight/></button>
         </div>
         <div id="peek-current-block">
           {prepareBlocks()[blockIndex]}

@@ -10,7 +10,7 @@ const Navbar = () => {
 
   /* ------------------------------------------ Component Variables ------------------------------------------ */
 
-  const pages = ['/', '/create', '/share/632a01e22b0d76ae11f716bd', '/about/how', '/about/who']
+  const pages = ['/', '/create', '/example', '/about/how', '/about/who']
   const buttons = ['navbarHomeButton', 'navbarCreateButton', 'navbarExampleButton', 'navbarAboutButton', 'navbarAboutButton'];
 
   const location = useLocation().pathname;
@@ -44,7 +44,7 @@ const Navbar = () => {
       </div>
       <div id="navRight">
         <Link to="/create"><button id="navbarCreateButton" className="navItem hoverEffect">Create</button></Link>
-        <Link to="/share/632a01e22b0d76ae11f716bd"><button id="navbarExampleButton" className="navItem hoverEffect">Example</button></Link>
+        <Link to="/example"><button id="navbarExampleButton" className="navItem hoverEffect">Example</button></Link>
         <Link to="/about/how"><button id="navbarAboutButton" className="navItem hoverEffect">About</button></Link>
       </div>
     </nav>

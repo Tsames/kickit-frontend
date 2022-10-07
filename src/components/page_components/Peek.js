@@ -1,5 +1,5 @@
 //Dependencies
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { FiUsers, FiNavigation } from "react-icons/fi";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight  } from "react-icons/md";
 
@@ -35,6 +35,16 @@ const Peek = ({ event, blocks }) => {
     active: false
   })
 
+  useEffect(() => {
+    if (mode === "all") {
+      document.getElementById('all-button').classList.add('mode-active');
+      document.getElementById('mouseover-button').classList.remove('mode-active');
+    } else {
+      document.getElementById('all-button').classList.remove('mode-active');
+      document.getElementById('mouseover-button').classList.add('mode-active');
+    }
+  })
+
   /* ------------------------------------------ Event Handler Helper Functions ------------------------------------------ */
 
   /* Helper function (handlePersonClick) - in the case that a new person is clicked sets
@@ -54,6 +64,16 @@ const Peek = ({ event, blocks }) => {
   }
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
+
+  /* Handler function - reponsible for switching between All Attending and Mouseover modes 
+  (also resets any limit when switching to mouseover mode) */
+  const switchMode = (whichMode) => {
+    if (whichMode === "mouse" && limit.node !== null) {
+      limit.node.classList.remove("limit-active");
+      noLimit()
+    }
+    setMode(whichMode);
+  }
 
   /* Handler function - Mouseover Mode - passed to the Attendance Chart so that a cell within the chart that is hovered on
   will change the output variable in this component */
@@ -157,11 +177,11 @@ const Peek = ({ event, blocks }) => {
     const content = [];
     if (mode === "all") {
       event.attending.forEach((person, index) => {
-        content.push(<button key={index} className="peek-list-person" data-name={person.name} onClick={handlePersonClick}>{person.name}</button>);
+        content.push(<li key={index} className="peek-list-person" data-name={person.name} onClick={handlePersonClick}>{person.name}</li>);
       })
     } else {
       output.forEach((person, index) => {
-        content.push(<p key={index} className="peek-list-person">{person}</p>);
+        content.push(<li key={index} className="peek-list-person">{person}</li>);
       })
     }
 
@@ -175,11 +195,13 @@ const Peek = ({ event, blocks }) => {
       <div id="peek-left">
         <h2>{mode === "all" ? "All Attending" : "Mouseover"}</h2>
         <div id="peek-modes">
-          <button id="all-button" className="mode-button" onClick={() => setMode("all")}><FiUsers></FiUsers></button>
-          <button id="mouseover-button" className="mode-button" onClick={() => setMode("mouse")}><FiNavigation></FiNavigation></button>
+          <button id="all-button" className="mode-button" onClick={() => switchMode("all")}><FiUsers></FiUsers></button>
+          <button id="mouseover-button" className="mode-button" onClick={() => switchMode("mouse")}><FiNavigation></FiNavigation></button>
         </div>
         <div id="peek-list">
+          <ul>
           {prepareListItems()}
+          </ul>
         </div>
       </div>
       <div id="peek-right">

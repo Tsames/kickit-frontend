@@ -65,7 +65,7 @@ const Home = () => {
       <div id="home-content">
       <h1>Kick it</h1>
       <label htmlFor="search" id="search-Label">
-        <input id="search" type="text" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch} placeholder="Enter event name"/>
+        <input id="search" type="text" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch} placeholder="enter your event's id"/>
         {/* <button id="search-button" onClick={handleSearch}><BiSearchAlt id="search-icon"></BiSearchAlt></button> */}
       </label>
       </div>

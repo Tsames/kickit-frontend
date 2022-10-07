@@ -32,6 +32,15 @@
         height: v.$desktop-body-height;
         margin-left: 12vw;
         margin-right: 12vw;
+
+        p {
+            line-height: 135%;
+        }
+
+        h3 {
+            width: fit-content;
+            border-bottom: solid;
+        }
     }
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -125,6 +134,18 @@
         }
     }
 
+    #tech-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        width: 100%;
+
+        font-family: v.$home-page-branding;
+        margin-bottom: 5%;
+    }
+
 
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -142,6 +163,16 @@
 
     .aboutSectionActive {
         background-size: 100% 8%;
+    }
+
+    .aboutLink {
+        font-family: inherit;
+        color: v.$font-light;
+        text-decoration: none;
+        font-size: 1.5rem;
+
+        @include m.hover-underline(v.$font-light, 8%);
+        transition: background-size ease 0.4s;
     }
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -173,8 +204,13 @@
         }
     }
 
-    #HIWAsterisk {
-        font-size: 0.6rem;
+    #noticeText {
+        border-left: solid;
+        border-width: 0.13rem;
+        padding: 0.6rem;
+        color: v.$font-light;
+        font-size: 0.8rem;
+        font-weight: 900;
     }
 
 

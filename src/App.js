@@ -6,9 +6,13 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/page_components/Navbar';
 import Footer from './components/page_components/Footer';
 
+//Import Example Event Data
+import { exampleEvent, exampleBlocks } from "./exampleEvent";
+
 //Import Main Pages
 import Home from './components/page_components/Home';
 import CreateForm from './components/form_components/CreateForm';
+import Example from './components/page_components/Example'
 import Share from './components/page_components/Share';
 import Attend from './components/page_components/Attend';
 import Peek from './components/page_components/Peek';
@@ -119,12 +123,11 @@ function App () {
       <Routes>
         <Route path='/' element={<Home getEventData={getEventData}/>} />
         <Route path='/create' element={<CreateForm getEventData={getEventData} URL={BACKEND_URL}/>} />
-        <Route path='/share/:id' element={<Share getEventData={getEventData} event={event} blocks={blocks} URL={BACKEND_URL}/>} />
         <Route path='/created/:id' element={<CreateEventSuccess getEventData={getEventData} event={event} URL={FRONTEND_URL} />} />
-        <Route path='/attend/submitted/:id' element={<AttendSuccess getEventData={getEventData} />} />
+        <Route path='/example' element={<Example event={exampleEvent} blocks={exampleBlocks}/>} />
+        <Route path='/share/:id' element={<Share getEventData={getEventData} event={event} blocks={blocks} URL={BACKEND_URL}/>} />
         <Route path='/about/how' element={<About/>} />
         <Route path='/about/who' element={<About/>} />
-        <Route path='/create/success/:id' element={<CreateEventSuccess getEventData={getEventData} event={event}/>} />
       </Routes>
       <Footer/>
     </>

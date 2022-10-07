@@ -1,6 +1,6 @@
 //Dependencies
-import { React, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { React, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight  } from "react-icons/md";
 
 //Import Components
@@ -10,10 +10,9 @@ import Field from '../input_components/Field';
 //Styling
 import '../../styles/page_styling/attend.scss';
 
-const Attend = ({ getEventData, event, blocks, URL }) => {
+const Attend = ({ example, getEventData, event, blocks, URL, setAction, setExampleEvent }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
-  let navigate = useNavigate();
 
   //Get Id from params
   const id = useParams().id;
@@ -102,8 +101,8 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
   const submitData = async (events) => {
     const newAttending = prepareData();
     const newEventData = { ...event, attending: newAttending };
-    console.log("Sending put request to server:");
-    console.log(newEventData);
+    // console.log("Sending put request to server:");
+    // console.log(newEventData);
 
     await fetch(URL + event._id, {
       method: "put",
@@ -132,10 +131,17 @@ const Attend = ({ getEventData, event, blocks, URL }) => {
   }
 
   //Handler function - the function that is run upon submission of the html form
-  const handleSubmit = async (event) => {
-    await submitData();
-    getEventData(id);
-    navigate(`/attend/submitted/${id}`);
+  const handleSubmit = async () => {
+    if (example) {
+      const newAttending = prepareData();
+      const newEventData = { ...event, attending: newAttending };
+      setExampleEvent(newEventData);
+      setAction("peek");
+    } else {
+      await submitData();
+      getEventData(id);
+      setAction("peek");
+    }
   }
 
   //Handler Function - Adds One to BlockIndex if appropriate

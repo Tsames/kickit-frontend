@@ -117,10 +117,6 @@
 
   // ------------------ People List ------------------
   #peek-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: left;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -139,7 +135,22 @@
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
+      width: 50%;
+      height: 60%;
+      margin-right: 25%;
+      margin-left: 25%;
 
+      overflow-x: hidden;
+
+      li {
+        width: fit-content;
+        margin: 3%;
+      }
+    }
+
+    ul {
+      width: 100%;
+      text-align: left;
     }
   }
 

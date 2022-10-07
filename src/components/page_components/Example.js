@@ -1,6 +1,5 @@
 //Dependencies
 import { React, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 //Import Components
 import Peek from './Peek';
@@ -9,9 +8,12 @@ import Attend from './Attend';
 //Styling
 import '../../styles/page_styling/share.scss';
 
-const Share = ({ getEventData, event, blocks, URL }) => {
+const Example = ({ event, blocks }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
+
+  //State to track example data
+  const [exampleEvent, setExampleEvent] = useState(event);
 
   //State to track which component to show - default is peek
   const [action, setAction] = useState("peek");
@@ -19,16 +21,7 @@ const Share = ({ getEventData, event, blocks, URL }) => {
   //Set root style based on page
   useEffect(() => {
     document.getElementById('root').className = 'rb-share';
-    if (event) helper();
 
-    /* If the event stored in state does not have the same id as the id in params then call
-    getEventData from App.js and get the data of the event that matches the id in params */
-    if (event === null || id !== event._id) {
-      getEventData(id);
-    }
-  });
-
-  const helper = () => {
     if (action === "peek") {
       document.getElementById("action-peek").classList.add("active-action");
       document.getElementById("action-attend").classList.remove("active-action");
@@ -36,39 +29,26 @@ const Share = ({ getEventData, event, blocks, URL }) => {
       document.getElementById("action-attend").classList.add("active-action");
       document.getElementById("action-peek").classList.remove("active-action");
     }
-  }
+  });
 
-  //Get Id from params
-  const id = useParams().id;
-
-
-
-  /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
-
+  /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
-  //JSX to display if event is still in the process of loading
-  const noEvent = () => {
-    return (
-      <h4 id="loading">Loading...</h4>
-    )
-  }
-
   const showPeek = () => {
     return(
-      <Peek event={event} blocks={blocks}/>
+      <Peek event={exampleEvent} blocks={blocks}/>
     )
   }
 
   const showAttend = () => {
     return(
-      <Attend getEventData={getEventData} event={event} blocks={blocks} URL={URL} setAction={setAction}/>
+      <Attend example={true} event={exampleEvent} blocks={blocks} setAction={setAction} setExampleEvent={setExampleEvent}/>
     )
   }
 
   //Main JSX
-  const share = () => {
+  const example = () => {
     return (
       <>
         <div id="share-event">
@@ -89,9 +69,9 @@ const Share = ({ getEventData, event, blocks, URL }) => {
 
   return (
     <div id="share-wrapper">
-      { event ? share(): noEvent() }
+      { example() }
     </div>
   )
 }
 
-export default Share;
+export default Example;

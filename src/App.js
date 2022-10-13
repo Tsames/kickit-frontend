@@ -14,15 +14,10 @@ import Home from './components/page_components/Home';
 import CreateForm from './components/form_components/CreateForm';
 import Example from './components/page_components/Example'
 import Share from './components/page_components/Share';
-import Attend from './components/page_components/Attend';
-import Peek from './components/page_components/Peek';
 import About from "./components/page_components/About";
 
 //Import Confirmation Pages
 import CreateEventSuccess from './components/confirmation_components/CreateEventSuccess';
-import AddAvailabilitySuccess from './components/confirmation_components/AttendSuccess';
-import AttendSuccess from "./components/confirmation_components/AttendSuccess";
-
 
 function App () {
 
@@ -43,8 +38,7 @@ function App () {
   //Stores the maximum number of days that a block can posses
   const [blockMax, setBlockMax] = useState(7);
 
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
-  const FRONTEND_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/";
+  const BACKEND_URL = process.env.BACKEND_API_BASE_URI + "events/";
 
   //Set blockMax based on the device the app is being viewed on.
   useEffect(() => {
@@ -123,7 +117,7 @@ function App () {
       <Routes>
         <Route path='/' element={<Home getEventData={getEventData}/>} />
         <Route path='/create' element={<CreateForm getEventData={getEventData} URL={BACKEND_URL}/>} />
-        <Route path='/created/:id' element={<CreateEventSuccess getEventData={getEventData} event={event} URL={FRONTEND_URL} />} />
+        <Route path='/created/:id' element={<CreateEventSuccess getEventData={getEventData} event={event}/>} />
         <Route path='/example' element={<Example event={exampleEvent} blocks={exampleBlocks}/>} />
         <Route path='/share/:id' element={<Share getEventData={getEventData} event={event} blocks={blocks} URL={BACKEND_URL}/>} />
         <Route path='/about/how' element={<About/>} />

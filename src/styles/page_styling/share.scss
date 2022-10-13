@@ -165,6 +165,7 @@
     background: none;
     border: none;
     color: v.$font-light;
+    font-size: 2rem;
     font-family: v.$fancy-font;
 
     @include m.hover-underline(v.$font-light, 8%);

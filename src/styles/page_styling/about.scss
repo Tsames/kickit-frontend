@@ -12,34 +12,44 @@
 
     color: v.$font-light;
 
+    height: v.$desktop-body-height;
+    margin-left: 12vw;
+    margin-right: 12vw;
+
+    h3 {
+        width: fit-content;
+        border-bottom: solid;
+    }
+
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-        height: 77vh;
+        p {
+            font-size: 1.15rem;
+            line-height: 135%;
+        }
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
+        p {
+            font-size: 1.15rem;
+            line-height: 135%;
+        }
     }
     
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-
+        p {
+            font-size: 1.15rem;
+            line-height: 145%;
+        }
     }
   
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-        height: v.$desktop-body-height;
-        margin-left: 12vw;
-        margin-right: 12vw;
-
         p {
-            line-height: 135%;
-        }
-
-        h3 {
-            width: fit-content;
-            border-bottom: solid;
+            font-size: 1.15rem;
+            line-height: 145%;
         }
     }
 
@@ -54,26 +64,26 @@
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-
+            margin-top: 10%;
+            margin-bottom: 20%;
         }
     
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-
+            margin-top: 10%;
+            margin-bottom: 15%;
         }
     
         //Tablet Landscape Sizing & Positioning
         @include d.for-tablet-landscape-up {
-
+            margin-top: 8%;
+            margin-bottom: 5%;
         }
     
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
+            margin-top: 8%;
             margin-bottom: 5%;
-            h1 {
-                width: 100%;
-                margin-bottom: 4%;
-            }
         }
     }
 
@@ -87,17 +97,17 @@
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-
+            width: 100%;
         }
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-
+            width: 70%;
         }
         
         //Tablet Landscape Sizing & Positioning
         @include d.for-tablet-landscape-up {
-
+            width: 50%;
         }
     
         //Desktop Sizing & Positioning
@@ -114,17 +124,20 @@
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-
+            width: 100%;
+            padding-bottom: 5rem;
         }
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-
+            width: 100%;
+            padding-bottom: 5rem;
         }
 
         //Tablet Landscape Sizing & Positioning
         @include d.for-tablet-landscape-up {
-
+            width: 80%;
+            padding-bottom: 5rem;
         }
 
         //Desktop Sizing & Positioning
@@ -141,23 +154,110 @@
         align-items: center;
 
         width: 100%;
-
-        font-family: v.$home-page-branding;
+        margin-top: 10%;
         margin-bottom: 5%;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+            font-size: 1.3rem;
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+            font-size: 2rem;
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+            font-size: 3rem;
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+            font-size: 3rem;
+        }
     }
 
 
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+    .how-section {
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+            margin-bottom: 5%;
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+            margin-bottom: 5%;
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+            margin-bottom: 5%;
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+            margin-bottom: 5%;
+        }
+    }
+
+    .who-section {
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+            margin-bottom: 5%;
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+            margin-bottom: 5%;
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+            margin-bottom: 5%;
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+            margin-bottom: 5%;
+        }
+    }
+    
+    
     .aboutClickables {
         border: none;
         text-decoration: none;
         color: v.$font-light;
         font-weight: 600;
-        margin: 0 1rem 0 1rem;
 
         @include m.hover-underline(v.$font-light, 8%);
         transition: background-size ease 0.4s;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+            font-size: 1.05rem;
+            margin: 0 0.5rem 0 0.5rem;
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+            font-size: 1.6rem;
+            margin: 0 0.75rem 0 0.75rem;
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+            font-size: 1.5rem;
+            margin: 0 1rem 0 1rem;
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+            font-size: 1.5rem;
+            margin: 0 1rem 0 1rem;
+        }
     }
 
 
@@ -166,13 +266,82 @@
     }
 
     .aboutLink {
-        font-family: inherit;
+        font-family: v.$fancy-font;
         color: v.$font-light;
         text-decoration: none;
-        font-size: 1.5rem;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+            font-size: 1.5rem;
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+            font-size: 2rem;
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+            font-size: 2.5rem;
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+            font-size: 3rem;
+        }
 
         @include m.hover-underline(v.$font-light, 8%);
         transition: background-size ease 0.4s;
+    }
+
+    #future-features-block {
+        ol{
+            li {
+                //Mobile Sizing & Positioning
+                @include d.for-phone-only {
+                    margin-top: 10%;
+                }
+
+                //Tablet Portrait Sizing & Positioning
+                @include d.for-tablet-portrait-up {
+                    margin-top: 5%;
+                }
+
+                //Tablet Landscape Sizing & Positioning
+                @include d.for-tablet-landscape-up {
+                    margin-top: 5%;
+                }
+
+                //Desktop Sizing & Positioning
+                @include d.for-desktop-up {
+                    margin-top: 5%;
+                }
+            }
+        }
+
+        ul {
+            li {
+                //Mobile Sizing & Positioning
+                @include d.for-phone-only {
+                    margin-top: 10%;
+                }
+
+                //Tablet Portrait Sizing & Positioning
+                @include d.for-tablet-portrait-up {
+                    margin-top: 2.5%;
+                }
+
+                //Tablet Landscape Sizing & Positioning
+                @include d.for-tablet-landscape-up {
+                    margin-top: 2.5%;
+                }
+
+                //Desktop Sizing & Positioning
+                @include d.for-desktop-up {
+                    margin-top: 2.5%;
+                }
+            }
+        }
     }
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -184,23 +353,26 @@
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-
+            font-size: 4rem;
+            margin: 0 0 25% 0;
         }
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-
+            font-size: 5.5rem;
+            margin: 0 0 12% 0;
         }
         
         //Tablet Landscape Sizing & Positioning
         @include d.for-tablet-landscape-up {
-
+            font-size: 6rem;
+            margin: 0 0 5% 0;
         }
     
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-            font-size: 4rem;
-            margin: 0 0 1rem 0;
+            font-size: 6rem;
+            margin: 0 0 5% 0;
         }
     }
 
@@ -209,8 +381,33 @@
         border-width: 0.13rem;
         padding: 0.6rem;
         color: v.$font-light;
-        font-size: 0.8rem;
         font-weight: 900;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+            font-size: 0.9rem;
+            line-height: 135%;
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+            font-size: 0.9rem;
+            line-height: 135%;
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+            font-size: 0.9rem;
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+            font-size: 0.9rem;
+        }
+    }
+
+    #tomAmes {
+        font-size: 1.15rem;
     }
 
 

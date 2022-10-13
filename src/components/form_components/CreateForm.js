@@ -78,17 +78,13 @@ const CreateForm = ({ setRoot, URL }) => {
           <Field id="eventTitle" form="createForm" type="text" name="title" placeholder="Event Title" text="" value={newForm.title} doThis={handleChange} />
         </div>
         <div id="section-mid">
-          <div id="section-mid-left">
             <Field form="createForm" type="text" name="location" text="Location" value={newForm.location} doThis={handleChange} />
             <TextArea form="createForm" rows="10" cols="30" name="description" text="Description" value={newForm.description} doThis={handleChange} />
-          </div>
-          <div id="section-mid-right">
             <div id="calendarHours">
               <TimeDropdown form="createForm" name="early" text="No earlier than" value={newForm.early} doThis={handleChange} />
               <TimeDropdown form="createForm" name="late" text="No later than" value={newForm.late} doThis={handleChange} />
             </div>
             <Calendar newForm={newForm} setNewForm={setNewForm}/>
-          </div>
         </div>
         <div id="section-bottom">
           <Field form="createForm" type="submit" name="submit" text="" value="Create" />

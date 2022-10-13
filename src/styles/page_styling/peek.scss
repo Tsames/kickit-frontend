@@ -277,22 +277,22 @@
 
   //Carousel Like Indicators at the top of the grid ----
   .block-index-indicator {
-    width: 1.5rem;
-    height: 0.4rem;
-    border-radius: 3px;
-    background-color: v.$background-light;
+    width: 2.5rem;
+    height: 1rem;
+    border-radius: 10px;
+    background-color: v.$font-light;
   }
 
   .index-active {
-    background-color: v.$font-light;
+    background-color: v.$font-heavy;
   }
   // ---------------------------------------------------------
 
   //Carousel Prev and Next Buttons at the top of the grid ----
   .index-button {
     border: none;
-    color: v.$background-light;
-    font-size: 1.5rem;
+    color: v.$font-light;
+    font-size: 2.5rem;
     border-radius: 3px;
     background-color: v.$invisible;
     transition: color 0.4s ease;

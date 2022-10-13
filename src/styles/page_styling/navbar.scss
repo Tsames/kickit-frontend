@@ -22,6 +22,18 @@ nav {
     width: 100vw;
   }
 
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+    height: v.$desktop-nav-height;
+    width: 100vw;
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+    height: v.$desktop-nav-height;
+    width: 100vw;
+  }
+
   //Desktop Sizing
   @include d.for-desktop-up {
     height: v.$desktop-nav-height;
@@ -43,6 +55,20 @@ nav {
       width: 20%;
       margin-left: 1rem;
       padding: none;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 100%;
+      width: 20%;
+      margin-left: 0.75rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      height: 100%;
+      width: 15%;
+      margin-left: 0.75rem;
     }
 
     //Desktop Sizing
@@ -67,10 +93,24 @@ nav {
       margin-right: 1.75rem;
     }
 
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 100%;
+      width: 60%;
+      margin-right: 0.75rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      height: 100%;
+      width: 43%;
+      margin-right: 0.75rem;
+    }
+
     //Desktop Sizing
     @include d.for-desktop-up {
       height: 100%;
-      width: 30%;
+      width: 40%;
       margin-right: 0.75rem;
     }
   }
@@ -94,6 +134,16 @@ nav {
     //Mobile Sizing
     @include d.for-phone-only {
       font-size: 1.2rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: 2.5rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      font-size: 2.5rem;
     }
 
     //Desktop Sizing
@@ -122,9 +172,19 @@ nav {
       font-size: 3rem;
     }
 
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: 4rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      font-size: 4rem;
+    }
+
     //Desktop Sizing
     @include d.for-desktop-up {
-      font-size: 4rem !important;
+      font-size: 4rem;
     }
   }
 }

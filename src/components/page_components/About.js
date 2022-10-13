@@ -40,9 +40,9 @@ const About = () => {
           <p>
 
           Kick-It is a web-app designed to be a quick and effective way to find the best day and time for your event.
-          The idea is simple, first you create an event and pass out the link to your friends, family, and other propsective attendees.
+          The idea is simple, first you create an event, then pass out the link to your friends, family, and other propsective attendees.
           With the link in hand, attendees can input and submit their availability.
-          The collective availability is displayed at all times so that both Organizer and attendees can easily find the day and times that are best for their event.
+          The collective availability of all prospective attendees is displayed at all times so that both Organizer and attendees alike can easily find the day and time that is best for their event.
           <br></br><br></br>
 
           </p>
@@ -68,7 +68,7 @@ const About = () => {
           <p>
           Once you've found your events dedicated page you'll want to sign up for the event.
           To sign up for an event you'll need to make sure that <span className="fancyfont">"Sign Up!"</span> is selected right below the event description.
-          You can then sign up for the event by first inputing the name you'd like to be listed under.
+          You can sign up for the event by first inputing the name you'd like to be listed under.
           Then click and drag among the grid to highlight the times that you are available to attend the event.
           <br></br><br></br>
 

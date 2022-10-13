@@ -1,5 +1,6 @@
 //Dependencies
 import { React, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 //Import Components
 import Field from '../input_components/Field';
@@ -10,10 +11,17 @@ import Calendar from '../input_components/Calendar';
 //Styling
 import '../../styles/form_styling/create_form.scss';
 
-const CreateForm = ({ setRoot, URL }) => {
+const CreateForm = ({ getEvent, FRONTEND_URL, BACKEND_URL }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
   
+  let navigate = useNavigate();
+
+  //stores the events the search returns
+  let result = null;
+
+  const SEARCH_URL = BACKEND_URL + "search/"
+
   //Set root style based on page
   useEffect(() => {
     document.getElementById('root').className = 'rb-create';
@@ -24,13 +32,29 @@ const CreateForm = ({ setRoot, URL }) => {
     title: "",
     location: "",
     description: "",
-    cost: "",
     early: "1",
     late: "1",
     days: []
   });
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
+
+  const searchEvents = async () => {
+    try {
+      //Fetch event data
+      const response = await fetch(SEARCH_URL);
+      const data = await response.json()
+
+      console.log("success");
+      console.log(data);
+
+      //Set event state
+      result = data;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   //Helper function (handleSubmit) - makes an HTTP Post request to the backend
   const createEvent = async (events) => {
@@ -57,16 +81,11 @@ const CreateForm = ({ setRoot, URL }) => {
   //Handler function - Resets state and makes an HTTP Post request to the backend upon submission
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(newForm);
     createEvent(newForm);
-    setNewForm({
-      title: "",
-      location: "",
-      description: "",
-      cost: "",
-      early: "",
-      late: "",
-      days: []
-    });
+    // searchEvents(newForm.title);
+    // console.log(result);
+    // useNavigate(`/created/${result.id}`);
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */

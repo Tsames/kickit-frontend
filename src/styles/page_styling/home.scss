@@ -16,7 +16,19 @@
 
   //Mobile Sizing
   @include d.for-phone-only {
-    height: 15vh;
+    height: 80vh;
+    width: 100vw;
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+    height: 80vh;
+    width: 100vw;
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+    height: 80vh;
     width: 100vw;
   }
 
@@ -40,7 +52,21 @@
     @include d.for-phone-only {
       height: 40%;
       width: 100%;
-      margin-top: 30%;
+      margin-top: 15%;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 40%;
+      width: 100%;
+      margin-top: 5%;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      height: 40%;
+      width: 100%;
+      margin-top: 5%;
     }
 
     //Desktop Sizing & Positioning
@@ -66,6 +92,16 @@
       font-size: 6rem;
     }
 
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: 10rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      font-size: 10rem;
+    }
+
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
       font-size: 10rem;
@@ -88,6 +124,20 @@
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       width: 80%;
+      height: 10vh;
+      font-size: 2rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      width: 60vw;
+      height: 10vh;
+      font-size: 2rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      width: 50vw;
       height: 10vh;
       font-size: 2rem;
     }

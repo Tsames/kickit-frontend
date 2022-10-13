@@ -15,11 +15,21 @@
   display: flex;
   flex-direction: row;
   justify-content: right;
-  align-items: flex-end;
+  align-items: center;
 
   //Mobile Sizing
   @include d.for-phone-only {
     height: 8vh;
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+    height: 5rem;
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+    height: 5rem;
   }
 
   //Desktop Sizing
@@ -38,12 +48,22 @@
 
     //Mobile Sizing
     @include d.for-phone-only {
-      margin-right: 1rem;
+      margin: 0 1rem 5% 0;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      margin: 0 2rem 5% 0;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      margin: 0 2rem 5% 0;
     }
 
     //Desktop Sizing
     @include d.for-desktop-up {
-      margin-right: 2rem;
+      margin: 0 2rem 2% 0;
     }
 
     #footerLink {

@@ -58,7 +58,7 @@ const CreateForm = ({ getEvent, FRONTEND_URL, BACKEND_URL }) => {
 
   //Helper function (handleSubmit) - makes an HTTP Post request to the backend
   const createEvent = async (events) => {
-    await fetch(URL, {
+    await fetch(BACKEND_URL, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

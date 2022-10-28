@@ -26,6 +26,9 @@ function App () {
   We also store data called blocks which is data that facilitates the creation of grids in the AttendanceChart.js and Grid.js components
   to visually represent availability */
 
+  const BACKEND_URL = process.env.REACT_APP_BACKEND + "events/";
+  const FRONTEND_URL = process.env.REACT_APP_FRONTEND;
+
   //Stores the data of an event
   const [event, setEvent] = useState(null);
 
@@ -33,17 +36,27 @@ function App () {
   (for AttendanceChart.js and Grid.js) */
   const [blocks, setBlocks] = useState([]);
 
-  //Stores the maximum number of days that a block can posses
-  const [blockMax, setBlockMax] = useState(7);
-
-  const BACKEND_URL = process.env.REACT_APP_BACKEND + "events/";
-  const FRONTEND_URL = process.env.REACT_APP_FRONTEND;
-
   //Set blockMax based on the device the app is being viewed on.
-  useEffect(() => {
-    const deviceWidth = window.matchMedia("(max-width: 599px)");
-    if (deviceWidth.matches) setBlockMax(3);
-  }, []);
+  const blockMaxHelper = () => {
+    const phoneWidth = window.matchMedia("(max-width: 599px)");
+    const tabletPortraitWidth = window.matchMedia("(max-width: 899px)");
+    const tabletLandscapeWidth = window.matchMedia("(max-width: 1199px)");
+
+    if (phoneWidth.matches) return 3;
+    else if (tabletPortraitWidth.matches) return 4;
+    else if (tabletLandscapeWidth.matches) return 5;
+    else return 7
+  };
+
+  console.log(`The size screen means that max blocks should be ${blockMaxHelper()}`)
+
+  //Stores the maximum number of days that a block can posses
+  const [blockMax, setBlockMax] = useState(blockMaxHelper());
+
+  // useEffect(() => {
+  //   setBlockMax(blockMaxHelper);
+  //   makeBlocks(event.days);
+  // })
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 

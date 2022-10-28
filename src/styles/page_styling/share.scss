@@ -8,33 +8,39 @@
 #share-wrapper {
   appearance: none;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   overflow: visible;
 
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
-
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
   }
 
   //Tablet Landscape Sizing & Positioning
   @include d.for-tablet-landscape-up {
-
+    width: 90vw;
+    height: 60vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
   }
 
   //Desktop Sizing & Positioning
   @include d.for-desktop-up {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
     width: 85vw;
+    height: 80vh;
     margin-left: 7.5vw;
     margin-right: 7.5vw;
-    margin-bottom: 5vh;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -43,33 +49,82 @@
   #share-event {
     //Display Settings
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    width: 100%;
 
     color: v.$font-light;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      h1 {
+        font-size: 2.5rem;
+        margin-top: 10%;
+      }
 
+      h4 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top: 5%;
+      }
+
+      p {
+        min-height: 10rem;
+        max-height: 20rem;
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1.3rem;
+      }
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      h1 {
+        font-size: 3.5rem;
+        margin-top: 10%;
+      }
 
+      h4 {
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 5%;
+      }
+
+      p {
+        min-height: 10rem;
+        max-height: 25rem;
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1.3rem;
+      }
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
+      h1 {
+        font-size: 3.5rem;
+        margin-top: 10%;
+      }
 
+      h4 {
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 5%;
+      }
+
+      p {
+        min-height: 10rem;
+        max-height: 25rem;
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1.3rem;
+      }
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: left;
-
-      width: 100%;
-
-      margin-top: 5%;
+      // margin-top: 5%;
 
       h1 {
         font-size: 3.5rem;
@@ -101,7 +156,7 @@
     }
 
     p {
-      text-align: left;
+      text-align: center;
       font-family: v.$standard-font;
       margin: auto;
       overflow-y: auto;
@@ -117,45 +172,30 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      width: 30%;
+      width: 100%;
       margin: auto;
-      margin-bottom: 2%;
-    }
-  }
-
-  // ------------------ Peek & Attend Wrapper ------------------
-  #share-grids {
-
-    //Mobile Sizing & Positioning
-    @include d.for-phone-only {
-
+      margin-top: 10%;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
+      width: 100%;
+      margin: auto;
+      margin-top: 0%;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-
+      width: 100%;
+      margin: auto;
+      margin-top: 2%;
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      width: 100%;
-
-      margin-top: 0%;
+      width: 50%;
+      margin: auto;
+      margin-top: 2%;
     }
   }
 
@@ -165,11 +205,30 @@
     background: none;
     border: none;
     color: v.$font-light;
-    font-size: 2rem;
     font-family: v.$fancy-font;
 
     @include m.hover-underline(v.$font-light, 8%);
     transition: background-size ease 0.4s;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: 1.5rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: 2rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      font-size: 2.5rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      font-size: 2rem;
+    }
   }
 
   .active-action {

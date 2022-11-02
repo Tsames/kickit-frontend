@@ -9,31 +9,40 @@
 
   //Display Settings
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   color: white;
   font-size: 1rem;
 
+  width: 100%;
+  height: 100%;
+
+  // border:solid;
+  // border-color: red;
+
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
-
+    flex-direction: column;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-
+    flex-direction: column;
   }
 
   //Tablet Landscape Sizing & Positioning
   @include d.for-tablet-landscape-up {
-
+    flex-direction: row;
+    height: 40rem;
+    padding-top: 10%;
+    padding-bottom: 10%;
   }
 
   //Desktop Sizing & Positioning
   @include d.for-desktop-up {
-    width: 100%;
-    height: 50rem;
+    flex-direction: row;
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -48,20 +57,41 @@
     border: solid;
     border-color: v.$font-ghost;
     border-radius: 1rem;
+    height: 100%;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      width: 100%;
+      margin-top: 15%;
+      height: 20rem;
 
+      h2 {
+        font-size: 2rem;
+        margin-top: 5%;
+      }
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      width: 65%;
+      margin-top: 8%;
+      height: 20rem;
 
+      h2 {
+        font-size: 2rem;
+        margin-top: 5%;
+      }
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
+      width: 40%;
 
+      h2 {
+        font-size: 2rem;
+        margin-top: 25%;
+        margin-bottom: 15%;
+      }
     }
 
     //Desktop Sizing & Positioning
@@ -69,22 +99,11 @@
       width: 30%;
       height: 100%;
 
-      h2{
-        font-size: 2.5rem;
+      h2 {
+        font-size: 2rem;
         margin-top: 30%;
-        margin-bottom: 5%;
+        margin-bottom: 15%;
       }
-
-      p {
-        font-size: 0.8rem;
-        height: 10%;
-        margin-bottom: 5%;
-      }
-    }
-
-    p {
-      width: 80%;
-      text-align: left;
     }
 
     h2 {
@@ -131,25 +150,38 @@
     justify-content: flex-start;
     align-items: center;
 
+    // border: solid;
+    // border-color: v.$font-ghost;
+    // border-color: green;
+    // border-radius: 10px;
+
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
+      width: 100%;
+      margin-top: 5%;
+      margin-bottom: 10%;
+      height: 60rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
+      width: 85%;
+      margin-top: 5%;
+      margin-bottom: 10%;
+      height: 60rem;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-
+      width: 60%;
+      height: 100%;
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
       width: 70%;
       height: 100%;
+      padding-bottom: 0;
     }
   }
 
@@ -162,17 +194,23 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
+      width: 100%;
+      margin: 5% 5% 0% 5%;
+      height: 5%;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
+      width: 100%;
+      margin: 5% 5% 0% 5%;
+      height: 5%;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-
+      width: 90%;
+      margin: 5% 5% 0% 5%;
+      height: 5%;
     }
 
     //Desktop Sizing & Positioning
@@ -192,12 +230,94 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
+      margin: 5%;
+      width: 90%;
+      height: 90%;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      margin: 5%;
+      width: 120%;
+      height: 80%;
+    }
 
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      margin: 5% 2.5% 0% 2.5%;
+      width: 95%;
+      height: 86.5%;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      margin-top: 5%;
+      width: 90%;
+      height: 81.5%;
+    }
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Carousel Like Indicators at the top of the grid ----
+  .block-index-indicator {
+    background-color: v.$font-light;
+    
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 10px;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 25px;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50px;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50px;
+    }
+  }
+
+  .index-active {
+    background-color: v.$font-heavy;
+  }
+  // ---------------------------------------------------------
+
+  //Carousel Prev and Next Buttons at the top of the grid ----
+  .index-button {
+    border: none;
+    color: v.$font-light;
+    font-size: 2.5rem;
+    border-radius: 3px;
+    background-color: v.$invisible;
+    transition: color 0.4s ease;
+
+    &:hover {
+      color: v.$font-light;
+    }
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: 3.5rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: 3.5rem;
     }
 
     //Tablet Landscape Sizing & Positioning
@@ -207,38 +327,7 @@
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      margin: 5%;
-      width: 90%;
-      height: 80%;
-    }
-  }
 
-  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
-
-  //Carousel Like Indicators at the top of the grid ----
-  .block-index-indicator {
-    width: 1.5rem;
-    height: 0.4rem;
-    border-radius: 3px;
-    background-color: v.$font-ghost;
-  }
-
-  .index-active {
-    background-color: v.$font-light;
-  }
-  // ---------------------------------------------------------
-
-  //Carousel Prev and Next Buttons at the top of the grid ----
-  .index-button {
-    border: none;
-    color: v.$font-ghost;
-    font-size: 1.5rem;
-    border-radius: 3px;
-    background-color: v.$invisible;
-    transition: color 0.4s ease;
-
-    &:hover {
-      color: v.$font-light;
     }
   }
   // ---------------------------------------------------------
@@ -252,19 +341,23 @@
     text-align: center;
 
     input {
+      text-align: center;
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
-
+        height: 3rem;
+        width: 65%;
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
-
+        height: 3rem;
+        width: 65%;
       }
 
       //Tablet Landscape Sizing & Positioning
       @include d.for-tablet-landscape-up {
-
+        height: 3rem;
+        width: 65%;
       }
 
       //Desktop Sizing & Positioning
@@ -280,17 +373,20 @@
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
-
+        left: 20%;
+        top: calc(50% - 0.8rem);
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
-
+        left: 20%;
+        top: calc(50% - 0.8rem);
       }
 
       //Tablet Landscape Sizing & Positioning
       @include d.for-tablet-landscape-up {
-
+        left: 20%;
+        top: calc(50% - 0.8rem);
       }
 
       //Desktop Sizing & Positioning
@@ -307,17 +403,20 @@
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
-
+        top: -40%;
+        font-size: 0.8rem;
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
-
+        top: -40%;
+        font-size: 0.8rem;
       }
 
       //Tablet Landscape Sizing & Positioning
       @include d.for-tablet-landscape-up {
-
+        top: -40%;
+        font-size: 0.8rem;
       }
 
       //Desktop Sizing & Positioning
@@ -337,22 +436,52 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
+      padding-top: 5%;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
+      padding-top: 5%;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-
+      padding-top: 15%;
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
 
+    }
+  }
+
+  #attend-taken {
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      width: 70%;
+      padding-bottom: 8%;
+      font-size: 0.8rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      width: 70%;
+      padding-bottom: 8%;
+      font-size: 0.8rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      width: 70%;
+      padding-bottom: 10%;
+      font-size: 0.8rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 70%;
+      padding-bottom: 8%;
+      font-size: 0.9rem;
     }
   }
 }

@@ -60,8 +60,9 @@
     align-items: center;
 
     border: solid;
-    // border-color: green;
-    border-color: v.$invisible;
+    border-color: v.$font-ghost;
+    border-radius: 10px;
+    // border-color: v.$invisible;
 
     padding-top: 2%;
 
@@ -69,6 +70,31 @@
     max-height: 90%;
 
     overflow-y: auto;
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      padding-top: 8%;
+      padding-bottom: 10%;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      padding-top: 8%;
+      padding-bottom: 10%;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      padding-top: 8%;
+      padding-bottom: 10%;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 100%;
+      padding-top: 3%;
+      padding-bottom: 0%;
+      margin-bottom: 0%;
+    }
   }
 
   #row-labels {
@@ -76,7 +102,7 @@
     margin: 0rem;
 
     width: var(--column-width);
-    height: 100%;
+    height: 98%;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -108,6 +134,8 @@
 
     width: 100%;
     height: var(--cell-height);
+    min-height: 4%;
+    max-height: 10%;
 
     &:hover {
       border-color: v.$font-heavier;
@@ -130,16 +158,43 @@
 
     width: 100%;
     height: var(--cell-height);
+    min-height: 4%;
+    max-height: 10%;
   }
 
   //Row Label Text
   .rowLabelText {
     position: relative;
-    bottom: 47.5%;
-    right: 10%;
-    font-size: 0.8rem;
     color: v.$font-light;
     text-align: right;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      bottom: 75%;
+      right: 10%;
+      font-size: 0.8rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      bottom: 52.5%;
+      right: 10%;
+      font-size: 0.75rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      bottom: 60%;
+      right: 10%;
+      font-size: 0.65rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      bottom: 75%;
+      right: 10%;
+      font-size: 0.9rem;
+    }
   }
 
   // ------------- Column Label Styling -------------

@@ -297,7 +297,7 @@
       //Desktop Sizing & Positioning
       @include d.for-desktop-up {
         width: 50%;
-        height: 18rem;
+        height: 22rem;
         font-size: 1.5rem;
         margin: 4% 0 0 0;
       }
@@ -416,35 +416,37 @@
 
     input {
       border: none;
-      border: solid;
+      // border: solid;
       color: v.$font-light !important;
-      @include m.hover-underline(v.$font-light, 8%);
+      @include m.hover-underline(v.$font-light, 4%);
   
       font-family: v.$fancy-font;
       transition: background-size 0.45s ease;
 
+      width: fit-content;
+
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
+        padding-top: 5%;
         font-size: 1.5rem;
-        width: 30%;
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
+        padding-top: 5%;
         font-size: 1.5rem;
-        width: 20%;
       }
 
       //Tablet Landscape Sizing & Positioning
       @include d.for-tablet-landscape-up {
+        padding-top: 5%;
         font-size: 1.5rem;
-        width: 20%;
       }
 
       //Desktop Sizing & Positioning
       @include d.for-desktop-up {
+        padding-top: 5%;
         font-size: 2.5rem;
-        width: 15%;
       }
     }
   }

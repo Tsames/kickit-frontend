@@ -19,22 +19,23 @@
 
   //Mobile Sizing
   @include d.for-phone-only {
-    height: 8vh;
+    margin-top: 3rem;
+    height: 2rem;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-    height: 5rem;
+    height: 2rem;
   }
 
   //Tablet Landscape Sizing & Positioning
   @include d.for-tablet-landscape-up {
-    height: 5rem;
+    height: 2rem;
   }
 
   //Desktop Sizing
   @include d.for-desktop-up {
-    height: v.$desktop-footer-height;
+    height: 2rem;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%

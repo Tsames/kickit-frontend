@@ -21,9 +21,9 @@ const Footer = () => {
 
   const display = () => {
     return (
-      <div id="footer-shell">
-          <p>created by <Link id="footerLink" to="/about/who">Tom Ames</Link></p>     
-      </div>
+
+      <p id='footer'>created by <Link id="footerLink" to="/about/who">Tom Ames, Amelia Schooley, and Chris Brand</Link></p>     
+
     )
   }
 

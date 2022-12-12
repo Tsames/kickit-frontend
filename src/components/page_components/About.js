@@ -1,6 +1,7 @@
 //Dependencies
 import { React, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 //Styling
 import '../../styles/page_styling/about.scss';
@@ -12,11 +13,31 @@ const About = () => {
   //Get desired section from params
   const selectedPage = useLocation().pathname;
 
+  //Framer-Motion Page Transition Settings
+  const fade = {
+    "initial": { opacity: 0 },
+    "animate": { opacity: 1 },
+    "exit": { opacity: 0 },
+    "transition": { duration: 0.5 }
+  }
+
+  const shuffle = {
+    "initial": { width: 0 },
+    "animate": { width: "80%" },
+    "exit": { x: window.innerWidth },
+    "transition": { duration: 0.3 }
+  }
+
+  const compress = {
+    
+  }
+
+
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
   useEffect(() => {
     helperOnPage();
-    document.getElementById('root').className = 'rb-about';
+    // document.getElementById('root').className = 'rb-about';
   });
 
   const helperOnPage = () => {
@@ -213,7 +234,7 @@ const About = () => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div id="about-shell">
+    <motion.div id="about-shell" initial={shuffle.initial} animate={shuffle.animate} exit={shuffle.exit} transition={shuffle.transition}>
       <div id="about-top">
         <h1 id="welcome-heading">Welcome to Kick-it</h1>
         <div id="aboutSections">
@@ -224,7 +245,7 @@ const About = () => {
       <div id="about-body">
         { selectedPage === '/about/how' ? aboutHow() : aboutWho() }
       </div>
-    </div>
+    </motion.div>
   )
 }
 

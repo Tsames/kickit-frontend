@@ -4,39 +4,39 @@
 @use './../device' as d;
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
-#footer-shell {
-  background-color: v.$invisible;
+// #footer-shell {
+//   background-color: rgba(12, 12, 12, 0.8);
 
-  //Size and Position
-  bottom: 0;
-  width: 100vw;
+//   //Size and Position
+//   bottom: 0;
+//   width: 100vw;
 
-  //Container Styles
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-  align-items: center;
+//   //Container Styles
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: right;
+//   align-items: center;
 
-  //Mobile Sizing
-  @include d.for-phone-only {
-    margin-top: 3rem;
-    height: 2rem;
-  }
+//   //Mobile Sizing
+//   @include d.for-phone-only {
+//     margin-top: 3rem;
+//     height: 2rem;
+//   }
 
-  //Tablet Portrait Sizing & Positioning
-  @include d.for-tablet-portrait-up {
-    height: 2rem;
-  }
+//   //Tablet Portrait Sizing & Positioning
+//   @include d.for-tablet-portrait-up {
+//     height: 2rem;
+//   }
 
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {
-    height: 2rem;
-  }
+//   //Tablet Landscape Sizing & Positioning
+//   @include d.for-tablet-landscape-up {
+//     height: 2rem;
+//   }
 
-  //Desktop Sizing
-  @include d.for-desktop-up {
-    height: 2rem;
-  }
+//   //Desktop Sizing
+//   @include d.for-desktop-up {
+//     // height: 2rem;
+//   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
@@ -44,35 +44,40 @@
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  p {
-    color: v.$font-light;
+#footer {
+  color: v.$font-light;
+  // color: black;
+  position: relative;
+  top: -4%;
+  left: 75%;
 
-    //Mobile Sizing
-    @include d.for-phone-only {
-      margin: 0 1rem 5% 0;
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-      margin: 0 2rem 5% 0;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      margin: 0 2rem 5% 0;
-    }
-
-    //Desktop Sizing
-    @include d.for-desktop-up {
-      margin: 0 2rem 2% 0;
-    }
-
-    #footerLink {
-      color: v.$font-light;
-      text-decoration: none;
-      @include m.hover-underline(v.$font-light, 8%);
-      transition: background-size 0.4s ease;
-    }
+  //Mobile Sizing
+  @include d.for-phone-only {
+    margin: 0 1rem 5% 0;
   }
 
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+    margin: 0 2rem 5% 0;
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+    margin: 0 2rem 5% 0;
+  }
+
+  //Desktop Sizing
+  @include d.for-desktop-up {
+    margin: 0 2rem 2% 0;
+  }
+
+  #footerLink {
+    color: v.$font-light;
+    // color: black;
+    text-decoration: none;
+    @include m.hover-underline(v.$font-light, 8%);
+    transition: background-size 0.4s ease;
+  }
 }
+
+// }

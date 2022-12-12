@@ -1,7 +1,7 @@
 //Dependencies
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatedPresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 //Import Nav & Footer Components
 import Navbar from './components/page_components/Navbar';
@@ -131,7 +131,7 @@ function App () {
 
   return (
     <>
-      <AnimatedPresence>
+      <AnimatePresence>
         <Navbar />
         <Routes location={location} key={location.pathname}>
           <Route path='/' element={<Home getEventData={getEventData}/>} />
@@ -143,8 +143,8 @@ function App () {
           <Route path='/about/who' element={<About/>} />
           <Route path='/test' element={<TestPage />} />
         </Routes>
-        <Footer/>
-      </ AnimatedPresence>
+        {/* <Footer/> */}
+      </ AnimatePresence>
     </>
   );
 }

@@ -1,6 +1,7 @@
 //Dependencies
 import { React, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 //Styling
 import '../../styles/page_styling/home.scss';
@@ -12,8 +13,23 @@ const Home = () => {
 
   //Set root style
   useEffect(() => {
-    document.getElementById('root').className = 'rb-home';
+    // document.getElementById('root').className = 'rb-home';
   });
+
+  //Framer-Motion Page Transition Settings
+  const fade = {
+    "initial": { opacity: 0 },
+    "animate": { opacity: 1 },
+    "exit": { opacity: 0 },
+    "transition": { duration: 1.5 }
+  }
+
+  const shuffle = {
+    "initial": { width: 0 },
+    "animate": { width: "100%" },
+    "exit": { x: window.innerWidth },
+    "transition": { duration: 0.3 }
+  }
 
   //State that stores the input for the search bar
   const [search, setSearch] = useState(""); 
@@ -61,7 +77,7 @@ const Home = () => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div id="home-shell">
+    <motion.div id="home-shell" initial={shuffle.initial} animate={shuffle.animate} exit={shuffle.exit} transition={shuffle.transition}>
       <div id="home-content">
       <h1>Kick it</h1>
       <label htmlFor="search" id="search-Label">
@@ -69,7 +85,7 @@ const Home = () => {
         {/* <button id="search-button" onClick={handleSearch}><BiSearchAlt id="search-icon"></BiSearchAlt></button> */}
       </label>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

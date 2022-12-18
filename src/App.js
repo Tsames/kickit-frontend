@@ -1,6 +1,7 @@
 //Dependencies
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 //Import Nav & Footer Components
 import Navbar from './components/page_components/Navbar';
@@ -9,6 +10,11 @@ import Footer from './components/page_components/Footer';
 //Import Example Event Data
 import { exampleEvent, exampleBlocks } from "./exampleEvent";
 
+//Import Account Components
+import Login from './components/Accounts/Login';
+import Signup from './components/Accounts/Signup/Signup';
+import ForgotPassword from './components/Accounts/Forgot-Password/ForgotPassword'
+
 //Import Main Pages
 import Home from './components/page_components/Home';
 import CreateForm from './components/form_components/CreateForm';
@@ -16,6 +22,9 @@ import Created from './components/page_components/Created';
 import Example from './components/page_components/Example'
 import Share from './components/page_components/Share';
 import About from "./components/page_components/About";
+
+//Import new TestPage
+import TestPage from './components/TestPage';
 
 function App () {
 
@@ -26,8 +35,8 @@ function App () {
   We also store data called blocks which is data that facilitates the creation of grids in the AttendanceChart.js and Grid.js components
   to visually represent availability */
 
-  const BACKEND_URL = process.env.REACT_APP_BACKEND + "events/";
-  const FRONTEND_URL = process.env.REACT_APP_FRONTEND;
+  const BACKEND_URL = process.env.KICKIT_BACKEND + "events/";
+  const FRONTEND_URL = process.env.KICKIT_FRONTEND;
 
   //Stores the data of an event
   const [event, setEvent] = useState(null);
@@ -57,6 +66,8 @@ function App () {
   //   setBlockMax(blockMaxHelper);
   //   makeBlocks(event.days);
   // })
+
+  const location = useLocation();
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -125,17 +136,25 @@ function App () {
 
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home getEventData={getEventData}/>} />
-        <Route path='/create' element={<CreateForm getEventData={getEventData} FRONTEND_URL={FRONTEND_URL} BACKEND_URL={BACKEND_URL}/>} />
-        <Route path='/created/:id' element={<Created URL={FRONTEND_URL}/>} />
-        <Route path='/example' element={<Example event={exampleEvent} blocks={exampleBlocks}/>} />
-        <Route path='/share/:id' element={<Share getEventData={getEventData} event={event} blocks={blocks} URL={BACKEND_URL}/>} />
-        <Route path='/about/how' element={<About/>} />
-        <Route path='/about/who' element={<About/>} />
-      </Routes>
-      <Footer/>
+      <AnimatePresence>
+        <Navbar />
+        <Routes location={location} key={location.pathname}>
+          {/* Accounts Routes */}
+          <Route path="/login" element={< Login />} />
+          <Route path="/signup" element={< Signup />} />
+          <Route path="/forgot-password" element={< ForgotPassword />} />
+          {/* Main Routes */}
+          <Route path='/' element={<Home getEventData={getEventData}/>} />
+          <Route path='/create' element={<CreateForm getEventData={getEventData} FRONTEND_URL={FRONTEND_URL} BACKEND_URL={BACKEND_URL}/>} />
+          <Route path='/created/:id' element={<Created URL={FRONTEND_URL}/>} />
+          <Route path='/example' element={<Example event={exampleEvent} blocks={exampleBlocks}/>} />
+          <Route path='/share/:id' element={<Share getEventData={getEventData} event={event} blocks={blocks} URL={BACKEND_URL}/>} />
+          <Route path='/about/how' element={<About/>} />
+          <Route path='/about/who' element={<About/>} />
+          <Route path='/test' element={<TestPage />} />
+        </Routes>
+        <Footer/>
+      </ AnimatePresence>
     </>
   );
 }

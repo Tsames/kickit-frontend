@@ -1,5 +1,5 @@
 //Dependencies
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 //Styling
@@ -16,24 +16,54 @@ const Login = () => {
     password: ""
   });
 
-  const SEARCH_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "users/login";
+  const url = process.env.KICKIT_BACKEND + "/users/login";
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
+  //Helper function (handleSubmit) - makes an HTTP Post request to the proper backend endpoint
+  const login = async () => {
+    await fetch(url, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(credentials),
+    });
+  };
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
+  
+  //Handler function - Updates Credentials state upon change in login fields
+  function handleCredentialChange(event) {
+    let newValue = event.target.value;
+    setCredentials({ ...credentials, [event.target.name]: newValue });
+  }
 
+  //Handler function - Upon Submission of login form sends HTTP POST Request
+  function handleSubmit(event) {
+    event.preventDefault();
+    login();
+  }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
     <div id="login-shell">
-      <div id="home-content">
-        <h1>Kick it</h1>
-        <label htmlFor="search" id="search-Label">
-          <input id="search" type="text" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch} placeholder="enter your event's id" />
-          {/* <button id="search-button" onClick={handleSearch}><BiSearchAlt id="search-icon"></BiSearchAlt></button> */}
-        </label>
+      <div id="login-content">
+        <h1>Log In</h1>
+        <form id="login-form" onSubmit={handleSubmit}>
+          <label htmlFor="login-emailAddress" id="login-emailAddress-label" className="login-fields">
+            <span id="login-emailAddress-placeholder" className="login-fields-placeholder">Email Address</span>
+            <input required type="text" id="login-emailAddress" name="login-emailAddress" value={credentials.email} placeholder="" onChange={handleCredentialChange} />
+          </label>
+          <label htmlFor="login-password" id="login-password-label" className="login-fields">
+            <span id="login-password-placeholder" className="login-fields-placeholder">Password</span>
+            <input required type="text" id="login-password" name="login-password" value={credentials.password} placeholder="" onChange={handleCredentialChange} />
+          </label>
+          <label htmlFor="login-submit" id="login-submit-label">
+            <input required type="submit" id="login-submit" name="login-submit" value="Login!" />
+          </label>
+        </form>
       </div>
     </div>
   )

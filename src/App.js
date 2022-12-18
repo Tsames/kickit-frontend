@@ -1,7 +1,7 @@
 //Dependencies
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatedPresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 //Import Nav & Footer Components
 import Navbar from './components/page_components/Navbar';
@@ -9,6 +9,9 @@ import Footer from './components/page_components/Footer';
 
 //Import Example Event Data
 import { exampleEvent, exampleBlocks } from "./exampleEvent";
+
+//Import Account Components
+import Login from './components/Accounts/Login';
 
 //Import Main Pages
 import Home from './components/page_components/Home';
@@ -30,8 +33,8 @@ function App () {
   We also store data called blocks which is data that facilitates the creation of grids in the AttendanceChart.js and Grid.js components
   to visually represent availability */
 
-  const BACKEND_URL = process.env.REACT_APP_BACKEND + "events/";
-  const FRONTEND_URL = process.env.REACT_APP_FRONTEND;
+  const BACKEND_URL = process.env.KICKIT_BACKEND + "events/";
+  const FRONTEND_URL = process.env.KICKIT_FRONTEND;
 
   //Stores the data of an event
   const [event, setEvent] = useState(null);
@@ -131,9 +134,12 @@ function App () {
 
   return (
     <>
-      <AnimatedPresence>
+      <AnimatePresence>
         <Navbar />
         <Routes location={location} key={location.pathname}>
+          {/* Accounts Routes */}
+          <Route path="/login" element={< Login />} />
+          {/* Main Routes */}
           <Route path='/' element={<Home getEventData={getEventData}/>} />
           <Route path='/create' element={<CreateForm getEventData={getEventData} FRONTEND_URL={FRONTEND_URL} BACKEND_URL={BACKEND_URL}/>} />
           <Route path='/created/:id' element={<Created URL={FRONTEND_URL}/>} />
@@ -144,7 +150,7 @@ function App () {
           <Route path='/test' element={<TestPage />} />
         </Routes>
         <Footer/>
-      </ AnimatedPresence>
+      </ AnimatePresence>
     </>
   );
 }

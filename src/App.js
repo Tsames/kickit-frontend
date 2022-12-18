@@ -12,6 +12,8 @@ import { exampleEvent, exampleBlocks } from "./exampleEvent";
 
 //Import Account Components
 import Login from './components/Accounts/Login';
+import Signup from './components/Accounts/Signup/Signup';
+import ForgotPassword from './components/Accounts/Forgot-Password/ForgotPassword'
 
 //Import Main Pages
 import Home from './components/page_components/Home';
@@ -139,6 +141,8 @@ function App () {
         <Routes location={location} key={location.pathname}>
           {/* Accounts Routes */}
           <Route path="/login" element={< Login />} />
+          <Route path="/signup" element={< Signup />} />
+          <Route path="/forgot-password" element={< ForgotPassword />} />
           {/* Main Routes */}
           <Route path='/' element={<Home getEventData={getEventData}/>} />
           <Route path='/create' element={<CreateForm getEventData={getEventData} FRONTEND_URL={FRONTEND_URL} BACKEND_URL={BACKEND_URL}/>} />

@@ -142,7 +142,9 @@ function App () {
           {/* Accounts Routes */}
           <Route path="/login" element={< Login />} />
           <Route path="/signup" element={< Signup />} />
+          <Route path="/confirm-account" element={< ForgotPassword />} />
           <Route path="/forgot-password" element={< ForgotPassword />} />
+          <Route path="/new-password" element={< ForgotPassword />} />
           {/* Main Routes */}
           <Route path='/' element={<Home getEventData={getEventData}/>} />
           <Route path='/create' element={<CreateForm getEventData={getEventData} FRONTEND_URL={FRONTEND_URL} BACKEND_URL={BACKEND_URL}/>} />

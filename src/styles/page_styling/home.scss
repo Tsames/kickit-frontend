@@ -13,7 +13,6 @@
   align-items: center;
   text-align: center;
   margin: 0 auto;
-  background-image: linear-gradient(62deg, #dfae31 0%, #e8712b 33%, #c32727 66%, #bc53d1 100%);
 
   //Mobile Sizing
   @include d.for-phone-only {
@@ -29,13 +28,13 @@
 
   //Tablet Landscape Sizing & Positioning
   @include d.for-tablet-landscape-up {
-    height: 80vh;
+    height: 100vh;
     width: 100vw;
   }
 
   //Desktop Sizing
   @include d.for-desktop-up {
-    height: 62vh;
+    height: 100vh;
     padding-bottom: 15rem;
     width: 100vw;
   }
@@ -50,32 +49,36 @@
     align-items: center;
     text-align: center;
 
+    background-image: url("../../../public/homepage.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+
+    position: relative;
+
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       height: 40%;
       width: 100%;
-      margin-top: 15%;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
       height: 40%;
       width: 100%;
-      margin-top: 5%;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      height: 40%;
+      height: 50rem;
       width: 100%;
-      margin-top: 5%;
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      height: 40%;
+      height: 50rem;
       width: 100%;
-      margin-top: 5%;
     }
   }
 
@@ -83,76 +86,47 @@
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  //Kick-It Branding
-  h1 {
-    font-family: v.$home-page-branding;
-    color: v.$font-light;
-    pointer-events: none;
+  //Create Event Button
+  #createEvent {
+    font-family: v.$font-primary;
+    color: v.$pallette_secondary;
+    background-color: v.$pallette_primary;
 
-    //Mobile Sizing & Positioning
-    @include d.for-phone-only {
-      font-size: 6rem;
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-      font-size: 10rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      font-size: 10rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      font-size: 10rem;
-    }
-  }
-
-  //Search Bar
-  input {
-    appearance: none;
-    outline: none;
     border: none;
-    border-radius: 5px;
-
-    color:v.$font-light;
-    font-family: v.$standard-font;
-    text-align: center;
-
-    background: v.$background-light;
+    position: absolute;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      width: 80%;
-      height: 10vh;
-      font-size: 2rem;
+
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      width: 60vw;
-      height: 10vh;
-      font-size: 2rem;
+
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      width: 50vw;
-      height: 10vh;
-      font-size: 2rem;
+      font-size: 20px;
+      font-weight: 650;
+
+      border-radius: 2rem;
+      padding: 0.5rem;
+      height: 4rem;
+      width: 15rem;
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      width: 40vw;
-      height: 10vh;
-      font-size: 3rem;
-    }
+      font-size: 20px;
+      font-weight: 600;
 
-    &:focus::placeholder {
-      color: v.$invisible;
+      border-radius: 2rem;
+      padding: 0.5rem;
+      height: 4rem;
+      width: 15rem;
+
+      bottom: 7rem;
     }
   }
 

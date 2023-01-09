@@ -14,6 +14,8 @@ $standard-font: 'Aref Ruqaa Ink', serif;
 $fancy-font: 'Pacifico', cursive;
 // $standard-font: 'Arvo', serif;
 
+$font-primary: 'Helvetica', 'Arial', sans-serif;
+
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Colors %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
 $invisible: rgba(0, 0, 0, 0);
@@ -31,6 +33,9 @@ $background-light: rgba(233, 232, 232, 0.25);
   color: $invisible !important;
   pointer-events: none !important;
 }
+
+$pallette_primary: #3D4BC6;
+$pallette_secondary: #ECECEC;
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Wrapper Heights (by device) %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
@@ -115,9 +120,9 @@ $calendar-selected-color: $font-light;
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Root Background Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
 //Landing Page
-.rb-home {
-  background-image: linear-gradient(62deg, #dfae31 0%, #e8712b 33%, #c32727 66%, #bc53d1 100%);
-}
+// .rb-home {
+//   background-image: linear-gradient(62deg, #dfae31 0%, #e8712b 33%, #c32727 66%, #bc53d1 100%);
+// }
 
 //View Event - Details Page
 .rb-share {

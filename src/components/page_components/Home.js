@@ -79,11 +79,7 @@ const Home = () => {
   return (
     <motion.div id="home-shell" initial={shuffle.initial} animate={shuffle.animate} exit={shuffle.exit} transition={shuffle.transition}>
       <div id="home-content">
-      <h1>Kick it</h1>
-      <label htmlFor="search" id="search-Label">
-        <input id="search" type="text" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch} placeholder="enter your event's id"/>
-        {/* <button id="search-button" onClick={handleSearch}><BiSearchAlt id="search-icon"></BiSearchAlt></button> */}
-      </label>
+        <button id="createEvent">Create Your Event</button>
       </div>
     </motion.div>
   )

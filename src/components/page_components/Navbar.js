@@ -1,7 +1,6 @@
 //Dependencies
 import { React, useEffect, useRef} from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { RiHome2Fill } from "react-icons/ri";
 
 //Styling
 import '../../styles/page_styling/navbar.scss';
@@ -40,12 +39,12 @@ const Navbar = () => {
   return (
     <nav id="navbar-shell">
       <div id="navLeft">
-        <Link to="/"><RiHome2Fill id="navbarHomeButton" className="navItem hoverEffect"/></Link>
+        <Link to="/"><h1 id="navbarHomeButton" className="">Kick It</h1></Link>
       </div>
       <div id="navRight">
-        <Link to="/create"><button id="navbarCreateButton" className="navItem hoverEffect">Create</button></Link>
-        <Link to="/example"><button id="navbarExampleButton" className="navItem hoverEffect">Example</button></Link>
-        <Link to="/about/how"><button id="navbarAboutButton" className="navItem hoverEffect">About</button></Link>
+        <Link to="/example"><button id="navbarDemo" className="navItem">Demo</button></Link>
+        <Link to="/about/how"><button id="navbarAboutUs" className="navItem">About Us</button></Link>
+        <Link to="/create"><button id="navbarCreate" className="">Create Event</button></Link>
       </div>
     </nav>
   );

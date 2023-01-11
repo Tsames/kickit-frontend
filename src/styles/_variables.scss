@@ -2,19 +2,20 @@
 making it simple to make small or large tweaks to many aspects of the web app */
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Fonts %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&display=swap');
 
-$home-page-branding: 'Dancing Script', cursive;
-$nav-items: 'Pacifico', cursive;
+$home-page-branding: 'Spicy Rice', cursive;
+
+$font-primary: 'Helvetica', 'Arial', sans-serif;
+
+
 $footer-items: 'Pacifico', cursive;
 $standard-font: 'Aref Ruqaa Ink', serif;
 $fancy-font: 'Pacifico', cursive;
 // $standard-font: 'Arvo', serif;
-
-$font-primary: 'Helvetica', 'Arial', sans-serif;
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Colors %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
@@ -34,12 +35,12 @@ $background-light: rgba(233, 232, 232, 0.25);
   pointer-events: none !important;
 }
 
-$pallette_primary: #3D4BC6;
-$pallette_secondary: #ECECEC;
+$pallette_one: #3D4BC6;
+$pallette_two: #ECECEC;
+$pallette_three: #014D59;
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Wrapper Heights (by device) %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
-$desktop-nav-height: 14vh;
 $desktop-body-height: 76vh;
 $desktop-footer-height: 10vh;
 

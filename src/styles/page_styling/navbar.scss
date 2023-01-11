@@ -13,31 +13,34 @@ nav {
   align-items: center;
   z-index: 5;
 
+  position: absolute;
+
   //Coloring
-  background-color: rgba(12, 12, 12, 0.8);
+  background-color: rgba(237, 237, 237, 0.89);
+  border: none;
 
   //Mobile Sizing
   @include d.for-phone-only {
-    height: 15vh;
-    width: 100vw;
+
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-    height: v.$desktop-nav-height;
-    width: 100vw;
+
   }
 
   //Tablet Landscape Sizing & Positioning
   @include d.for-tablet-landscape-up {
-    height: v.$desktop-nav-height;
-    width: 100vw;
+
   }
 
   //Desktop Sizing
   @include d.for-desktop-up {
-    height: v.$desktop-nav-height;
-    width: 100vw;
+    top: 3rem;
+    left: 15vw;
+    right: 15vw;
+
+    border-radius: 3rem;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -120,15 +123,15 @@ nav {
 
   //Styles for all Nav Items
   .navItem {
-    font-family: v.$nav-items;
 
     //Coloring
-    color: v.$font-light;
-    background-color: v.$invisible;
+    color: v.$pallette_three;
+    font-family: v.$font-primary;
+    background: none;
 
     //No Styles
     border-style: none;
-    text-decoration-line: none;
+    text-decoration: none;
 
 
     //Mobile Sizing
@@ -148,24 +151,38 @@ nav {
 
     //Desktop Sizing
     @include d.for-desktop-up {
-      font-size: 2.5rem;
+      font-size: 1.2rem;
     }
   }
 
-  //Hover Underline Effect
-  .hoverEffect {
-    //Hover Mixin & Transition
-    @include m.hover-underline(v.$font-light, 8%);
-    transition: background-size ease 0.4s;
-  }
+  // //Hover Underline Effect
+  // .hoverEffect {
+  //   //Hover Mixin & Transition
+  //   @include m.hover-underline(v.$font-light, 8%);
+  //   transition: background-size ease 0.4s;
+  // }
 
-  .navOnPage {
-    background-size: 100% 8%;
-  }
+  // .navOnPage {
+  //   background-size: 100% 8%;
+  // }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   #navbarHomeButton {
+
+    display: inline-block;
+    font-family: v.$home-page-branding;
+    font-style: normal;
+    letter-spacing: 0.08em;
+
+    background: linear-gradient(90deg, #4DDABB 0%, #3D4BC6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #014D59;
+    // border: 1.75723px solid #014D59;
 
     //Mobile Sizing
     @include d.for-phone-only {
@@ -184,7 +201,43 @@ nav {
 
     //Desktop Sizing
     @include d.for-desktop-up {
-      font-size: 4rem;
+      font-weight: 900;
+      font-size: 36px;
+    }
+  }
+
+  #navbarCreate {
+    //Coloring
+    color: v.$pallette_two;
+    font-family: v.$font-primary;
+    background-color: v.$pallette_one;
+
+    //No Styles
+    border-style: none;
+    text-decoration: none;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      font-size: 1.2rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: 2.5rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      font-size: 2.5rem;
+      border-radius: 5rem;
+    }
+
+    //Desktop Sizing
+    @include d.for-desktop-up {
+      font-weight: 400;
+      font-size: 1.3rem;
+      padding: 0.3rem 1.8rem 0.3rem 1.8rem;
+      border-radius: 5rem;
     }
   }
 }

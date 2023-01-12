@@ -64,6 +64,30 @@ const Navbar = () => {
     }
   }
 
+  /* --------------- Gestures --------------- */
+
+  //Hover
+  const navItemHover = {
+    scale: 1.3,
+    transition: {
+      duration: 0.2,
+
+    }
+  }
+
+  const createButtonHover = {
+    scale: 1.1,
+    backgroundColor: "#4b3dc6",
+    border: "solid",
+    borderColor: "#818DFF"
+  }
+
+
+  //Tap
+  const navItemTap = {
+    scale: 0.9
+  }
+
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
@@ -72,12 +96,12 @@ const Navbar = () => {
     <nav id="navbar-shell">
       <motion.div id="navbar-motion-wrapper" variants={containerVariant} initial="initial" animate="animate">
         <div id="navLeft">
-          <Link to="/"><motion.h1 id="navbarHomeButton" variants={childVariant}>Kick It</motion.h1></Link>
+          <Link to="/"><motion.h1 id="navbarHomeButton" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Kick It</motion.h1></Link>
         </div>
         <div id="navRight">
-          <Link to="/example"><motion.button id="navbarDemo" className="navItem" variants={childVariant}>Demo</motion.button></Link>
-          <Link to="/about/how"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant}>About Us</motion.button></Link>
-          <Link to="/create"><motion.button id="navbarCreate" variants={childVariant}>Create Event</motion.button></Link>
+          <Link to="/example"><motion.button id="navbarDemo" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Demo</motion.button></Link>
+          <Link to="/about/how"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
+          <Link to="/create"><motion.button id="navbarCreate" variants={childVariant} whileHover={createButtonHover} whileTap={navItemTap}>Create Event</motion.button></Link>
         </div>
       </motion.div>
     </nav>

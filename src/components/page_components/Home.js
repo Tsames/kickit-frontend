@@ -101,9 +101,12 @@ const Home = () => {
 
   return (
     <div id="home-shell">
-      <motion.div id="home-content" variants={containerVariant} initial="initial" animate="animate">
-        <motion.button id="createEvent" variants={childVariant}>Create Your Event</motion.button>
+      <motion.div id="home-landing" variants={containerVariant} initial="initial" animate="animate">
+        <motion.button id="createEvent" variants={childVariant} whileHover={{scale: 1.1, backgroundColor: "#4b3dc6", border: "solid", borderColor: "#818DFF"}}>Create Your Event</motion.button>
       </motion.div>
+      <div id="home-contents">
+
+      </div>
     </div>
   )
 }

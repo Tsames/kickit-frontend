@@ -11,24 +11,12 @@ const Home = () => {
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
   let navigate = useNavigate();
 
-  //Set root style
-  useEffect(() => {
-    // document.getElementById('root').className = 'rb-home';
-  });
-
   //Framer-Motion Page Transition Settings
-  const fade = {
-    "initial": { opacity: 0 },
-    "animate": { opacity: 1 },
-    "exit": { opacity: 0 },
-    "transition": { duration: 1.5 }
-  }
-
-  const shuffle = {
+  const fmotion = {
     "initial": { width: 0 },
     "animate": { width: "100%" },
     "exit": { x: window.innerWidth },
-    "transition": { duration: 0.3 }
+    "transition": { duration: 0.4 }
   }
 
   //State that stores the input for the search bar
@@ -38,6 +26,41 @@ const Home = () => {
   let result = null;
 
   const SEARCH_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/search/" + search;
+
+  /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
+
+  //Container (#navbar-shell) Variant
+  const containerVariant = {
+    initial: { 
+      scale: 0,
+      x: "-50vw",
+      y: "-50vh"
+    },
+    animate: {
+      scale: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: 0.2,
+        when: "beforeChildren" 
+      }
+    }
+  }
+
+  //Child Variants
+  const childVariant = {
+    initial: { 
+      opacity: 0 
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        delay: 0.6,
+        duration: 0.6
+      }
+    }
+  }
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
   
@@ -77,11 +100,11 @@ const Home = () => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <motion.div id="home-shell" initial={shuffle.initial} animate={shuffle.animate} exit={shuffle.exit} transition={shuffle.transition}>
-      <div id="home-content">
-        <button id="createEvent">Create Your Event</button>
-      </div>
-    </motion.div>
+    <div id="home-shell">
+      <motion.div id="home-content" variants={containerVariant} initial="initial" animate="animate">
+        <motion.button id="createEvent" variants={childVariant}>Create Your Event</motion.button>
+      </motion.div>
+    </div>
   )
 }
 

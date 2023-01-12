@@ -1,6 +1,7 @@
 //Dependencies
 import { React, useEffect, useRef} from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 //Styling
 import '../../styles/page_styling/navbar.scss';
@@ -14,7 +15,6 @@ const Navbar = () => {
 
   const location = useLocation().pathname;
   const lastLocation = useRef(null);
-
 
   useEffect(() => helperOnPage());
 
@@ -32,20 +32,54 @@ const Navbar = () => {
     lastLocation.current = location;
   }
 
+  /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
+
+  //Container (#navbar-shell) Variant
+  const containerVariant = {
+    initial: { 
+      width: 0,
+      height: "100%"
+    },
+    animate: {
+      width: "100%",
+      height: "100%",
+      transition: {
+        duration: 0.6,
+        delay: 1,
+        when: "beforeChildren" 
+      }
+    }
+  }
+
+  //Child Variants
+  const childVariant = {
+    initial: { 
+      opacity: 0 
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: 0.6
+      }
+    }
+  }
+
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
     <nav id="navbar-shell">
-      <div id="navLeft">
-        <Link to="/"><h1 id="navbarHomeButton" className="">Kick It</h1></Link>
-      </div>
-      <div id="navRight">
-        <Link to="/example"><button id="navbarDemo" className="navItem">Demo</button></Link>
-        <Link to="/about/how"><button id="navbarAboutUs" className="navItem">About Us</button></Link>
-        <Link to="/create"><button id="navbarCreate" className="">Create Event</button></Link>
-      </div>
+      <motion.div id="navbar-motion-wrapper" variants={containerVariant} initial="initial" animate="animate">
+        <div id="navLeft">
+          <Link to="/"><motion.h1 id="navbarHomeButton" variants={childVariant}>Kick It</motion.h1></Link>
+        </div>
+        <div id="navRight">
+          <Link to="/example"><motion.button id="navbarDemo" className="navItem" variants={childVariant}>Demo</motion.button></Link>
+          <Link to="/about/how"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant}>About Us</motion.button></Link>
+          <Link to="/create"><motion.button id="navbarCreate" variants={childVariant}>Create Event</motion.button></Link>
+        </div>
+      </motion.div>
     </nav>
   );
 };

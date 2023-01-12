@@ -4,20 +4,11 @@
 @use './../device' as d;
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
-nav {
+#navbar-shell {
 
   //Display Settings
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 5;
-
   position: absolute;
-
-  //Coloring
-  background-color: rgba(237, 237, 237, 0.89);
-  border: none;
+  padding: 0;
 
   //Mobile Sizing
   @include d.for-phone-only {
@@ -45,7 +36,44 @@ nav {
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  //Left Side of Nav Bar
+  // %&%&%&%&%&% Navbar Motion Wrapper Side of Nav Bar %&%&%&%&%&%
+  #navbar-motion-wrapper {
+    position: relative;
+    background-color: rgba(237, 237, 237, 0.89);
+    border: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+
+    width: 100%;
+    height: 100%;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing
+    @include d.for-desktop-up {
+      border-radius: 3rem;
+    }
+  }
+
+
+  // %&%&%&%&%&% Left Side of Nav Bar %&%&%&%&%&%
   div#navLeft {
     display: flex;
     flex-direction: row;
@@ -82,7 +110,7 @@ nav {
     }
   }
 
-  //Right Side of Nav Bar
+  // %&%&%&%&%&% Right Side of Nav Bar %&%&%&%&%&%
   div#navRight {
     display: flex;
     flex-direction: row;

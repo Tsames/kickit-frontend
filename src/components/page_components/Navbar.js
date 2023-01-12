@@ -16,25 +16,25 @@ const Navbar = () => {
   const location = useLocation().pathname;
   const lastLocation = useRef(null);
 
-  useEffect(() => helperOnPage());
+  // useEffect(() => helperOnPage());
 
-  const helperOnPage = () => {
-    let buttonChecker;
-    pages.forEach((element, index) => {
-      if (location === element) {
-        document.getElementById(buttons[index]).classList.add('navOnPage');
-        buttonChecker = buttons[index];
-      } else if (element === lastLocation.current && buttonChecker !== buttons[index]) {
-        document.getElementById(buttons[index]).classList.remove('navOnPage');
-      }
-    });
+  // const helperOnPage = () => {
+  //   let buttonChecker;
+  //   pages.forEach((element, index) => {
+  //     if (location === element) {
+  //       document.getElementById(buttons[index]).classList.add('navOnPage');
+  //       buttonChecker = buttons[index];
+  //     } else if (element === lastLocation.current && buttonChecker !== buttons[index]) {
+  //       document.getElementById(buttons[index]).classList.remove('navOnPage');
+  //     }
+  //   });
 
-    lastLocation.current = location;
-  }
+  //   lastLocation.current = location;
+  // }
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
-  //Container (#navbar-shell) Variant
+  //Container (navbar-shell) Variant
   const containerVariant = {
     initial: { 
       width: 0,

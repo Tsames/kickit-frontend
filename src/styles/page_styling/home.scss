@@ -20,35 +20,32 @@
 
   //Mobile Sizing
   @include d.for-phone-only {
-    height: 80vh;
-    width: 100vw;
-    padding-bottom: 15rem;
+
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-    height: 80vh;
-    width: 100vw;
-    padding-bottom: 15rem;
+
   }
 
   //Tablet Landscape Sizing & Positioning
   @include d.for-tablet-landscape-up {
-    height: 100vh;
-    width: 100vw;
-    padding-bottom: 15rem;
+
   }
 
   //Desktop Sizing
   @include d.for-desktop-up {
-    height: 100vh;
-    width: 100vw;
-    padding-bottom: 15rem;
+
+  }
+
+  //Large Desktop Sizing & Positioning
+  @include d.for-big-desktop-up {
+
   }
   
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  //Content Wrapper
+  // &%&%&%&%&%&%&%&%&%& Landing Wrapper &%&%&%&%&%&%&%&%&%&
   #home-landing {
     display: flex;
     flex-direction: column;
@@ -56,7 +53,7 @@
     align-items: center;
     text-align: center;
 
-    background-image: url("../../../public/homepage.png");
+    background-image: url("../../../public/assets/backgrounds/home_page/landing.png");
     background-repeat: no-repeat;
     background-position: center;
     background-origin: content-box;
@@ -84,14 +81,125 @@
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
+      height: 100vh;
+      width: 100vw;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 100vh;
+      width: 100vw;
+    }
+  }
+
+  // &%&%&%&%&%&%&%&%&%& Testimonial Wrapper &%&%&%&%&%&%&%&%&%&
+  #home-testimonials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background: linear-gradient(270deg, #4DDABB -28.37%, #3D4BC6 122.74%);
+
+    width: 100%;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: 40rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 40rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      height: 40rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 35rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 35rem;
+    }
+  }
+  
+  // &%&%&%&%&%&%&%&%&%& Contents Wrapper &%&%&%&%&%&%&%&%&%&
+  #home-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    width: 100%;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: 40%;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 40%;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
       height: 50rem;
-      width: 100%;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 100%;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 200rem;
     }
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  .home-content-text {
+    font-family: v.$home-page-font;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      font-size: 48px;
+    }
+  }
+
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Landing @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
 
   //Create Event Button
   #createEvent {
@@ -134,6 +242,437 @@
       width: 15rem;
 
       bottom: 7rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      font-size: 20px;
+      font-weight: 600;
+
+      border-radius: 2rem;
+      padding: 0.5rem;
+      height: 4rem;
+      width: 15rem;
+
+      bottom: 7rem;
+    }
+  }
+
+
+  // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Testimonial @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
+
+  #home-testimonial-one {
+    color: v.$pallette_two;
+    font-family: v.$home-page-font;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      padding: 5rem 15rem;
+    }
+
+    //Quote
+    h1 {
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+
+      }
+
+      //Tablet Landscape Sizing & Positioning
+      @include d.for-tablet-landscape-up {
+
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+
+      }
+
+      //Large Desktop Sizing & Positioning
+      @include d.for-big-desktop-up {
+        font-size: 56px;
+      }
+    }
+
+    //Speaker
+    p {
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+
+      }
+
+      //Tablet Landscape Sizing & Positioning
+      @include d.for-tablet-landscape-up {
+
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+
+      }
+
+      //Large Desktop Sizing & Positioning
+      @include d.for-big-desktop-up {
+        font-size: 22px;
+        margin-left: 40%;
+      }
+    }
+  }
+
+  // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Contents @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
+
+  // @#@#@#@#@#@#@#@#@#@ Home Content Graphics @#@#@#@#@#@#@#@#@#@
+
+  #home-content-graphic-one {
+    position: relative !important;
+
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-origin: content-box !important;
+    background-size: cover !important;
+
+    background-image: url("../../../public/assets/graphics/home_page/graphic_one.svg");
+
+    border: solid;
+    border-color: red;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 50rem;
+      width: 30rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      left: -22.5%;
+      height: 35rem;
+      width: 25rem;
+    }
+  }
+
+  #home-content-graphic-two {
+    background-image: url("../../../public/assets/graphics/home_page/graphic_two.svg");
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 20rem;
+      width: 20rem;
+    }
+  }
+
+  #home-content-graphic-three {
+    background-image: url("../../../public/assets/graphics/home_page/graphic_three.svg");
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 20rem;
+      width: 20rem;
+    }
+  }
+
+  #home-content-graphic-four {
+    background-image: url("../../../public/assets/graphics/home_page/graphic_four.svg");
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 20rem;
+      width: 20rem;
+    }
+  }
+
+  #home-content-graphic-five {
+    background-image: url("../../../public/assets/graphics/home_page/graphic_five.svg");
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 20rem;
+      width: 20rem;
+    }
+  }
+
+  #home-content-graphic-six {
+    background-image: url("../../../public/assets/graphics/home_page/graphic_six.svg");
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 20rem;
+      width: 20rem;
+    }
+  }
+
+  // @#@#@#@#@#@#@#@#@#@ Home Content Texts @#@#@#@#@#@#@#@#@#@
+
+  #home-content-text-one {
+    position: relative !important;
+
+    border: solid;
+    border-color: green;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      width: 50rem;
+      top: -12%;
+      left: 16%;
+    }
+  }
+
+  #home-content-text-two {
+    position: relative !important;
+
+    border: solid;
+    border-color: green;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+
+    }
+  }
+
+  #home-content-text-three {
+    position: relative !important;
+
+    border: solid;
+    border-color: green;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+
+    }
+  }
+
+  #home-content-text-four {
+    position: relative !important;
+
+    border: solid;
+    border-color: green;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+
     }
   }
 

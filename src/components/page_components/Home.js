@@ -111,17 +111,23 @@ const Home = () => {
         </div>
       </div>
       <div id="home-contents">
-        <div id="home-content-graphic-one" className="home-content-graphic"></div>
-        <p id="home-content-text-one" className="home-content-text">Begin by creating an event and giving a few dates that you have available.</p>
+        <div id="home-content-block-one">
+          <div id="home-content-graphic-one" className="home-content-graphic"></div>
+          <p id="home-content-text-one" className="home-content-text">Create an event and choose a few potential days and times for it.</p>
+        </div>
         <div id="home-content-graphic-two" className="home-content-graphic"></div>
-        <p id="home-content-text-two" className="home-content-text">Share those dates and times with your friends and see when they are free.</p>
-        <div id="home-content-graphic-three" className="home-content-graphic"></div>
+        <div id="home-content-block-two">
+          <p id="home-content-text-two" className="home-content-text">Share the event with your friends and see when they are free.</p>
+          <div id="home-content-graphic-three" className="home-content-graphic"></div>
+        </div>
         <div id="home-content-graphic-four" className="home-content-graphic"></div>
-        <p id="home-content-text-three" className="home-content-text">Confirm everyones availability and schedule your event. Its time to.</p>
-        <p id="home-content-text-four" className="home-content-text">Kick It!</p>
-        <div id="home-content-graphic-five" className="home-content-graphic"></div>
+        <div id="home-content-block-three">
+          <p id="home-content-text-three" className="home-content-text">Easily pick the best day and time for everyone! Its time to</p>
+          <p id="home-content-text-four" className="home-content-text">Kick It!</p>
+          <div id="home-content-graphic-five" className="home-content-graphic"></div>
+        </div>
         <div id="home-content-graphic-six" className="home-content-graphic"></div>
-        <button>Get Started</button>
+        <motion.button id="getStarted" variants={childVariant} whileHover={{scale: 1.1, backgroundColor: "#4b3dc6", border: "solid", borderColor: "#818DFF"}}>Get Started</motion.button>
       </div>
     </div>
   )

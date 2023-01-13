@@ -4,8 +4,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 //Import Nav & Footer Components
-import Navbar from './components/page_components/Navbar';
-import Footer from './components/page_components/Footer';
+import Navbar from './components/navigation_components/Navbar';
 
 //Import Example Event Data
 import { exampleEvent, exampleBlocks } from "./exampleEvent";
@@ -143,7 +142,6 @@ function App () {
           <Route path='/about/who' element={<About/>} />
           <Route path='/test' element={<TestPage />} />
         </Routes>
-        {/* <Footer/> */}
       </ AnimatePresence>
     </>
   );

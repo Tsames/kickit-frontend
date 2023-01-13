@@ -4,17 +4,17 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //Styling
-import '../../styles/page_styling/navbar.scss';
+import '../../styles/navigation_styling/navbar.scss';
 
 const Navbar = () => {
 
   /* ------------------------------------------ Component Variables ------------------------------------------ */
 
-  const pages = ['/', '/create', '/example', '/about/how', '/about/who']
-  const buttons = ['navbarHomeButton', 'navbarCreateButton', 'navbarExampleButton', 'navbarAboutButton', 'navbarAboutButton'];
+  // const pages = ['/', '/create', '/example', '/about/how', '/about/who']
+  // const buttons = ['navbarHomeButton', 'navbarCreateButton', 'navbarExampleButton', 'navbarAboutButton', 'navbarAboutButton'];
 
-  const location = useLocation().pathname;
-  const lastLocation = useRef(null);
+  // const location = useLocation().pathname;
+  // const lastLocation = useRef(null);
 
   // useEffect(() => helperOnPage());
 

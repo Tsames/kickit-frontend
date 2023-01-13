@@ -1,0 +1,144 @@
+//Imports
+@use './../variables' as v;
+@use './../mixins' as m;
+@use './../device' as d;
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#footer-shell {
+  background-color: rgba(12, 12, 12, 0.8);
+
+  //Size and Position
+  position: relative;
+  width: 100%;
+
+  //Container Styles
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background-color: v.$pallette_four;
+  border: none;
+  margin: 0;
+  padding: 0;
+
+  //Mobile Sizing
+  @include d.for-phone-only {
+    height: 6rem;
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+    height: 6rem;
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+    height: 6rem;
+  }
+
+  //Desktop Sizing
+  @include d.for-desktop-up {
+    height: 6rem;
+  }
+
+  //Large Desktop Sizing & Positioning
+  @include d.for-big-desktop-up {
+    height: 6rem;
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  #footerHomeButton {
+
+    display: inline-block;
+    font-family: v.$home-page-branding;
+    font-style: normal;
+    letter-spacing: 0.08em;
+    position: relative;
+
+    background: linear-gradient(90deg, #4DDABB 0%, #3D4BC6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #014D59;
+    // border: 1.75723px solid #014D59;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      font-weight: 900;
+      font-size: 42px;
+      left: 50%;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-weight: 900;
+      font-size: 42px;
+      left: 50%;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      font-weight: 900;
+      font-size: 42px;
+      left: 50%;
+    }
+
+    //Desktop Sizing
+    @include d.for-desktop-up {
+      font-weight: 900;
+      font-size: 42px;
+      left: 50%;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      font-weight: 900;
+      font-size: 42px;
+      left: 50%;
+    }
+  }
+
+  #footerAboutUs {
+    position: relative;
+    color: v.$pallette_three;
+    text-decoration: none;
+
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      font-size: 3rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: 4rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      font-size: 4rem;
+    }
+
+    //Desktop Sizing
+    @include d.for-desktop-up {
+      font-weight: 900;
+      font-size: 36px;
+      left: 72%;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      font-weight: 900;
+      font-size: 18px;
+      left: 85%;
+    }
+  }
+
+}

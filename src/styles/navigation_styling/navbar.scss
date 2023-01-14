@@ -9,20 +9,30 @@
   //Display Settings
   position: absolute;
   padding: 0;
+  margin: 0 0 0 0 !important;
 
   //Mobile Sizing
   @include d.for-phone-only {
-
+    top: 3rem;
+    left: 1vw;
+    right: 1vw;
+    height: 6.5rem;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-
+    top: 3rem;
+    left: 15vw;
+    right: 15vw;
+    height: 5rem;
   }
 
   //Tablet Landscape Sizing & Positioning
   @include d.for-tablet-landscape-up {
-
+    top: 3rem;
+    left: 15vw;
+    right: 15vw;
+    height: 5rem;
   }
 
   //Desktop Sizing
@@ -31,8 +41,6 @@
     left: 15vw;
     right: 15vw;
     height: 5rem;
-
-    border-radius: 3rem;
   }
 
   //Large Desktop Sizing & Positioning
@@ -41,8 +49,6 @@
     left: 15vw;
     right: 15vw;
     height: 5rem;
-
-    border-radius: 3rem;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -64,17 +70,17 @@
 
     //Mobile Sizing
     @include d.for-phone-only {
-
+      border-radius: 3rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
+      border-radius: 3rem;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-
+      border-radius: 3rem;
     }
 
     //Desktop Sizing
@@ -94,43 +100,38 @@
   div#navLeft {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+
+    border: solid;
+    border-color: red;
+
+    height: 100%;
+    width: fit-content;
 
     //Mobile Sizing
     @include d.for-phone-only {
-      height: 100%;
-      width: 20%;
-      margin-left: 1rem;
-      padding: none;
+      margin-left: 3rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      height: 100%;
-      width: 20%;
-      margin-left: 0.75rem;
+      margin-left: 3rem;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      height: 100%;
-      width: 15%;
-      margin-left: 0.75rem;
+      margin-left: 3rem;
     }
 
     //Desktop Sizing
     @include d.for-desktop-up {
-      height: 100%;
-      width: 15%;
-      margin-left: 0.75rem;
+      margin-left: 3rem;
     }
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      height: 100%;
-      width: 15%;
-      margin-left: 0.75rem;
+      margin-left: 3rem;
     }
   }
 
@@ -138,45 +139,120 @@
   div#navRight {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
+
+    border: solid;
+    border-color: red;
+
+    height: 100%;
 
     //Mobile Sizing
     @include d.for-phone-only {
-      height: 100%;
-      width: 70%;
-      margin-right: 1.75rem;
+      margin-right: 3rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      height: 100%;
-      width: 60%;
-      margin-right: 0.75rem;
+      margin-right: 3rem;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      height: 100%;
-      width: 43%;
-      margin-right: 0.75rem;
+      margin-right: 3rem;
     }
 
     //Desktop Sizing
     @include d.for-desktop-up {
-      height: 100%;
-      width: 40%;
-      margin-right: 0.75rem;
+      margin-right: 3rem;
     }
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      height: 100%;
-      width: 40%;
-      margin-right: 0.75rem;
+      margin-right: 3rem;
     }
     
   }
+
+  // %&%&%&%&%&% navItems Wrapper %&%&%&%&%&%
+  div#navItems-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    border: solid;
+    border-color: yellow;
+
+    height: 100%;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+
+    }
+    
+  }
+
+  // %&%&%&%&%&% Create Button Wrapper %&%&%&%&%&%
+  div#navCreate-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border: solid;
+    border-color: orange;
+
+    height: 100%;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      width: 9rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      width: 10rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      width: 11rem;
+    }
+
+    //Desktop Sizing
+    @include d.for-desktop-up {
+      width: 13rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      width: 13rem;
+
+    }
+    
+  }
+
 
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -196,31 +272,32 @@
 
     //Mobile Sizing
     @include d.for-phone-only {
+      margin: 0 0.5rem 0 0.5rem;
       font-size: 1.2rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      font-size: 2.5rem;
+      margin: 0 1rem 0 1rem;
+      font-size: 1.2rem;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      font-size: 2.5rem;
+      margin: 0 1.3rem 0 1.3rem;
+      font-size: 1.3rem;
     }
 
     //Desktop Sizing
     @include d.for-desktop-up {
-      font-size: 1.2rem;
-      padding: 0.5rem 1.5rem 0.3rem 1.5rem;
-      border-radius: 5rem;
+      margin: 0 1.5rem 0 1.5rem;
+      font-size: 1.5rem;
     }
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      font-size: 1.2rem;
-      padding: 0.5rem 1.5rem 0.3rem 1.5rem;
-      border-radius: 5rem;
+      margin: 0 1.5rem 0 1.5rem;
+      font-size: 1.5rem;
     }
   }
 
@@ -251,33 +328,35 @@
 
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #014D59;
-    // border: 1.75723px solid #014D59;
 
     //Mobile Sizing
     @include d.for-phone-only {
-      font-size: 3rem;
+      font-weight: 900;
+      font-size: 2.75rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      font-size: 4rem;
+      font-weight: 900;
+      font-size: 3rem;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      font-size: 4rem;
+      font-weight: 900;
+      font-size: 3.25rem;
     }
 
     //Desktop Sizing
     @include d.for-desktop-up {
       font-weight: 900;
-      font-size: 36px;
+      font-size: 3.5rem;
     }
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
       font-weight: 900;
-      font-size: 36px;
+      font-size: 3.5rem;
     }
   }
 
@@ -293,34 +372,42 @@
 
     //Mobile Sizing
     @include d.for-phone-only {
+      font-weight: 400;
       font-size: 1.2rem;
+      padding: 0.4rem 1rem 0.4rem 1rem;
+      border-radius: 2rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      font-size: 2.5rem;
+      font-weight: 400;
+      font-size: 1.2rem;
+      padding: 0.4rem 1.3rem 0.4rem 1.3rem;
+      border-radius: 2rem;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      font-size: 2.5rem;
-      border-radius: 5rem;
+      font-weight: 400;
+      font-size: 1.3rem;
+      padding: 0.45rem 1.5rem 0.45rem 1.5rem;
+      border-radius: 2rem;
     }
 
     //Desktop Sizing
     @include d.for-desktop-up {
       font-weight: 400;
-      font-size: 1.3rem;
-      padding: 0.3rem 1.8rem 0.3rem 1.8rem;
-      border-radius: 5rem;
+      font-size: 1.5rem;
+      padding: 0.5rem 1.8rem 0.5rem 1.8rem;
+      border-radius: 2rem;
     }
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
       font-weight: 400;
-      font-size: 1.3rem;
-      padding: 0.3rem 1.8rem 0.3rem 1.8rem;
-      border-radius: 5rem;
+      font-size: 1.5rem;
+      padding: 0.5rem 1.8rem 0.5rem 1.8rem;
+      border-radius: 2rem;
     }
   }
 }

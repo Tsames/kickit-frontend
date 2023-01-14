@@ -99,9 +99,13 @@ const Navbar = () => {
           <Link to="/"><motion.h1 id="navbarHomeButton" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Kick It</motion.h1></Link>
         </div>
         <div id="navRight">
-          <Link to="/example"><motion.button id="navbarDemo" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Demo</motion.button></Link>
-          <Link to="/about/how"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
-          <Link to="/create"><motion.button id="navbarCreate" variants={childVariant} whileHover={createButtonHover} whileTap={navItemTap}>Create Event</motion.button></Link>
+          <div id="navItems-wrapper">
+            <Link to="/example"><motion.button id="navbarDemo" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Demo</motion.button></Link>
+            <Link to="/about/how"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
+          </div>
+          <div id="navCreate-wrapper">
+            <Link to="/create"><motion.button id="navbarCreate" variants={childVariant} whileHover={createButtonHover} whileTap={navItemTap}>Create Event</motion.button></Link>
+          </div>
         </div>
       </motion.div>
     </nav>

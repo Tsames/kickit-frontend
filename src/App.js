@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 
 //Import Nav & Footer Components
 import Navbar from './components/navigation_components/Navbar';
+import Footer from './components/navigation_components/Footer';
 
 //Import Example Event Data
 import { exampleEvent, exampleBlocks } from "./exampleEvent";
@@ -142,6 +143,7 @@ function App () {
           <Route path='/about/who' element={<About/>} />
           <Route path='/test' element={<TestPage />} />
         </Routes>
+        <Footer />
       </ AnimatePresence>
     </>
   );

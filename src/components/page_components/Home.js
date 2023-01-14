@@ -6,9 +6,6 @@ import { motion } from 'framer-motion';
 //Styling
 import '../../styles/page_styling/home.scss';
 
-//Other Components
-import Footer from '../navigation_components/Footer';
-
 const Home = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
@@ -99,7 +96,6 @@ const Home = () => {
         <motion.div id="home-content-graphic-six" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
         <Link to="/create"><motion.button id="getStarted" variants={childVariant} whileHover={{scale: 1.1, backgroundColor: "#4b3dc6", border: "solid", borderColor: "#818DFF"}}>Get Started</motion.button></Link>
       </div>
-      <Footer />
     </div>
   )
 }

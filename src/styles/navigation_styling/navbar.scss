@@ -103,8 +103,8 @@
     justify-content: center;
     align-items: center;
 
-    border: solid;
-    border-color: red;
+    // border: solid;
+    // border-color: red;
 
     height: 100%;
     width: fit-content;
@@ -142,8 +142,8 @@
     justify-content: flex-start;
     align-items: center;
 
-    border: solid;
-    border-color: red;
+    // border: solid;
+    // border-color: red;
 
     height: 100%;
 
@@ -181,8 +181,8 @@
     justify-content: space-evenly;
     align-items: center;
 
-    border: solid;
-    border-color: yellow;
+    // border: solid;
+    // border-color: yellow;
 
     height: 100%;
 
@@ -220,8 +220,8 @@
     justify-content: center;
     align-items: center;
 
-    border: solid;
-    border-color: orange;
+    // border: solid;
+    // border-color: orange;
 
     height: 100%;
 
@@ -262,7 +262,7 @@
 
     //Coloring
     color: v.$pallette_three;
-    font-family: v.$font-primary;
+    font-family: v.$font-one;
     background: none;
 
     //No Styles
@@ -317,7 +317,7 @@
   #navbarHomeButton {
 
     display: inline-block;
-    font-family: v.$home-page-branding;
+    font-family: v.$font-two;
     font-style: normal;
     letter-spacing: 0.08em;
 
@@ -363,7 +363,7 @@
   #navbarCreate {
     //Coloring
     color: v.$pallette_two;
-    font-family: v.$font-primary;
+    font-family: v.$font-one;
     background-color: v.$pallette_one;
 
     //No Styles

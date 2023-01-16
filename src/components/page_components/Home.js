@@ -84,13 +84,17 @@ const Home = () => {
         </div>
         <motion.div id="home-content-graphic-two" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
         <div id="home-content-block-two">
-          <p id="home-content-text-two" className="home-content-text">Share the event with your friends and see when they are free.</p>
+          <div id="home-content-text-two-wrapper">
+            <p id="home-content-text-two" className="home-content-text">Share the event with your friends and see when they are free.</p>
+          </div>
           <div id="home-content-graphic-three" className="home-content-graphic"></div>
         </div>
         <motion.div id="home-content-graphic-four" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
         <div id="home-content-block-three">
-          <p id="home-content-text-three" className="home-content-text">Easily pick the best day and time for everyone! Its time to</p>
-          <p id="home-content-text-four" className="home-content-text">Kick It!</p>
+          <div id="home-content-text-three-four-wrapper">
+            <p id="home-content-text-three" className="home-content-text">Pick the best day and time for everyone! Its time to</p>
+            <p id="home-content-text-four" className="home-content-text">Kick It!</p>
+          </div>
           <div id="home-content-graphic-five" className="home-content-graphic"></div>
         </div>
         <motion.div id="home-content-graphic-six" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>

@@ -4,18 +4,13 @@ making it simple to make small or large tweaks to many aspects of the web app */
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Fonts %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 @import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
-$home-page-branding: 'Spicy Rice', cursive;
-$font-primary: 'Helvetica', 'Arial', sans-serif;
-$home-page-font: 'Gaegu', cursive;
+$font-one: 'Helvetica', 'Arial', sans-serif;
+$font-two: 'Jost', sans-serif;
+$font-three: 'Spicy Rice', cursive;
+$font-four: 'Gaegu', cursive;
 
-
-$footer-items: 'Pacifico', cursive;
-$standard-font: 'Aref Ruqaa Ink', serif;
-$fancy-font: 'Pacifico', cursive;
 // $standard-font: 'Arvo', serif;
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Colors %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */

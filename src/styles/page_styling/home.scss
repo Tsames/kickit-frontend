@@ -101,32 +101,37 @@
     text-align: center;
 
     background: linear-gradient(270deg, #4DDABB -28.37%, #3D4BC6 122.74%);
-
-    width: 100%;
+    border: none;
+    border-radius: 4rem;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      height: 40rem;
+      height: 63vh;
+      width: 86vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      height: 40rem;
+      height: 63vh;
+      width: 86vw;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      height: 40rem;
+      height: 63vh;
+      width: 86vw;
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      height: 35rem;
+      height: 63vh;
+      width: 86vw;
     }
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      height: 35rem;
+      height: 63vh;
+      width: 86vw;
     }
   }
   
@@ -183,10 +188,11 @@
     justify-content: space-evenly;
     align-items: center;
 
-    width: 100%;
+    width: 86vw;
 
-    // border: solid;
-    // border-color: blue;
+    // border: none;
+    background-color: #FFE2FE;
+    border-radius: 4rem;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -216,6 +222,7 @@
     @include d.for-big-desktop-up {
       padding-top: 5rem;
       padding-bottom: 5rem;
+      height: 60vh;
     }
   }
 
@@ -303,10 +310,91 @@
     }
   }
 
+  #home-content-text-two-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("../../../public/assets/graphics/home_page/purple_ellipse.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: fill;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 53vh;
+      width: 42vw;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 53vh;
+      width: 42vw;
+      padding: 5rem;
+    }
+  }
+
+  #home-content-text-three-four-wrapper {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    background-color: #B4FFF1;
+    border-radius: 5rem;
+    // border: solid;
+    // border-color: purple;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      border-radius: 10rem;
+      height: 35vh;
+      width: 86vw;
+    }
+  }
+
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   .home-content-text {
-    font-family: v.$home-page-font;
+    font-family: v.$font-two;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -340,7 +428,7 @@
 
   //Create Event Button
   #createEvent {
-    font-family: v.$font-primary;
+    font-family: v.$font-two;
     color: v.$pallette_two;
     background-color: v.$pallette_one;
 
@@ -412,7 +500,7 @@
 
   #home-testimonial-one {
     color: v.$pallette_two;
-    font-family: v.$home-page-font;
+    font-family: v.$font-two;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -823,76 +911,70 @@
   #home-content-text-two {
     position: relative;
 
-    text-align: left;
+    align-items: center;
+    text-align: center;
 
-    // border: solid;
-    // border-color: green;
+    border: none;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      width: 45rem;
+
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      width: 45rem;
+
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      width: 45rem;
+
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      width: 45rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
     }
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      width: 45rem;
+      padding-left: 8rem;
+      padding-right: 8rem;
     }
   }
 
   #home-content-text-three {
-    position: relative;
-
-    text-align: left;
-
-    // border: solid;
+    // border: none;
     // border-color: green;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      width: 32rem;
+
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      width: 32rem;
+
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      width: 32rem;
+
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      width: 32rem;
+
     }
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      width: 32rem;
+      width: 70rem;
     }
   }
 
   #home-content-text-four {
-    position: relative;
-
-    text-align: center;
-
     // border: solid;
     // border-color: green;
 
@@ -919,14 +1001,14 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      font-size: 72px;
+      font-size: 56px;
       font-weight: 600;
     }
   }
 
     //Create Event Button
     #getStarted {
-      font-family: v.$font-primary;
+      font-family: v.$font-one;
       color: v.$pallette_two;
       background-color: v.$pallette_one;
   

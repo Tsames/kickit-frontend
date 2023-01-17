@@ -7,6 +7,9 @@ import { motion } from 'framer-motion';
 //Styling
 import '../../styles/navigation_styling/footer.scss';
 
+//Icons
+import { FiFacebook, FiInstagram, FiYoutube, FiLinkedin } from "react-icons/fi";
+
 const Footer = () => {
 
   /* ------------------------------------------ Component Variables ------------------------------------------ */
@@ -87,10 +90,10 @@ const Footer = () => {
           <p><Link id="footerAboutUs" className="footer-middle-link" to="/about/who">About Us</Link></p>
         </div>
         <div id="footer-right">
-          <p><Link id=""  className="footer-right-link" to="/about/who">A</Link></p>
-          <p><Link id="" className="footer-right-link" to="/create">C</Link></p>
-          <p><Link id="" className="footer-right-link" to="/example">D</Link></p>
-          <p><Link id="" className="footer-right-link" to="/about/who">A</Link></p>
+          <Link id=""  className="footer-right-link" to="/about/who"><FiFacebook></FiFacebook></Link>
+          <Link id="" className="footer-right-link" to="/about/who"><FiInstagram></FiInstagram></Link>
+          <Link id="" className="footer-right-link" to="/about/who"><FiYoutube></FiYoutube></Link>
+          <Link id="" className="footer-right-link" to="/about/who"><FiLinkedin></FiLinkedin></Link>
         </div>
       </div>
     )

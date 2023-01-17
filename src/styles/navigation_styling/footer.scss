@@ -9,17 +9,18 @@
 
   //Size and Position
   width: 100%;
-  height: fit-content;
 
   //Container Styles
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items: ;
+  position: relative;
 
   background-color: v.$pallette_four;
-  border: none;
-  margin: 0;
-  padding: 0;
+
+  // border: solid;
+  // border-color: red;
 
   //Mobile Sizing
   @include d.for-phone-only {
@@ -41,14 +42,87 @@
   @include d.for-big-desktop-up {
   }
 
+  #footer-middle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+
+    font-family: v.$font-two;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+
+    }
+  }
+
+  #footer-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+
+    }
+  }
+
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  .footer-middle-link {
+    text-decoration: none;
+    margin: 0 1rem;
+    color: v.$pallette_three;
+  }
+
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   #footerHomeButton {
-
     display: inline-block;
     font-family: v.$font-two;
     font-style: normal;
@@ -96,43 +170,7 @@
     @include d.for-big-desktop-up {
       font-weight: 900;
       font-size: 42px;
-      left: 50%;
-    }
-  }
-
-  #footerAboutUs {
-    position: relative;
-    color: v.$pallette_three;
-    text-decoration: none;
-
-
-    //Mobile Sizing
-    @include d.for-phone-only {
-      font-size: 3rem;
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-      font-size: 4rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      font-size: 4rem;
-    }
-
-    //Desktop Sizing
-    @include d.for-desktop-up {
-      font-weight: 900;
-      font-size: 36px;
-      left: 72%;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      font-weight: 900;
-      font-size: 18px;
-      left: 85%;
+      right: 220%;
     }
   }
 

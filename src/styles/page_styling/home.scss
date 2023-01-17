@@ -15,8 +15,9 @@
   margin: 0 0 0 0;
   padding: 0 0 0 0;
 
+  position: relative;
+
   height: fit-content;
-  overflow-y: auto;
 
   //Mobile Sizing
   @include d.for-phone-only {
@@ -103,6 +104,10 @@
     background: linear-gradient(270deg, #4DDABB -28.37%, #3D4BC6 122.74%);
     border: none;
     border-radius: 4rem;
+    font-family: v.$font-four;
+
+    position: relative;
+    z-index: 1;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -130,8 +135,48 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      height: 63vh;
+      height: 72vh;
       width: 86vw;
+      top: 3rem;
+    }
+  }
+
+  // &%&%&%&%&%&%&%&%&%& Secondary Background Div &%&%&%&%&%&%&%&%&%&
+  #home-secondary {
+    background-image: url("../../../public/assets/backgrounds/home_page/secondary.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+
+    position: absolute;
+    z-index: 0;
+    width: 100vw;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 74vh;
+      top: 165vh;
     }
   }
   
@@ -143,10 +188,12 @@
     align-items: center;
 
     position: relative;
+
     width: 100%;
     height: fit-content;
 
-    border: none;
+    // border: solid;
+    // border-color: green;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -174,8 +221,8 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      padding-top: 5rem;
       padding-bottom: 5rem;
+      margin-top: 35rem;
     }
   }
 
@@ -187,8 +234,6 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-
-    width: 86vw;
 
     // border: none;
     background-color: #FFE2FE;
@@ -223,6 +268,7 @@
       padding-top: 5rem;
       padding-bottom: 5rem;
       height: 60vh;
+      width: 86vw;
     }
   }
 
@@ -316,11 +362,10 @@
     justify-content: center;
     align-items: center;
 
-    background-image: url("../../../public/assets/graphics/home_page/purple_ellipse.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-origin: content-box;
-    background-size: fill;
+    background-color: #D5D9FF;
+
+    // border: solid;
+    // border-color: red;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -345,9 +390,9 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      height: 53vh;
-      width: 42vw;
-      padding: 5rem;
+      height: 64vh;
+      width: 35vw;
+      border-radius: 100%;
     }
   }
 
@@ -355,13 +400,13 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    // justify-content: flex-start;
     align-items: center;
 
     background-color: #B4FFF1;
     border-radius: 5rem;
     // border: solid;
-    // border-color: purple;
+    // border-color: red;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -388,6 +433,7 @@
       border-radius: 10rem;
       height: 35vh;
       width: 86vw;
+      margin-bottom: 4rem;
     }
   }
 
@@ -500,7 +546,7 @@
 
   #home-testimonial-one {
     color: v.$pallette_two;
-    font-family: v.$font-two;
+    font-family: v.$font-four;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -599,7 +645,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-origin: content-box;
-    background-size: fill;
+    background-size: cover;
 
     background-image: url("../../../public/assets/graphics/home_page/graphic_one.svg");
 
@@ -632,8 +678,8 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      height: 35rem;
-      width: 25rem;
+      height: 50rem;
+      width: 30rem;
     }
   }
 
@@ -684,10 +730,11 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      top: 18%;
-      left: 43%;
-      height: 28rem;
-      width: 28rem;
+      top: 20%;
+      left: 48%;
+      height: 32rem;
+      width: 35rem;
+      rotate: -10deg;
     }
   }
 
@@ -697,7 +744,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-origin: content-box;
-    background-size: contain;
+    background-size: cover;
     background-image: url("../../../public/assets/graphics/home_page/graphic_three.svg");
 
     // border: solid;
@@ -729,8 +776,8 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      height: 40rem;
-      width: 35rem;
+      height: 50rem;
+      width: 40rem;
     }
   }
 
@@ -740,7 +787,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-origin: content-box;
-    background-size: contain;
+    background-size: cover;
     background-image: url("../../../public/assets/graphics/home_page/graphic_four.svg");
 
     // border: solid;
@@ -774,10 +821,11 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      top: 42%;
+      top: 45%;
       left: 10%;
-      height: 28rem;
-      width: 28rem;
+      height: 32rem;
+      width: 32rem;
+      rotate: 15deg;
     }
   }
 
@@ -787,7 +835,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-origin: content-box;
-    background-size: contain;
+    background-size: cover;
     background-image: url("../../../public/assets/graphics/home_page/graphic_five.svg");
 
     // border: solid;
@@ -819,8 +867,8 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      height: 30rem;
-      width: 50rem;
+      height: 40rem;
+      width: 70rem;
     }
   }
 
@@ -866,8 +914,8 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      top: 83%;
-      height: 20rem;
+      top: 87%;
+      height: 15rem;
       width: 20rem;
     }
   }
@@ -878,7 +926,7 @@
     position: relative;
 
     text-align: left;
-
+    color: v.$pallette_three;
     // border: solid;
     // border-color: green;
 
@@ -909,12 +957,11 @@
   }
 
   #home-content-text-two {
-    position: relative;
-
-    align-items: center;
     text-align: center;
+    color: v.$pallette_three;
 
-    border: none;
+    // border: solid;
+    // border-color: red;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -939,14 +986,15 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      padding-left: 8rem;
-      padding-right: 8rem;
+      width: 25vw;
     }
   }
 
   #home-content-text-three {
-    // border: none;
-    // border-color: green;
+
+    // border: solid;
+    // border-color: red;
+    color: v.$pallette_three;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -971,12 +1019,17 @@
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
       width: 70rem;
+      padding-bottom: 0rem;
+      margin-bottom: 0rem;
     }
   }
 
   #home-content-text-four {
+
     // border: solid;
-    // border-color: green;
+    // border-color: red;
+    color: v.$pallette_three;
+    font-family: v.$font-four;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -1001,7 +1054,7 @@
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      font-size: 56px;
+      font-size: 72px;
       font-weight: 600;
     }
   }
@@ -1063,10 +1116,10 @@
         font-size: 20px;
         font-weight: 600;
   
-        border-radius: 2rem;
-        padding: 0.5rem;
-        height: 4rem;
-        width: 15rem;
+        border-radius: 10rem;
+        padding: 0rem;
+        height: 8vh;
+        width: 25rem;
       }
     }
 

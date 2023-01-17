@@ -80,9 +80,19 @@ const Footer = () => {
     return (
       <div id="footer-shell">
         <Link to="/"><motion.h1 id="footerHomeButton" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Kick It</motion.h1></Link>
-        <Link id="footerAboutUs" to="/about/who">About Us</Link>
+        <div id="footer-middle">
+          <p><Link id="footerAbout"  className="footer-middle-link" to="/about/who">About</Link></p>
+          <p><Link id="footerCreate" className="footer-middle-link" to="/create">Create</Link></p>
+          <p><Link id="footerDemo" className="footer-middle-link" to="/example">Demo</Link></p>
+          <p><Link id="footerAboutUs" className="footer-middle-link" to="/about/who">About Us</Link></p>
+        </div>
+        <div id="footer-right">
+          <p><Link id=""  className="footer-right-link" to="/about/who">A</Link></p>
+          <p><Link id="" className="footer-right-link" to="/create">C</Link></p>
+          <p><Link id="" className="footer-right-link" to="/example">D</Link></p>
+          <p><Link id="" className="footer-right-link" to="/about/who">A</Link></p>
+        </div>
       </div>
-
     )
   }
 

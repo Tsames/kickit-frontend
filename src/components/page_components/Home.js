@@ -48,7 +48,7 @@ const Home = () => {
   //In Viewport Variants
   const scrollVariant = {
     initial: { 
-      opacity: 0 
+      opacity: 0,
     },
     animate: {
       opacity: 1,
@@ -77,6 +77,7 @@ const Home = () => {
           <p id="home-testimonial-speaker-one" className="home-testimonial-speaker">-Jimbo</p>
         </div>
       </div>
+      <div id="home-secondary"></div>
       <div id="home-contents">
         <div id="home-content-block-one">
           <div id="home-content-graphic-one" className="home-content-graphic"></div>

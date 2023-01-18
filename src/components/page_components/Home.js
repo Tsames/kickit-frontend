@@ -101,7 +101,7 @@ const Home = () => {
         <motion.div id="home-content-graphic-six" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
         <Link to="/create"><motion.button id="getStarted" variants={childVariant} whileHover={{scale: 1.1, backgroundColor: "#4b3dc6", border: "solid", borderColor: "#818DFF"}}>Get Started</motion.button></Link>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

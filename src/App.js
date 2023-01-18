@@ -10,6 +10,11 @@ import Footer from './components/navigation_components/Footer';
 //Import Example Event Data
 import { exampleEvent, exampleBlocks } from "./exampleEvent";
 
+//Import Account Components
+import Login from './components/Accounts/Login';
+import Signup from './components/Accounts/Signup/Signup';
+import ForgotPassword from './components/Accounts/Forgot-Password/ForgotPassword'
+
 //Import Main Pages
 import Home from './components/page_components/Home';
 import CreateForm from './components/form_components/CreateForm';
@@ -30,8 +35,8 @@ function App () {
   We also store data called blocks which is data that facilitates the creation of grids in the AttendanceChart.js and Grid.js components
   to visually represent availability */
 
-  const BACKEND_URL = process.env.REACT_APP_BACKEND + "events/";
-  const FRONTEND_URL = process.env.REACT_APP_FRONTEND;
+  const BACKEND_URL = process.env.KICKIT_BACKEND + "events/";
+  const FRONTEND_URL = process.env.KICKIT_FRONTEND;
 
   //Stores the data of an event
   const [event, setEvent] = useState(null);
@@ -134,6 +139,13 @@ function App () {
       <AnimatePresence>
         <Navbar />
         <Routes location={location} key={location.pathname}>
+          {/* Accounts Routes */}
+          <Route path="/login" element={< Login />} />
+          <Route path="/signup" element={< Signup />} />
+          <Route path="/confirm-account" element={< ForgotPassword />} />
+          <Route path="/forgot-password" element={< ForgotPassword />} />
+          <Route path="/new-password" element={< ForgotPassword />} />
+          {/* Main Routes */}
           <Route path='/' element={<Home getEventData={getEventData}/>} />
           <Route path='/create' element={<CreateForm getEventData={getEventData} FRONTEND_URL={FRONTEND_URL} BACKEND_URL={BACKEND_URL}/>} />
           <Route path='/created/:id' element={<Created URL={FRONTEND_URL}/>} />
@@ -143,7 +155,7 @@ function App () {
           <Route path='/about/who' element={<About/>} />
           <Route path='/test' element={<TestPage />} />
         </Routes>
-        <Footer />
+        <Footer/>
       </ AnimatePresence>
     </>
   );

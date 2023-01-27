@@ -10,6 +10,7 @@ const Home = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
+
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
   //Container (#navbar-shell) Variant
@@ -119,7 +120,7 @@ const Home = () => {
         <motion.div id="home-content-graphic-six" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
         <Link to="/create"><motion.button id="getStarted" variants={childVariant} whileHover={buttonItemHover} whileTap={buttonItemTap}>Get Started</motion.button></Link>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

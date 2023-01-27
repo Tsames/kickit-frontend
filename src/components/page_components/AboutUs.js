@@ -42,9 +42,9 @@ const AboutUs = () => {
       </div>
       <div id="about-people-wrapper">
         <div id="about-tom" className="about-person">
-          <div id="tom-image"></div>
+          <div id="tom-image"  className="about-person-image"></div>
           <div id="tom-contents" className="about-person-contents">
-            <p id="tom-description">My name is Tom Ames and i do the hard stuff. the stuff with the numbers AND the letters.</p>
+            <p id="tom-description" className="about-person-description">My name is Tom Ames and i do the hard stuff. the stuff with the numbers AND the letters.</p>
             <div id="tom-links" className="about-person-all-links">
               <p id="tom-github" classnName="about-person-link">github</p>
               <p id="tom-email" classnName="about-person-link">email</p>
@@ -53,9 +53,9 @@ const AboutUs = () => {
           </div>
         </div>
         <div id="about-chris" className="about-person">
-        <div id="chris-image"></div>
+        <div id="chris-image" className="about-person-image"></div>
           <div id="chris-contents" className="about-person-contents">
-            <p id="chris-description">Hello! I am Christopher Brand, a fellow UX Designer with Kick It. Check out my socials and portfolio!</p>
+            <p id="chris-description" className="about-person-description">Hello! I am Christopher Brand, a fellow UX Designer with Kick It. Check out my socials and portfolio!</p>
             <div id="chris-links" className="about-person-all-links">
               <p id="chris-portfolio" classnName="about-person-link">Portfolio</p>
               <p id="chris-email" classnName="about-person-link">email</p>
@@ -64,9 +64,9 @@ const AboutUs = () => {
           </div>
         </div>
         <div id="about-amelia" className="about-person">
-        <div id="amelia-image"></div>
+        <div id="amelia-image" className="about-person-image"></div>
           <div id="amelia-contents" className="about-person-contents">
-            <p id="amelia-description">Hi! Im Amelia Schooley, a UX designer here at Kick It. Im passionate about using psychology and empathy to design useful products. Check out my portfolio and socials!</p>
+            <p id="amelia-description" className="about-person-description">Hi! Im Amelia Schooley, a UX designer here at Kick It. Im passionate about using psychology and empathy to design useful products. Check out my portfolio and socials!</p>
             <div id="amelia-links" className="about-person-all-links">
               <p id="amelia-portfolio" classnName="about-person-link">Portfolio</p>
               <p id="amelia-email" classnName="about-person-link">email</p>

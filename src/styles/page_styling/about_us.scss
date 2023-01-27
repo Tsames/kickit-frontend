@@ -132,24 +132,138 @@
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
  
+    //Person's Card Wrapper
     .about-person {
         height: 52vh;
         width: 85vw;
 
         border: solid;
-        border-color: lime;
+        border-color: blueviolet;
         border-radius: 5rem;
 
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
     }
 
+    //Person's Image
+    .about-person-image {
+        height: 37vh;
+        width:  20vw;
+
+        border: solid;
+        border-color: pink;
+        border-radius: 5rem;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
+    }
+
+    //Person's Text Bubble and Links Wrapper
     .about-person-contents {
+        width: 52vw;
+        height: 34vh;
 
+        border: solid;
+        border-color: violet;
+        border-radius: 5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        padding: 3rem;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
     }
 
+    //Person's Description
+    .about-person-description {
+
+        border: solid;
+        border-color: magenta;
+        border-radius: 5rem;
+
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
+    }
+
+    //Person's Links
     .about-person-all-links {
         border: solid;
         border-color: skyblue;
@@ -158,8 +272,31 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
+        width: 100%;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
     }
 
+    //All Links
     .about-person-links {
         font-family: v.$font-four;
     }

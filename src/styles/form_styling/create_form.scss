@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-family: v.$standard-font;
+  font-family: v.$font-one;
 
   padding-bottom: 5vh;
   overflow-y: visible;
@@ -420,7 +420,7 @@
       color: v.$font-light !important;
       @include m.hover-underline(v.$font-light, 4%);
   
-      font-family: v.$fancy-font;
+      font-family: v.$font-three;
       transition: background-size 0.45s ease;
 
       width: fit-content;

@@ -12,146 +12,1125 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 0 auto;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+
+  position: relative;
+
+  height: fit-content;
 
   //Mobile Sizing
   @include d.for-phone-only {
-    height: 80vh;
-    width: 100vw;
+
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-    height: 80vh;
-    width: 100vw;
+
   }
 
   //Tablet Landscape Sizing & Positioning
   @include d.for-tablet-landscape-up {
-    height: 80vh;
-    width: 100vw;
+    
   }
 
   //Desktop Sizing
   @include d.for-desktop-up {
-    height: 80vh;
-    width: 100vw;
+
+  }
+
+  //Large Desktop Sizing & Positioning
+  @include d.for-big-desktop-up {
+
   }
   
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  //Content Wrapper
-  #home-content {
+  // &%&%&%&%&%&%&%&%&%& Landing Wrapper &%&%&%&%&%&%&%&%&%&
+  #home-landing {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 
+    background-image: url("../../../public/assets/backgrounds/home_page/landing.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+
+    position: relative;
+
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      height: 40%;
-      width: 100%;
-      margin-top: 15%;
+      height: 100vh;
+      width: 100vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      height: 40%;
-      width: 100%;
-      margin-top: 5%;
+      height: 100vh;
+      width: 100vw;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      height: 40%;
-      width: 100%;
-      margin-top: 5%;
+      height: 100vh;
+      width: 100vw;
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      height: 40%;
-      width: 100%;
-      margin-top: 5%;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 100vh;
+      width: 100vw;
+    }
+  }
+
+  // &%&%&%&%&%&%&%&%&%& Testimonial Wrapper &%&%&%&%&%&%&%&%&%&
+  #home-testimonials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background: linear-gradient(270deg, #4DDABB -28.37%, #3D4BC6 122.74%);
+    border: none;
+    border-radius: 4rem;
+    font-family: v.$font-four;
+    pointer-events: none;
+
+    position: relative;
+    z-index: 1;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: 63vh;
+      width: 86vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 63vh;
+      width: 86vw;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      height: 63vh;
+      width: 86vw;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 63vh;
+      width: 86vw;
+      top: 3rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 72vh;
+      width: 86vw;
+      top: 3rem;
+    }
+  }
+
+  // &%&%&%&%&%&%&%&%&%& Secondary Background Div &%&%&%&%&%&%&%&%&%&
+  #home-secondary {
+    background-image: url("../../../public/assets/backgrounds/home_page/secondary.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+
+    position: absolute;
+    z-index: 0;
+    width: 100vw;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 74vh;
+      top: 160vh;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 74vh;
+      top: 165vh;
+    }
+  }
+  
+  // &%&%&%&%&%&%&%&%&%& Contents Wrapper &%&%&%&%&%&%&%&%&%&
+  #home-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    width: 100%;
+    height: fit-content;
+
+    // border: solid;
+    // border-color: green;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      padding-top: 5rem;
+      margin-top: 20rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      padding-bottom: 5rem;
+      margin-top: 35rem;
+    }
+  }
+
+  //Contents Blocks
+
+  //Content Block One
+  #home-content-block-one {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    // border: none;
+    background-color: #FFE2FE;
+    border-radius: 4rem;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      height: 60vh;
+      width: 86vw;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      height: 60vh;
+      width: 86vw;
+    }
+  }
+
+  #home-content-block-two {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+
+    // border: solid;
+    // border-color: pink;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  #home-content-block-three {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    // border: solid;
+    // border-color: purple;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      padding-top: 5rem;
+      padding-bottom: 20rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      padding-top: 5rem;
+      padding-bottom: 20rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      padding-top: 5rem;
+      padding-bottom: 20rem;
+    }
+  }
+
+  #home-content-text-two-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #D5D9FF;
+
+    // border: solid;
+    // border-color: red;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 64vh;
+      width: 35vw;
+      border-radius: 100%;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 64vh;
+      width: 35vw;
+      border-radius: 100%;
+    }
+  }
+
+  #home-content-text-three-four-wrapper {
+
+    display: flex;
+    flex-direction: column;
+    // justify-content: flex-start;
+    align-items: center;
+
+    background-color: #B4FFF1;
+    border-radius: 5rem;
+    // border: solid;
+    // border-color: red;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      border-radius: 10rem;
+      height: 35vh;
+      width: 86vw;
+      margin-bottom: 4rem;
     }
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  .home-content-text {
+    font-family: v.$font-two;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: 48px;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: 48px;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      font-size: 48px;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      font-size: 48px;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      font-size: 48px;
+    }
+  }
+
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  //Kick-It Branding
-  h1 {
-    font-family: v.$home-page-branding;
-    color: v.$font-light;
+  // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Landing @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
+
+  //Create Event Button
+  #createEvent {
+    font-family: v.$font-two;
+    color: v.$pallette_two;
+    background-color: v.$pallette_one;
+
+    border: none;
+    position: absolute;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: 20px;
+      font-weight: 650;
+
+      border-radius: 2rem;
+      padding: 0.5rem;
+      height: 4rem;
+      width: 15rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: 20px;
+      font-weight: 650;
+
+      border-radius: 2rem;
+      padding: 0.5rem;
+      height: 4rem;
+      width: 15rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      font-size: 20px;
+      font-weight: 650;
+
+      border-radius: 2rem;
+      padding: 0.5rem;
+      height: 4rem;
+      width: 15rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      font-size: 20px;
+      font-weight: 600;
+
+      border-radius: 2rem;
+      padding: 0.5rem;
+      height: 4rem;
+      width: 15rem;
+
+      bottom: 7rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      font-size: 20px;
+      font-weight: 600;
+
+      border-radius: 10rem;
+      padding: 0rem;
+      height: 8vh;
+      width: 25rem;
+
+      bottom: 7rem;
+    }
+  }
+
+
+  // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Testimonial @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
+
+  #home-testimonial-one {
+    color: v.$pallette_two;
+    font-family: v.$font-four;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      padding: 5rem 15rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      padding: 5rem 15rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      padding: 5rem 15rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      padding: 5rem 15rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      padding: 5rem 15rem;
+    }
+
+    //Quote
+    h1 {
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        font-size: 56px;
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        font-size: 56px;
+      }
+
+      //Tablet Landscape Sizing & Positioning
+      @include d.for-tablet-landscape-up {
+        font-size: 56px;
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+        font-size: 56px;
+      }
+
+      //Large Desktop Sizing & Positioning
+      @include d.for-big-desktop-up {
+        font-size: 56px;
+      }
+    }
+
+    //Speaker
+    p {
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        font-size: 22px;
+        margin-left: 40%;
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        font-size: 22px;
+        margin-left: 40%;
+      }
+
+      //Tablet Landscape Sizing & Positioning
+      @include d.for-tablet-landscape-up {
+        font-size: 22px;
+        margin-left: 40%;
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+        font-size: 22px;
+        margin-left: 40%;
+      }
+
+      //Large Desktop Sizing & Positioning
+      @include d.for-big-desktop-up {
+        font-size: 22px;
+        margin-left: 40%;
+      }
+    }
+  }
+
+  // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Contents @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
+
+  // @#@#@#@#@#@#@#@#@#@ Home Content Graphics @#@#@#@#@#@#@#@#@#@
+
+  #home-content-graphic-one {
+    position: relative;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+
+    background-image: url("../../../public/assets/graphics/home_page/graphic_one.svg");
+
+    // border: solid;
+    // border-color: red;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: 50rem;
+      width: 30rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 50rem;
+      width: 30rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      height: 50rem;
+      width: 30rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 35rem;
+      width: 25rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 50rem;
+      width: 30rem;
+    }
+  }
+
+  #home-content-graphic-two {
+    position: absolute;
+
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-origin: content-box;
+    background-size: contain;
+
+    background-image: url("../../../public/assets/graphics/home_page/graphic_two.svg");
+
+    // border: solid;
+    // border-color: red;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      top: 0%;
+      left: 12%;
+      height: 25rem;
+      width: 25rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      top: 0%;
+      left: 12%;
+      height: 25rem;
+      width: 25rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      top: 0%;
+      left: 12%;
+      height: 25rem;
+      width: 25rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      top: 18%;
+      left: 43%;
+      height: 28rem;
+      width: 28rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      top: 20%;
+      left: 48%;
+      height: 32rem;
+      width: 35rem;
+      rotate: -10deg;
+    }
+  }
+
+  #home-content-graphic-three {
+    position: relative;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+    background-image: url("../../../public/assets/graphics/home_page/graphic_three.svg");
+
+    // border: solid;
+    // border-color: red;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: 40rem;
+      width: 35rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 40rem;
+      width: 35rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      height: 40rem;
+      width: 35rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 40rem;
+      width: 35rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 50rem;
+      width: 40rem;
+    }
+  }
+
+  #home-content-graphic-four {
+    position: absolute;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+    background-image: url("../../../public/assets/graphics/home_page/graphic_four.svg");
+
+    // border: solid;
+    // border-color: red;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: 20rem;
+      width: 20rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 20rem;
+      width: 20rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      height: 20rem;
+      width: 20rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      top: 40%;
+      left: 10%;
+      height: 20rem;
+      width: 20rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      top: 45%;
+      left: 10%;
+      height: 32rem;
+      width: 32rem;
+      rotate: 15deg;
+    }
+  }
+
+  #home-content-graphic-five {
+    position: relative;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+    background-image: url("../../../public/assets/graphics/home_page/graphic_five.svg");
+
+    // border: solid;
+    // border-color: red;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: 30rem;
+      width: 50rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 30rem;
+      width: 50rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      height: 30rem;
+      width: 50rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      height: 30rem;
+      width: 50rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      height: 40rem;
+      width: 70rem;
+    }
+  }
+
+  #home-content-graphic-six {
+    position: absolute;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: contain;
+    background-image: url("../../../public/assets/graphics/home_page/graphic_six.svg");
+
+    // border: solid;
+    // border-color: red;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      top: 83%;
+      height: 20rem;
+      width: 20rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      top: 83%;
+      height: 20rem;
+      width: 20rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      top: 83%;
+      height: 20rem;
+      width: 20rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      top: 83%;
+      height: 20rem;
+      width: 28rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      top: 87%;
+      height: 15rem;
+      width: 20rem;
+    }
+  }
+
+  // @#@#@#@#@#@#@#@#@#@ Home Content Texts @#@#@#@#@#@#@#@#@#@
+
+  #home-content-text-one {
+    position: relative;
+
+    text-align: left;
+    color: v.$pallette_three;
+    pointer-events: none;
+    // border: solid;
+    // border-color: green;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      width: 40rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      width: 40rem;
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+      width: 40rem;
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      width: 40rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      width: 40rem;
+    }
+  }
+
+  #home-content-text-two {
+    text-align: center;
+    color: v.$pallette_three;
+    pointer-events: none;
+
+    // border: solid;
+    // border-color: red;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      width: 25vw;
+    }
+  }
+
+  #home-content-text-three {
+
+    // border: solid;
+    // border-color: red;
+    color: v.$pallette_three;
     pointer-events: none;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      font-size: 6rem;
+
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      font-size: 10rem;
+
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      font-size: 10rem;
+
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      font-size: 10rem;
+
+    }
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      width: 70rem;
+      padding-bottom: 0rem;
+      margin-bottom: 0rem;
     }
   }
 
-  //Search Bar
-  input {
-    appearance: none;
-    outline: none;
-    border: none;
-    border-radius: 5px;
+  #home-content-text-four {
 
-    color:v.$font-light;
-    font-family: v.$standard-font;
-    text-align: center;
-
-    background: v.$background-light;
+    // border: solid;
+    // border-color: red;
+    color: v.$pallette_three;
+    font-family: v.$font-four;
+    pointer-events: none;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      width: 80%;
-      height: 10vh;
-      font-size: 2rem;
+
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      width: 60vw;
-      height: 10vh;
-      font-size: 2rem;
+
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      width: 50vw;
-      height: 10vh;
-      font-size: 2rem;
+
     }
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      width: 40vw;
-      height: 10vh;
-      font-size: 3rem;
+      font-size: 72px;
+      font-weight: 600;
     }
 
-    &:focus::placeholder {
-      color: v.$invisible;
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {
+      font-size: 72px;
+      font-weight: 600;
     }
   }
+
+    //Create Event Button
+    #getStarted {
+      font-family: v.$font-one;
+      color: v.$pallette_two;
+      background-color: v.$pallette_one;
+  
+      border: none;
+  
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        font-size: 20px;
+        font-weight: 650;
+  
+        border-radius: 2rem;
+        padding: 0.5rem;
+        height: 4rem;
+        width: 15rem;
+      }
+  
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        font-size: 20px;
+        font-weight: 650;
+  
+        border-radius: 2rem;
+        padding: 0.5rem;
+        height: 4rem;
+        width: 15rem;
+      }
+  
+      //Tablet Landscape Sizing & Positioning
+      @include d.for-tablet-landscape-up {
+        font-size: 20px;
+        font-weight: 650;
+  
+        border-radius: 2rem;
+        padding: 0.5rem;
+        height: 4rem;
+        width: 15rem;
+      }
+  
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+        font-size: 20px;
+        font-weight: 600;
+  
+        border-radius: 2rem;
+        padding: 0.5rem;
+        height: 4rem;
+        width: 15rem;
+      }
+  
+      //Large Desktop Sizing & Positioning
+      @include d.for-big-desktop-up {
+        font-size: 20px;
+        font-weight: 600;
+  
+        border-radius: 10rem;
+        padding: 0rem;
+        height: 8vh;
+        width: 25rem;
+      }
+    }
 
 }

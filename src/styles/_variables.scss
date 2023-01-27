@@ -2,16 +2,15 @@
 making it simple to make small or large tweaks to many aspects of the web app */
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Fonts %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
-$home-page-branding: 'Dancing Script', cursive;
-$nav-items: 'Pacifico', cursive;
-$footer-items: 'Pacifico', cursive;
-$standard-font: 'Aref Ruqaa Ink', serif;
-$fancy-font: 'Pacifico', cursive;
+$font-one: 'Helvetica', 'Arial', sans-serif;
+$font-two: 'Jost', sans-serif;
+$font-three: 'Spicy Rice', cursive;
+$font-four: 'Gaegu', cursive;
+
 // $standard-font: 'Arvo', serif;
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Colors %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
@@ -32,9 +31,16 @@ $background-light: rgba(233, 232, 232, 0.25);
   pointer-events: none !important;
 }
 
+//Pallette Colors
+
+$pallette_one: #3d4bc6;
+$pallette_two: #ECECEC;
+$pallette_three: #014D59;
+$pallette_four: rgba(75, 196, 189, 0.68);
+$pallette_one_hover: #2b37a5;
+
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Wrapper Heights (by device) %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
-$desktop-nav-height: 14vh;
 $desktop-body-height: 76vh;
 $desktop-footer-height: 10vh;
 
@@ -114,27 +120,5 @@ $calendar-selected-color: $font-light;
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Root Background Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
-//Landing Page
-.rb-home {
-  background-image: linear-gradient(62deg, #dfae31 0%, #e8712b 33%, #c32727 66%, #bc53d1 100%);
-}
-
-//View Event - Details Page
-.rb-share {
-  background: linear-gradient(30deg, rgba(144,61,198,1) 0%, rgba(163,88,180,1) 33%, rgba(87,151,191,1) 66%, rgba(77,219,187,1) 100%);
-}
-
-//Create Event
-.rb-create {
-  background: rgb(219,104,25);
-  background: linear-gradient(193deg, rgba(219,104,25,1) 0%, rgba(215,125,54,1) 17%, rgba(221,122,75,1) 33%, rgba(212,110,71,1) 50%, rgba(208,85,59,1) 66%, rgba(223,81,55,1) 83%, rgba(219,77,77,1) 100%);
-}
-
-//About Page
-.rb-about {
-  background: #ad5389;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(250deg, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% #&%$#&%$#&%$# %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */

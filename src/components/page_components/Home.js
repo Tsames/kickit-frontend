@@ -1,6 +1,6 @@
 //Dependencies
-import { React, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { React } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //Styling
@@ -9,81 +9,116 @@ import '../../styles/page_styling/home.scss';
 const Home = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
-  let navigate = useNavigate();
 
-  //Set root style
-  useEffect(() => {
-    // document.getElementById('root').className = 'rb-home';
-  });
 
-  //Framer-Motion Page Transition Settings
-  const fade = {
-    "initial": { opacity: 0 },
-    "animate": { opacity: 1 },
-    "exit": { opacity: 0 },
-    "transition": { duration: 1.5 }
+  /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
+
+  //Container (#navbar-shell) Variant
+  const containerVariant = {
+    initial: { 
+      scale: 0,
+      x: "-50vw",
+      y: "-50vh"
+    },
+    animate: {
+      scale: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: 0.2,
+        when: "beforeChildren" 
+      }
+    }
   }
 
-  const shuffle = {
-    "initial": { width: 0 },
-    "animate": { width: "100%" },
-    "exit": { x: window.innerWidth },
-    "transition": { duration: 0.3 }
+  //Child Variants
+  const childVariant = {
+    initial: { 
+      opacity: 0 
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        delay: 0.6,
+        duration: 0.6
+      }
+    }
   }
 
-  //State that stores the input for the search bar
-  const [search, setSearch] = useState("");
+    /* --------------- Gestures --------------- */
 
-  //stores the events the search returns
-  let result = null;
+  //Hover
+  const buttonItemHover = {
+    scale: 1.3,
+    border: "solid",
+    borderColor: "#818DFF",
+    transition: {
+      duration: 0.2,
+    }
+  }
 
-  const SEARCH_URL = process.env.REACT_APP_BACKEND_API_BASE_URI + "events/search/" + search;
+  //Tap
+  const buttonItemTap = {
+    scale: 0.9,
+    backgroundColor: "#2b37a5"
+  }
+
+  //In Viewport Variants
+  const scrollVariant = {
+    initial: { 
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        delay: 0.1,
+        duration: 0.4
+      }
+    }
+  }
+
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
-
-  //Helper function (handleSearch) - Searches and retrieves event data based on id
-  const searchEvents = async () => {
-    try {
-      //Fetch event data
-      const response = await fetch(SEARCH_URL);
-      const data = await response.json()
-
-      console.log("success");
-      console.log(data);
-
-      //Set event state
-      result = data;
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+  
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
-
-  //Handler function - Updates search state
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  }
-
-  //Handler function - runs a search and if successfull navigates to that events share page
-  const handleSearch = async (event) => {
-    if (event.which === 13) {
-      await searchEvents();
-      navigate("/share/" + result[0]._id)
-    }
-  }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <motion.div id="home-shell" initial={shuffle.initial} animate={shuffle.animate} exit={shuffle.exit} transition={shuffle.transition}>
-      <div id="home-content">
-        <h1>Kick it</h1>
-        <label htmlFor="search" id="search-Label">
-          <input id="search" type="text" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch} placeholder="enter your event's id" />
-          {/* <button id="search-button" onClick={handleSearch}><BiSearchAlt id="search-icon"></BiSearchAlt></button> */}
-        </label>
+    <div id="home-shell">
+      <motion.div id="home-landing" variants={containerVariant} initial="initial" animate="animate">
+        <motion.button id="createEvent" variants={childVariant} whileHover={buttonItemHover} whileTap={buttonItemTap}>Create Your Event</motion.button>
+      </motion.div>
+      <div id="home-testimonials">
+        <div id="home-testimonial-one" className="home-testimonial-wrapper">
+          <h1 id="home-testimonial-quote-one" className="home-testimonial-quote">"Kick It makes it so easy to hang with my pals. Scheduling sucks without it!"</h1>
+          <p id="home-testimonial-speaker-one" className="home-testimonial-speaker">-Jimbo</p>
+        </div>
+      </div>
+      <div id="home-secondary"></div>
+      <div id="home-contents">
+        <div id="home-content-block-one">
+          <div id="home-content-graphic-one" className="home-content-graphic"></div>
+          <p id="home-content-text-one" className="home-content-text">Create an event and choose a few potential days and times for it.</p>
+        </div>
+        <motion.div id="home-content-graphic-two" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
+        <div id="home-content-block-two">
+          <div id="home-content-text-two-wrapper">
+            <p id="home-content-text-two" className="home-content-text">Share the event with your friends and see when they are free.</p>
+          </div>
+          <div id="home-content-graphic-three" className="home-content-graphic"></div>
+        </div>
+        <motion.div id="home-content-graphic-four" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
+        <div id="home-content-block-three">
+          <div id="home-content-text-three-four-wrapper">
+            <p id="home-content-text-three" className="home-content-text">Pick the best day and time for everyone! Its time to</p>
+            <p id="home-content-text-four" className="home-content-text">Kick It!</p>
+          </div>
+          <div id="home-content-graphic-five" className="home-content-graphic"></div>
+        </div>
+        <motion.div id="home-content-graphic-six" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
+        <Link to="/create"><motion.button id="getStarted" variants={childVariant} whileHover={buttonItemHover} whileTap={buttonItemTap}>Get Started</motion.button></Link>
       </div>
     </motion.div>
   )

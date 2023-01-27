@@ -4,8 +4,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 //Import Nav & Footer Components
-import Navbar from './components/page_components/Navbar';
-import Footer from './components/page_components/Footer';
+import Navbar from './components/navigation_components/Navbar';
+import Footer from './components/navigation_components/Footer';
 
 //Import Example Event Data
 import { exampleEvent, exampleBlocks } from "./exampleEvent";
@@ -21,7 +21,8 @@ import CreateForm from './components/form_components/CreateForm';
 import Created from './components/page_components/Created';
 import Example from './components/page_components/Example'
 import Share from './components/page_components/Share';
-import About from "./components/page_components/About";
+// import About from "./components/page_components/About";
+import AboutUs from "./components/page_components/AboutUs";
 
 //Import new TestPage
 import TestPage from './components/TestPage';
@@ -151,11 +152,10 @@ function App () {
           <Route path='/created/:id' element={<Created URL={FRONTEND_URL}/>} />
           <Route path='/example' element={<Example event={exampleEvent} blocks={exampleBlocks}/>} />
           <Route path='/share/:id' element={<Share getEventData={getEventData} event={event} blocks={blocks} URL={BACKEND_URL}/>} />
-          <Route path='/about/how' element={<About/>} />
-          <Route path='/about/who' element={<About/>} />
-          <Route path='/test' element={<TestPage />} />
+          <Route path='/about/how' element={<AboutUs/>} />
+          <Route path='/about/who' element={<AboutUs/>} />
         </Routes>
-        <Footer/>
+        <Footer />
       </ AnimatePresence>
     </>
   );

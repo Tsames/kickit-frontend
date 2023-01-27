@@ -10,11 +10,14 @@
     justify-content: flex-start;
     align-items: center;
 
+    background: #ad5389;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(250deg, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: v.$font-light;
 
-    height: v.$desktop-body-height;
-    margin-left: 12vw;
-    margin-right: 12vw;
+    // height: v.$desktop-body-height;
+    padding-left: 12vw;
+    padding-right: 12vw;
 
     h3 {
         width: fit-content;
@@ -93,7 +96,7 @@
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        font-family: v.$fancy-font;
+        font-family: v.$font-three;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
@@ -266,7 +269,7 @@
     }
 
     .aboutLink {
-        font-family: v.$fancy-font;
+        font-family: v.$font-three;
         color: v.$font-light;
         text-decoration: none;
 
@@ -348,7 +351,7 @@
 
     //Welcome Heading
     #welcome-heading {
-        font-family: v.$home-page-branding;
+        font-family: v.$font-two;
         text-align: center;
 
         //Mobile Sizing & Positioning

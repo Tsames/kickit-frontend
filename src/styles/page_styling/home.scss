@@ -105,6 +105,7 @@
     border: none;
     border-radius: 4rem;
     font-family: v.$font-four;
+    pointer-events: none;
 
     position: relative;
     z-index: 1;
@@ -131,6 +132,7 @@
     @include d.for-desktop-up {
       height: 63vh;
       width: 86vw;
+      top: 3rem;
     }
 
     //Large Desktop Sizing & Positioning
@@ -170,7 +172,8 @@
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-
+      height: 74vh;
+      top: 160vh;
     }
 
     //Large Desktop Sizing & Positioning
@@ -216,7 +219,7 @@
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
       padding-top: 5rem;
-      padding-bottom: 5rem;
+      margin-top: 20rem;
     }
 
     //Large Desktop Sizing & Positioning
@@ -261,6 +264,8 @@
     @include d.for-desktop-up {
       padding-top: 5rem;
       padding-bottom: 5rem;
+      height: 60vh;
+      width: 86vw;
     }
 
     //Large Desktop Sizing & Positioning
@@ -384,8 +389,9 @@
 
     //Desktop Sizing & Positioning
     @include d.for-desktop-up {
-      height: 53vh;
-      width: 42vw;
+      height: 64vh;
+      width: 35vw;
+      border-radius: 100%;
     }
 
     //Large Desktop Sizing & Positioning
@@ -927,6 +933,7 @@
 
     text-align: left;
     color: v.$pallette_three;
+    pointer-events: none;
     // border: solid;
     // border-color: green;
 
@@ -959,6 +966,7 @@
   #home-content-text-two {
     text-align: center;
     color: v.$pallette_three;
+    pointer-events: none;
 
     // border: solid;
     // border-color: red;
@@ -995,6 +1003,7 @@
     // border: solid;
     // border-color: red;
     color: v.$pallette_three;
+    pointer-events: none;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -1030,6 +1039,7 @@
     // border-color: red;
     color: v.$pallette_three;
     font-family: v.$font-four;
+    pointer-events: none;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {

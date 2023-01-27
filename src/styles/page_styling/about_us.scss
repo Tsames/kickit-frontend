@@ -1,0 +1,169 @@
+//Imports
+@use './../variables' as v;
+@use './../mixins' as m;
+@use './../device' as d;
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#about-shell {
+
+    //Display Settings
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+
+    width: 100%;
+
+    background-color: rgb(6, 112, 252);
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {
+
+    }
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {
+
+    }
+
+    //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+    #about-text-wrapper {
+        border: solid;
+        border-color: red;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
+    }
+
+    #about-people-wrapper {
+        border: solid;
+        border-color: orange;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
+    }
+
+    #about-wallpaper {
+        border: solid;
+        border-color: yellow;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+
+        }
+    }
+
+    //@#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Person Blocks @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
+
+    #about-tom {
+
+    }
+
+    #about-chris {
+
+    }
+
+    #about-amelia {
+
+    }
+
+    //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+ 
+    .about-person {
+        height: 52vh;
+        width: 85vw;
+
+        border: solid;
+        border-color: lime;
+        border-radius: 5rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .about-person-contents {
+
+    }
+
+    .about-person-all-links {
+        border: solid;
+        border-color: skyblue;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .about-person-links {
+        font-family: v.$font-four;
+    }
+
+    //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+}

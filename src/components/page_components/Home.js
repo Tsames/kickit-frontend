@@ -45,6 +45,24 @@ const Home = () => {
     }
   }
 
+    /* --------------- Gestures --------------- */
+
+  //Hover
+  const buttonItemHover = {
+    scale: 1.3,
+    border: "solid",
+    borderColor: "#818DFF",
+    transition: {
+      duration: 0.2,
+    }
+  }
+
+  //Tap
+  const buttonItemTap = {
+    scale: 0.9,
+    backgroundColor: "#2b37a5"
+  }
+
   //In Viewport Variants
   const scrollVariant = {
     initial: { 
@@ -69,7 +87,7 @@ const Home = () => {
   return (
     <div id="home-shell">
       <motion.div id="home-landing" variants={containerVariant} initial="initial" animate="animate">
-        <motion.button id="createEvent" variants={childVariant} whileHover={{scale: 1.1, backgroundColor: "#4b3dc6", border: "solid", borderColor: "#818DFF"}}>Create Your Event</motion.button>
+        <motion.button id="createEvent" variants={childVariant} whileHover={buttonItemHover} whileTap={buttonItemTap}>Create Your Event</motion.button>
       </motion.div>
       <div id="home-testimonials">
         <div id="home-testimonial-one" className="home-testimonial-wrapper">
@@ -99,7 +117,7 @@ const Home = () => {
           <div id="home-content-graphic-five" className="home-content-graphic"></div>
         </div>
         <motion.div id="home-content-graphic-six" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
-        <Link to="/create"><motion.button id="getStarted" variants={childVariant} whileHover={{scale: 1.1, backgroundColor: "#4b3dc6", border: "solid", borderColor: "#818DFF"}}>Get Started</motion.button></Link>
+        <Link to="/create"><motion.button id="getStarted" variants={childVariant} whileHover={buttonItemHover} whileTap={buttonItemTap}>Get Started</motion.button></Link>
       </div>
     </div>
   )

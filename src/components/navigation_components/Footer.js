@@ -56,7 +56,7 @@ const Footer = () => {
   /* --------------- Gestures --------------- */
 
   //Hover
-  const navItemHover = {
+  const footerItemHover = {
     scale: 1.3,
     transition: {
       duration: 0.2,
@@ -64,16 +64,8 @@ const Footer = () => {
     }
   }
 
-  const createButtonHover = {
-    scale: 1.1,
-    backgroundColor: "#4b3dc6",
-    border: "solid",
-    borderColor: "#818DFF"
-  }
-
-
   //Tap
-  const navItemTap = {
+  const footerItemTap = {
     scale: 0.9
   }
 
@@ -82,18 +74,18 @@ const Footer = () => {
   const display = () => {
     return (
       <div id="footer-shell">
-        <Link to="/"><motion.h1 id="footerHomeButton" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Kick It</motion.h1></Link>
+        <Link to="/"><motion.h1 id="footerHomeButton" variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}>Kick It</motion.h1></Link>
         <div id="footer-middle">
-          <p><Link id="footerAbout"  className="footer-middle-link" to="/about/who">About</Link></p>
-          <p><Link id="footerCreate" className="footer-middle-link" to="/create">Create</Link></p>
-          <p><Link id="footerDemo" className="footer-middle-link" to="/example">Demo</Link></p>
-          <p><Link id="footerAboutUs" className="footer-middle-link" to="/about/who">About Us</Link></p>
+          <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAbout"  className="footer-middle-link" to="/about/who">About</Link></motion.p>
+          <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerCreate" className="footer-middle-link" to="/create">Create</Link></motion.p>
+          <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerDemo" className="footer-middle-link" to="/example">Demo</Link></motion.p>
+          <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAboutUs" className="footer-middle-link" to="/about/who">About Us</Link></motion.p>
         </div>
         <div id="footer-right">
-          <Link id=""  className="footer-right-link" to="/about/who"><FiFacebook></FiFacebook></Link>
-          <Link id="" className="footer-right-link" to="/about/who"><FiInstagram></FiInstagram></Link>
-          <Link id="" className="footer-right-link" to="/about/who"><FiYoutube></FiYoutube></Link>
-          <Link id="" className="footer-right-link" to="/about/who"><FiLinkedin></FiLinkedin></Link>
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiFacebook></FiFacebook></Link></motion.p>
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiInstagram></FiInstagram></Link></motion.p>
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiYoutube></FiYoutube></Link></motion.p>
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiLinkedin></FiLinkedin></Link></motion.p>
         </div>
       </div>
     )

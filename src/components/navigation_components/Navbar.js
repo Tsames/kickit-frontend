@@ -76,16 +76,23 @@ const Navbar = () => {
   }
 
   const createButtonHover = {
-    scale: 1.1,
-    backgroundColor: "#4b3dc6",
+    scale: 1.3,
     border: "solid",
-    borderColor: "#818DFF"
+    borderColor: "#818DFF",
+    transition: {
+      duration: 0.2,
+    }
   }
 
 
   //Tap
   const navItemTap = {
     scale: 0.9
+  }
+
+  const createButtonTap = {
+    scale: 0.9,
+    backgroundColor: "#2b37a5"
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
@@ -104,7 +111,7 @@ const Navbar = () => {
             <Link to="/about/how"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
           </div>
           <div id="navCreate-wrapper">
-            <Link to="/create"><motion.button id="navbarCreate" variants={childVariant} whileHover={createButtonHover} whileTap={navItemTap}>Create Event</motion.button></Link>
+            <Link to="/create"><motion.button id="navbarCreate" variants={childVariant} whileHover={createButtonHover} whileTap={createButtonTap}>Create Event</motion.button></Link>
           </div>
         </div>
       </motion.div>

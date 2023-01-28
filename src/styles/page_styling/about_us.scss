@@ -332,8 +332,8 @@
 
     //Person's Links
     .about-person-all-links {
-        border: solid;
-        border-color: skyblue;
+        // border: solid;
+        // border-color: skyblue;
 
         display: flex;
         flex-direction: row;
@@ -369,13 +369,8 @@
         }
     }
 
-    //All Links
-    .about-person-links {
-        font-family: v.$font-four;
-    }
-
     //Links
-    a.about-person-link {
+    a {
         text-decoration: none;
     }
 

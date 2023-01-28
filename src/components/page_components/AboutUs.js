@@ -44,11 +44,11 @@ const AboutUs = () => {
         <div id="about-tom" className="about-person">
           <div id="tom-image"  className="about-person-image"></div>
           <div id="tom-contents" className="about-person-contents">
-            <p id="tom-description" className="about-person-description">My name is Tom Ames and i do the hard stuff. the stuff with the numbers AND the letters.</p>
+            <p id="tom-description" className="about-person-description">My name is Tom Ames and i do the hard stuff. the stuff with the numbers AND the letters.My name is Tom Ames and i do the hard stuff. the stuff with the numbers AND the letters.My name is Tom Ames and i do the hard stuff. the stuff with the numbers AND the letters.My name is Tom Ames and i do the hard stuff. the stuff with the numbers AND the letters.My name is Tom Ames and i do the hard stuff. the stuff with the numbers AND the letters.My name is Tom Ames and i do the hard stuff. the stuff with the numbers AND the letters.My name is Tom Ames and i do the hard stuff. the stuff with the numbers AND the letters.</p>
             <div id="tom-links" className="about-person-all-links">
-              <p id="tom-github" classnName="about-person-link">github</p>
-              <p id="tom-email" classnName="about-person-link">email</p>
-              <p id="tom-linkedin" classnName="about-person-link">linkedin</p>
+              <a href="https://github.com/Tsames" id="tom-github" classnName="about-person-link">Github Profile</a>
+              <p classnName="about-person-link">tsamesdev@gmail.com</p>
+              <a href="https://www.linkedin.com/in/thomasames/" id="tom-linkedin" classnName="about-person-link">LinkedIn Profile</a>
             </div>
           </div>
         </div>
@@ -57,9 +57,9 @@ const AboutUs = () => {
           <div id="chris-contents" className="about-person-contents">
             <p id="chris-description" className="about-person-description">Hello! I am Christopher Brand, a fellow UX Designer with Kick It. Check out my socials and portfolio!</p>
             <div id="chris-links" className="about-person-all-links">
-              <p id="chris-portfolio" classnName="about-person-link">Portfolio</p>
-              <p id="chris-email" classnName="about-person-link">email</p>
-              <p id="chris-linkedin" classnName="about-person-link">linkedin</p>
+              <a href="" id="chris-portfolio" classnName="about-person-link">Portfolio</a>
+              <p href="" id="chris-email" classnName="about-person-link">email</p>
+              <a href="" id="chris-linkedin" classnName="about-person-link">linkedin</a>
             </div>
           </div>
         </div>
@@ -68,9 +68,9 @@ const AboutUs = () => {
           <div id="amelia-contents" className="about-person-contents">
             <p id="amelia-description" className="about-person-description">Hi! Im Amelia Schooley, a UX designer here at Kick It. Im passionate about using psychology and empathy to design useful products. Check out my portfolio and socials!</p>
             <div id="amelia-links" className="about-person-all-links">
-              <p id="amelia-portfolio" classnName="about-person-link">Portfolio</p>
-              <p id="amelia-email" classnName="about-person-link">email</p>
-              <p id="amelia-linkedin" classnName="about-person-link">linkedin</p>
+              <a href="" id="amelia-portfolio" classnName="about-person-link">Portfolio</a>
+              <p href="" id="amelia-email" classnName="about-person-link">email</p>
+              <a href="" id="amelia-linkedin" classnName="about-person-link">linkedin</a>
             </div>
           </div>
         </div>

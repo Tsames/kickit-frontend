@@ -1,7 +1,6 @@
 //Dependencies
 import { React } from 'react';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //Styling
@@ -14,12 +13,6 @@ const Footer = () => {
 
   /* ------------------------------------------ Component Variables ------------------------------------------ */
 
-  const location = useLocation().pathname;
-  const rightPlace = ['/', '/create']
-  
-  const shouldFoot = () => {
-    return rightPlace.includes(location);
-  }
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -71,32 +64,25 @@ const Footer = () => {
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
-  const display = () => {
-    return (
-      <div id="footer-shell">
-        <Link to="/"><motion.h1 id="footerHomeButton" variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}>Kick It</motion.h1></Link>
-        <div id="footer-middle">
-          <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAbout"  className="footer-middle-link" to="/about/who">About</Link></motion.p>
-          <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerCreate" className="footer-middle-link" to="/create">Create</Link></motion.p>
-          <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerDemo" className="footer-middle-link" to="/example">Demo</Link></motion.p>
-          <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAboutUs" className="footer-middle-link" to="/about/who">About Us</Link></motion.p>
-        </div>
-        <div id="footer-right">
-        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiFacebook></FiFacebook></Link></motion.p>
-        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiInstagram></FiInstagram></Link></motion.p>
-        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiYoutube></FiYoutube></Link></motion.p>
-        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiLinkedin></FiLinkedin></Link></motion.p>
-        </div>
-      </div>
-    )
-  }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <>
-      { shouldFoot() ? display() : null}
-    </>
+    <div id="footer-shell">
+      <Link to="/"><motion.h1 id="footerHomeButton" variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}>Kick It</motion.h1></Link>
+      <div id="footer-middle">
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAbout"  className="footer-middle-link" to="/about/who">About</Link></motion.p>
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerCreate" className="footer-middle-link" to="/create">Create</Link></motion.p>
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerDemo" className="footer-middle-link" to="/example">Demo</Link></motion.p>
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAboutUs" className="footer-middle-link" to="/about/who">About Us</Link></motion.p>
+      </div>
+      <div id="footer-right">
+      <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiFacebook></FiFacebook></Link></motion.p>
+      <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiInstagram></FiInstagram></Link></motion.p>
+      <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiYoutube></FiYoutube></Link></motion.p>
+      <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiLinkedin></FiLinkedin></Link></motion.p>
+      </div>
+    </div>
   )
 }
 

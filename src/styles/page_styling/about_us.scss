@@ -17,13 +17,7 @@
     position: relative;
 
     width: 100%;
-
-    background-image: url("../../../public/assets/backgrounds/about_page/about_background.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-origin: content-box;
-    background-size: cover;
-    background-color: rgb(6, 112, 252);
+    background: linear-gradient(90deg, #4DDABB, #3D4BC6);
 
     z-index: 0;
 
@@ -178,7 +172,7 @@
  
     //Person's Card Wrapper
     .about-person {
-        height: 52vh;
+        height: 32vw;
         width: 85vw;
 
         // border: solid;
@@ -189,6 +183,8 @@
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
+
+        position: relative;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
@@ -246,8 +242,8 @@
 
         //Large Desktop Sizing & Positioning
         @include d.for-big-desktop-up {
-            height: 20vw;
-            width:  15vw;
+            height: 25vw;
+            width:  20vw;
         }
     }
 
@@ -255,14 +251,14 @@
     .about-person-contents {
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
         align-items: center;
 
         // border: none;
         // border-color: violet;
         border-radius: 5rem;
+        position: relative;
 
-        background-color: white !important;
+        background-color: #F4F4F4 !important;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
@@ -292,16 +288,60 @@
         }
     }
 
+    //Speech Bubble Shape
+    .about-speech-bubble {
+        position: absolute;
+
+        background: #F4F4F4;
+        border-radius: 14px;
+        transform: matrix(-0.08, -1, 1, -0.07, 0, 0);
+
+        width: 5rem;
+        height: 5rem;
+
+        //Mobile Sizing & Positioning
+        @include d.for-phone-only {
+
+        }
+
+        //Tablet Portrait Sizing & Positioning
+        @include d.for-tablet-portrait-up {
+
+        }
+
+        //Tablet Landscape Sizing & Positioning
+        @include d.for-tablet-landscape-up {
+
+        }
+
+        //Desktop Sizing & Positioning
+        @include d.for-desktop-up {
+            left: 0;
+            top: 0;
+        }
+
+        //Large Desktop Sizing & Positioning
+        @include d.for-big-desktop-up {
+            transform: matrix(1, -2, 2, -0.07, 0, 0);
+            rotate: 35deg;
+            left: 42%;
+            top: 28%;
+        }
+    }
+
     //Person's Description
     .about-person-description {
 
-        // border: solid;
-        // border-color: magenta;
+        border: solid;
+        border-color: magenta;
 
         font-family: v.$font-four;
         text-align: left;
         overflow-y: auto;
         width: 90%;
+
+        position: absolute;
+        top: 0rem;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
@@ -326,19 +366,22 @@
         //Large Desktop Sizing & Positioning
         @include d.for-big-desktop-up {
             font-size: 3rem;
-            max-height: 80%;
+            max-height: 65%;
         }
     }
 
     //Person's Links
     .about-person-all-links {
-        // border: solid;
-        // border-color: skyblue;
+        border: solid;
+        border-color: skyblue;
 
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
+        position: absolute;
+        bottom: 2rem;
 
         font-family: v.$font-four;
         width: 90%;
@@ -376,10 +419,28 @@
 
     //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+    #about-bg {
+        background-image: url("../../../public/assets/backgrounds/about_page/about_background.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-origin: content-box;
+        background-size: 100%;
+        position: absolute;
+
+        left: 0;
+        top: 0;
+
+        width: 100%;
+        height: 100%;
+
+        opacity: 20%;
+        z-index: 1;
+    }
+
     //@#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Text At Top @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
 
     #about-text-title {
-        font-family: v.$font-four;
+        font-family: v.$font-two;
         color: v.$pallette_two;
 
 
@@ -410,7 +471,7 @@
     }
 
     #about-text-description {
-        font-family: v.$font-two;
+        font-family: v.$font-four;
         color: v.$pallette_two;
 
         //Mobile Sizing & Positioning
@@ -443,15 +504,27 @@
 
 
     #tom-image {
-
+        background-image: url("../../../public/assets/people/tom.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-origin: content-box;
+        background-size: cover;
     }
 
     #chris-image {
-
+        background-image: url("../../../public/assets/people/chris.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-origin: content-box;
+        background-size: cover;
     }
 
     #amelia-image {
-
+        background-image: url("../../../public/assets/people/amelia.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-origin: content-box;
+        background-size: cover;
     }
 
 }

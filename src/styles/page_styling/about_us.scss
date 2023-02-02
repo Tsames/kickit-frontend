@@ -33,12 +33,12 @@ $item-index: 3;
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-        padding-top: 18rem;
+        padding-top: 12rem;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-        padding-top: 18rem;
+        padding-top: 16rem;
     }
 
     //Desktop Sizing & Positioning
@@ -62,12 +62,12 @@ $item-index: 3;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-            margin-bottom: 12rem;
+            margin-bottom: 5rem;
         }
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-            margin-bottom: 8rem;
+            margin-bottom: 6rem;
         }
 
         //Tablet Landscape Sizing & Positioning
@@ -148,7 +148,7 @@ $item-index: 3;
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-            height: 40vw;
+            height: 60vw;
             top: 50%;
         }
 
@@ -203,22 +203,22 @@ $item-index: 3;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-            margin-bottom: 15rem;
+            margin-bottom: 8rem;
             height: 38vw;
             width: 88vw;
         }
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-            margin-bottom: 15rem;
-            height: 42vw;
-            width: 88vw;
+            margin-bottom: 10rem;
+            height: 46vw;
+            width: 95vw;
         }
 
         //Tablet Landscape Sizing & Positioning
         @include d.for-tablet-landscape-up {
             margin-bottom: 12rem;
-            height: 45vw;
+            height: 40vw;
             width: 92vw;
         }
 
@@ -232,7 +232,7 @@ $item-index: 3;
         //Large Desktop Sizing & Positioning
         @include d.for-big-desktop-up {
             margin-bottom: 18rem;
-            height: 32vw;
+            height: 38vw;
             width: 85vw;
         }
     }
@@ -241,6 +241,8 @@ $item-index: 3;
     .about-person-image {
         // border: solid;
         // border-color: pink;
+        height: 85%;
+        width: 30%;
 
         border-radius: 5rem;
 
@@ -252,26 +254,26 @@ $item-index: 3;
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-            height: 25vw;
-            width:  20vw;
+            // height: 40vw;
+            // width:  30vw;
         }
 
         //Tablet Landscape Sizing & Positioning
         @include d.for-tablet-landscape-up {
-            height: 35vw;
-            width:  28vw;
+            // height: 35vw;
+            // width:  28vw;
         }
 
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-            height: 25vw;
-            width:  20vw;
+            // height: 31vw;
+            // width:  25vw;
         }
 
         //Large Desktop Sizing & Positioning
         @include d.for-big-desktop-up {
-            height: 25vw;
-            width:  20vw;
+            // height: 31vw;
+            // width:  25vw;
         }
     }
 
@@ -284,6 +286,8 @@ $item-index: 3;
         flex-direction: column;
         align-items: center;
 
+        height: 85%;
+        width: 50%;
         border-radius: 5rem;
         position: relative;
 
@@ -292,37 +296,37 @@ $item-index: 3;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-            width: 40vw;
-            height: 20vw;
-            padding: 1rem
+            // width: 40vw;
+            // height: 20vw;
+            // padding: 1rem
         }
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-            width: 40vw;
-            height: 20vw;
-            padding: 1rem
+            // width: 48vw;
+            // height: 40vw;
+            // padding: 1rem
         }
 
         //Tablet Landscape Sizing & Positioning
         @include d.for-tablet-landscape-up {
-            width: 40vw;
-            height: 30vw;
-            padding: 1rem
+            // width: 42vw;
+            // height: 34vw;
+            // padding: 1rem
         }
 
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-            width: 40vw;
-            height: 20vw;
-            padding: 1rem
+            // width: 45vw;
+            // height: 30vw;
+            // padding: 1rem
         }
 
         //Large Desktop Sizing & Positioning
         @include d.for-big-desktop-up {
-            width: 40vw;
-            height: 20vw;
-            padding: 1rem
+            // width: 45vw;
+            // height: 30vw;
+            // padding: 1rem
         }
     }
 
@@ -332,50 +336,43 @@ $item-index: 3;
 
         background: #F4F4F4;
         border-radius: 14px;
-        transform: matrix(-0.08, -1, 1, -0.07, 0, 0);
+        transform: matrix(1, -2, 2, -0.07, 0, 0);
+        rotate: 35deg;
 
         width: 5rem;
         height: 5rem;
+        left: 43%;
+        top: 30%;
         z-index: 3;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {
-            transform: matrix(1, -2, 2, -0.07, 0, 0);
-            rotate: 35deg;
-            left: 42%;
-            top: 34%;
+            // left: 42%;
+            // top: 34%;
         }
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-            transform: matrix(1, -2, 2, -0.07, 0, 0);
-            rotate: 35deg;
-            left: 42%;
-            top: 34%;
+            // left: 45%;
+            // top: 25%;
         }
 
         //Tablet Landscape Sizing & Positioning
         @include d.for-tablet-landscape-up {
-            transform: matrix(1, -2, 2, -0.07, 0, 0);
-            rotate: 35deg;
-            left: 47%;
-            top: 34%;
+            // left: 47%;
+            // top: 34%;
         }
 
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-            transform: matrix(1, -2, 2, -0.07, 0, 0);
-            rotate: 35deg;
-            left: 42%;
-            top: 34%;
+            // left: 43%;
+            // top: 30%;
         }
 
         //Large Desktop Sizing & Positioning
         @include d.for-big-desktop-up {
-            transform: matrix(1, -2, 2, -0.07, 0, 0);
-            rotate: 35deg;
-            left: 42%;
-            top: 28%;
+            // left: 43%;
+            // top: 28%;
         }
     }
 
@@ -400,7 +397,7 @@ $item-index: 3;
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-            font-size: 3.5rem;
+            font-size: 3.4vw;
             max-height: 65%;
         }
 
@@ -412,13 +409,13 @@ $item-index: 3;
 
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-            font-size: 2vw;
-            max-height: 50%;
+            font-size: 3vw;
+            max-height: 70%;
         }
 
         //Large Desktop Sizing & Positioning
         @include d.for-big-desktop-up {
-            font-size: 2vw;
+            font-size: 3vw;
             max-height: 65%;
         }
     }
@@ -446,8 +443,8 @@ $item-index: 3;
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-            font-size: 1vw;
-            width: 80%;
+            font-size: 1.8vw;
+            width: 85%;
         }
 
         //Tablet Landscape Sizing & Positioning
@@ -458,13 +455,13 @@ $item-index: 3;
 
         //Desktop Sizing & Positioning
         @include d.for-desktop-up {
-            font-size: 1.2vw;
+            font-size: 1.4vw;
             width: 80%;
         }
 
         //Large Desktop Sizing & Positioning
         @include d.for-big-desktop-up {
-            font-size: 1.2vw;
+            font-size: 1.6vw;
             width: 90%;
         }
     }
@@ -591,8 +588,9 @@ $item-index: 3;
 
         //Tablet Portrait Sizing & Positioning
         @include d.for-tablet-portrait-up {
-            left: 53.5%;
-            top: 34%;
+            transform: matrix(1, -1.6, 1.6, -0.07, 0, 0);
+            left: 44.5%;
+            top: 25%;
         }
 
         //Tablet Landscape Sizing & Positioning
@@ -609,7 +607,7 @@ $item-index: 3;
 
         //Large Desktop Sizing & Positioning
         @include d.for-big-desktop-up {
-            left: 54.5%;
+            left: 56.5%;
             top: 28%;
         }
     }

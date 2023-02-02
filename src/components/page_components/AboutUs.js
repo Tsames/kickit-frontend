@@ -48,9 +48,9 @@ const AboutUs = () => {
           <div id="tom-contents" className="about-person-contents">
             <p id="tom-description" className="about-person-description">Hey! I'm Tom Ames, the software engineer behind Kick It. I love building intuitive and useful websites! Check out my github and LinkedIn below.</p>
             <div id="tom-links" className="about-person-all-links">
-              <a href="https://github.com/Tsames" id="tom-github" classnName="about-person-link">Github Profile</a>
+              <a href="https://github.com/Tsames" id="tom-github" classnName="about-person-link">Github</a>
               <p classnName="about-person-link">tsamesdev@gmail.com</p>
-              <a href="https://www.linkedin.com/in/thomasames/" id="tom-linkedin" classnName="about-person-link">LinkedIn Profile</a>
+              <a href="https://www.linkedin.com/in/thomasames/" id="tom-linkedin" classnName="about-person-link">LinkedIn</a>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ const AboutUs = () => {
             <div id="amelia-links" className="about-person-all-links">
               <a href="https://ameliaschooley.com/" id="amelia-portfolio" classnName="about-person-link">Portfolio</a>
               <p id="amelia-email" classnName="about-person-link">Schooley.ux@gmail.com</p>
-              <a href="https://www.linkedin.com/in/ameliaschooley/" id="amelia-linkedin" classnName="about-person-link">LinkedIn Profile</a>
+              <a href="https://www.linkedin.com/in/ameliaschooley/" id="amelia-linkedin" classnName="about-person-link">LinkedIn</a>
             </div>
           </div>
         </div>

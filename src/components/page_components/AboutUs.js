@@ -46,7 +46,7 @@ const AboutUs = () => {
           <div id="tom-image"  className="about-person-image"></div>
           <div id="tom-speech-bubble" className="about-speech-bubble"></div>
           <div id="tom-contents" className="about-person-contents">
-            <p id="tom-description" className="about-person-description">Hey! I'm Tom Ames, a software engineer for Kick It. I</p>
+            <p id="tom-description" className="about-person-description">Hey! I'm Tom Ames, the software engineer behind Kick It. I love building intuitive and useful websites! Check out my github and LinkedIn below.</p>
             <div id="tom-links" className="about-person-all-links">
               <a href="https://github.com/Tsames" id="tom-github" classnName="about-person-link">Github Profile</a>
               <p classnName="about-person-link">tsamesdev@gmail.com</p>
@@ -66,6 +66,7 @@ const AboutUs = () => {
           <div id="chris-image" className="about-person-image"></div>
           <div id="chris-speech-bubble" className="about-speech-bubble"></div>
         </div>
+        <div id="about-wallpaper"></div>
         <div id="about-amelia" className="about-person">
           <div id="amelia-image" className="about-person-image"></div>
           <div id="amelia-speech-bubble" className="about-speech-bubble"></div>
@@ -79,7 +80,6 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <div id="about-wallpaper"></div>
     </motion.div>
   )
 }

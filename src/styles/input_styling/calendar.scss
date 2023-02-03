@@ -3,49 +3,73 @@
 @use './../device' as d;
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
-#calendarShell {
+#calendar-shell {
+  border-style: solid;
+  border-color: purple;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   
-  color: v.$font-light;
-  font-size: 14px;
-  font-weight: lighter;
-  background-color: v.$background-light;
-
-  border-style: none;
+  color: rgba(1, 77, 89, 1);
+  font-family: v.$font-two;
   border-radius: 0.3rem;
-
   padding: 0.5rem;
+
+  width: 100%;
+
+  //Mobile Sizing & Positioning
+  @include d.for-phone-only {
+
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+
+  }
+
+  //Desktop Sizing & Positioning
+  @include d.for-desktop-up {
+
+  }
+
+  //Large Desktop Sizing & Positioning
+  @include d.for-big-desktop-up {
+
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   //Calendar Header
-  #calendarHeading {
+  #calendar-heading {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    color: v.$font-light;
+    color: rgba(1, 77, 89, 1);
 
     width: 100%;
 
-    .calendarHeadingButton {
+    .calendar-heading-button {
       margin: 1em;
     }
   }
 
   //Grid Layout with 7 columns
-  #calendarBody {
+  #calendar-body {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     width: 100%;
   }
 
   //Style for Individual Items in the grid
-  div.calendarItem {
+  div.calendar-item {
     text-align: center;
     align-items: center;
     margin: 0.1rem;
@@ -55,7 +79,7 @@
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   //Style for Selected Items in the grid
-  .calendarSelected {
+  .calendar-selected {
     background-color: v.$calendar-selected-background !important;
     border-color: v.$calendar-selected-border !important;
     color: v.$calendar-selected-color !important;
@@ -64,7 +88,7 @@
     border-width: 0em !important;
   }
 
-  .calendarDayLabel {
+  .calendar-day-label {
     pointer-events: none;
   }
 

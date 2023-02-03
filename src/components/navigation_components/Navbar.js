@@ -108,7 +108,7 @@ const Navbar = () => {
         <div id="navRight">
           <div id="navItems-wrapper">
             <Link to="/example"><motion.button id="navbarDemo" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Demo</motion.button></Link>
-            <Link to="/about/how"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
+            <Link to="/about"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
           </div>
           <div id="navCreate-wrapper">
             <Link to="/create"><motion.button id="navbarCreate" variants={childVariant} whileHover={createButtonHover} whileTap={createButtonTap}>Create Event</motion.button></Link>

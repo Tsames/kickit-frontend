@@ -169,20 +169,20 @@ const Calendar = ({newForm, setNewForm}) => {
   /* ------------------------- Returning JSX ------------------------------ */
 
   return (
-    <div id="calendarShell">
-      <div id="calendarHeading">
-        <BiLeftArrow id="calendarPrevMonth" className="calendarHeadingButton" onClick={handlePrevMonth}>{'<'}</BiLeftArrow>
+    <div id="calendar-shell">
+      <div id="calendar-heading">
+        <BiLeftArrow id="calendar-prev-month" className="calendar-heading-button" onClick={handlePrevMonth}>{'<'}</BiLeftArrow>
         <h4>{`${findMonth(page)} ${page.getFullYear()}`}</h4>
-        <BiRightArrow id="calendarNextMonth" className="calendarHeadingButton" onClick={handleNextMonth}>{'>'}</BiRightArrow>
+        <BiRightArrow id="calendar-next-month" className="calendar-heading-button" onClick={handleNextMonth}>{'>'}</BiRightArrow>
       </div>
-      <div id="calendarBody">
-        <div id="sunday" className="calendarDayLabel calendarItem">Sun</div>
-        <div id="monday" className="calendarDayLabel calendarItem">Mon</div>
-        <div id="tuesday" className="calendarDayLabel calendarItem">Tue</div>
-        <div id="wednesday" className="calendarDayLabel calendarItem">Wed</div>
-        <div id="thursday" className="calendarDayLabel calendarItem">Thu</div>
-        <div id="friday" className="calendarDayLabel calendarItem">Fri</div>
-        <div id="satday" className="calendarDayLabel calendarItem">Sat</div>
+      <div id="calendar-body">
+        <div id="sunday" className="calendar-day-label calendar-item">Sun</div>
+        <div id="monday" className="calendar-day-label calendar-item">Mon</div>
+        <div id="tuesday" className="calendar-day-label calendar-item">Tue</div>
+        <div id="wednesday" className="calendar-day-label calendar-item">Wed</div>
+        <div id="thursday" className="calendar-day-label calendar-item">Thu</div>
+        <div id="friday" className="calendar-day-label calendar-item">Fri</div>
+        <div id="satday" className="calendar-day-label calendar-item">Sat</div>
         {generateCalendar()}
       </div>
     </div>

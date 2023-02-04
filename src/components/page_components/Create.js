@@ -16,7 +16,7 @@ const Create = () => {
   let navigate = useNavigate();
 
   const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
-  const DEV_FRONTEND_URL = process.env.REACT_APP_KICKIT_DEV_FRONTEND;
+  // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
 
   //State that stores input
   const [newForm, setNewForm] = useState({
@@ -120,21 +120,19 @@ const Create = () => {
   const handleChange = (event) => {
     let newValue = event.target.value;
     setNewForm({ ...newForm, [event.target.name]: newValue });
-    console.log(newForm);
   };
 
   const handleButtonChange = (event) => {
     let newEarly = Number(event.target.dataset.early);
     let newLate = Number(event.target.dataset.late);
     setNewForm({ ...newForm, "early": newEarly, "late": newLate });
-    console.log(newForm);
   }
 
   //Handler function - Makes an HTTP Post request to the backend upon submission and redirects user to created page
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const id = createEvent(newForm);
-    useNavigate(`/created/${id}`);
+    const id = await createEvent(newForm);
+    navigate(`/created/${id}`);
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
@@ -145,41 +143,39 @@ const Create = () => {
 
   return (
     <div id="create-shell">
-      <form onSubmit={handleSubmit}>
-        <div id="create-section-top">
-          <div id="create-section-top-left">
-            <label htmlFor="title" id="create-title-wrapper" className="create-top-left-wrapper">
-              <input required id="create-title" className="create-top-left-field" type="text" name="title" value={newForm.title} onChange={handleChange} />
-            </label>
-            <label htmlFor="location" id="create-location-wrapper" className="create-top-left-wrapper">
-              <input required id="create-location" className="create-top-left-field" type="text" name="location" value={newForm.location} onChange={handleChange} />
-            </label>
-          </div>
-          <div id="create-section-top-right">
-          <label htmlFor="description" id="create-description-wrapper" className="create-top-right-wrapper">
-            <textarea wrap="soft" required id="create-description" name="description" value={newForm.description} onChange={handleChange}/>
+      <div id="create-section-top">
+        <div id="create-section-top-left">
+          <label htmlFor="title" id="create-title-wrapper" className="create-top-left-wrapper">
+            <input required id="create-title" className="create-top-left-field" type="text" name="title" value={newForm.title} onChange={handleChange} />
           </label>
+          <label htmlFor="location" id="create-location-wrapper" className="create-top-left-wrapper">
+            <input required id="create-location" className="create-top-left-field" type="text" name="location" value={newForm.location} onChange={handleChange} />
+          </label>
+        </div>
+        <div id="create-section-top-right">
+        <label htmlFor="description" id="create-description-wrapper" className="create-top-right-wrapper">
+          <textarea wrap="soft" required id="create-description" name="description" value={newForm.description} onChange={handleChange}/>
+        </label>
+        </div>
+      </div>
+      <div id="create-section-middle">
+        <Calendar newForm={newForm} setNewForm={setNewForm} /> 
+      </div>
+      <div id="create-section-bottom">
+        <div id="create-section-bottom-left">
+          <h3 id="create-time-select-header">Time & Date</h3>
+          <p id="create-time-select-secondary-text">Select all that apply</p>
+          <div id="create-time-select-wrapper">
+            <button type="" data-early="11" data-late="16" className="create-time-select-button" onClick={handleButtonChange}>11am - 4pm</button>
+            <button data-early="16" data-late="21" className="create-time-select-button" onClick={handleButtonChange}>4pm - 9pm</button>
+            <button data-early="21" data-late="2" className="create-time-select-button" onClick={handleButtonChange}>9pm - 2am</button>
+            <button data-early="1" data-late="24" className="create-time-select-button" onClick={handleButtonChange}>Custom</button>
           </div>
         </div>
-        <div id="create-section-middle">
-          <Calendar newForm={newForm} setNewForm={setNewForm} /> 
+        <div id="create-section-bottom-right">
+          <button id="create-submit" onClick={handleSubmit}>Submit</button>
         </div>
-        <div id="create-section-bottom">
-          <div id="create-section-bottom-left">
-            <h3 id="create-time-select-header">Time & Date</h3>
-            <p id="create-time-select-secondary-text">Select all that apply</p>
-            <div id="create-time-select-wrapper">
-              <button data-early="11" data-late="16" className="create-time-select-button" onClick={handleButtonChange}>11am - 4pm</button>
-              <button data-early="16" data-late="21" className="create-time-select-button" onClick={handleButtonChange}>4pm - 9pm</button>
-              <button data-early="21" data-late="2" className="create-time-select-button" onClick={handleButtonChange}>9pm - 2am</button>
-              <button data-early="1" data-late="24" className="create-time-select-button" onClick={handleButtonChange}>Custom</button>
-            </div>
-          </div>
-          <div id="create-section-bottom-right">
-            <button id="create-submit" type="submit">Submit</button>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   )
 }

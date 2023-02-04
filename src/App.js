@@ -106,24 +106,24 @@ function App () {
 
   /* ------------------------------------------ Passing Functions ------------------------------------------ */
 
-  //Passing function - Gets Event Data and stores in state
-  const getEventData = async (id) => {
-    try {
-      //Fetch event data
-      const response = await fetch(BACKEND_URL + `${id}`);
-      const data = await response.json()
+  // //Passing function - Gets Event Data and stores in state
+  // const getEventData = async (id) => {
+  //   try {
+  //     //Fetch event data
+  //     const response = await fetch(BACKEND_URL + `${id}`);
+  //     const data = await response.json()
 
-      //Set block state
-      // makeBlocks(data.days)
+  //     //Set block state
+  //     // makeBlocks(data.days)
 
-      //Set event state
-      setEvent(data);
+  //     //Set event state
+  //     setEvent(data);
 
-    } catch (error) {
-      console.log("Couldn't get event.");
-      console.log(error);
-    }
-  }
+  //   } catch (error) {
+  //     console.log("Couldn't get event.");
+  //     console.log(error);
+  //   }
+  // }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
@@ -139,7 +139,7 @@ function App () {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/new-password" element={<ForgotPassword />} /> */}
           {/* Main Routes */}
-          <Route path='/' element={<Home getEventData={getEventData}/>} />
+          <Route path='/' element={<Home />} />
           <Route path='/create' element={<Create />} />
           <Route path='/created/:id' element={<Created />} />
           <Route path='/about' element={<AboutUs/>} />

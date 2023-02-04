@@ -82,7 +82,7 @@ const Calendar = ({newForm, setNewForm}) => {
       //If tracker is on the same day of the week as the index add a non-dummy div and increment tracker
       if (todayIs === weekdays[i]) {
         content.push(
-          <div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendarItem selectable calendarSelected" : "calendarItem selectable"}
+          <div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendar-item selectable calendar-selected" : "calendar-item selectable"}
            key={`calendar${tracker.getDate()}${weekdays[i]}`}
            data-time={tracker.getTime()} 
            onClick={handleClick}>
@@ -99,7 +99,7 @@ const Calendar = ({newForm, setNewForm}) => {
       //Else the tracker must not be on the same day of the week as the index so add a dummy div  
       } else {
         content.push(
-          <div className="calendarItem Invisible" key={`calendar${tracker.getDate()}${weekdays[i]}`}>
+          <div className="calendar-item Invisible" key={`calendar${tracker.getDate()}${weekdays[i]}`}>
             0
           </div>
         )
@@ -140,10 +140,10 @@ const Calendar = ({newForm, setNewForm}) => {
   //Handler function - adds and remove days to and from form state of Attend.js
   const handleClick = (event) => {
     //Only if calendarSelected is not on the element already
-    if (event.target.className === "calendarItem selectable") {
+    if (event.target.className === "calenda-item selectable") {
 
       //Add css class
-      event.target.classList.add("calendarSelected");
+      event.target.classList.add("calendar-selected");
 
       //Add element to days array
       const newDays = [...newForm.days, Number(event.target.dataset.time)];
@@ -154,7 +154,7 @@ const Calendar = ({newForm, setNewForm}) => {
     } else {
 
       //Remove the css class
-      event.target.classList.remove("calendarSelected");
+      event.target.classList.remove("calendar-selected");
 
       //Find index of the element in days array
       const index = checkDays(newForm.days, Number(event.target.dataset.time));

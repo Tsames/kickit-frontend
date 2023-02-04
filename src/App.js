@@ -33,9 +33,6 @@ function App () {
   We also store data called blocks which is data that facilitates the creation of grids in the AttendanceChart.js and Grid.js components
   to visually represent availability */
 
-  const BACKEND_URL = process.env.KICKIT_BACKEND + "events/";
-  const FRONTEND_URL = process.env.KICKIT_FRONTEND;
-
   //Stores the data of an event
   const [event, setEvent] = useState(null);
 
@@ -143,8 +140,8 @@ function App () {
           <Route path="/new-password" element={<ForgotPassword />} /> */}
           {/* Main Routes */}
           <Route path='/' element={<Home getEventData={getEventData}/>} />
-          <Route path='/create' element={<Create event={event} getEventData={getEventData} FRONTEND_URL={FRONTEND_URL} BACKEND_URL={BACKEND_URL}/>} />
-          <Route path='/created/:id' element={<Created URL={FRONTEND_URL}/>} />
+          <Route path='/create' element={<Create />} />
+          <Route path='/created/:id' element={<Created />} />
           <Route path='/about' element={<AboutUs/>} />
         </Routes>
         <Footer />

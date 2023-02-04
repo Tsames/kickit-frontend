@@ -23,8 +23,8 @@ const Created = ({ URL }) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div id="created-wrapper">
-      <p>Your event link is <span>{`${newEventURL}`}</span></p>
+    <div id="created-shell">
+      <div></div>
     </div>
   )
 }

@@ -14,6 +14,7 @@
   width: 100vw;
   
   background: linear-gradient(180deg, hsla(217, 52%, 51%, 1) 0%, hsla(187, 47%, 52%, 1) 25%, hsla(0, 0%, 100%, 1) 58%);
+  padding-top: 12rem;
 
   //Mobile Sizing
   @include d.for-phone-only {
@@ -42,10 +43,13 @@
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  //Form Wrapper
   form {
     width: 100%;
     height: fit-content;
   }
+
+  //@#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Top Section Wrapper & Children Wrappers @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
 
   //Top Section
   #create-section-top {
@@ -54,6 +58,11 @@
 
     width: 100%;
     height: 35rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -80,6 +89,19 @@
 
     }
   }
+
+  #create-section-top-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  #create-section-top-right {
+    
+  }
+
+  //@#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Middle Section Wrapper @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
 
   //Middle Section
   #create-section-middle {
@@ -115,6 +137,8 @@
     }
   }
 
+  //@#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Bottom Section Wrapper and Children Wrappers @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
+
   //Bottom Section
   #create-section-bottom {
     border: solid;
@@ -148,8 +172,31 @@
 
     }
   }
+
+  #create-section-bottom-left {
+
+  }
+
+  #create-section-bottom-right {
+
+  }
   
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  .create-time-select-button {
+    background-color: #E9ECFF;
+    font-family: v.$font-two;
+
+    height: 4vw;
+    width: 5.5vw;
+
+    border-radius: 0.3vw;
+    border: none;
+
+    &:hover {
+      background-color: #d0d1d6;
+    }
+  }
 
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%

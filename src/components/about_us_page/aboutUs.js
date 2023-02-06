@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //Styling
-import '../../styles/page_styling/about_us.scss';
+import '../../styles/about_us_styling/aboutUs.scss';
 
 const AboutUs = () => {
 

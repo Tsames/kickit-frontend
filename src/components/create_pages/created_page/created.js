@@ -3,9 +3,9 @@ import { React } from 'react';
 import { useParams } from 'react-router-dom';
 
 //Styling
-import '../../styles/page_styling/share.scss';
+import '../../../styles/create_pages_styling/created_page/created.scss';
 
-const Created = ({ URL }) => {
+const Created = ({}) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 

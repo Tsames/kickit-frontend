@@ -1,0 +1,49 @@
+//Imports
+@use './../../../variables' as v;
+@use './../../../mixins' as m;
+@use './../../../device' as d;
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#create-bottom-section {
+
+  //Mobile Sizing
+  @include d.for-phone-only {}
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {}
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {}
+
+  //Desktop Sizing
+  @include d.for-desktop-up {}
+
+  //Large Desktop Sizing & Positioning
+  @include d.for-big-desktop-up {}
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  .create-time-select-button {
+    background-color: #E9ECFF;
+    font-family: v.$font-two;
+
+    height: 4vw;
+    width: 5.5vw;
+
+    border-radius: 0.3vw;
+    border: none;
+
+    &:hover {
+      background-color: #d0d1d6;
+    }
+  }
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+
+}

@@ -4,8 +4,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 //Import Nav & Footer Components
-import Navbar from './components/navigation_components/Navbar';
-import Footer from './components/navigation_components/Footer';
+import Navbar from './components/navigation_components/navbar';
+import Footer from './components/navigation_components/footer';
 
 //Import Example Event Data
 // import { exampleEvent, exampleBlocks } from "./exampleEvent";
@@ -16,15 +16,15 @@ import Footer from './components/navigation_components/Footer';
 // import ForgotPassword from './components/Accounts/Forgot-Password/ForgotPassword'
 
 //Import Main Pages
-import Home from './components/page_components/Home';
-import Create from './components/page_components/Create';
-import Created from './components/page_components/Created';
-import AboutUs from "./components/page_components/AboutUs";
+import Home from './components/home_page/Home';
+import Create from './components/create_pages/create_page/create';
+import Created from './components/create_pages/created_page/created';
+import AboutUs from "./components/about_us_page/aboutUs";
 
 //Import new TestPage
 // import TestPage from './components/TestPage';
 
-function App () {
+function App() {
 
   /* ------------------------------------------ App Wide Variables and State ------------------------------------------ */
 
@@ -142,7 +142,7 @@ function App () {
           <Route path='/' element={<Home />} />
           <Route path='/create' element={<Create />} />
           <Route path='/created/:id' element={<Created />} />
-          <Route path='/about' element={<AboutUs/>} />
+          <Route path='/about' element={<AboutUs />} />
         </Routes>
         <Footer />
       </ AnimatePresence>

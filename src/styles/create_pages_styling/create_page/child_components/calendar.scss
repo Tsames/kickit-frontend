@@ -1,7 +1,6 @@
-@use './../variables' as v;
-@use './../mixins' as m;
-@use './../device' as d;
-
+@use './../../../variables' as v;
+@use './../../../mixins' as m;
+@use './../../../device' as d;
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #calendar-shell {
   border-style: solid;

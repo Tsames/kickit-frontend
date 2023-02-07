@@ -5,8 +5,8 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #create-shell {
-  border: solid;
-  border-color: purple;
+  // border: solid;
+  // border-color: red;
 
   display: flex;
   flex-direction: column;
@@ -15,8 +15,8 @@
 
   width: 100%;
   
-  background: linear-gradient(180deg, hsla(217, 52%, 51%, 1) 0%, hsla(187, 47%, 52%, 1) 25%, hsla(0, 0%, 100%, 1) 58%);
-  padding-top: 12rem;
+  background: linear-gradient(180deg, rgb(65, 115, 195) 0%, hsla(187, 47%, 52%, 1) 55%, hsla(0, 0%, 100%, 1) 85%);
+  padding-top: 18rem;
 
   //Mobile Sizing
   @include d.for-phone-only {
@@ -49,11 +49,11 @@
 
   //Top Section
   #create-top-section {
-    border: solid;
-    border-color: red;
+    // border: solid;
+    // border-color: orange;
 
     width: 100%;
-    height: 35rem;
+    padding-bottom: 10rem;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -86,10 +86,11 @@
   //Middle Section
   #create-middle-section {
     border: solid;
-    border-color: orange;
+    border-color: pink;
 
     width: 100%;
-    height: 60rem;
+    padding-bottom: 10rem;
+    // height: 60rem;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -120,12 +121,12 @@
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Bottom Section Wrapper @#@#@#@#@&%&%&%&%&@#@#@#@#@
 
   //Bottom Section
-  #create-section-bottom {
-    border: solid;
-    border-color: gold;
+  #create-bottom-section {
+    // border: solid;
+    // border-color: gold;
 
     width: 100%;
-    height: 35rem;
+    // height: 35rem;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {

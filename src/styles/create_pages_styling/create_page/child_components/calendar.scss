@@ -3,19 +3,14 @@
 @use './../../../device' as d;
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #calendar-shell {
-  border-style: solid;
-  border-color: purple;
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   
   color: rgba(1, 77, 89, 1);
   font-family: v.$font-two;
-  border-radius: 0.3rem;
-  padding: 0.5rem;
-  padding-top: 10rem;
 
   width: 100%;
 

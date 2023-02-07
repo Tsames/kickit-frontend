@@ -5,6 +5,10 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #create-top-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 
   //Mobile Sizing
   @include d.for-phone-only {}
@@ -23,12 +27,137 @@
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  #create-top-left-subsection {
+    border: solid;
+    border-color: red;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    flex: 1;
+    width: 40vw;
+    height: 15vw;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {}
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {}
+
+    //Tablet Landscape Sizing & Positioning
+    @include d.for-tablet-landscape-up {}
+
+    //Desktop Sizing & Positioning
+    @include d.for-desktop-up {}
+
+    //Large Desktop Sizing & Positioning
+    @include d.for-big-desktop-up {}
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  .create-top-left-field {
+    background: none;
+    border: none;
+    color: v.$pallette_two;
+    font-family: v.$font-two;
+    text-align: left;
+    
+    &::placeholder {
+      opacity: 80%;
+      font-family: v.$font-two;
+    }
+
+    &::selection {
+      background-color: rgb(65, 115, 195);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
 
+  //Event Title
+  label#create-title-wrapper {
+    width: 100%;
+    overflow-y: hidden;
+
+    input {
+      font-size: calc(1rem + 2.5vw);
+    }
+  }
+
+  //Event Location
+  label#create-location-wrapper {
+    width: 100%;
+
+    input {
+      font-size: calc(1rem + 1.5vw);
+    }
+  }
+
+  //Description Element
+  label#create-description-wrapper {
+    flex: 5;
+  
+    textarea {
+      border: none;
+      resize: none;
+      font-family: v.$font-two;
+      color: rgba(0, 0, 0, 0.6);
+      opacity: 80%;
+
+      &::placeholder {
+        opacity: 30%;
+        font-family: v.$font-two;
+      }
+
+      &::selection {
+        background-color: rgb(65, 115, 195);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      border-radius: 0.8vw;
+      padding: 1vw;
+
+      width: 30vw;
+      height: 15vw;
+
+      font-size: calc(1rem + 0.8vw);
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+
+      }
+
+      //Tablet Landscape Sizing & Positioning
+      @include d.for-tablet-landscape-up {
+
+      }
+
+      //Desktop Sizing & Positioning
+      @include d.for-desktop-up {
+
+      }
+
+      //Large Desktop Sizing & Positioning
+      @include d.for-big-desktop-up {
+
+      }
+    }
+  }
 }

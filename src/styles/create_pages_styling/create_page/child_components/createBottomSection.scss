@@ -6,6 +6,11 @@
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #create-bottom-section {
 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
   //Mobile Sizing
   @include d.for-phone-only {}
 
@@ -23,27 +28,107 @@
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Left Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
 
+  #create-bottom-left-subsection {
+    border: solid;
+    border-color: greenyellow;
+
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-bottom: max(8rem, 8vw);
+  }
+
+  #create-bottom-left-text-subsection {
+    border: solid;
+    border-color: red;
+
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
+
+  #create-time-select-wrapper {
+    // border: solid;
+    // border-color: red;
+
+    max-width: 80%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: max(2rem, 2vw) max(2rem, 2vw);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Right Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
+
+  #create-bottom-right-subsection {
+    border: solid;
+    border-color: greenyellow;
+
+    height: 100%;
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   .create-time-select-button {
     background-color: #E9ECFF;
     font-family: v.$font-two;
+    font-size: calc(1rem + 0.5vw);
 
-    height: 4vw;
-    width: 5.5vw;
+    height: 8vw;
+    width: 12vw;
 
     border-radius: 0.3vw;
     border: none;
+  }
 
-    &:hover {
-      background-color: #d0d1d6;
-    }
+  .button-selected {
+    color: v.$pallette_two !important;
+    background-color: #9b9da3 !important;
   }
 
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  #create-time-select-header {
+    color: v.$pallette_three;
+    font-family: v.$font-two;
+    font-size: calc(1rem + 2vw);
+    pointer-events: none;
+  }
 
+  #create-time-select-secondary-text {
+    color: v.$pallette_five;
+    font-family: v.$font-one;
+    font-size: calc(1rem + 0.3vw);
+    pointer-events: none;
+  }
+
+  #create-person-graphic {
+    border: solid;
+    border-color: orange;
+
+    width: 10vw;
+    height: 30vw;
+
+    background-image: url("./../../../../../public/assets/graphics/create_page/create-person.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+  }
 }

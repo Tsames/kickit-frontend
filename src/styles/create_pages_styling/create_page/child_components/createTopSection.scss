@@ -11,10 +11,14 @@
   align-items: center;
 
   //Mobile Sizing
-  @include d.for-phone-only {}
+  @include d.for-phone-only {
+    flex-direction: column;
+  }
 
   //Tablet Portrait Sizing & Positioning
-  @include d.for-tablet-portrait-up {}
+  @include d.for-tablet-portrait-up {
+    flex-direction: column;
+  }
 
   //Tablet Landscape Sizing & Positioning
   @include d.for-tablet-landscape-up {}
@@ -36,8 +40,7 @@
     justify-content: space-evenly;
     align-items: center;
 
-    flex: 1;
-    width: 40vw;
+    width: 45vw;
     height: 15vw;
 
     //Mobile Sizing & Positioning
@@ -58,12 +61,22 @@
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  .create-top-left-wrapper {
+    width: 100%;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+  }
+
   .create-top-left-field {
     background: none;
     border: none;
     color: v.$pallette_two;
     font-family: v.$font-two;
     text-align: left;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+
+    width: 100%;
     
     &::placeholder {
       opacity: 80%;
@@ -89,7 +102,7 @@
     overflow-y: hidden;
 
     input {
-      font-size: calc(1rem + 2.5vw);
+      font-size: calc(1rem + 3.5vw);
     }
   }
 
@@ -98,13 +111,12 @@
     width: 100%;
 
     input {
-      font-size: calc(1rem + 1.5vw);
+      font-size: calc(1rem + 2.5vw);
     }
   }
 
   //Description Element
   label#create-description-wrapper {
-    flex: 5;
   
     textarea {
       border: none;

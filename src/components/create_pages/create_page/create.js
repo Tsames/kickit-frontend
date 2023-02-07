@@ -63,6 +63,7 @@ const Create = () => {
   const handleTimeSelect = (event) => {
     let newEarly = Number(event.target.dataset.early);
     let newLate = Number(event.target.dataset.late);
+    event.target.classList.add("button-selected");
     setNewForm({ ...newForm, "early": newEarly, "late": newLate });
   }
 

@@ -117,7 +117,8 @@
 
   //Description Element
   label#create-description-wrapper {
-  
+    position: relative;
+
     textarea {
       border: none;
       resize: none;
@@ -136,15 +137,22 @@
 
       &:focus {
         outline: none;
+
+        span#placeholder {
+          opacity: 0 !important;
+          z-index: -1 !important;
+          pointer-events: none !important;
+        }
       }
 
       border-radius: 0.8vw;
       padding: 1vw;
 
-      width: 30vw;
+      width: 35vw;
       height: 15vw;
 
-      font-size: calc(1rem + 0.8vw);
+      font-size: calc(1rem + 0.4vw);
+      z-index: 0;
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
@@ -170,6 +178,21 @@
       @include d.for-big-desktop-up {
 
       }
+    }
+
+    span#placeholder {
+      font-family: v.$font-two;
+      font-size: calc(1rem + 0.4vw);
+      opacity: 30%;
+
+      position: absolute;
+      z-index: 1;
+      left: 2vw;
+      top: 1vw;
+    }
+
+    span#word-count {
+
     }
   }
 }

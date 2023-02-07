@@ -38,6 +38,7 @@ $pallette_two: #ECECEC;
 $pallette_three: #014D59;
 $pallette_four: #4bc4bdad;
 $pallette_five: #000000;
+$pallette_six: #D7FFB7;
 
 $pallette_one_hover: #2b37a5;
 
@@ -120,7 +121,16 @@ $calendar-selected-background: $font-heavy;
 $calendar-selected-border: $font-heavier;
 $calendar-selected-color: $font-light;
 
-/* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%  Root Background Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
+/* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
+.no-select {
+  pointer-events: none;
+  -webkit-touch-callout: none !important; /* iOS Safari */
+  -webkit-user-select: none !important; /* Safari */
+  -khtml-user-select: none !important; /* Konqueror HTML */
+  -moz-user-select: none !important; /* Old versions of Firefox */
+  -ms-user-select: none !important; /* Internet Explorer/Edge */
+  user-select: none !important; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
 
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% #&%$#&%$#&%$# %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */

@@ -30,7 +30,9 @@ const CreateTopSection = ({newForm, handleChange}) => {
         </label>
       </div>
         <label htmlFor="description" id="create-description-wrapper" className="create-top-right-wrapper">
-          <textarea wrap="soft" required id="create-description" name="description" value={newForm.description} placeholder="Enter a description of your event..." onChange={handleChange} />
+          <textarea wrap="soft" required id="create-description" name="description" value={newForm.description} onChange={handleChange} />
+          <span id="placeholder">Enter a description of your event...</span>
+          <span id="word-count">0/300</span>
         </label>
     </div>
   )

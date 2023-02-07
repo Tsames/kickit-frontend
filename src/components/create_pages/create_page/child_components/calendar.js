@@ -139,6 +139,7 @@ const Calendar = ({newForm, setNewForm}) => {
 
   //Handler function - adds and remove days to and from form state of Attend.js
   const handleClick = (event) => {
+
     //Only if calendarSelected is not on the element already
     if (event.target.className === "calenda-item selectable") {
 
@@ -180,7 +181,7 @@ const Calendar = ({newForm, setNewForm}) => {
         <div id="monday" className="calendar-day-label calendar-item">Mon</div>
         <div id="tuesday" className="calendar-day-label calendar-item">Tue</div>
         <div id="wednesday" className="calendar-day-label calendar-item">Wed</div>
-        <div id="thursday" className="calendar-day-label calendar-item">Thu</div>
+        <div id="thursday" className="calendar-day-label calendar-item">Thur</div>
         <div id="friday" className="calendar-day-label calendar-item">Fri</div>
         <div id="satday" className="calendar-day-label calendar-item">Sat</div>
         {generateCalendar()}

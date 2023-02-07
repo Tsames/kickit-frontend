@@ -31,28 +31,16 @@
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Left Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
 
   #create-bottom-left-subsection {
-    border: solid;
-    border-color: greenyellow;
+    // border: solid;
+    // border-color: greenyellow;
 
+    height: 100%;
     width: 50%;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-
-    padding-bottom: max(8rem, 8vw);
-  }
-
-  #create-bottom-left-text-subsection {
-    border: solid;
-    border-color: red;
-
-    text-align: left;
-
-    display: flex;
-    flex-direction: column;
-    align-items: left;
+    position: relative;
   }
 
   #create-time-select-wrapper {
@@ -63,15 +51,18 @@
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: max(2rem, 2vw) max(2rem, 2vw);
+    gap: max(0.5rem, 1.5vw) max(0.5rem, 1.5vw);
     grid-template-rows: repeat(2, 1fr);
+
+    position: absolute;
+    bottom: 10vw;
   }
 
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Right Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
 
   #create-bottom-right-subsection {
-    border: solid;
-    border-color: greenyellow;
+    // border: solid;
+    // border-color: greenyellow;
 
     height: 100%;
     width: 50%;
@@ -80,6 +71,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -97,38 +89,122 @@
   }
 
   .button-selected {
-    color: v.$pallette_two !important;
-    background-color: #9b9da3 !important;
+    border: solid !important;
+    color: v.$pallette_three !important;
+    border-color: v.$pallette_three !important;
+    background-color: v.$pallette_six !important;
   }
 
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Left Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
+
+  //"Time and Date" text
   #create-time-select-header {
     color: v.$pallette_three;
     font-family: v.$font-two;
     font-size: calc(1rem + 2vw);
     pointer-events: none;
+
+    position: absolute;
+    bottom: 30vw;
+    left: 12.5vw;
   }
 
+  //"Select all that apply" text
   #create-time-select-secondary-text {
     color: v.$pallette_five;
     font-family: v.$font-one;
     font-size: calc(1rem + 0.3vw);
     pointer-events: none;
+
+    position: absolute;
+    bottom: 29vw;
+    left: 12.5vw;
   }
 
-  #create-person-graphic {
-    border: solid;
-    border-color: orange;
+  //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Right Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
 
-    width: 10vw;
-    height: 30vw;
+  #create-submit-text-bubble {
+    background-color: v.$pallette_six;
+    border-radius: 100% 100%;
+    padding: 1.5vw;
+
+    width: 30vw;
+    height: 8vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    bottom: 25vw;
+    z-index: 1;
+  }
+
+  #create-submit-text-bubble-tail {
+    background-image: url("./../../../../../public/assets/graphics/create_page/speech-bubble-tail.svg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-origin: content-box;
+    background-size: contain;
+
+    width: 3vw;
+    height: 3vw;
+
+    position: absolute;
+    bottom: 25.5vw;
+    left: 11vw;
+    z-index: 0;
+  }
+
+  #create-submit-text {
+    color: v.$pallette_three;
+    font-family: v.$font-two;
+    text-align: center;
+    font-style: normal;
+
+    font-size: max(0.5rem, 1.35vw);
+  }
+
+  #create-submit {
+    color: v.$pallette_two;
+    background-color: v.$pallette_one;
+    border: none;
+    border-radius: 5rem;
+
+    width: 15vw;
+    height: 5vw;
+    padding: 1vw;
+
+    font-family: v.$font-one;
+    font-weight: 700;
+    font-size: calc(1rem + 0.3vw);
+
+    position: absolute;
+    bottom: 12vw;
+    left: 25vw;
+  }
+
+  //Person Graphic
+  #create-person-graphic {
+    // border: solid;
+    // border-color: orange;
+
+    position: absolute;
+
+    width: max(5rem, 20vw);
+    height: max(5rem, 22vw);
 
     background-image: url("./../../../../../public/assets/graphics/create_page/create-person.svg");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom;
     background-origin: content-box;
-    background-size: cover;
+    background-size: contain;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 }

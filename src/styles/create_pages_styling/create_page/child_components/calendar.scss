@@ -43,8 +43,9 @@
 
   //Calendar Header
   #calendar-heading {
-    border: solid;
-    border-color: violet;
+    border-bottom: solid;
+    border-color: #BDBDBD;
+    border-width: 0.15rem;
 
     display: flex;
     flex-direction: row;
@@ -52,7 +53,9 @@
     align-items: center;
     color: rgba(1, 77, 89, 1);
 
-    width: 30%;
+    width: 40%;
+    font-size: calc(0.8rem + 1vw);
+    margin-bottom: max(4rem, 3vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -82,12 +85,12 @@
 
   //Grid Layout with 7 columns
   #calendar-body {
-    border: solid;
-    border-color: royalblue;
+    // border: solid;
+    // border-color: royalblue;
 
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    width: 80%;
+    width: 100%;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -117,25 +120,29 @@
 
   //Style for Individual Items in the grid
   div.calendar-item {
-    text-align: center;
-    align-items: center;
-    margin: 0.1rem;
-    padding: 0.1rem;
+    // border: solid;
+    // border-color: red;
 
-    font-size: 2vw;
+    width: 5vw;
+    height: 5vw;
+    border-radius: 100% 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
+    font-size: calc(1rem + 1vw);
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   //Style for Selected Items in the grid
   .calendar-selected {
-    background-color: v.$calendar-selected-background !important;
-    border-color: v.$calendar-selected-border !important;
-    color: v.$calendar-selected-color !important;
-    border-style: solid !important;
-    border-radius: 0.2em !important;
-    border-width: 0em !important;
+    background-color: #9AFF9E !important;
+    color: v.$pallette_two !important;
   }
 
   .calendar-day-label {
@@ -143,11 +150,11 @@
   }
 
   .selectable {
+    color: #000000;
+
     &:hover {
-      color: v.$calendar-hover;
-      background-color: v.$calendar-hover-background;
+      background-color: #CEFFE5;
       border-style: solid;
-      border-radius: 0.2em;
       border-width: 0em;
     }
   }

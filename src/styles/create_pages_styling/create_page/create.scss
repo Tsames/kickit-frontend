@@ -15,7 +15,7 @@
 
   max-width: 100%;
   
-  background: linear-gradient(180deg, rgb(65, 115, 195) 0%, hsla(187, 47%, 52%, 1) 55%, hsla(0, 0%, 100%, 1) 85%);
+  background: linear-gradient(180deg, rgb(65, 115, 195) 0%, hsla(187, 47%, 52%, 1) 30%, hsla(0, 0%, 100%, 1) 50%);
   padding-top: max(20rem, 20vw);
 
   //Mobile Sizing
@@ -85,10 +85,10 @@
 
   //Middle Section
   #create-middle-section {
-    border: solid;
-    border-color: pink;
+    // border: solid;
+    // border-color: pink;
 
-    width: 100%;
+    width: 80%;
     padding-bottom: 10rem;
     // height: 60rem;
 
@@ -122,11 +122,12 @@
 
   //Bottom Section
   #create-bottom-section {
-    border: solid;
-    border-color: gold;
+    // border: solid;
+    // border-color: gold;
+    padding: 0 0 0 0;
 
     width: 100%;
-    // height: 35rem;
+    height: max(25rem, 40vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {

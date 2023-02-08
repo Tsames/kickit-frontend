@@ -1,6 +1,7 @@
 //Dependencies
 import { React, useState } from 'react';
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
+import { motion } from 'framer-motion';
 
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/calendar.scss';
@@ -20,6 +21,27 @@ const Calendar = ({newForm, setNewForm}) => {
   //The Page UseState keeps track of the month that the calendar should display
   const now = new Date(Date.now()); cleanDate(now);
   const [page, setPage] = useState(now);
+
+  console.log(`Now is ${now.getMonth()}`);
+  console.log(`Page is ${page.getMonth()}`);
+  console.log(now.getMonth() !== page.getMonth());
+
+  /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
+
+  //Hover
+  const calendarItemHover = {
+    scale: 1.05,
+    backgroundColor: "#CEFFE5",
+    transition: {
+      duration: 0.2,
+    }
+  }
+
+  //Tap
+  const calendarItemTap = {
+    scale: 0.9,
+    backgroundColor: "#9AFF9E",
+  }
 
   /* ------------------------- Helper Functions ------------------------- */
 
@@ -82,12 +104,14 @@ const Calendar = ({newForm, setNewForm}) => {
       //If tracker is on the same day of the week as the index add a non-dummy div and increment tracker
       if (todayIs === weekdays[i]) {
         content.push(
-          <div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendar-item selectable calendar-selected" : "calendar-item selectable"}
+          <motion.div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendar-item selectable calendar-selected" : "calendar-item selectable"}
            key={`calendar${tracker.getDate()}${weekdays[i]}`}
            data-time={tracker.getTime()} 
-           onClick={handleClick}>
-            {tracker.getDate()}
-          </div>
+           onClick={handleClick}
+           whileHover={calendarItemHover}
+           whileTap={calendarItemTap}>
+            <p className="no-select">{tracker.getDate()}</p>
+          </motion.div>
         )
 
         //If the tracker loops around on days add 1 to its month
@@ -100,7 +124,6 @@ const Calendar = ({newForm, setNewForm}) => {
       } else {
         content.push(
           <div className="calendar-item Invisible" key={`calendar${tracker.getDate()}${weekdays[i]}`}>
-            0
           </div>
         )
       }
@@ -141,7 +164,7 @@ const Calendar = ({newForm, setNewForm}) => {
   const handleClick = (event) => {
 
     //Only if calendarSelected is not on the element already
-    if (event.target.className === "calenda-item selectable") {
+    if (event.target.className === "calendar-item selectable") {
 
       //Add css class
       event.target.classList.add("calendar-selected");
@@ -166,24 +189,37 @@ const Calendar = ({newForm, setNewForm}) => {
       setNewForm({ ...newForm, "days": newDays });
     }
   }
+  /* ------------------------------------------ Conditional JSX ------------------------------------------ */
+
+  const showPrevMonth = (show) => {
+    if(show) {
+      return(
+        <BiLeftArrow id="calendar-prev-month" className="calendar-heading-button" onClick={handlePrevMonth}></BiLeftArrow>
+      )
+    } else {
+      return(
+        <BiLeftArrow id="calendar-prev-month" className="calendar-heading-button Invisible" onClick={handlePrevMonth}></BiLeftArrow>
+      )
+    }
+  }
 
   /* ------------------------- Returning JSX ------------------------------ */
 
   return (
     <div id="calendar-shell">
       <div id="calendar-heading">
-        <BiLeftArrow id="calendar-prev-month" className="calendar-heading-button" onClick={handlePrevMonth}>{'<'}</BiLeftArrow>
+        {page.getMonth() !== now.getMonth() ? showPrevMonth(true) : showPrevMonth()}
         <h4>{`${findMonth(page)} ${page.getFullYear()}`}</h4>
-        <BiRightArrow id="calendar-next-month" className="calendar-heading-button" onClick={handleNextMonth}>{'>'}</BiRightArrow>
+        <BiRightArrow id="calendar-next-month" className="calendar-heading-button" onClick={handleNextMonth}></BiRightArrow>
       </div>
       <div id="calendar-body">
-        <div id="sunday" className="calendar-day-label calendar-item">Sun</div>
-        <div id="monday" className="calendar-day-label calendar-item">Mon</div>
-        <div id="tuesday" className="calendar-day-label calendar-item">Tue</div>
-        <div id="wednesday" className="calendar-day-label calendar-item">Wed</div>
-        <div id="thursday" className="calendar-day-label calendar-item">Thur</div>
-        <div id="friday" className="calendar-day-label calendar-item">Fri</div>
-        <div id="satday" className="calendar-day-label calendar-item">Sat</div>
+        <div id="sunday" className="calendar-day-label calendar-item no-select">Sun</div>
+        <div id="monday" className="calendar-day-label calendar-item no-select">Mon</div>
+        <div id="tuesday" className="calendar-day-label calendar-item no-select">Tue</div>
+        <div id="wednesday" className="calendar-day-label calendar-item no-select">Wed</div>
+        <div id="thursday" className="calendar-day-label calendar-item no-select">Thur</div>
+        <div id="friday" className="calendar-day-label calendar-item no-select">Fri</div>
+        <div id="satday" className="calendar-day-label calendar-item no-select">Sat</div>
         {generateCalendar()}
       </div>
     </div>

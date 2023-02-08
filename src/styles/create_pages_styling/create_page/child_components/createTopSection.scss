@@ -32,12 +32,11 @@
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   #create-top-left-subsection {
-    border: solid;
-    border-color: red;
+    // border: solid;
+    // border-color: red;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
 
     width: 45vw;
@@ -63,8 +62,6 @@
 
   .create-top-left-wrapper {
     width: 100%;
-    overflow-y: hidden;
-    text-overflow: ellipsis;
   }
 
   .create-top-left-field {
@@ -74,14 +71,6 @@
     font-family: v.$font-two;
     text-align: left;
     text-overflow: ellipsis;
-    overflow-y: hidden;
-
-    width: 100%;
-    
-    &::placeholder {
-      opacity: 80%;
-      font-family: v.$font-two;
-    }
 
     &::selection {
       background-color: rgb(65, 115, 195);
@@ -98,20 +87,83 @@
 
   //Event Title
   label#create-title-wrapper {
+    // border: solid;
+    // border-color: red;
+
     width: 100%;
-    overflow-y: hidden;
+    position: relative;
+
+    margin-bottom: max(5rem, 5vw);
 
     input {
       font-size: calc(1rem + 3.5vw);
+      width: 100%;
+      background: linear-gradient(360deg, v.$pallette_two, v.$pallette_two) left bottom/0% 5% no-repeat;
+      transition: background-size 0.3s ease;
+    }
+
+    span{
+      position: absolute;
+      top: 12%;
+      left: 45%;
+
+      color: v.$pallette_two;
+      font-family: v.$font-two;
+      text-align: left;
+      font-size: calc(1rem + 3.5vw);
+
+      transition: top 0.3s ease, left 0.3s ease,font-size 0.3s ease;
+    }
+
+    input:valid + .placeholder,
+    input:focus + .placeholder {
+      top: -2.3vw;
+      left: 0.5vw;
+      font-size: calc(0.5rem + 1.5vw);
+    }
+
+    input:focus {
+      background-size: 100% 5%;
     }
   }
 
   //Event Location
   label#create-location-wrapper {
+    // border: solid;
+    // border-color: orange;
+
     width: 100%;
+    position: relative;
 
     input {
       font-size: calc(1rem + 2.5vw);
+      width: 100%;
+      background: linear-gradient(360deg, v.$pallette_two, v.$pallette_two) left bottom/0% 5% no-repeat;
+      transition: background-size 0.3s ease;
+    }
+
+    span{
+      position: absolute;
+      top: 12%;
+      left: 41%;
+
+      color: v.$pallette_two;
+      font-family: v.$font-two;
+      text-align: left;
+      font-size: calc(1rem + 2.5vw);
+
+      transition: top 0.3s ease, left 0.3s ease, font-size 0.3s ease;
+    }
+
+    input:valid + .placeholder,
+    input:focus + .placeholder {
+      top: -2.3vw;
+      left: 0.5vw;
+      font-size: calc(0.5rem + 1.5vw);
+    }
+
+    input:focus {
+      background-size: 100% 5%;
     }
   }
 
@@ -126,23 +178,12 @@
       color: rgba(0, 0, 0, 0.6);
       opacity: 80%;
 
-      &::placeholder {
-        opacity: 30%;
-        font-family: v.$font-two;
-      }
-
       &::selection {
         background-color: rgb(65, 115, 195);
       }
 
       &:focus {
         outline: none;
-
-        span#placeholder {
-          opacity: 0 !important;
-          z-index: -1 !important;
-          pointer-events: none !important;
-        }
       }
 
       border-radius: 0.8vw;
@@ -152,7 +193,6 @@
       height: 15vw;
 
       font-size: calc(1rem + 0.4vw);
-      z-index: 0;
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
@@ -180,19 +220,21 @@
       }
     }
 
-    span#placeholder {
+    span {
       font-family: v.$font-two;
       font-size: calc(1rem + 0.4vw);
       opacity: 30%;
 
       position: absolute;
-      z-index: 1;
       left: 2vw;
       top: 1vw;
+
+      transition: opacity 0.3s ease;
     }
 
-    span#word-count {
-
+    textarea:valid + .placeholder,
+    textarea:focus + .placeholder {
+      opacity: 0;
     }
   }
 }

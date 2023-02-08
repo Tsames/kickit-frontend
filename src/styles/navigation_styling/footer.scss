@@ -192,39 +192,28 @@
     -webkit-text-stroke-color: #014D59;
     // border: 1.75723px solid #014D59;
 
+    font-weight: 900;
+    font-size: calc(1rem + 2vw);
+    margin-left: 5rem;
+
     //Mobile Sizing
     @include d.for-phone-only {
-      font-weight: 900;
-      font-size: 42px;
-      margin-left: 5rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      font-weight: 900;
-      font-size: 42px;
-      margin-left: 5rem;
     }
 
     //Tablet Landscape Sizing & Positioning
     @include d.for-tablet-landscape-up {
-      font-weight: 900;
-      font-size: 42px;
-      margin-left: 5rem;
     }
 
     //Desktop Sizing
     @include d.for-desktop-up {
-      font-weight: 900;
-      font-size: 42px;
-      margin-left: 5rem;
     }
 
     //Large Desktop Sizing & Positioning
     @include d.for-big-desktop-up {
-      font-weight: 900;
-      font-size: 42px;
-      margin-left: 5rem;
     }
   }
 

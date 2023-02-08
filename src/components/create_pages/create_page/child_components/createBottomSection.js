@@ -14,7 +14,7 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit}) => {
   //Hover
   const timeButtomHover = {
     scale: 1.05,
-    backgroundColor: "#d0d1d6",
+    backgroundColor: "#BEC9FF",
     transition: {
       duration: 0.2,
     }

@@ -77,10 +77,7 @@ const Footer = () => {
         <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAboutUs" className="footer-middle-link" to="/about/who">About Us</Link></motion.p>
       </div>
       <div id="footer-right">
-      <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiFacebook></FiFacebook></Link></motion.p>
-      <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiInstagram></FiInstagram></Link></motion.p>
-      <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiYoutube></FiYoutube></Link></motion.p>
-      <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="" className="footer-right-link" to="/about/who"><FiLinkedin></FiLinkedin></Link></motion.p>
+      
       </div>
     </div>
   )

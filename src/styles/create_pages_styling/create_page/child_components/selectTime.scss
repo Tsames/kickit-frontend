@@ -123,7 +123,7 @@
   }
 
   .selected {
-    border-width: max(0.1rem, 0.1vw);
+    border-width: max(0.1rem, 0.1vw) !important;
     color: #014D59 !important;
     background-color: "#D7FFB7" !important;
     border-color: #014D59 !important;

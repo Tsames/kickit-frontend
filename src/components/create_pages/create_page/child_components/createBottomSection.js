@@ -33,7 +33,7 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit, toggle, setToggle
       transition: { type: "spring", stiffness: 400, damping: 50 }
     },
     active: {
-      y: -100,
+      y: "-12vw",
       transition: { type: "spring", stiffness: 400, damping: 50, delay: 0.3 }
     }
   }
@@ -49,7 +49,7 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit, toggle, setToggle
 
   const submitButtonHover = {
     scale: 1.3,
-    border: "solid",
+    borderWidth: "calc(1rem, 1.5vw)",
     borderColor: "#818DFF",
     transition: {
       duration: 0.2,
@@ -122,7 +122,7 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit, toggle, setToggle
       </div>
       <div id="create-bottom-right-subsection">
         <div id="create-submit-text-bubble">
-          <p id="create-submit-text" className="no-select">Once you’ve selected your favored time and date, click done to generate your event!</p>
+          <p id="create-submit-text" className="no-select">Once you’ve selected your favored time and up to 5 days, click done to generate your event!</p>
         </div>
         <div id="create-submit-text-bubble-tail"></div>
         <div id="create-person-graphic"></div>

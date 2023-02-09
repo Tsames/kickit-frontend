@@ -173,7 +173,8 @@
   #create-submit {
     color: v.$pallette_two;
     background-color: v.$pallette_one;
-    border: none;
+    border: solid;
+    border-radius: 0;
     border-radius: 5rem;
 
     width: 15vw;

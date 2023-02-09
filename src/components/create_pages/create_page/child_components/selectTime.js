@@ -44,6 +44,7 @@ const SelectTime = ({ id, toggle, text }) => {
   const optionTap = {
     scale: 0.9,
     color: "#014D59",
+    borderWidth: "max(0.1rem, 0.1vw)",
     transition: {
         duration: 0.3
     }
@@ -68,8 +69,8 @@ const SelectTime = ({ id, toggle, text }) => {
   return (
     <motion.div required className="select-time-wrapper" id={id} variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>
         <motion.nav>
-            <p>{text}</p>
-            <p>{time.number} {time.tod}</p>
+            <p className="no-select">{text}</p>
+            <p className="no-select">{time.number} {time.tod}</p>
         </motion.nav>
         <motion.div className="select-time-options">
             <motion.ul className="select-time-list-number">

@@ -22,10 +22,6 @@ const Calendar = ({newForm, setNewForm}) => {
   const now = new Date(Date.now()); cleanDate(now);
   const [page, setPage] = useState(now);
 
-  console.log(`Now is ${now.getMonth()}`);
-  console.log(`Page is ${page.getMonth()}`);
-  console.log(now.getMonth() !== page.getMonth());
-
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
   //Hover

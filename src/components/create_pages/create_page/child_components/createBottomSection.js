@@ -2,14 +2,41 @@
 import { React } from 'react';
 import { motion } from 'framer-motion';
 
+//Import Components
+import SelectTime from './selectTime'
+
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/createBottomSection.scss';
 
-const CreateBottomSection = ({ handleTimeSelect, handleSubmit}) => {
+const CreateBottomSection = ({ handleTimeSelect, handleSubmit, toggle, setToggle}) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
+
+
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
+
+  const parentVariant = {
+    inactive: {
+      opacity: 1,
+      transition: { duration: 0.3, delay: 0.3 }
+    },
+    active: {
+      opacity: 0,
+      transition: { duration: 0.3 }
+    }
+  }
+
+  const childVariant = {
+    inactive: {
+      y: 0,
+      transition: { type: "spring", stiffness: 400, damping: 50 }
+    },
+    active: {
+      y: -100,
+      transition: { type: "spring", stiffness: 400, damping: 50, delay: 0.3 }
+    }
+  }
 
   //Hover
   const timeButtomHover = {
@@ -32,9 +59,9 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit}) => {
   //Tap
   const timeButtonTap = {
     scale: 0.9,
-    border: "solid",
-    borderColor: "#014D59",
-    backgroundColor: "#D7FFB7;",
+    color: "#014D59",
+    borderWidth: "0.2vw",
+    backgroundColor: "#D7FFB7",
     transition: {
       duration: 0.3
     }
@@ -46,6 +73,7 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit}) => {
   }
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
+
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
@@ -61,8 +89,17 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit}) => {
     //Add class to selected button
     event.target.classList.add("button-selected");
 
+    if (toggle) {
+      setToggle(false);
+    }
+
     //Send data to state in create.js
-    handleTimeSelect(event);
+    // handleTimeSelect(event);
+  }
+
+  const handleCustomTime = (event) => {
+    handleButton(event);
+    setToggle(true);
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
@@ -72,14 +109,16 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit}) => {
   return (
     <div id="create-bottom-section">
       <div id="create-bottom-left-subsection">
-        <h3 id="create-time-select-header">Time & Date</h3>
-        <p id="create-time-select-secondary-text">Select all that apply</p>
-        <div id="create-time-select-wrapper">
+        <motion.h3 id="create-time-select-header" variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>Time & Date</motion.h3>
+        <motion.p id="create-time-select-secondary-text" variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>Pick a preset, or make your own custom range.</motion.p>
+        <motion.div id="create-time-select-wrapper" variants={childVariant} initial={false} animate={toggle ? "active" : "inactive"}>
           <motion.button data-early="11" data-late="16" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handleButton}>11am - 4pm</motion.button>
           <motion.button data-early="16" data-late="21" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handleButton}>4pm - 9pm</motion.button>
           <motion.button data-early="21" data-late="2" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handleButton}>9pm - 2am</motion.button>
-          <motion.button data-early="1" data-late="24" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap}>Custom</motion.button>
-        </div>
+          <motion.button data-early="1" data-late="24" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handleCustomTime}>Custom</motion.button>
+          <SelectTime id="select-time-early" toggle={toggle} text="Start"></SelectTime>
+          <SelectTime id="select-time-late" toggle={toggle} text="End"></SelectTime>
+        </motion.div>
       </div>
       <div id="create-bottom-right-subsection">
         <div id="create-submit-text-bubble">

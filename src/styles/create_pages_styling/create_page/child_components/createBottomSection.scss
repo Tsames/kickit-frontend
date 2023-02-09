@@ -85,11 +85,13 @@
     width: 12vw;
 
     border-radius: 0.3vw;
-    border: none;
+    border: solid;
+    border-color: #014D59;
+    border-width: 0;
   }
 
   .button-selected {
-    border: solid !important;
+    border-width: 0.2vw !important;
     color: v.$pallette_three !important;
     border-color: v.$pallette_three !important;
     background-color: v.$pallette_six !important;
@@ -108,7 +110,7 @@
     pointer-events: none;
 
     position: absolute;
-    bottom: 30vw;
+    bottom: 30.5vw;
     left: 12.5vw;
   }
 
@@ -120,7 +122,7 @@
     pointer-events: none;
 
     position: absolute;
-    bottom: 29vw;
+    bottom: 29.5vw;
     left: 12.5vw;
   }
 

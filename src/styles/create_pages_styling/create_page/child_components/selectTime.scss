@@ -1,0 +1,134 @@
+//Imports
+@use './../../../variables' as v;
+@use './../../../mixins' as m;
+@use './../../../device' as d;
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+.select-time-wrapper {
+
+  border: none;
+  border-radius: 5% 5%;
+
+  background-color: v.$invisible;
+  font-family: v.$font-two;
+  font-size: calc(1rem + 0.3vw);
+
+  text-align: center;
+
+  width: 12vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  //Mobile Sizing
+  @include d.for-phone-only {}
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {}
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {}
+
+  //Desktop Sizing
+  @include d.for-desktop-up {}
+
+  //Large Desktop Sizing & Positioning
+  @include d.for-big-desktop-up {}
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+    nav {
+        width: calc(100% - 25%);
+
+        background-color: #E9ECFF;
+        border-radius: 5% 5%;
+        text-align: left;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        padding-left: 10%;
+        padding-right: 15%;
+        margin-bottom: 1vw;
+    }
+
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Selection Wrapper
+  .select-time-options {
+    width: 100%;
+    height: fit-content;
+
+    background-color: #E9ECFF;
+    border-radius: 5% 5%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+  }
+
+  //Number Wrapper
+  .select-time-list-number {
+    // border: solid;
+    // border-color: red;
+    padding-left: 1vw;
+    list-style-type: none;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: max(0.3rem, 0.5vw);
+    column-gap: max(0.3rem, 0.5vw);
+  }
+
+  //TOD Wrapper
+  .select-time-list-tod {
+    // border: solid;
+    // border-color: yellow;
+    padding-left: 0;
+
+    height: 80%;
+    flex: 1;
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+  }
+
+  .select-time-option {
+    list-style-type: none;
+    border: solid;
+    border-width: 0;
+    border-radius: 10% 10%;
+    padding: max(0.1rem, 0.1vw);
+  }
+
+  .select-time-option-tod {
+    list-style-type: none;
+    border: solid;
+    border-width: 0;
+    border-radius: 10% 10%;
+    padding: max(0.3rem, 0.3vw);
+  }
+
+  .selected {
+    border-width: max(0.1rem, 0.1vw);
+    color: #014D59 !important;
+    background-color: "#D7FFB7" !important;
+    border-color: #014D59 !important;
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+}

@@ -1,18 +1,33 @@
 //Dependencies
-import { React, useState } from 'react';
+import React = require("react");
+import { useState } from "react";
 import { motion } from 'framer-motion';
 
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/selectTime.scss';
 
-const SelectTime = ({ id, toggle, text }) => {
+//Props Interface
+interface Props {
+  elementId: string;
+  toggle: boolean;
+  text: string;
+}
+
+const SelectTime = ({ elementId, toggle, text } : Props) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
-    const [time, setTime] = useState({
-        number: 1,
-        tod: "AM"
-    });
+  //TypeScript Declaration of state
+  interface Time {
+    number: Number;
+    tod: 'AM' | 'PM';
+  }
+
+  //State
+  const [time, setTime] = useState<Time>({
+    number: 1,
+    tod: 'AM'
+  });
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -53,11 +68,11 @@ const SelectTime = ({ id, toggle, text }) => {
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
-  const handleSetNumber = (event) => {
+  const handleSetNumber = (event : any) :void => {
     setTime({...time, "number": Number(event.target.dataset.value)});
   }
 
-  const handleSetTod = (event) => {
+  const handleSetTod = (event : any) :void => {
     setTime({...time, "tod": event.target.dataset.value});
   }
 
@@ -66,10 +81,10 @@ const SelectTime = ({ id, toggle, text }) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <motion.div required className="select-time-wrapper" id={id} variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>
+    <motion.div className="select-time-wrapper" id={elementId} variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>
         <motion.nav>
             <p>{text}</p>
-            <p>{time.number} {time.tod}</p>
+            <p>{`${time.number} ${time.tod}`}</p>
         </motion.nav>
         <motion.div className="select-time-options">
             <motion.ul className="select-time-list-number">

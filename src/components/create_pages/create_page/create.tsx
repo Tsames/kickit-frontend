@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 //Import Components
 import CreateTopSection from './child_components/createTopSection';
 import Calendar from './child_components/calendar';
-import CreateBottomSection from './child_components/createBottomSection';
+import CreateBottomSection from './child_components/createBottomSection.tsx';
 
 //Styling
 import '../../../styles/create_pages_styling/create_page/create.scss';
@@ -19,9 +19,6 @@ const Create = () => {
 
   const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
-
-  //State that stores toggle data for custom time and loading screen
-  const [toggle, setToggle] = useState(false);
 
   //State that stores input
   const [newForm, setNewForm] = useState({
@@ -86,7 +83,7 @@ const Create = () => {
         <div id="create-middle-section">
           <Calendar newForm={newForm} setNewForm={setNewForm} />
         </div>
-        <CreateBottomSection handleTimeSelect={handleTimeSelect} handleSubmit={handleSubmit} toggle={toggle} setToggle={setToggle} />
+        <CreateBottomSection handleTimeSelect={handleTimeSelect} handleSubmit={handleSubmit} />
       </>
     )
   }

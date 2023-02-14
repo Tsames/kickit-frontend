@@ -109,5 +109,3 @@ const SelectTime = ({ elementId, toggle, text } : Props) => {
     </motion.div>
   )
 }
-
-export default SelectTime;

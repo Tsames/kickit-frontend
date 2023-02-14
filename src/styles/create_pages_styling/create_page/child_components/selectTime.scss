@@ -107,23 +107,23 @@
   }
 
   .select-time-option {
-    list-style-type: none;
-    border: solid;
-    border-width: 0;
-    border-radius: 10% 10%;
     padding: max(0.1rem, 0.1vw);
   }
 
   .select-time-option-tod {
+    padding: max(0.3rem, 0.3vw);
+  }
+
+  .select-time-option, .select-time-option-tod {
     list-style-type: none;
     border: solid;
     border-width: 0;
     border-radius: 10% 10%;
-    padding: max(0.3rem, 0.3vw);
+    cursor: default;
   }
 
   .selected {
-    border-width: max(0.1rem, 0.1vw);
+    border-width: max(0.1rem, 0.1vw) !important;
     color: #014D59 !important;
     background-color: "#D7FFB7" !important;
     border-color: #014D59 !important;

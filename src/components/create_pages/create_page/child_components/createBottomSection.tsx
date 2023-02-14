@@ -139,5 +139,3 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit }: Props) => {
     </div>
   )
 }
-
-export default CreateBottomSection;

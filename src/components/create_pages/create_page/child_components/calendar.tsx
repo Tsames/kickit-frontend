@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/calendar.scss';
 
-const Calendar = ({newForm, setNewForm}) => {
-  
+const Calendar = ({ newForm, setNewForm }) => {
+
   /* ------------------------- Component Wide Variables & State ------------------------- */
 
   //Helper function (variable now) - sets the hours, minutes, seconds, and miliseconds to 0
@@ -25,19 +25,39 @@ const Calendar = ({newForm, setNewForm}) => {
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
   //Hover
-  const calendarItemHover = {
-    scale: 1.05,
+  const monthHover = {
+    scale: 1.3,
+    transition: {
+      duration: 0.2,
+    }
+  }
+
+  const selectableHover = {
+    scale: 1.25,
     backgroundColor: "#CEFFE5",
     transition: {
       duration: 0.2,
     }
   }
 
+  const unselectableHover = {
+    scale: 1.25,
+    transition: {
+      duration: 0.2,
+    }
+  }
+
   //Tap
-  const calendarItemTap = {
+  const monthTap = {
+    scale: 0.8,
+  }
+
+  const selectableTap = {
     scale: 0.9,
     backgroundColor: "#9AFF9E",
   }
+
+  const unselectableTap = {};
 
   /* ------------------------- Helper Functions ------------------------- */
 
@@ -62,16 +82,16 @@ const Calendar = ({newForm, setNewForm}) => {
       return index
     } else if (arr.length === 1 && arr[0] !== element) {
       return -1
-    // --- Calls on Subsections of the Array ---
+      // --- Calls on Subsections of the Array ---
 
-    //Call if element is greater than pivot
+      //Call if element is greater than pivot
     } else if (arr[pivot] < element) {
       const newArr = arr.slice(pivot + 1, arr.length)
       pivot = (newArr.length - 1) / 2 | 0;
       index += pivot + 1
       return checkDays(newArr, element, pivot, index)
 
-    //Call if element is less than pivot
+      //Call if element is less than pivot
     } else {
       const newArr = arr.slice(0, pivot);
       pivot = (newArr.length - 1) / 2 | 0;
@@ -86,47 +106,80 @@ const Calendar = ({newForm, setNewForm}) => {
   const generateCalendar = () => {
 
     //Create helper variables and return array
-    let i = 0;
-    const content = []; 
+    const content = [];
+
     const tracker = new Date(page);
+    tracker.setDate(1);
+    let week = 1;
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-    //Loop Over all remaining days of the month
-    while (tracker.getDate() >= page.getDate() && tracker.getMonth() === page.getMonth()) {
+    //Loops as long as the tracker is on the right month
+    while (tracker.getMonth() === page.getMonth()) {
 
-      //Determine what day of the week the tracker is on
-      const todayIs = findWeekDay(tracker);
+      const cells = [];
 
-      //If tracker is on the same day of the week as the index add a non-dummy div and increment tracker
-      if (todayIs === weekdays[i]) {
-        content.push(
-          <motion.div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendar-item selectable calendar-selected" : "calendar-item selectable"}
-           key={`calendar${tracker.getDate()}${weekdays[i]}`}
-           data-time={tracker.getTime()} 
-           onClick={handleClick}
-           whileHover={calendarItemHover}
-           whileTap={calendarItemTap}>
-            <p className="no-select">{tracker.getDate()}</p>
-          </motion.div>
-        )
+      //Loop over a week
+      for (let i = 0; i <= 6; i++) {
 
-        //If the tracker loops around on days add 1 to its month
-        tracker.setDate(tracker.getDate() + 1);
-        if (tracker.getDate() === 1) {
-          tracker.setMonth(tracker.getMonth() + 1)
+        //Determine what day of the week the tracker is on
+        const todayIs = findWeekDay(tracker);
+
+        //If tracker is on the same day of the week as the index.
+        if (todayIs === weekdays[i] && tracker.getMonth() === page.getMonth()) {
+
+          //If tracker is on a day in the past
+          if (tracker.getDate() < page.getDate()) {
+
+            cells.push(
+              <motion.div className="calendar-item unselectable"
+                key={`calendar${tracker.getDate()}${weekdays[i]}`}
+                data-time={tracker.getTime()}
+                whileHover={unselectableHover}
+                whileTap={unselectableTap}>
+                <p className="no-select">{tracker.getDate()}</p>
+              </motion.div>
+            )
+
+            //Else, the tracker is either on today or a day in the future this month
+          } else {
+            cells.push(
+              <motion.div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendar-item selectable calendar-selected" : "calendar-item selectable"}
+                key={`calendar${tracker.getDate()}${weekdays[i]}`}
+                data-time={tracker.getTime()}
+                onClick={handleClick}
+                whileHover={selectableHover}
+                whileTap={selectableTap}>
+                <p className="no-select">{tracker.getDate()}</p>
+              </motion.div>
+            )
+          }
+
+          //If the tracker loops around on days add 1 to its month
+          tracker.setDate(tracker.getDate() + 1);
+          if (tracker.getDate() === 1) {
+            tracker.setMonth(tracker.getMonth() + 1)
+          }
         }
 
-      //Else the tracker must not be on the same day of the week as the index so add a dummy div  
-      } else {
-        content.push(
-          <div className="calendar-item Invisible" key={`calendar${tracker.getDate()}${weekdays[i]}`}>
-          </div>
-        )
+        //Else the tracker must not be on the same day of the week as the index so add a dummy div
+        else {
+          cells.push(
+            <div className="calendar-item invisible no-select" key={`calendar${tracker.getDate()}${weekdays[i]}`}>
+            </div>
+          )
+        }
       }
 
-      //Increment our index and reset if 6
-      i < 6 ? i++ : i = 0
+
+      content.push(
+        <motion.div className="calendar-row" key={`week${week}`} initial={{opacity: 0}} animate={{ opacity: 1}} transition={{duration: 0.6, delay: (week * 0.6)}}>
+          {cells}
+        </motion.div>
+      )
+
+      week ++;
     }
+
     return content
   }
 
@@ -134,29 +187,36 @@ const Calendar = ({newForm, setNewForm}) => {
 
   //Handler function - increments the month of calendar
   const handleNextMonth = () => {
+
     const newPage = new Date(page);
     newPage.setMonth(newPage.getMonth() + 1)
     newPage.setDate(1);
     setPage(newPage);
+
   }
 
   //Handler function - decrements the month of calendar
   const handlePrevMonth = () => {
+
     //Only go to the previous month if the previous month is not in the past
     if (page.getMonth() !== now.getMonth() || page.getFullYear() > now.getFullYear()) {
+
       const newPage = new Date(page);
       newPage.setMonth(newPage.getMonth() - 1)
+
       //If going back to the current month set the earliest available day to today
       if (newPage.getMonth() !== now.getMonth() || newPage.getFullYear() !== now.getFullYear()) {
         newPage.setDate(1);
       } else {
         newPage.setDate(now.getDate());
       }
+
       setPage(newPage);
+
     }
   }
 
-  //Handler function - adds and remove days to and from form state of Attend.js
+  //Handler function - adds and remove days to and from form state of create.js
   const handleClick = (event) => {
 
     //Only if calendarSelected is not on the element already
@@ -168,9 +228,9 @@ const Calendar = ({newForm, setNewForm}) => {
       //Add element to days array
       const newDays = [...newForm.days, Number(event.target.dataset.time)];
       newDays.sort(function (a, b) { return a - b });
-      setNewForm({ ...newForm,  "days": newDays });
+      setNewForm({ ...newForm, "days": newDays });
 
-    //Otherwise if the element has the calendarSelected class
+      //Otherwise if the element has the calendarSelected class
     } else {
 
       //Remove the css class
@@ -188,13 +248,13 @@ const Calendar = ({newForm, setNewForm}) => {
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
   const showPrevMonth = (show) => {
-    if(show) {
-      return(
+    if (show) {
+      return (
         <BiLeftArrow id="calendar-prev-month" className="calendar-heading-button" onClick={handlePrevMonth}></BiLeftArrow>
       )
     } else {
-      return(
-        <BiLeftArrow id="calendar-prev-month" className="calendar-heading-button Invisible" onClick={handlePrevMonth}></BiLeftArrow>
+      return (
+        <BiLeftArrow id="calendar-prev-month" className="calendar-heading-button invisible" onClick={handlePrevMonth}></BiLeftArrow>
       )
     }
   }
@@ -202,23 +262,29 @@ const Calendar = ({newForm, setNewForm}) => {
   /* ------------------------- Returning JSX ------------------------------ */
 
   return (
-    <div id="calendar-shell">
+    <motion.div id="calendar-shell">
       <div id="calendar-heading">
-        {page.getMonth() !== now.getMonth() ? showPrevMonth(true) : showPrevMonth()}
-        <h4>{`${findMonth(page)} ${page.getFullYear()}`}</h4>
-        <BiRightArrow id="calendar-next-month" className="calendar-heading-button" onClick={handleNextMonth}></BiRightArrow>
+        <motion.div whileHover={monthHover} whileTap={monthTap}>
+          <BiLeftArrow id="calendar-prev-month" className={ page.getMonth() === now.getMonth() ? "calendar-heading-button no-select invisible" : "calendar-heading-button" } onClick={handlePrevMonth}></BiLeftArrow>
+        </motion.div>
+        <h4 className="no-select">{`${findMonth(page)} ${page.getFullYear()}`}</h4>
+        <motion.div whileHover={monthHover} whileTap={monthTap}>
+          <BiRightArrow id="calendar-next-month" className="calendar-heading-button" onClick={handleNextMonth}></BiRightArrow>
+        </motion.div>
       </div>
       <div id="calendar-body">
-        <div id="sunday" className="calendar-day-label calendar-item no-select">Sun</div>
-        <div id="monday" className="calendar-day-label calendar-item no-select">Mon</div>
-        <div id="tuesday" className="calendar-day-label calendar-item no-select">Tue</div>
-        <div id="wednesday" className="calendar-day-label calendar-item no-select">Wed</div>
-        <div id="thursday" className="calendar-day-label calendar-item no-select">Thur</div>
-        <div id="friday" className="calendar-day-label calendar-item no-select">Fri</div>
-        <div id="satday" className="calendar-day-label calendar-item no-select">Sat</div>
+        <div className="calendar-label-row">
+          <div id="sunday" className="calendar-label calendar-item no-select">Sun</div>
+          <div id="monday" className="calendar-label calendar-item no-select">Mon</div>
+          <div id="tuesday" className="calendar-label calendar-item no-select">Tue</div>
+          <div id="wednesday" className="calendar-label calendar-item no-select">Wed</div>
+          <div id="thursday" className="calendar-label calendar-item no-select">Thur</div>
+          <div id="friday" className="calendar-label calendar-item no-select">Fri</div>
+          <div id="satday" className="calendar-label calendar-item no-select">Sat</div>
+        </div>
         {generateCalendar()}
       </div>
-    </div>
+    </motion.div>
   )
 }
 

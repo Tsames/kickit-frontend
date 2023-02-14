@@ -104,5 +104,3 @@ const Create = () => {
     </div>
   )
 }
-
-export default Create;

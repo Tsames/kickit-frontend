@@ -1,15 +1,16 @@
 @use './../../../variables' as v;
 @use './../../../mixins' as m;
 @use './../../../device' as d;
+
+
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #calendar-shell {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   
-  color: rgba(1, 77, 89, 1);
   font-family: v.$font-two;
 
   width: 100%;
@@ -21,21 +22,6 @@
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-
-  }
-
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {
-
-  }
-
-  //Desktop Sizing & Positioning
-  @include d.for-desktop-up {
-
-  }
-
-  //Large Desktop Sizing & Positioning
-  @include d.for-big-desktop-up {
 
   }
 
@@ -51,11 +37,11 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    color: rgba(1, 77, 89, 1);
-
     width: 40%;
-    font-size: calc(0.8rem + 1vw);
     margin-bottom: max(4rem, 3vw);
+
+    color: rgba(1, 77, 89, 1);
+    font-size: calc(0.8rem + 1vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -66,30 +52,19 @@
     @include d.for-tablet-portrait-up {
 
     }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-
-    }
   }
 
-  //Grid Layout with 7 columns
+  //Wrapper for all rows
   #calendar-body {
     // border: solid;
     // border-color: royalblue;
 
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    text-align: center;
     width: 100%;
 
     //Mobile Sizing & Positioning
@@ -101,25 +76,25 @@
     @include d.for-tablet-portrait-up {
 
     }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-
-    }
   }
 
+  
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Rows of the Calendar
+  .calendar-row, .calendar-label-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+  }
+
+
   //Style for Individual Items in the grid
-  div.calendar-item {
+  .calendar-item {
     // border: solid;
     // border-color: red;
 
@@ -137,23 +112,25 @@
     margin-bottom: 0.1rem;
   }
 
-  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
-
-  //Style for Selected Items in the grid
-  .calendar-selected {
-    background-color: #9AFF9E !important;
+  //Assign Color for Days of the week
+  .calendar-label {
+    color: rgba(1, 77, 89, 1);
   }
 
-  .calendar-day-label {
-    pointer-events: none;
-  }
-
+  //Style for selectable days
   .selectable {
     color: #000000;
   }
 
-  .Invisible {
-    color: v.$invisible;
+  //Style for unselectable days
+  .unselectable {
+    pointer-events:"none";
+    color: rgba(0, 0, 0, 0.40) !important;
+  }
+
+  //Style for Selected Items in the grid
+  .calendar-selected {
+    background-color: #9AFF9E !important;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%

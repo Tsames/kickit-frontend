@@ -52,7 +52,7 @@
     // border: solid;
     // border-color: orange;
 
-    width: 100%;
+    width: 90%;
     padding-bottom: 10rem;
 
     //Mobile Sizing & Positioning
@@ -89,6 +89,7 @@
     // border-color: pink;
 
     width: 80%;
+    height: max(25rem, 45vw);
     padding-bottom: 10rem;
     // height: 60rem;
 
@@ -136,21 +137,6 @@
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
 
     }
   }

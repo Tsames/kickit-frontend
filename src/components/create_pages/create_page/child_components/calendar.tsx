@@ -1,17 +1,31 @@
 //Dependencies
-import { React, useState } from 'react';
+import React = require("react");
+import { FC, MouseEvent, useState } from 'react';
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import { motion } from 'framer-motion';
 
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/calendar.scss';
 
-const Calendar = ({ newForm, setNewForm }) => {
+//Props Interface
+interface CalendarProps  {
+  newForm: {
+    title: string;
+    location: string;
+    description: string;
+    early: number;
+    late: number;
+    days: number[];
+  };
+  setNewForm: React.Dispatch<React.SetStateAction<any>>;
+}
+
+const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
 
   /* ------------------------- Component Wide Variables & State ------------------------- */
 
   //Helper function (variable now) - sets the hours, minutes, seconds, and miliseconds to 0
-  const cleanDate = (date) => {
+  const cleanDate = (date : Date) => {
     date.setHours(0);
     date.setMinutes(0);
     date.setSeconds(0);
@@ -20,7 +34,7 @@ const Calendar = ({ newForm, setNewForm }) => {
 
   //The Page UseState keeps track of the month that the calendar should display
   const now = new Date(Date.now()); cleanDate(now);
-  const [page, setPage] = useState(now);
+  const [page, setPage] = useState<Date>(now);
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -62,18 +76,18 @@ const Calendar = ({ newForm, setNewForm }) => {
   /* ------------------------- Helper Functions ------------------------- */
 
   //Helper function (returning JSX) - grabs the month of the given date in english
-  const findMonth = (date) => {
+  const findMonth = (date : Date) => {
     return new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date)
   }
 
   //Helper function (generateCalendar) - grabs the day of the week of the given date in english
-  const findWeekDay = (date) => {
+  const findWeekDay = (date : Date) => {
     return new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date)
   }
 
   //Helper function (generateCalendar, handleClick) - recursive binary search that checks if a 
   //datetime is already in the days array and returns the index of the element if found or -1 if not found
-  const checkDays = (arr, element, pivot = (arr.length - 1) / 2 | 0, index = (arr.length - 1) / 2 | 0) => {
+  const checkDays = (arr : number[], element: number, pivot = (arr.length - 1) / 2 | 0, index = (arr.length - 1) / 2 | 0) :number => {
 
     //--- Base Case Check ---
     if (arr.length === 0) {
@@ -217,16 +231,21 @@ const Calendar = ({ newForm, setNewForm }) => {
   }
 
   //Handler function - adds and remove days to and from form state of create.js
-  const handleClick = (event) => {
+  const handleClick = (event :MouseEvent<HTMLDivElement>) :void => {
+
+    const element = event.target as HTMLDivElement
+    const className = element.className;
+    const classList = element.classList;
+    const dataset = element.dataset;
 
     //Only if calendarSelected is not on the element already
-    if (event.target.className === "calendar-item selectable") {
+    if (className === "calendar-item selectable") {
 
       //Add css class
-      event.target.classList.add("calendar-selected");
+      classList.add("calendar-selected");
 
       //Add element to days array
-      const newDays = [...newForm.days, Number(event.target.dataset.time)];
+      const newDays = [...newForm.days, Number(dataset.time)];
       newDays.sort(function (a, b) { return a - b });
       setNewForm({ ...newForm, "days": newDays });
 
@@ -234,10 +253,10 @@ const Calendar = ({ newForm, setNewForm }) => {
     } else {
 
       //Remove the css class
-      event.target.classList.remove("calendar-selected");
+      classList.remove("calendar-selected");
 
       //Find index of the element in days array
-      const index = checkDays(newForm.days, Number(event.target.dataset.time));
+      const index = checkDays(newForm.days, Number(dataset.time));
 
       //Remove element at index from days array and set new days array
       const newDays = [...newForm.days];
@@ -246,18 +265,6 @@ const Calendar = ({ newForm, setNewForm }) => {
     }
   }
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
-
-  const showPrevMonth = (show) => {
-    if (show) {
-      return (
-        <BiLeftArrow id="calendar-prev-month" className="calendar-heading-button" onClick={handlePrevMonth}></BiLeftArrow>
-      )
-    } else {
-      return (
-        <BiLeftArrow id="calendar-prev-month" className="calendar-heading-button invisible" onClick={handlePrevMonth}></BiLeftArrow>
-      )
-    }
-  }
 
   /* ------------------------- Returning JSX ------------------------------ */
 

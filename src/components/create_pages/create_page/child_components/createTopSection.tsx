@@ -1,11 +1,24 @@
 //Dependencies
-import { React } from 'react';
+import React = require("react");
+import { FC, ChangeEvent } from 'react';
 // import { motion } from 'framer-motion';
 
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/createTopSection.scss';
 
-const CreateTopSection = ({newForm, handleChange}) => {
+interface CTSProps {
+  newForm: {
+    title: string;
+    location: string;
+    description: string;
+    early: number;
+    late: number;
+    days: number[];
+  };
+  handleChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+}
+
+const CreateTopSection: FC<CTSProps> = ({newForm, handleChange}) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 

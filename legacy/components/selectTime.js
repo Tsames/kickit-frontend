@@ -1,33 +1,18 @@
 //Dependencies
-import React = require("react");
-import { useState } from "react";
+import { React, useState } from 'react';
 import { motion } from 'framer-motion';
 
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/selectTime.scss';
 
-//Props Interface
-interface Props {
-  elementId: string;
-  toggle: boolean;
-  text: string;
-}
-
-const SelectTime = ({ elementId, toggle, text } : Props) => {
+const SelectTime = ({ id, toggle, text, early, late }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
-  //TypeScript Declaration of state
-  interface Time {
-    number: number;
-    tod: 'AM' | 'PM';
-  }
-
-  //State
-  const [time, setTime] = useState<Time>({
-    number: 0,
-    tod: 'AM'
-  });
+    const [time, setTime] = useState({
+        number: 1,
+        tod: "AM"
+    });
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -41,14 +26,14 @@ const SelectTime = ({ elementId, toggle, text } : Props) => {
     },
     active: {
       opacity: 1,
-      width: "12vw",
+      width: "15vw",
       transition: { type: "spring", stiffness: 400, damping: 30, delay: 0.3 }
     }
   }
 
   //Hover
   const optionHover = {
-    scale: 1.1,
+    scale: 1.4,
     color: "#3d4bc6",
     transition: {
         duration: 0.3
@@ -59,6 +44,7 @@ const SelectTime = ({ elementId, toggle, text } : Props) => {
   const optionTap = {
     scale: 0.9,
     color: "#014D59",
+    borderWidth: "max(0.1rem, 0.1vw)",
     transition: {
         duration: 0.3
     }
@@ -76,13 +62,19 @@ const SelectTime = ({ elementId, toggle, text } : Props) => {
     }
   }
 
+  const checkClassNumber = (number) => {
+    if (time.number === number) {
+      return "select-time-option selected"
+    }
+  }
+
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
-  const handleSetNumber = (event : any) :void => {
+  const handleSetNumber = (event) => {
     setTime({...time, "number": Number(event.target.dataset.value)});
   }
 
-  const handleSetTod = (event : any) :void => {
+  const handleSetTod = (event) => {
     setTime({...time, "tod": event.target.dataset.value});
   }
 
@@ -91,10 +83,10 @@ const SelectTime = ({ elementId, toggle, text } : Props) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <motion.div className="select-time-wrapper" id={elementId} variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>
+    <motion.div required className="select-time-wrapper" id={id} variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>
         <motion.nav>
-            <p>{text}</p>
-            <p>{`${time.number} ${time.tod}`}</p>
+            <p className="no-select">{text}</p>
+            <p className="no-select">{time.number} {time.tod}</p>
         </motion.nav>
         <motion.div className="select-time-options">
             <motion.ul className="select-time-list-number">

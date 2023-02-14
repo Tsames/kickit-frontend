@@ -1,6 +1,6 @@
 //Dependencies
 import React = require("react");
-import { useState } from 'react';
+import { FC, MouseEvent, ChangeEvent, useState } from 'react';
 import { motion } from 'framer-motion';
 
 //Import Components
@@ -10,17 +10,17 @@ import SelectTime from './selectTime'
 import '../../../../styles/create_pages_styling/create_page/child_components/createBottomSection.scss';
 
 //Props Interface
-interface Props {
-  handleTimeSelect: Function;
-  handleSubmit: Function;
+interface CBSProps {
+  handleTimeSelect: (event : ChangeEvent<HTMLButtonElement>) => void;
+  handleSubmit: (event : MouseEvent<HTMLButtonElement>) => Promise<void>;
 }
 
-const CreateBottomSection = ({ handleTimeSelect, handleSubmit }: Props) => {
+const CreateBottomSection: FC<CBSProps> = ({ handleTimeSelect, handleSubmit }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
   //State that stores toggle data for custom time and loading screen
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState<boolean>(false);
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -139,3 +139,5 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit }: Props) => {
     </div>
   )
 }
+
+export default CreateBottomSection;

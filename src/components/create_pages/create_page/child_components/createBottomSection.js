@@ -1,5 +1,5 @@
 //Dependencies
-import { React } from 'react';
+import { React, useState } from 'react';
 import { motion } from 'framer-motion';
 
 //Import Components
@@ -8,11 +8,12 @@ import SelectTime from './selectTime'
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/createBottomSection.scss';
 
-const CreateBottomSection = ({ handleTimeSelect, handleSubmit, toggle, setToggle}) => {
+const CreateBottomSection = ({ handleTimeSelect, handleSubmit, early, late }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
-
+  //State that stores toggle data for custom time and loading screen
+  const [toggle, setToggle] = useState(false);
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -33,7 +34,7 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit, toggle, setToggle
       transition: { type: "spring", stiffness: 400, damping: 50 }
     },
     active: {
-      y: "-12vw",
+      y: "-15vw",
       transition: { type: "spring", stiffness: 400, damping: 50, delay: 0.3 }
     }
   }
@@ -116,8 +117,8 @@ const CreateBottomSection = ({ handleTimeSelect, handleSubmit, toggle, setToggle
           <motion.button data-early="16" data-late="21" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handleButton}>4pm - 9pm</motion.button>
           <motion.button data-early="21" data-late="2" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handleButton}>9pm - 2am</motion.button>
           <motion.button data-early="1" data-late="24" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handleCustomTime}>Custom</motion.button>
-          <SelectTime id="select-time-early" toggle={toggle} text="Start"></SelectTime>
-          <SelectTime id="select-time-late" toggle={toggle} text="End"></SelectTime>
+          <SelectTime id="select-time-early" toggle={toggle} early={early} late={late} text="Start"></SelectTime>
+          <SelectTime id="select-time-late" toggle={toggle} early={early} late={late} text="End"></SelectTime>
         </motion.div>
       </div>
       <div id="create-bottom-right-subsection">

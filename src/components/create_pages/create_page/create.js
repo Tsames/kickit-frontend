@@ -20,16 +20,13 @@ const Create = () => {
   const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
 
-  //State that stores toggle data for custom time and loading screen
-  const [toggle, setToggle] = useState(false);
-
   //State that stores input
   const [newForm, setNewForm] = useState({
     title: "",
     location: "",
     description: "",
-    early: "1",
-    late: "1",
+    early: 5,
+    late: 4,
     days: []
   });
 
@@ -86,7 +83,7 @@ const Create = () => {
         <div id="create-middle-section">
           <Calendar newForm={newForm} setNewForm={setNewForm} />
         </div>
-        <CreateBottomSection handleTimeSelect={handleTimeSelect} handleSubmit={handleSubmit} toggle={toggle} setToggle={setToggle} />
+        <CreateBottomSection handleTimeSelect={handleTimeSelect} handleSubmit={handleSubmit} early={newForm.early} late={newForm.late}/>
       </>
     )
   }

@@ -8,7 +8,7 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   
   font-family: v.$font-two;
@@ -54,13 +54,17 @@
     }
   }
 
-  //Grid Layout with 7 columns
+  //Wrapper for all rows
   #calendar-body {
     // border: solid;
     // border-color: royalblue;
 
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    text-align: center;
     width: 100%;
 
     //Mobile Sizing & Positioning
@@ -74,7 +78,20 @@
     }
   }
 
+  
+
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Rows of the Calendar
+  .calendar-row, .calendar-label-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+  }
+
 
   //Style for Individual Items in the grid
   .calendar-item {
@@ -96,7 +113,7 @@
   }
 
   //Assign Color for Days of the week
-  .calendar-day-label {
+  .calendar-label {
     color: rgba(1, 77, 89, 1);
   }
 

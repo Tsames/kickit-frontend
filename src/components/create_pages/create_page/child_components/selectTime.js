@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/selectTime.scss';
 
-const SelectTime = ({ id, toggle, text }) => {
+const SelectTime = ({ id, toggle, text, early, late }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
@@ -26,14 +26,14 @@ const SelectTime = ({ id, toggle, text }) => {
     },
     active: {
       opacity: 1,
-      width: "12vw",
+      width: "15vw",
       transition: { type: "spring", stiffness: 400, damping: 30, delay: 0.3 }
     }
   }
 
   //Hover
   const optionHover = {
-    scale: 1.1,
+    scale: 1.4,
     color: "#3d4bc6",
     transition: {
         duration: 0.3
@@ -51,6 +51,22 @@ const SelectTime = ({ id, toggle, text }) => {
   }
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
+
+  const convertData = () => {
+    if(time.tod === "PM" && time.number !== 12) {
+      return time.number + 12;
+    } else if (time.number === 12 && time.tod === "AM") {
+      return 24
+    } else {
+      return time.number;
+    }
+  }
+
+  const checkClassNumber = (number) => {
+    if (time.number === number) {
+      return "select-time-option selected"
+    } else if ()
+  }
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 

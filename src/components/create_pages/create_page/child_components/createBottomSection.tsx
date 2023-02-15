@@ -1,5 +1,5 @@
 //Dependencies
-import React = require("react");
+import React from "react";
 import { FC, MouseEvent, ChangeEvent, useState } from 'react';
 import { motion } from 'framer-motion';
 

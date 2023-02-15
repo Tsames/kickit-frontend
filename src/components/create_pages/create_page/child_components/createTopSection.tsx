@@ -1,5 +1,5 @@
 //Dependencies
-import React = require("react");
+import React from "react";
 import { FC, ChangeEvent } from 'react';
 // import { motion } from 'framer-motion';
 

@@ -1,6 +1,6 @@
 //Dependencies
-// import React = require("react");
-import { React, FC, MouseEvent, ChangeEvent, useState } from 'react';
+import React from "react";
+import { FC, MouseEvent, ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { motion } from 'framer-motion';
 
@@ -115,3 +115,5 @@ const Create: FC = () => {
     </div>
   )
 }
+
+export default Create;

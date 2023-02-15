@@ -1,6 +1,6 @@
 //Dependencies
-import React = require("react");
-import { FC, MouseEvent, useState } from 'react';
+import React from "react";
+import { FC, MouseEvent, useState, useRef } from 'react';
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import { motion } from 'framer-motion';
 
@@ -36,7 +36,24 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
   const now = new Date(Date.now()); cleanDate(now);
   const [page, setPage] = useState<Date>(now);
 
+  //Ref used to trigger framer motion calendar row animations
+  const ref = useRef<number>(0)
+
+  const refTwo = useRef<number>(0);
+
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
+
+  //Container (#navbar-shell) Variant
+  const calendarRowVariant = {
+    inactive: {
+        opacity: 0,
+        transition: { duration: 0.2 }
+    },
+    active: {
+      opacity: 1,
+      transition: { duration: 0.2 }
+    }
+  }
 
   //Hover
   const monthHover = {
@@ -186,7 +203,7 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
 
 
       content.push(
-        <motion.div className="calendar-row" key={`week${week}`} initial={{opacity: 0}} animate={{ opacity: 1}} transition={{duration: 0.6, delay: (week * 0.6)}}>
+        <motion.div className="calendar-row" key={`week${week}-${ref.current}`} initial={{opacity: 0}} animate={{ opacity: 1}} transition={{duration: 0.3, delay: (week * 0.3)}}>
           {cells}
         </motion.div>
       )
@@ -205,6 +222,9 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
     const newPage = new Date(page);
     newPage.setMonth(newPage.getMonth() + 1)
     newPage.setDate(1);
+
+    ref.current ++;
+    refTwo.current ++;
     setPage(newPage);
 
   }
@@ -225,6 +245,8 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
         newPage.setDate(now.getDate());
       }
 
+      ref.current --;
+      refTwo.current --;
       setPage(newPage);
 
     }
@@ -274,7 +296,7 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
         <motion.div whileHover={monthHover} whileTap={monthTap}>
           <BiLeftArrow id="calendar-prev-month" className={ page.getMonth() === now.getMonth() ? "calendar-heading-button no-select invisible" : "calendar-heading-button" } onClick={handlePrevMonth}></BiLeftArrow>
         </motion.div>
-        <h4 className="no-select">{`${findMonth(page)} ${page.getFullYear()}`}</h4>
+        <motion.h4 key={`${refTwo.current}`} className="no-select" initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 0.7}}>{`${findMonth(page)} ${page.getFullYear()}`}</motion.h4>
         <motion.div whileHover={monthHover} whileTap={monthTap}>
           <BiRightArrow id="calendar-next-month" className="calendar-heading-button" onClick={handleNextMonth}></BiRightArrow>
         </motion.div>

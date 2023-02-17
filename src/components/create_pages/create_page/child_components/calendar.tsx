@@ -38,18 +38,6 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
-  //Container (#navbar-shell) Variant
-  const calendarRowVariant = {
-    inactive: {
-        opacity: 0,
-        transition: { duration: 0.2 }
-    },
-    active: {
-      opacity: 1,
-      transition: { duration: 0.2 }
-    }
-  }
-
   //Hover
   const monthHover = {
     scale: 1.3,

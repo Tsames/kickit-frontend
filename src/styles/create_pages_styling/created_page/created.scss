@@ -1,0 +1,113 @@
+//Imports
+@use './../../variables' as v;
+@use './../../mixins' as m;
+@use './../../device' as d;
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#created-shell {
+  // border: solid;
+  // border-color: red;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100vw;
+
+  background: linear-gradient(90deg, #4DDABB -48.72%, #3D4BC6 150.8%);
+
+  //Mobile Sizing
+  @include d.for-phone-only {
+
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+
+  }
+
+  //Desktop Sizing
+  @include d.for-desktop-up {
+
+  }
+
+  //Large Desktop Sizing & Positioning
+  @include d.for-big-desktop-up {
+
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  #created-top-section {
+    border: solid;
+    border-color: red;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-top: max(10rem, 6vw);
+
+    height: 20vw;
+    width: 100%;
+  }
+
+  #created-mid-section {
+    height: 20vw;
+    width: 100%;
+  }
+
+  #created-mid-left-section {
+
+  }
+
+  #created-mid-right-section {
+
+  }
+
+  #created-bottom-section {
+    height: 20vw;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  #created-top-text {
+    color: v.$pallette_two;
+    font-family: v.$font-two;
+    font-size: max(3rem, 4vw);
+
+    margin-bottom: max( 1.5rem, 1.5vw);
+  }
+
+  #created-top-header {
+    font-size: max(3rem, 8vw);
+    font-family: v.$font-two;
+    font-weight: 900;
+    font-style: normal;
+
+    background: linear-gradient(270deg, #4DDABB -0.15%, #3D4BC6 99.85%);
+    text-shadow: 8px 20px 30px rgba(106, 106, 106, 0.5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    border: 5.27168px solid #014D59;
+    margin: 0 0 0 0;
+  }
+  
+}

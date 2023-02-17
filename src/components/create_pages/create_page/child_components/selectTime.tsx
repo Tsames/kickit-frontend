@@ -1,19 +1,19 @@
 //Dependencies
 import React from "react";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { motion } from 'framer-motion';
 
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/selectTime.scss';
 
 //Props Interface
-interface Props {
+interface SelectTimeProps {
   elementId: string;
   toggle: boolean;
   text: string;
 }
 
-const SelectTime = ({ elementId, toggle, text } : Props) => {
+const SelectTime: FC<SelectTimeProps> = ({ elementId, toggle, text }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
@@ -41,7 +41,7 @@ const SelectTime = ({ elementId, toggle, text } : Props) => {
     },
     active: {
       opacity: 1,
-      width: "12vw",
+      width: "15vw",
       transition: { type: "spring", stiffness: 400, damping: 30, delay: 0.3 }
     }
   }

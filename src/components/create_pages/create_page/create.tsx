@@ -12,7 +12,11 @@ import CreateBottomSection from './child_components/createBottomSection';
 //Styling
 import '../../../styles/create_pages_styling/create_page/create.scss';
 
-const Create: FC = () => {
+interface createProps {
+  getEventData: (id : string) => Promise<void>
+}
+
+const Create: FC<createProps> = ({ getEventData }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 

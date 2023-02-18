@@ -21,7 +21,7 @@ interface createdProps  {
   };
 }
 
-const Created: FC<createdProps> = ({}) => {
+const Created: FC<createdProps> = ({ event }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 

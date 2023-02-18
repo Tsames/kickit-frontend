@@ -1,12 +1,19 @@
 //Dependencies
-import { React, useEffect, useRef} from 'react';
+import React, { useEffect, useRef, FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //Styling
 import '../../styles/navigation_styling/navbar.scss';
 
-const Navbar = () => {
+//Props Interface
+interface navbarProps {
+  eventId: string;
+  location: Location;
+  key: string; 
+}
+
+const Navbar: FC<navbarProps> = () => {
 
   /* ------------------------------------------ Component Variables ------------------------------------------ */
 

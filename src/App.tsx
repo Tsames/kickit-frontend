@@ -1,7 +1,7 @@
 //Dependencies
 import React from "react";
 import { useState } from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 //Import Nav & Footer Components
@@ -46,10 +46,20 @@ function App() {
   }
 
   //Stores the data of an event
-  const [event, setEvent] = useState<eventInterface>();
+  const [event, setEvent] = useState<eventInterface>({
+    _id: "",
+    title: "",
+    location: "",
+    description: "",
+    early: 0,
+    late: 0,
+    days: []
+  });
 
   const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
+
+  const location = useLocation();
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -78,7 +88,7 @@ function App() {
     <>
       <AnimatePresence>
         <Navbar />
-        <Routes location={location} key={location.pathname}>
+        <Routes eventId={event._id} location={location} key={location.pathname}>
 
           {/* Accounts Routes */}
           {/* <Route path="/login" element={<Login />} />

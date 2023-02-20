@@ -1,15 +1,16 @@
 //Dependencies
-import { React } from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //Styling
 import '../../styles/navigation_styling/footer.scss';
 
-//Icons
-import { FiFacebook, FiInstagram, FiYoutube, FiLinkedin } from "react-icons/fi";
+//Props Interface
+interface footerProps {
+}
 
-const Footer = () => {
+const Footer: FC<footerProps> = () => {
 
   /* ------------------------------------------ Component Variables ------------------------------------------ */
 

@@ -1,6 +1,5 @@
 //Dependencies
-import React from "react";
-import { FC, MouseEvent, ChangeEvent, useState } from 'react';
+import React, { FC, MouseEvent, ChangeEvent, useState } from "react";
 import { motion } from 'framer-motion';
 
 //Import Components

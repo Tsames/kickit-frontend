@@ -1,12 +1,16 @@
 //Dependencies
-import { React } from 'react';
-import { Link } from 'react-router-dom';
+import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 
 //Styling
 import '../../styles/about_us_styling/aboutUs.scss';
 
-const AboutUs = () => {
+//Props Interface
+interface aboutUsProps {
+
+}
+
+const AboutUs: FC<aboutUsProps> = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
@@ -59,7 +63,7 @@ const AboutUs = () => {
             <p id="chris-description" className="about-person-description no-select">Hello! I am Christopher Brand, a fellow UX Designer with Kick It. Check out my socials and portfolio!</p>
             <div id="chris-links" className="about-person-all-links">
               <a href="http://chrisbrand.squarespace.com/" id="chris-portfolio" className="about-person-link">Portfolio</a>
-              <p href="" id="chris-email" className="about-person-link">chrisbrandux@gmail.com</p>
+              <p id="chris-email" className="about-person-link">chrisbrandux@gmail.com</p>
               <a href="https://www.linkedin.com/in/brandchristopher" id="chris-linkedin" className="about-person-link">LinkedIn</a>
             </div>
           </div>

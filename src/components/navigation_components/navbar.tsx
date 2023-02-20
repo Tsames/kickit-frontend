@@ -9,18 +9,16 @@ import '../../styles/navigation_styling/navbar.scss';
 //Props Interface
 interface navbarProps {
   eventId: string;
-  location: Location;
-  key: string; 
 }
 
-const Navbar: FC<navbarProps> = () => {
+const Navbar: FC<navbarProps> = ({ eventId }) => {
 
   /* ------------------------------------------ Component Variables ------------------------------------------ */
 
   // const pages = ['/', '/create', '/example', '/about/how', '/about/who']
   // const buttons = ['navbarHomeButton', 'navbarCreateButton', 'navbarExampleButton', 'navbarAboutButton', 'navbarAboutButton'];
 
-  // const location = useLocation().pathname;
+  const location = useLocation().pathname;
   // const lastLocation = useRef(null);
 
   // useEffect(() => helperOnPage());

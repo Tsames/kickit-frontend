@@ -1,6 +1,5 @@
 //Dependencies
-import React from "react";
-import { FC, useRef, MouseEvent } from 'react';
+import React, { FC, useRef, MouseEvent } from "react";
 import { useParams } from 'react-router-dom';
 import { RxCopy } from "react-icons/rx";
 import { motion } from 'framer-motion';

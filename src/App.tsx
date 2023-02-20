@@ -1,15 +1,11 @@
 //Dependencies
-import React from "react";
-import { useState } from "react";
-import { Routes, Route, useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 //Import Nav & Footer Components
 import Navbar from './components/navigation_components/navbar';
 import Footer from './components/navigation_components/footer';
-
-//Import Example Event Data
-// import { exampleEvent, exampleBlocks } from "./exampleEvent";
 
 //Import Account Components
 // import Login from './components/Accounts/Login';
@@ -21,9 +17,6 @@ import Home from './components/home_page/Home';
 import Create from './components/create_pages/create_page/create';
 import Created from './components/create_pages/created_page/created';
 import AboutUs from "./components/about_us_page/aboutUs";
-
-//Import new TestPage
-// import TestPage from './components/TestPage';
 
 function App() {
 
@@ -59,8 +52,6 @@ function App() {
   const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
 
-  const location = useLocation();
-
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
 
@@ -87,8 +78,8 @@ function App() {
   return (
     <>
       <AnimatePresence>
-        <Navbar />
-        <Routes eventId={event._id} location={location} key={location.pathname}>
+        <Navbar eventId={event._id} />
+        <Routes>
 
           {/* Accounts Routes */}
           {/* <Route path="/login" element={<Login />} />

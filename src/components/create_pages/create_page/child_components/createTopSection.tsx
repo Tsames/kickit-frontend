@@ -1,6 +1,5 @@
 //Dependencies
-import React from "react";
-import { FC, ChangeEvent } from 'react';
+import React, { FC, ChangeEvent } from "react";
 // import { motion } from 'framer-motion';
 
 //Styling

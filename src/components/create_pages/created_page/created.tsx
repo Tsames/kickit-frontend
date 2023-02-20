@@ -1,6 +1,5 @@
 //Dependencies
-import React from "react";
-import { FC } from 'react';
+import React, { FC } from "react";
 
 //Import Components
 import CopyLink from './child_components/copyLink';
@@ -43,7 +42,9 @@ const Created: FC<createdProps> = ({ event }) => {
       </div>
       <div id="created-mid-section">
         <div id="created-mid-left-section">
-          <h3>Title: </h3>
+          <h3 className="no-select">{`Title: ${event.title}`}</h3>
+          <h3 className="no-select">{`Location: ${event.location}`}</h3>
+          <p className="no-select">{`Description: ${event.description}`}</p>
         </div>
         <div id="created-mid-right-section">
         </div>

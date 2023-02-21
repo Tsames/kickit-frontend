@@ -42,15 +42,28 @@ const Created: FC<createdProps> = ({ event }) => {
       </div>
       <div id="created-mid-section">
         <div id="created-mid-left-section">
-          <h3 className="no-select">{`Title: ${event.title}`}</h3>
-          <h3 className="no-select">{`Location: ${event.location}`}</h3>
-          <p className="no-select">{`Description: ${event.description}`}</p>
+          <div id="created-title-wrapper">
+            <h3 id="created-title-label" className="created-event-details-label no-select">Title:</h3>
+            <h3 id="created-title" className="created-event-details">{event.title}</h3>
+          </div>
+          <div id="created-location-wrapper">
+            <h3 id="created-location-label" className="created-event-details-label no-select">Location:</h3>
+            <h3 id="created-location" className="created-event-details">{event.location}</h3>
+          </div>
+          <div id="created-description-wrapper">
+            <h3 id="created-description-label" className="created-event-details-label no-select">Description:</h3>
+            <p id="created-description">{event.description}</p>
+          </div>
         </div>
         <div id="created-mid-right-section">
+          <h3>Nice work! Your event has been successfully created!</h3>
+          <h3>Copy the link below and send it to all prospective attendees!</h3>
+          <h5>Remember, all guests can see the availability of everyone else!</h5>
         </div>
       </div>
       <div id="created-bottom-section">
         <CopyLink></CopyLink>
+        <div id="created-wallpaper"></div>
       </div>
     </div>
   )

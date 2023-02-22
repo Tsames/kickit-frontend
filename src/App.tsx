@@ -41,8 +41,8 @@ function App() {
   //Stores the data of an event
   const [event, setEvent] = useState<eventInterface>({
     _id: "1234",
-    title: "Lorem ipsum dolor sit amet.",
-    location: "Test Location",
+    title: "Lorem ipsum dolor",
+    location: "Lorem ipsum dolor sit amet",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     early: 5,
     late: 19,
@@ -57,8 +57,9 @@ function App() {
 
   /* ------------------------------------------ Passing Functions ------------------------------------------ */
 
-  //Passing function - Gets Event Data and stores in state
-  const getEventData = async (id : string) :Promise<void> => {
+  /* Passing Function - Searches for a specific Id, if none exists returns false.
+  If an event with the given Id does exist returns true and sets state */
+  const getEventData = async (id : string) :Promise<boolean> => {
     try {
       //Fetch event data
       const response = await fetch(BACKEND_URL + `${id}`);
@@ -67,9 +68,13 @@ function App() {
       //Set event state
       setEvent(data);
 
+      //Return true
+      return true;
+
     } catch (error) {
       console.log("Couldn't get event.");
       console.log(error);
+      return false;
     }
   }
 
@@ -91,7 +96,7 @@ function App() {
           {/* Main Routes */}
           <Route path='/' element={<Home />} />
           <Route path='/create' element={<Create getEventData={getEventData} />} />
-          <Route path='/created/:id' element={<Created event={event} />} />
+          <Route path='/created/:id' element={<Created getEventData={getEventData} event={event} />} />
           <Route path='/about' element={<AboutUs />} />
 
         </Routes>

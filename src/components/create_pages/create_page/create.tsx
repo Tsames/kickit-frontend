@@ -12,7 +12,7 @@ import CreateBottomSection from './child_components/createBottomSection';
 import '../../../styles/create_pages_styling/create_page/create.scss';
 
 interface createProps {
-  getEventData: (id : string) => Promise<void>
+  getEventData: (id : string) => Promise<boolean>
 }
 
 const Create: FC<createProps> = ({ getEventData }) => {

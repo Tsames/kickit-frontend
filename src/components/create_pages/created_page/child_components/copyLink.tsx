@@ -62,7 +62,7 @@ const CopyLink: FC<copyLinkProps> = ({ }) => {
     <motion.div id="copyLink-shell">
         <motion.button ref={buttonRef} id="copyLink-button" whileHover={buttonHover} whileTap={buttonTap} onClick={copyText}><RxCopy></RxCopy></motion.button>
         <div id="copyLink-text-wrapper">
-          <motion.p id="copyLink-text" className="no-select">{DEV_FRONTEND_URL}</motion.p>
+          <p id="copyLink-text" className="no-select">{DEV_FRONTEND_URL}</p>
         </div>
     </motion.div>
   )

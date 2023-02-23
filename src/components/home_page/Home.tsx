@@ -100,8 +100,8 @@ const Home: FC<homeProps> = () => {
           <p id="home-testimonial-speaker-one" className="home-testimonial-speaker">-Jimbo</p>
         </div>
       </div>
-      <div id="home-contents">
-        <div id="home-secondary"></div>
+      <div id="home-contents" className="no-select">
+        <div id="home-wallpaper"></div>
         <div id="home-content-block-one">
           <div id="home-content-graphic-one" className="home-content-graphic"></div>
           <p id="home-content-text-one" className="home-content-text">Create an event and choose a few potential days and times for it.</p>
@@ -116,12 +116,13 @@ const Home: FC<homeProps> = () => {
         </div>
         <div id="home-content-block-three">
           <div id="home-content-text-three-four-wrapper">
-            <p id="home-content-text-three" className="home-content-text">Pick the best day and time for everyone! Its time to</p>
-            <p id="home-content-text-four" className="home-content-text">Kick It!</p>
+            <p id="home-content-text-three" className="home-content-text">Pick the best day and time for everyone!</p>
+            <p id="home-content-text-four" className="home-content-text">Its time to...</p>
+            <p id="home-content-text-five" className="home-content-text">Kick It!</p>
           </div>
+          <motion.div id="home-content-graphic-six" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
           <div id="home-content-graphic-five" className="home-content-graphic"></div>
         </div>
-        <motion.div id="home-content-graphic-six" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
         <Link to="/create"><motion.button id="getStarted" variants={childVariant} whileHover={buttonItemHover} whileTap={buttonItemTap}>Get Started</motion.button></Link>
       </div>
     </div>

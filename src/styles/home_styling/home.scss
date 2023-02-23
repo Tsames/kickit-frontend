@@ -122,7 +122,7 @@
     }
   }
 
-  //Contents Blocks
+  // @#@#@#@#@#@#@#@#@#@ Content Blocks @#@#@#@#@#@#@#@#@#@
 
   //Content Block One
   #home-content-block-one {
@@ -143,180 +143,61 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
     }
   }
 
+  //Content Block Two
   #home-content-block-two {
+    // border: solid;
+    // border-color: pink;
+
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 
-    width: 100%;
-
     position: relative;
-    // border: solid;
-    // border-color: pink;
+
+    width: 90%;
+    height: 50vw;
+
+    margin: 12vw 0 0 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
     }
   }
 
+  //Content Block Three
   #home-content-block-three {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-
-    position: relative;
     // border: solid;
     // border-color: purple;
 
-    //Mobile Sizing & Positioning
-    @include d.for-phone-only {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      padding-top: 5rem;
-      padding-bottom: 20rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      padding-top: 5rem;
-      padding-bottom: 20rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      padding-top: 5rem;
-      padding-bottom: 20rem;
-    }
-  }
-
-  #home-content-text-two-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    background-color: #D5D9FF;
+    position: relative;
 
-    // border: solid;
-    // border-color: red;
+    width: 100%;
+
+    margin: 12vw 0 25vw 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      height: 64vh;
-      width: 35vw;
-      border-radius: 100%;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      height: 64vh;
-      width: 35vw;
-      border-radius: 100%;
-    }
-  }
-
-  #home-content-text-three-four-wrapper {
-
-    display: flex;
-    flex-direction: column;
-    // justify-content: flex-start;
-    align-items: center;
-
-    background-color: #B4FFF1;
-    border-radius: 5rem;
-    // border: solid;
-    // border-color: red;
-
-    //Mobile Sizing & Positioning
-    @include d.for-phone-only {
-
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      border-radius: 10rem;
-      height: 35vh;
-      width: 86vw;
-      margin-bottom: 4rem;
     }
   }
 
@@ -326,6 +207,7 @@
     font-family: v.$font-two;
     font-style: normal;
     font-size: calc(1rem + 2vw);
+    color: v.$pallette_three;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -418,8 +300,8 @@
 
   // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Contents @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
 
-  // &%&%&%&%&%&%&%&%&%& Secondary Background Div &%&%&%&%&%&%&%&%&%&
-  #home-secondary {
+  // &%&%&%&%&%&%&%&%&%& Wallpaper Div &%&%&%&%&%&%&%&%&%&
+  #home-wallpaper {
     background-image: url("../../../public/assets/backgrounds/home_page/secondary.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -470,12 +352,14 @@
     }
   }
 
-  //Content One Text
+  //Content Block One Text
   #home-content-text-one {
-    width: 40%;
+    max-width: 45%;
+    overflow-wrap: normal;
+    text-align: left;
   }
 
-  //First Arrow
+  //Blue Right-to-Left Arrow
   #home-content-graphic-two {
     position: absolute;
 
@@ -508,8 +392,10 @@
 
   // @#@#@#@#@#@#@#@#@#@ Home Content Block Two @#@#@#@#@#@#@#@#@#@
 
+  //Person Graphic
   #home-content-graphic-three {
-    position: relative;
+    // border: solid;
+    // border-color: red;
 
     background-repeat: no-repeat;
     background-position: center;
@@ -517,24 +403,49 @@
     background-size: cover;
     background-image: url("../../../public/assets/graphics/home_page/graphic_three.svg");
 
-    // border: solid;
-    // border-color: red;
+    width: 40vw;
+    height: 40vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      height: 40rem;
-      width: 35rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      height: 40rem;
-      width: 35rem;
     }
   }
 
+  //Content Block Two Text Wrapper
+  #home-content-text-two-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #D5D9FF;
+
+    width: 50%;
+    height: 80%;
+    border-radius: 50% 50%;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+    }
+  }
+
+  //Content Block Two Text
+  #home-content-text-two {
+    text-align: center;
+    max-width: 75%;
+  }
+
+  //Loopy Arrow Graphic
   #home-content-graphic-four {
-    position: absolute;
+    // border: solid;
+    // border-color: red;
 
     background-repeat: no-repeat;
     background-position: center;
@@ -542,26 +453,23 @@
     background-size: cover;
     background-image: url("../../../public/assets/graphics/home_page/graphic_four.svg");
 
-    // border: solid;
-    // border-color: red;
+    position: absolute;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      height: 20rem;
-      width: 20rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      height: 20rem;
-      width: 20rem;
     }
   }
 
   // @#@#@#@#@#@#@#@#@#@ Home Content Block Three @#@#@#@#@#@#@#@#@#@
 
+  //People Graphic
   #home-content-graphic-five {
-    position: relative;
+    // border: solid;
+    // border-color: red;
 
     background-repeat: no-repeat;
     background-position: center;
@@ -569,42 +477,54 @@
     background-size: cover;
     background-image: url("../../../public/assets/graphics/home_page/graphic_five.svg");
 
-    // border: solid;
-    // border-color: red;
+    position: relative;
+
+    width: 60vw;
+    height: 35vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      height: 30rem;
-      width: 50rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      height: 30rem;
-      width: 50rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      height: 30rem;
-      width: 50rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      height: 30rem;
-      width: 50rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      height: 40rem;
-      width: 70rem;
     }
   }
 
+  
+  //Content Block Three Text Wrapper
+  #home-content-text-three-four-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-color: #B4FFF1;
+    border-radius: 5rem;
+    width: 80%;
+
+    margin: 0 0 3vw 0;
+  }
+
+  //Content Block Three Text ("Pick the best...")
+  #home-content-three-text {
+    margin: 0 0 0 0 !important;
+  }
+
+  //Content Block Three Text ("Its time to...")
+  #home-content-four-text {
+    margin: 0 0 0 0 !important;
+  }
+
+  //Content Block Three Text ("Kick It!")
+  #home-content-text-five {
+    margin: 0 0 0 0 !important;
+  }
+
+  //Squigely Arrow
   #home-content-graphic-six {
-    position: absolute;
+    // border: solid;
+    // border-color: red;
 
     background-repeat: no-repeat;
     background-position: center;
@@ -612,250 +532,32 @@
     background-size: contain;
     background-image: url("../../../public/assets/graphics/home_page/graphic_six.svg");
 
-    // border: solid;
-    // border-color: red;
+    position: absolute;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      top: 83%;
-      height: 20rem;
-      width: 20rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      top: 83%;
-      height: 20rem;
-      width: 20rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      top: 83%;
-      height: 20rem;
-      width: 20rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      top: 83%;
-      height: 20rem;
-      width: 28rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      top: 87%;
-      height: 15rem;
-      width: 20rem;
     }
   }
 
-  // @#@#@#@#@#@#@#@#@#@ Home Content Texts @#@#@#@#@#@#@#@#@#@
+  //Create Event Button
+  #getStarted {
+    font-family: v.$font-one;
+    color: v.$pallette_two;
+    background-color: v.$pallette_one;
 
-  #home-content-text-one {
-    position: relative;
-
-    text-align: left;
-    color: v.$pallette_three;
-    pointer-events: none;
-    // border: solid;
-    // border-color: green;
+    border: none;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      width: 40rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      width: 40rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      width: 40rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      width: 40rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      width: 40rem;
     }
   }
-
-  #home-content-text-two {
-    text-align: center;
-    color: v.$pallette_three;
-    pointer-events: none;
-
-    // border: solid;
-    // border-color: red;
-
-    //Mobile Sizing & Positioning
-    @include d.for-phone-only {
-
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      padding-left: 5rem;
-      padding-right: 5rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      width: 25vw;
-    }
-  }
-
-  #home-content-text-three {
-
-    // border: solid;
-    // border-color: red;
-    color: v.$pallette_three;
-    pointer-events: none;
-
-    //Mobile Sizing & Positioning
-    @include d.for-phone-only {
-
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      width: 70rem;
-      padding-bottom: 0rem;
-      margin-bottom: 0rem;
-    }
-  }
-
-  #home-content-text-four {
-
-    // border: solid;
-    // border-color: red;
-    color: v.$pallette_three;
-    font-family: v.$font-four;
-    pointer-events: none;
-
-    //Mobile Sizing & Positioning
-    @include d.for-phone-only {
-
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      font-size: 72px;
-      font-weight: 600;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      font-size: 72px;
-      font-weight: 600;
-    }
-  }
-
-    //Create Event Button
-    #getStarted {
-      font-family: v.$font-one;
-      color: v.$pallette_two;
-      background-color: v.$pallette_one;
-  
-      border: none;
-  
-      //Mobile Sizing & Positioning
-      @include d.for-phone-only {
-        font-size: 20px;
-        font-weight: 650;
-  
-        border-radius: 2rem;
-        padding: 0.5rem;
-        height: 4rem;
-        width: 15rem;
-      }
-  
-      //Tablet Portrait Sizing & Positioning
-      @include d.for-tablet-portrait-up {
-        font-size: 20px;
-        font-weight: 650;
-  
-        border-radius: 2rem;
-        padding: 0.5rem;
-        height: 4rem;
-        width: 15rem;
-      }
-  
-      //Tablet Landscape Sizing & Positioning
-      @include d.for-tablet-landscape-up {
-        font-size: 20px;
-        font-weight: 650;
-  
-        border-radius: 2rem;
-        padding: 0.5rem;
-        height: 4rem;
-        width: 15rem;
-      }
-  
-      //Desktop Sizing & Positioning
-      @include d.for-desktop-up {
-        font-size: 20px;
-        font-weight: 600;
-  
-        border-radius: 2rem;
-        padding: 0.5rem;
-        height: 4rem;
-        width: 15rem;
-      }
-  
-      //Large Desktop Sizing & Positioning
-      @include d.for-big-desktop-up {
-        font-size: 20px;
-        font-weight: 600;
-  
-        border-radius: 10rem;
-        padding: 0rem;
-        height: 8vh;
-        width: 25rem;
-      }
-    }
 
 }

@@ -16,7 +16,7 @@ const Home: FC<homeProps> = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
-  console.log(document.body);
+  const elementRef = useRef<HTMLDivElement | null>(null);
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -138,12 +138,11 @@ const Home: FC<homeProps> = () => {
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
   const scrollDown = () => {
-    console.log(document.getElementById('home-testimonials'))
-    document.getElementById('home-testimonials').scrollTop = 0;
+    elementRef.current?.scrollIntoView({behavior: "smooth", block: "center"});
   }
 
   const getStarted = () => {
-    console.log(document.getElementById('home-testimonials'))
+    document.body.scrollTop = 0;
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
@@ -154,7 +153,7 @@ const Home: FC<homeProps> = () => {
         <motion.button id="create-event-button" variants={childButtonVariant} whileHover={buttonItemHover} whileTap={buttonItemTap}>Create Your Event</motion.button>
         <motion.button id="scroll-down-button" variants={childButtonVariant} whileHover={buttonItemHover} whileTap={buttonItemTap} onClick={scrollDown}><HiArrowDown></HiArrowDown></motion.button>
       </div>
-      <div id="home-testimonials">
+      <div id="home-testimonials" ref={elementRef}>
         <div id="home-testimonial-one" className="no-select">
           <h1 id="home-testimonial-quote-one" className="home-testimonial-quote">"Kick It makes it so easy to hang with my pals. Scheduling sucks without it!"</h1>
           <p id="home-testimonial-speaker-one" className="home-testimonial-speaker">-Jimbo</p>

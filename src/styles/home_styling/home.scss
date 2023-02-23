@@ -256,6 +256,13 @@
     bottom: 10%;
     right: 15%;
 
+    height: 3vw;
+    width: 3vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     border: solid;
     border-width: 0;
     border-radius: 5rem;

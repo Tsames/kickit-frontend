@@ -1,7 +1,7 @@
 //Dependencies
 import React, { FC, MouseEvent, ChangeEvent, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-// import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 //Import Components
 import CreateTopSection from './child_components/createTopSection';
@@ -45,6 +45,18 @@ const Create: FC<createProps> = ({ getEventData }) => {
   });
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
+
+  const createPageVariant = {
+    hidden: {
+      y: "-100vw"
+    },
+    visible: {
+      y: 0,
+      transition: { type: "spring", stiffness: 80, damping: 15}
+    },
+    exit: {
+    }
+  }
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -113,9 +125,9 @@ const Create: FC<createProps> = ({ getEventData }) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div id="create-shell">
+    <motion.div id="create-shell" variants={createPageVariant} initial="hidden" animate="visible" exit="exit">
       {displayCreate()}
-    </div>
+    </motion.div>
   )
 }
 

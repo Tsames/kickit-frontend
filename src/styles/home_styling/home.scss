@@ -223,7 +223,7 @@
   // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Landing @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
 
   //Create Event Button
-  #createEvent {
+  #create-event-button {
     position: absolute;
     bottom: 10%;
 
@@ -241,6 +241,35 @@
     background-color: v.$pallette_one;
 
     padding: max(0.5rem, 1vw) max(1rem, 2vw);
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+    }
+  }
+
+  #scroll-down-button {
+    position: absolute;
+    bottom: 10%;
+    right: 15%;
+
+    border: solid;
+    border-width: 0;
+    border-radius: 5rem;
+    border-color: v.$pallette_eight;
+
+    font-style: normal;
+    font-size: calc(1rem + 1vw);
+    font-family: v.$font-one;
+    font-weight: 800;
+
+    color: v.$pallette_two;
+    background-color: v.$pallette_one;
+
+    padding: max(0.5rem, 0.5vw) max(0.5rem, 0.5vw) max(0.5rem, 0.5vw) max(0.5rem, 0.5vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -445,12 +474,6 @@
   #home-content-graphic-four {
     // border: solid;
     // border-color: red;
-
-    background-repeat: no-repeat;
-    background-position: center;
-    background-origin: content-box;
-    background-size: cover;
-    background-image: url("../../../public/assets/graphics/home_page/graphic_four.svg");
     rotate: 20deg;
 
     position: absolute;
@@ -557,8 +580,13 @@
     }
   }
 
+  #get-started-wrapper {
+    width: 100%;
+    height: max(8rem, 8vw);
+  }
+
   //Create Event Button
-  #getStarted {
+  #get-started {
     border: solid;
     border-width: 0;
     border-radius: 5rem;

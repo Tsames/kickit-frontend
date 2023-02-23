@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   text-align: center;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
@@ -26,21 +27,6 @@
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-
-  }
-
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {
-    
-  }
-
-  //Desktop Sizing
-  @include d.for-desktop-up {
-
-  }
-
-  //Large Desktop Sizing & Positioning
-  @include d.for-big-desktop-up {
 
   }
   
@@ -62,6 +48,9 @@
 
     position: relative;
 
+    height: 100vh;
+    width: 100vw;
+
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       height: 100vh;
@@ -74,23 +63,6 @@
       width: 100vw;
     }
 
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      height: 100vh;
-      width: 100vw;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      height: 100vh;
-      width: 100vw;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      height: 100vh;
-      width: 100vw;
-    }
   }
 
   // &%&%&%&%&%&%&%&%&%& Testimonial Wrapper &%&%&%&%&%&%&%&%&%&
@@ -101,90 +73,34 @@
     align-items: center;
     text-align: center;
 
-    background: linear-gradient(270deg, #4DDABB -28.37%, #3D4BC6 122.74%);
-    border: none;
-    border-radius: 4rem;
-    font-family: v.$font-four;
-    pointer-events: none;
-
     position: relative;
+
+    width: 90vw;
+    height: 50vw;
+    margin: 5vw 0 0 0;
     z-index: 1;
 
+    border: none;
+    border-radius: 4rem;
+
+    background: linear-gradient(270deg, #4DDABB -28.37%, #3D4BC6 122.74%);
+
+    font-family: v.$font-four;
+
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      height: 63vh;
-      width: 86vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      height: 63vh;
-      width: 86vw;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      height: 63vh;
-      width: 86vw;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      height: 63vh;
-      width: 86vw;
-      top: 3rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      height: 72vh;
-      width: 86vw;
-      top: 3rem;
-    }
-  }
-
-  // &%&%&%&%&%&%&%&%&%& Secondary Background Div &%&%&%&%&%&%&%&%&%&
-  #home-secondary {
-    background-image: url("../../../public/assets/backgrounds/home_page/secondary.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-origin: content-box;
-    background-size: cover;
-
-    position: absolute;
-    z-index: 0;
-    width: 100vw;
-
-    //Mobile Sizing & Positioning
-    @include d.for-phone-only {
-
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      height: 74vh;
-      top: 160vh;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      height: 74vh;
-      top: 165vh;
     }
   }
   
   // &%&%&%&%&%&%&%&%&%& Contents Wrapper &%&%&%&%&%&%&%&%&%&
   #home-contents {
+    // border: solid;
+    // border-color: green;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -195,37 +111,14 @@
     width: 100%;
     height: fit-content;
 
-    // border: solid;
-    // border-color: green;
+    margin: max(3rem, 14vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      padding-top: 5rem;
-      margin-top: 20rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      padding-bottom: 5rem;
-      margin-top: 35rem;
     }
   }
 
@@ -238,42 +131,24 @@
     justify-content: space-evenly;
     align-items: center;
 
-    // border: none;
+    position: relative;
+
+    width: 90%;
+    height: 50vw;
+
     background-color: #FFE2FE;
     border-radius: 4rem;
 
+    padding: 1vw 0vw 1vw 0vw;
+
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
+
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
 
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-      height: 60vh;
-      width: 86vw;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-      height: 60vh;
-      width: 86vw;
     }
   }
 
@@ -285,6 +160,7 @@
 
     width: 100%;
 
+    position: relative;
     // border: solid;
     // border-color: pink;
 
@@ -327,6 +203,7 @@
 
     width: 100%;
 
+    position: relative;
     // border: solid;
     // border-color: purple;
 
@@ -447,30 +324,15 @@
 
   .home-content-text {
     font-family: v.$font-two;
+    font-style: normal;
+    font-size: calc(1rem + 2vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      font-size: 48px;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      font-size: 48px;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      font-size: 48px;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      font-size: 48px;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      font-size: 48px;
     }
   }
 
@@ -480,70 +342,29 @@
 
   //Create Event Button
   #createEvent {
+    position: absolute;
+    bottom: 10%;
+
+    border: solid;
+    border-width: 0;
+    border-radius: 5rem;
+    border-color: v.$pallette_eight;
+
+    font-style: normal;
+    font-size: calc(1rem + 1vw);
     font-family: v.$font-two;
+
     color: v.$pallette_two;
     background-color: v.$pallette_one;
 
-    border: none;
-    position: absolute;
+    padding: max(0.5rem, 1vw) max(1rem, 2vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      font-size: 20px;
-      font-weight: 650;
-
-      border-radius: 2rem;
-      padding: 0.5rem;
-      height: 4rem;
-      width: 15rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      font-size: 20px;
-      font-weight: 650;
-
-      border-radius: 2rem;
-      padding: 0.5rem;
-      height: 4rem;
-      width: 15rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      font-size: 20px;
-      font-weight: 650;
-
-      border-radius: 2rem;
-      padding: 0.5rem;
-      height: 4rem;
-      width: 15rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      font-size: 20px;
-      font-weight: 600;
-
-      border-radius: 2rem;
-      padding: 0.5rem;
-      height: 4rem;
-      width: 15rem;
-
-      bottom: 7rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      font-size: 20px;
-      font-weight: 600;
-
-      border-radius: 10rem;
-      padding: 0rem;
-      height: 8vh;
-      width: 25rem;
-
-      bottom: 7rem;
     }
   }
 
@@ -551,6 +372,9 @@
   // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Testimonial @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
 
   #home-testimonial-one {
+    width: 85%;
+    height: 70%;
+
     color: v.$pallette_two;
     font-family: v.$font-four;
 
@@ -564,89 +388,68 @@
       padding: 5rem 15rem;
     }
 
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      padding: 5rem 15rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      padding: 5rem 15rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      padding: 5rem 15rem;
-    }
-
     //Quote
     h1 {
+      font-size: calc(0.5rem + 5vw);
+
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
-        font-size: 56px;
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
-        font-size: 56px;
-      }
-
-      //Tablet Landscape Sizing & Positioning
-      @include d.for-tablet-landscape-up {
-        font-size: 56px;
-      }
-
-      //Desktop Sizing & Positioning
-      @include d.for-desktop-up {
-        font-size: 56px;
-      }
-
-      //Large Desktop Sizing & Positioning
-      @include d.for-big-desktop-up {
-        font-size: 56px;
       }
     }
 
     //Speaker
     p {
+      font-size: calc(0.7rem + 2vw);
+      margin-left: 40%;
+
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
-        font-size: 22px;
-        margin-left: 40%;
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
-        font-size: 22px;
-        margin-left: 40%;
-      }
-
-      //Tablet Landscape Sizing & Positioning
-      @include d.for-tablet-landscape-up {
-        font-size: 22px;
-        margin-left: 40%;
-      }
-
-      //Desktop Sizing & Positioning
-      @include d.for-desktop-up {
-        font-size: 22px;
-        margin-left: 40%;
-      }
-
-      //Large Desktop Sizing & Positioning
-      @include d.for-big-desktop-up {
-        font-size: 22px;
-        margin-left: 40%;
       }
     }
   }
 
   // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Contents @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
 
-  // @#@#@#@#@#@#@#@#@#@ Home Content Graphics @#@#@#@#@#@#@#@#@#@
+  // &%&%&%&%&%&%&%&%&%& Secondary Background Div &%&%&%&%&%&%&%&%&%&
+  #home-secondary {
+    background-image: url("../../../public/assets/backgrounds/home_page/secondary.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
 
+    position: absolute;
+    height: calc(5rem + 40vw);
+    top: -22vw;
+
+    z-index: 0;
+    width: 100vw;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+
+    }
+  }
+
+  // @#@#@#@#@#@#@#@#@#@ Home Content Block One @#@#@#@#@#@#@#@#@#@
+
+  //Person Graphic
   #home-content-graphic-one {
-    position: relative;
+    // border: solid;
+    // border-color: red;
 
     background-repeat: no-repeat;
     background-position: center;
@@ -655,40 +458,24 @@
 
     background-image: url("../../../public/assets/graphics/home_page/graphic_one.svg");
 
-    // border: solid;
-    // border-color: red;
+    width: 25vw;
+    height: 40vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      height: 50rem;
-      width: 30rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      height: 50rem;
-      width: 30rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      height: 50rem;
-      width: 30rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      height: 35rem;
-      width: 25rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      height: 50rem;
-      width: 30rem;
     }
   }
 
+  //Content One Text
+  #home-content-text-one {
+    width: 40%;
+  }
+
+  //First Arrow
   #home-content-graphic-two {
     position: absolute;
 
@@ -717,32 +504,9 @@
       height: 25rem;
       width: 25rem;
     }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      top: 0%;
-      left: 12%;
-      height: 25rem;
-      width: 25rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      top: 18%;
-      left: 43%;
-      height: 28rem;
-      width: 28rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      top: 20%;
-      left: 48%;
-      height: 32rem;
-      width: 35rem;
-      rotate: -10deg;
-    }
   }
+
+  // @#@#@#@#@#@#@#@#@#@ Home Content Block Two @#@#@#@#@#@#@#@#@#@
 
   #home-content-graphic-three {
     position: relative;
@@ -766,24 +530,6 @@
     @include d.for-tablet-portrait-up {
       height: 40rem;
       width: 35rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      height: 40rem;
-      width: 35rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      height: 40rem;
-      width: 35rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      height: 50rem;
-      width: 40rem;
     }
   }
 
@@ -810,30 +556,9 @@
       height: 20rem;
       width: 20rem;
     }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      height: 20rem;
-      width: 20rem;
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-      top: 40%;
-      left: 10%;
-      height: 20rem;
-      width: 20rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      top: 45%;
-      left: 10%;
-      height: 32rem;
-      width: 32rem;
-      rotate: 15deg;
-    }
   }
+
+  // @#@#@#@#@#@#@#@#@#@ Home Content Block Three @#@#@#@#@#@#@#@#@#@
 
   #home-content-graphic-five {
     position: relative;

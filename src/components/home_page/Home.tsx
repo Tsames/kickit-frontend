@@ -1,12 +1,17 @@
 //Dependencies
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //Styling
 import '../../styles/home_styling/home.scss';
 
-const Home = () => {
+//Props Interface
+interface homeProps {
+
+}
+
+const Home: FC<homeProps> = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
@@ -14,7 +19,7 @@ const Home = () => {
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
   //Container (#navbar-shell) Variant
-  const containerVariant = {
+  const homeVariant = {
     initial: { 
       scale: 0,
       x: "-50vw",
@@ -87,7 +92,7 @@ const Home = () => {
 
   return (
     <div id="home-shell">
-      <motion.div id="home-landing" variants={containerVariant} initial="initial" animate="animate">
+      <motion.div id="home-landing" variants={homeVariant} initial="initial" animate="animate">
         <motion.button id="createEvent" variants={childVariant} whileHover={buttonItemHover} whileTap={buttonItemTap}>Create Your Event</motion.button>
       </motion.div>
       <div id="home-testimonials">

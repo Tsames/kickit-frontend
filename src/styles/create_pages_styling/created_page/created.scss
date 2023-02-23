@@ -14,7 +14,7 @@
   align-items: center;
 
   position: relative;
-  
+
   width: 100vw;
 
   background: linear-gradient(90deg, #4DDABB -48.72%, #3D4BC6 150.8%);
@@ -55,7 +55,7 @@
     justify-content: flex-start;
     align-items: center;
 
-    margin-top: max(10rem, 6vw);
+    margin-top: max(10rem, 10vw);
 
     padding: max(1rem, 1vw) 0 max(1rem, 1vw) 0;
     width: 100%;
@@ -70,10 +70,11 @@
     justify-content: space-evenly;
     align-items: center;
 
+    position: relative;
+
     width: 100%;
-    padding: max(5rem, 5vw) 0 max(5rem, 5vw) 0;
-
-
+    padding-top: max(8rem, 8vw);
+    padding-bottom: max(8rem, 8vw);
   }
 
   #created-mid-left-section {
@@ -84,7 +85,10 @@
     width: 30%;
 
     background-color: v.$pallette_two;
-    padding: max(1rem, 1vw);
+    padding-top: max(2rem, 2vw);
+    padding-left: max(2rem, 2vw);
+    padding-bottom: max(2rem, 2vw);
+    padding-right: max(2rem, 2vw);
   }
 
   #created-mid-right-section {
@@ -104,7 +108,7 @@
     // border: solid;
     // border-color: gold;
 
-    padding: max(1rem, 1vw) 0 max(1rem, 1vw) 0;
+    padding: max(3rem, 4vw) 0 max(1rem, 1vw) 0;
     width: 100%;
 
     display: flex;
@@ -258,13 +262,12 @@
   }
 
   ///////////////////////////////////////////////////////////////
-  /// 
   //Description Wrapper
   #created-description-wrapper {
     border: solid;
     border-color: v.$pallette_seven;
     border-width: max(1.5px, 0.05vw);
-    border-radius: 5% 5%;
+    border-radius: 10px;
 
     display: flex;
     flex-direction: column;
@@ -283,15 +286,39 @@
     height: 100%;
     width: 100%;
 
+    font-size: calc(0.5rem + 0.6vw);
+
     overflow-y: auto;
     text-overflow: ellipsis;
   }
 
+  ///////////////////////////////////////////////////////////////
+
+  //Lime Arrow SVG
+  #created-limeArrow-svg {
+    background-image: url("../../../../public/assets/graphics/created_page/limeArrow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+
+    position: absolute;
+    bottom: -5%;
+    right: 12vw;
+
+    rotate: 0deg;
+
+    width: 8vw;
+    height: 12vw;
+
+  }
+
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Bottom Section @#@#@#@#@&%&%&%&%&@#@#@#@#@
+
 
   //Copy Link button at the bottom of the screen
   #copyLink-shell {
-    margin-bottom: 5vw;
+    margin-bottom: max(10rem, 10vw);
   }
 
 

@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 //Import Components
 import CopyLink from './child_components/copyLink';
 import ModalLoading from "../../loading_pages/modalLoading";
+import NoSuchEvent from "../../error_pages/noSuchEvent";
 
 //Styling
 import '../../../styles/create_pages_styling/created_page/created.scss';
@@ -48,16 +49,14 @@ const Created: FC<createdProps> = ({ getEventData, event }) => {
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
-  const pageLoading = () => {
-    return (
-      <ModalLoading show={true}></ModalLoading>
-    )
-  }
 
-  const pageLoaded = () => {
-    return(
-       <>
-        <div id="created-top-section">
+  /* ------------------------------------------ Returning JSX ------------------------------------------ */
+
+  return (
+    <div id="created-shell">
+      <ModalLoading show={false}></ModalLoading>
+      <NoSuchEvent show={false}></NoSuchEvent>
+      <div id="created-top-section">
           <h3 id="created-top-text" className="no-select">Lets</h3>
           <h1 id="created-top-header" className="no-select">Kick It</h1>
         </div>
@@ -80,24 +79,13 @@ const Created: FC<createdProps> = ({ getEventData, event }) => {
             <h3 className="created-mid-right-text">Copy the link below and send it to all prospective attendees!</h3>
             <h5 className="created-mid-right-reminder">Remember, all guests can see the availability of everyone else!</h5>
           </div>
+          <div id="created-limeArrow-svg"></div>
         </div>
         <div id="created-bottom-section">
+          <div id="created-limeArrow-svg"></div>
           <CopyLink></CopyLink>
           <div id="created-wallpaper"></div>
         </div>
-      </>
-    )
-  }
-
-  const pageError = () => {
-
-  }
-
-  /* ------------------------------------------ Returning JSX ------------------------------------------ */
-
-  return (
-    <div id="created-shell">
-      { pageState === 0 ? pageLoading() : pageLoaded() }
     </div>
   )
 }

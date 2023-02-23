@@ -14,9 +14,10 @@ import Footer from './components/navigation_components/footer';
 
 //Import Main Pages
 import Home from './components/home_page/Home';
+import HowItWorks from './components/info_pages/howItWorks';
 import Create from './components/create_pages/create_page/create';
 import Created from './components/create_pages/created_page/created';
-import AboutUs from "./components/about_us_page/aboutUs";
+import AboutUs from "./components/info_pages/aboutUs";
 
 function App() {
 
@@ -97,9 +98,10 @@ function App() {
 
           {/* Main Routes */}
           <Route path='/' element={<Home />} />
+          <Route path='/' element={<HowItWorks />} />
           <Route path='/create' element={<Create getEventData={getEventData} />} />
           <Route path='/created/:id' element={<Created getEventData={getEventData} event={event} />} />
-          <Route path='/about' element={<AboutUs />} />
+          <Route path='/aboutUs' element={<AboutUs />} />
 
         </Routes>
         <Footer />

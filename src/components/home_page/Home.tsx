@@ -108,14 +108,14 @@ const Home: FC<homeProps> = () => {
           <motion.div id="home-content-graphic-two" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
         </div>
         <div id="home-content-block-two">
-          <div id="home-content-text-two-wrapper">
+          <div id="home-content-block-two-text-wrapper">
             <p id="home-content-text-two" className="home-content-text">Share the event with your friends and see when they are free.</p>
           </div>
           <div id="home-content-graphic-three" className="home-content-graphic"></div>
           <motion.div id="home-content-graphic-four" className="home-content-graphic" variants={scrollVariant} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.8 }}></motion.div>
         </div>
         <div id="home-content-block-three">
-          <div id="home-content-text-three-four-wrapper">
+          <div id="home-content-block-three-text-wrapper">
             <p id="home-content-text-three" className="home-content-text">Pick the best day and time for everyone!</p>
             <p id="home-content-text-four" className="home-content-text">Its time to...</p>
             <p id="home-content-text-five" className="home-content-text">Kick It!</p>

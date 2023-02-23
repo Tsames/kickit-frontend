@@ -112,7 +112,7 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
         </div>
         <div id="navRight">
           <div id="navItems-wrapper">
-            <Link to="/example"><motion.button id="navbarDemo" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Demo</motion.button></Link>
+            <Link to="/example"><motion.button id="navbarDemo" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>How It Works</motion.button></Link>
             <Link to="/about"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
           </div>
           <div id="navCreate-wrapper">

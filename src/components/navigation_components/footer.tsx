@@ -73,9 +73,9 @@ const Footer: FC<footerProps> = () => {
       <Link to="/"><motion.h1 id="footerHomeButton" variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}>Kick It</motion.h1></Link>
       <div id="footer-middle">
         <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAbout"  className="footer-middle-link" to="/">Home</Link></motion.p>
-        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerCreate" className="footer-middle-link" to="/create">Create</Link></motion.p>
-        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerDemo" className="footer-middle-link" to="/example">Demo</Link></motion.p>
-        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAboutUs" className="footer-middle-link" to="/about/who">About Us</Link></motion.p>
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerCreate" className="footer-middle-link" to="/howItWorks">How It Works</Link></motion.p>
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerDemo" className="footer-middle-link" to="/create">Create</Link></motion.p>
+        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAboutUs" className="footer-middle-link" to="/aboutUs">About Us</Link></motion.p>
       </div>
       <div id="footer-right">
       

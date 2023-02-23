@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 
 //Styling
-import '../../styles/about_us_styling/aboutUs.scss';
+import './../../styles/info_styling/aboutUs.scss';
 
 //Props Interface
 interface aboutUsProps {

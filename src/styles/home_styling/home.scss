@@ -111,7 +111,7 @@
     width: 100%;
     height: fit-content;
 
-    margin: max(3rem, 14vw);
+    margin: max(3rem, 14vw) 0 0 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -234,7 +234,8 @@
 
     font-style: normal;
     font-size: calc(1rem + 1vw);
-    font-family: v.$font-two;
+    font-family: v.$font-one;
+    font-weight: 800;
 
     color: v.$pallette_two;
     background-color: v.$pallette_one;
@@ -361,32 +362,30 @@
 
   //Blue Right-to-Left Arrow
   #home-content-graphic-two {
-    position: absolute;
+    // border: solid;
+    // border-color: red;
 
     background-repeat: no-repeat;
     background-position: bottom;
     background-origin: content-box;
     background-size: contain;
+    rotate: -25deg;
 
     background-image: url("../../../public/assets/graphics/home_page/graphic_two.svg");
 
-    // border: solid;
-    // border-color: red;
+    position: absolute;
+    bottom: -15vw;
+    right: 18vw;
+
+    width: 35vw;
+    height: 30vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      top: 0%;
-      left: 12%;
-      height: 25rem;
-      width: 25rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      top: 0%;
-      left: 12%;
-      height: 25rem;
-      width: 25rem;
     }
   }
 
@@ -416,7 +415,7 @@
   }
 
   //Content Block Two Text Wrapper
-  #home-content-text-two-wrapper {
+  #home-content-block-two-text-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -452,8 +451,15 @@
     background-origin: content-box;
     background-size: cover;
     background-image: url("../../../public/assets/graphics/home_page/graphic_four.svg");
+    rotate: 20deg;
 
     position: absolute;
+
+    bottom: -8vw;
+    left: -5vw;
+
+    width: 30vw;
+    height: 30vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -493,32 +499,36 @@
 
   
   //Content Block Three Text Wrapper
-  #home-content-text-three-four-wrapper {
+  #home-content-block-three-text-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
 
     background-color: #B4FFF1;
     border-radius: 5rem;
     width: 80%;
+    height: 25vw;
 
     margin: 0 0 3vw 0;
   }
 
   //Content Block Three Text ("Pick the best...")
-  #home-content-three-text {
+  #home-content-text-three {
     margin: 0 0 0 0 !important;
   }
 
   //Content Block Three Text ("Its time to...")
-  #home-content-four-text {
+  #home-content-text-four {
     margin: 0 0 0 0 !important;
+    font-style: italic;
   }
 
   //Content Block Three Text ("Kick It!")
   #home-content-text-five {
     margin: 0 0 0 0 !important;
+    font-weight: bolder;
+    font-size: calc(1rem + 4vw);
   }
 
   //Squigely Arrow
@@ -533,6 +543,10 @@
     background-image: url("../../../public/assets/graphics/home_page/graphic_six.svg");
 
     position: absolute;
+    bottom: -22vw;
+
+    width: 20vw;
+    height: 20vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -545,11 +559,23 @@
 
   //Create Event Button
   #getStarted {
+    border: solid;
+    border-width: 0;
+    border-radius: 5rem;
+    border-color: v.$pallette_eight;
+
+    font-style: normal;
+    font-size: calc(1rem + 1vw);
     font-family: v.$font-one;
+    font-weight: 900;
+
     color: v.$pallette_two;
     background-color: v.$pallette_one;
 
-    border: none;
+    padding: max(0.5rem, 1.5vw) max(1rem, 4vw);
+    margin: 0 0 5vw 0;
+
+    pointer-events: all;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {

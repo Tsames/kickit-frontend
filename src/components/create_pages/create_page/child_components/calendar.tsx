@@ -228,7 +228,7 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
     }
   }
 
-  //Handler function - adds and remove days to and from form state of create.js
+  //Handler function - adds and remove days to and from newForm state of create.tsx
   const handleClick = (event :MouseEvent<HTMLDivElement>) :void => {
 
     const element = event.target as HTMLDivElement

@@ -40,7 +40,7 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, toggle, text }) => {
     },
     active: {
       opacity: 1,
-      width: "15vw",
+      width: "calc(5rem + 12vw)",
       transition: { type: "spring", stiffness: 400, damping: 30, delay: 0.3 }
     }
   }
@@ -65,7 +65,7 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, toggle, text }) => {
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
-  const convertData = () => {
+  const convertData = () :number => {
     if(time.tod === "PM" && time.number !== 12) {
       return time.number + 12;
     } else if (time.number === 12 && time.tod === "AM") {

@@ -39,8 +39,8 @@ const Create: FC<createProps> = ({ getEventData }) => {
     title: "",
     location: "",
     description: "",
-    early: 1,
-    late: 24,
+    early: 0,
+    late: 0,
     days: []
   });
 
@@ -59,6 +59,17 @@ const Create: FC<createProps> = ({ getEventData }) => {
   }
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
+
+  const getCalendarHelperColor = () => {
+    if (newForm.days.length === 5) {
+      return "calendar-counter-maxed no-select";
+    } else if (newForm.days.length > 2) {
+      return "calendar-counter-some no-select";
+    } else {
+      return "no-select";
+    }
+  }
+
 
   //Helper function (handleSubmit) - makes an HTTP Post request to the backend
   const createEvent = async () => {
@@ -86,47 +97,38 @@ const Create: FC<createProps> = ({ getEventData }) => {
   };
 
   //Handler function - Updates early and late in newForm state
-  const handleTimeSelect = (event : ChangeEvent<HTMLButtonElement>) :void => {
-    let newEarly = Number(event.target.dataset.early);
-    let newLate = Number(event.target.dataset.late);
-    event.target.classList.add("button-selected");
+  const handleTimeSelect = (event : MouseEvent<HTMLButtonElement>) :void => {
+
+    //Grab element
+    const element = event.target as HTMLButtonElement
+    const dataset = element.dataset;
+    const classList = element.classList;
+
+    let newEarly = Number(dataset.early);
+    let newLate = Number(dataset.late);
+    classList.add("button-selected");
     setNewForm({ ...newForm, "early": newEarly, "late": newLate });
   }
 
   //Handler function - Makes an HTTP Post request to the backend upon submission and redirects user to created page
-  const handleSubmit = async (event : MouseEvent<HTMLButtonElement>) :Promise<void> => {
-    event.preventDefault();
+  const handleSubmit = async () :Promise<void> => {
     const id = await createEvent();
     navigate(`/created/${id}`);
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
-  const displayCreate = () => {
-    return (
-      <>
-        <CreateTopSection newForm={newForm} handleChange={handleChange} />
-        <div id="create-middle-section">
-          <Calendar newForm={newForm} setNewForm={setNewForm} />
-        </div>
-        <CreateBottomSection handleTimeSelect={handleTimeSelect} handleSubmit={handleSubmit} />
-      </>
-    )
-  }
-
-  const displayProcessing = () => {
-    return (
-      <>
-        <h1>Loading...</h1>
-      </>
-    )
-  }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
     <motion.div id="create-shell" variants={createPageVariant} initial="hidden" animate="visible" exit="exit">
-      {displayCreate()}
+        <CreateTopSection newForm={newForm} handleChange={handleChange} />
+        <div id="create-middle-section">
+          <div id="calendarCounter" className={getCalendarHelperColor()}> {newForm.days.length} / 5</div>
+          <Calendar newForm={newForm} setNewForm={setNewForm} />
+        </div>
+        <CreateBottomSection newForm={newForm} handleTimeSelect={handleTimeSelect} handleSubmit={handleSubmit} />
     </motion.div>
   )
 }

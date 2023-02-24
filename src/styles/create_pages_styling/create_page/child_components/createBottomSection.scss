@@ -55,7 +55,8 @@
     grid-template-rows: repeat(2, 1fr);
 
     position: absolute;
-    bottom: 10vw;
+    bottom: 14vw;
+    left: 6.5vw;
   }
 
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Right Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
@@ -82,7 +83,7 @@
     font-size: calc(1rem + 0.5vw);
 
     height: 9vw;
-    width: 15vw;
+    width: calc(5rem + 12vw);
 
     border-radius: 0.3vw;
     border: solid;
@@ -110,8 +111,8 @@
     pointer-events: none;
 
     position: absolute;
-    bottom: 32.5vw;
-    left: 9.5vw;
+    bottom: 36.5vw;
+    left: 6.5vw;
   }
 
   //"Select all that apply" text
@@ -122,8 +123,8 @@
     pointer-events: none;
 
     position: absolute;
-    bottom: 31.5vw;
-    left: 9.5vw;
+    bottom: 35.5vw;
+    left: 6.5vw;
   }
 
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Right Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
@@ -131,10 +132,10 @@
   #create-submit-text-bubble {
     background-color: v.$pallette_six;
     border-radius: 100% 100%;
-    padding: 1.5vw;
+    padding: 2vw;
 
     width: 30vw;
-    height: 8vw;
+    height: 10vw;
 
     display: flex;
     justify-content: center;

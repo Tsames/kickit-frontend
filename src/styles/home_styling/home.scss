@@ -75,8 +75,8 @@
 
     position: relative;
 
-    width: 90vw;
-    height: 50vw;
+    width: calc(5rem + 70vw);
+    height: calc(10rem + 22vw);
     margin: 5vw 0 0 0;
     z-index: 1;
 
@@ -133,8 +133,8 @@
 
     position: relative;
 
-    width: 90%;
-    height: 50vw;
+    width: calc(5rem + 70vw);
+    height: calc(10rem + 22vw);
 
     background-color: #FFE2FE;
     border-radius: 4rem;
@@ -162,8 +162,8 @@
 
     position: relative;
 
-    width: 90%;
-    height: 50vw;
+    width: calc(5rem + 85vw);
+    height: calc(10rem + 22vw);
 
     margin: 12vw 0 0 0;
 
@@ -206,7 +206,7 @@
   .home-content-text {
     font-family: v.$font-two;
     font-style: normal;
-    font-size: calc(1rem + 2vw);
+    font-size: calc(1rem + 1.6vw);
     color: v.$pallette_three;
 
     //Mobile Sizing & Positioning
@@ -256,8 +256,8 @@
     bottom: 10%;
     right: 15%;
 
-    height: 3vw;
-    width: 3vw;
+    height: calc(1rem + 2vw);
+    width: calc(1rem + 2vw);
 
     display: flex;
     justify-content: center;
@@ -269,7 +269,7 @@
     border-color: v.$pallette_eight;
 
     font-style: normal;
-    font-size: calc(1rem + 1vw);
+    font-size: calc(1rem + 2vw);
     font-family: v.$font-one;
     font-weight: 800;
 
@@ -309,7 +309,7 @@
 
     //Quote
     h1 {
-      font-size: calc(0.5rem + 5vw);
+      font-size: calc(0.5rem + 3vw);
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
@@ -378,7 +378,7 @@
     background-image: url("../../../public/assets/graphics/home_page/graphic_one.svg");
 
     width: 25vw;
-    height: 40vw;
+    height: 28vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -405,16 +405,16 @@
     background-position: bottom;
     background-origin: content-box;
     background-size: contain;
-    rotate: -25deg;
+    rotate: -10deg;
 
     background-image: url("../../../public/assets/graphics/home_page/graphic_two.svg");
 
     position: absolute;
     bottom: -15vw;
-    right: 18vw;
+    right: 15vw;
 
-    width: 35vw;
-    height: 30vw;
+    width: 25vw;
+    height: 25vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -438,8 +438,8 @@
     background-size: cover;
     background-image: url("../../../public/assets/graphics/home_page/graphic_three.svg");
 
-    width: 40vw;
-    height: 40vw;
+    width: 30vw;
+    height: 30vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -458,8 +458,8 @@
 
     background-color: #D5D9FF;
 
-    width: 50%;
-    height: 80%;
+    width: 35%;
+    height: calc(5rem + 80%);
     border-radius: 50% 50%;
 
     //Mobile Sizing & Positioning
@@ -481,15 +481,20 @@
   #home-content-graphic-four {
     // border: solid;
     // border-color: red;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
+    background-image: url("../../../public/assets/graphics/home_page/graphic_four.svg");
     rotate: 20deg;
 
     position: absolute;
 
-    bottom: -8vw;
-    left: -5vw;
+    bottom: -11vw;
+    left: -2vw;
 
-    width: 30vw;
-    height: 30vw;
+    width: 25vw;
+    height: 25vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -515,8 +520,8 @@
 
     position: relative;
 
-    width: 60vw;
-    height: 35vw;
+    width: 45vw;
+    height: 25vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -537,8 +542,8 @@
 
     background-color: #B4FFF1;
     border-radius: 5rem;
-    width: 80%;
-    height: 25vw;
+    width: calc(5rem + 50%);
+    height: calc(5rem + 15vw);
 
     margin: 0 0 3vw 0;
   }
@@ -558,7 +563,7 @@
   #home-content-text-five {
     margin: 0 0 0 0 !important;
     font-weight: bolder;
-    font-size: calc(1rem + 4vw);
+    font-size: calc(1rem + 3vw);
   }
 
   //Squigely Arrow

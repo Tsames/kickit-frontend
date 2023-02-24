@@ -98,7 +98,7 @@ function App() {
 
           {/* Main Routes */}
           <Route path='/' element={<Home />} />
-          <Route path='/' element={<HowItWorks />} />
+          <Route path='/howItWorks' element={<HowItWorks />} />
           <Route path='/create' element={<Create getEventData={getEventData} />} />
           <Route path='/created/:id' element={<Created getEventData={getEventData} event={event} />} />
           <Route path='/aboutUs' element={<AboutUs />} />

@@ -1,5 +1,5 @@
 //Dependencies
-import React, { FC, MouseEvent, useState } from "react";
+import React, { FC, MouseEvent, useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 
 //Styling
@@ -28,6 +28,11 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, handleChange, toggle, text
     number: 0,
     tod: 'AM'
   });
+
+  useEffect(() => {
+    console.log("selectTime.tsx loaded.");
+    console.log(`time is ${time.number} ${time.tod}.`)
+  }, [time])
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -66,29 +71,40 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, handleChange, toggle, text
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
-  const convertData = () :number => {
-    if(time.tod === "PM" && time.number !== 12) {
-      return time.number + 12;
-    } else if (time.number === 12 && time.tod === "AM") {
+  const convertData = (number = time.number, tod = time.tod) :number => {
+
+    //If the time of day is PM and the number is not 12 add 12 to the number.
+    if(tod === "PM" && number !== 12) {
+
+      return number + 12;
+
+    //Else if the number is 12 and the time of day is AM return 24.  
+    } else if (number === 12 && tod === "AM") {
+
       return 24
+
+    //Otherwise just return the number as is.
     } else {
-      return time.number;
+
+      return number;
+
     }
   }
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
   const handleSetNumber = (event : any) :void => {
+    const newValue = convertData(Number(event.target.dataset.value));
+    handleChange(newValue);
+
     setTime({...time, "number": Number(event.target.dataset.value)});
-    console.log(`making ${event.target.dataset.value} the new number.`)
-    const value = convertData();
-    handleChange(value);
   }
 
   const handleSetTod = (event : any) :void => {
+    const newValue = convertData(time.number, event.target.dataset.value);
+    handleChange(newValue);
+
     setTime({...time, "tod": event.target.dataset.value});
-    const value = convertData();
-    handleChange(value);
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */

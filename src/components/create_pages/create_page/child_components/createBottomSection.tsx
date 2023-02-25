@@ -1,5 +1,5 @@
 //Dependencies
-import React, { FC, MouseEvent, ChangeEvent, useState } from "react";
+import React, { FC, MouseEvent, ChangeEvent, useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 
 //Import Components
@@ -19,17 +19,21 @@ interface CBSProps {
     days: number[];
   };
   handleChangeTime: (newEarly: number, newLate: number) => void;
-  handleChangeEarly: (value :number) => void;
-  handleChangeLate: (value :number) => void;
   handleSubmit: () => Promise<void>;
 }
 
-const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleChangeEarly, handleChangeLate, handleSubmit }) => {
+const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSubmit }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
-  //State that stores toggle data for custom time and loading screen
+  //State that stores toggle data for custom time
   const [toggle, setToggle] = useState<boolean>(false);
+
+  useEffect(() => {
+    console.log("cBS.tsx loaded.")
+    console.log("newForm in cBs.tsx:");
+    console.log(newForm);
+  }, [newForm])
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -165,10 +169,8 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleCh
     }
   }
 
-  /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
-
-  const handleButton = (event: any) :void => {
-
+  //Helper function - Manages the classes of the time selection major values.
+  const manageClasses = (event: any) => {
     const wrapper = event.target.parentElement.childNodes;
 
     //Iterate through children of parent and remove class
@@ -183,20 +185,47 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleCh
     if (toggle) {
       setToggle(false);
     }
+  }
+
+  /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
+
+  //Helper function - Manages the classes of the time selection major values.
+
+  const handlePreset = (event: any) :void => {
+
+    manageClasses(event);
 
     //Send data to state in create.js
     const earlyValue = Number(event.target.dataset.early);
     const lateValue = Number(event.target.dataset.late);
 
-    console.log(`changing early to ${earlyValue}`);
-    console.log(`changing late to ${lateValue}`);
+    // console.log(`changing early to ${earlyValue}`);
+    // console.log(`changing late to ${lateValue}`);
 
     handleChangeTime(earlyValue, lateValue);
   }
 
   const handleCustomTime = (event : MouseEvent<HTMLButtonElement>) :void => {
-    handleButton(event);
+    manageClasses(event);
     setToggle(true);
+  }
+
+  const handleCustomEarly = (value: number) :void => {
+
+    //Grab the current late value
+    const currentLateValue = newForm.late;
+    const newEarlyValue = value;
+
+    handleChangeTime(newEarlyValue, currentLateValue);
+  }
+
+  const handleCustomLate = (value: number) :void => {
+
+    //Grab the current early value
+    const currentEarlyValue = newForm.early;
+    const newLateValue = value;
+
+    handleChangeTime(currentEarlyValue, newLateValue);
   }
 
   const handleCheckSubmit = () :void => {
@@ -220,12 +249,12 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleCh
         <motion.h3 id="create-time-select-header" variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>Time Range</motion.h3>
         <motion.p id="create-time-select-secondary-text" variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>Pick a preset, or make your own custom range.</motion.p>
         <motion.div id="create-time-select-wrapper" variants={childVariant} initial={false} animate={toggle ? "active" : "inactive"}>
-          <motion.button data-early="11" data-late="16" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handleButton}>11am - 4pm</motion.button>
-          <motion.button data-early="16" data-late="21" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handleButton}>4pm - 9pm</motion.button>
-          <motion.button data-early="21" data-late="2" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handleButton}>9pm - 2am</motion.button>
+          <motion.button data-early="11" data-late="16" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handlePreset}>11am - 4pm</motion.button>
+          <motion.button data-early="16" data-late="21" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handlePreset}>4pm - 9pm</motion.button>
+          <motion.button data-early="21" data-late="2" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handlePreset}>9pm - 2am</motion.button>
           <motion.button data-early="0" data-late="0" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handleCustomTime}>Custom</motion.button>
-          <SelectTime elementId="select-time-early" handleChange={handleChangeEarly} toggle={toggle} text="Start"></SelectTime>
-          <SelectTime elementId="select-time-late" handleChange={handleChangeLate} toggle={toggle} text="End"></SelectTime>
+          <SelectTime elementId="select-time-early" handleChange={handleCustomEarly} toggle={toggle} text="Start"></SelectTime>
+          <SelectTime elementId="select-time-late" handleChange={handleCustomLate} toggle={toggle} text="End"></SelectTime>
         </motion.div>
       </div>
       <div id="create-bottom-right-subsection">

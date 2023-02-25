@@ -45,6 +45,8 @@ const Create: FC<createProps> = ({ getEventData }) => {
   });
 
   useEffect(() => {
+    console.log("create.tsx loaded.")
+    console.log("newForm in create.tsx:");
     console.log(newForm);
   }, [newForm])
 
@@ -104,14 +106,6 @@ const Create: FC<createProps> = ({ getEventData }) => {
     setNewForm({...newForm, "early": newEarly, "late": newLate})
   }
 
-  const handleChangeEarly = (value :number) :void => {
-    setNewForm({...newForm, "early": value });
-  }
-
-  const handleChangeLate = (value :number) :void => {
-    setNewForm({...newForm, "late": value});
-  }
-
   //Handler function - Makes an HTTP Post request to the backend upon submission and redirects user to created page
   const handleSubmit = async () :Promise<void> => {
     const id = await createEvent();
@@ -130,7 +124,7 @@ const Create: FC<createProps> = ({ getEventData }) => {
           <div id="calendarCounter" className={getCalendarHelperColor()}> {newForm.days.length} / 5</div>
           <Calendar newForm={newForm} setNewForm={setNewForm} />
         </div>
-        <CreateBottomSection newForm={newForm} handleChangeTime={handleChangeTime} handleChangeEarly={handleChangeEarly} handleChangeLate={handleChangeLate} handleSubmit={handleSubmit} />
+        <CreateBottomSection newForm={newForm} handleChangeTime={handleChangeTime} handleSubmit={handleSubmit} />
     </motion.div>
   )
 }

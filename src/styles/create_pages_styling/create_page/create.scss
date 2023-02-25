@@ -49,8 +49,8 @@
 
   //Top Section
   #create-top-section {
-    border: solid;
-    border-color: orange;
+    // border: solid;
+    // border-color: orange;
 
     width: 90%;
     padding-bottom: 10rem;
@@ -85,13 +85,15 @@
 
   //Middle Section
   #create-middle-section {
-    border: solid;
-    border-color: pink;
+    // border: solid;
+    // border-color: pink;
 
     width: 80%;
-    height: max(25rem, 45vw);
+    height: calc(10rem + 40vw);
     margin-bottom: calc(5rem + 2vw);
     // height: 60rem;
+
+    position: relative;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -123,8 +125,8 @@
 
   //Bottom Section
   #create-bottom-section {
-    border: solid;
-    border-color: gold;
+    // border: solid;
+    // border-color: gold;
     padding: 0 0 0 0;
 
     width: 100%;
@@ -161,15 +163,16 @@
     // border-color: red;
     border-radius:  5rem;
 
-    height: calc(5rem + 1.5vw);
-    width: calc(5rem + 1.5vw);
+    height: calc(3rem + 2vw);
+    width: calc(3rem + 2vw);
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     position: absolute;
-    right: 17vw;
+    right: 5vw;
+    top: calc(0.5rem + 1vw);
 
     background-color: v.$pallette_six;
     color: v.$pallette_three;

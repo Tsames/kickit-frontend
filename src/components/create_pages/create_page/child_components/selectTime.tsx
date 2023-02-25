@@ -1,5 +1,5 @@
 //Dependencies
-import React, { FC, useState } from "react";
+import React, { FC, MouseEvent, useState } from "react";
 import { motion } from 'framer-motion';
 
 //Styling
@@ -8,11 +8,12 @@ import '../../../../styles/create_pages_styling/create_page/child_components/sel
 //Props Interface
 interface SelectTimeProps {
   elementId: string;
+  handleChange: (value :number) => void
   toggle: boolean;
   text: string;
 }
 
-const SelectTime: FC<SelectTimeProps> = ({ elementId, toggle, text }) => {
+const SelectTime: FC<SelectTimeProps> = ({ elementId, handleChange, toggle, text }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
@@ -47,7 +48,7 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, toggle, text }) => {
 
   //Hover
   const optionHover = {
-    scale: 1.1,
+    scale: 1,
     color: "#3d4bc6",
     transition: {
         duration: 0.3
@@ -79,10 +80,15 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, toggle, text }) => {
 
   const handleSetNumber = (event : any) :void => {
     setTime({...time, "number": Number(event.target.dataset.value)});
+    console.log(`making ${event.target.dataset.value} the new number.`)
+    const value = convertData();
+    handleChange(value);
   }
 
   const handleSetTod = (event : any) :void => {
     setTime({...time, "tod": event.target.dataset.value});
+    const value = convertData();
+    handleChange(value);
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */

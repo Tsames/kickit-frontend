@@ -1,5 +1,5 @@
 //Dependencies
-import React, { FC, MouseEvent, ChangeEvent, useState } from "react";
+import React, { FC, MouseEvent, ChangeEvent, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -43,6 +43,10 @@ const Create: FC<createProps> = ({ getEventData }) => {
     late: 0,
     days: []
   });
+
+  useEffect(() => {
+    console.log(newForm);
+  }, [newForm])
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -96,18 +100,16 @@ const Create: FC<createProps> = ({ getEventData }) => {
     setNewForm({ ...newForm, [event.target.name]: newValue });
   };
 
-  //Handler function - Updates early and late in newForm state
-  const handleTimeSelect = (event : MouseEvent<HTMLButtonElement>) :void => {
+  const handleChangeTime = (newEarly :number, newLate :number) :void => {
+    setNewForm({...newForm, "early": newEarly, "late": newLate})
+  }
 
-    //Grab element
-    const element = event.target as HTMLButtonElement
-    const dataset = element.dataset;
-    const classList = element.classList;
+  const handleChangeEarly = (value :number) :void => {
+    setNewForm({...newForm, "early": value });
+  }
 
-    let newEarly = Number(dataset.early);
-    let newLate = Number(dataset.late);
-    classList.add("button-selected");
-    setNewForm({ ...newForm, "early": newEarly, "late": newLate });
+  const handleChangeLate = (value :number) :void => {
+    setNewForm({...newForm, "late": value});
   }
 
   //Handler function - Makes an HTTP Post request to the backend upon submission and redirects user to created page
@@ -128,7 +130,7 @@ const Create: FC<createProps> = ({ getEventData }) => {
           <div id="calendarCounter" className={getCalendarHelperColor()}> {newForm.days.length} / 5</div>
           <Calendar newForm={newForm} setNewForm={setNewForm} />
         </div>
-        <CreateBottomSection newForm={newForm} handleTimeSelect={handleTimeSelect} handleSubmit={handleSubmit} />
+        <CreateBottomSection newForm={newForm} handleChangeTime={handleChangeTime} handleChangeEarly={handleChangeEarly} handleChangeLate={handleChangeLate} handleSubmit={handleSubmit} />
     </motion.div>
   )
 }

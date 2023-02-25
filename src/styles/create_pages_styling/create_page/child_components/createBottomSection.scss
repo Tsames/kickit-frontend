@@ -103,7 +103,7 @@
 
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Left Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
 
-  //"Time and Date" text
+  //"Time Range" text
   #create-time-select-header {
     color: v.$pallette_three;
     font-family: v.$font-two;
@@ -125,6 +125,20 @@
     position: absolute;
     bottom: 35.5vw;
     left: 6.5vw;
+  }
+
+  #create-time-select-warning {
+    color: rgb(173, 85, 85);
+    font-style: v.$font-two;
+    font-size: calc(0.5rem + 0.55vw);
+
+    width: 40vw;
+
+    position: absolute;
+    left: 6.5vw;
+    top: -6%;
+
+    transition: color 0.5s ease;
   }
 
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Right Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@

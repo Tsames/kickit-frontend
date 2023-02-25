@@ -18,11 +18,13 @@ interface CBSProps {
     late: number;
     days: number[];
   };
-  handleTimeSelect: (event : MouseEvent<HTMLButtonElement>) => void;
+  handleChangeTime: (newEarly: number, newLate: number) => void;
+  handleChangeEarly: (value :number) => void;
+  handleChangeLate: (value :number) => void;
   handleSubmit: () => Promise<void>;
 }
 
-const CreateBottomSection: FC<CBSProps> = ({ newForm, handleTimeSelect, handleSubmit }) => {
+const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleChangeEarly, handleChangeLate, handleSubmit }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
@@ -129,10 +131,10 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleTimeSelect, handleSu
     }
 
     //Time
-     if ((newForm.early === 0 || newForm.late === 0) && checkArray.length >= 2) {
-      outputString += " and enter a time range"
-    } else if (newForm.early === 0 || newForm.late === 0) {
-      outputString += " enter a time range"
+     if (((newForm.early === 0 || newForm.late === 0) && !checkValidTimeSelect()) && checkArray.length >= 2) {
+      outputString += " and enter a valid time range"
+    } else if ((newForm.early === 0 || newForm.late === 0) && !checkValidTimeSelect()) {
+      outputString += " enter a valid time range"
     }
 
     outputString += " for your event before submitting."
@@ -140,9 +142,9 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleTimeSelect, handleSu
     return outputString
   }
 
-  /* Helper function - determines whether #create-time-select-warning needs to be shown or not 
+  /* Helper function - determines whether a time selection is valid
   Days are considered to start at 5am (5) and end at 4am (4). This means that 4 is later than 24 (12 am) */
-  const determineValidTimeSelect = () => {
+  const checkValidTimeSelect = () => {
 
     //If both early and late are less than 5 AND late is less than or equal to early, then the selection is invalid. 
     if ((newForm.early < 5 && newForm.late < 5) && newForm.late <= newForm.early) {
@@ -152,7 +154,7 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleTimeSelect, handleSu
     } else if ((newForm.early >= 5 && newForm.late >= 5) && newForm.late <= newForm.early) {
       return false;
 
-    //If early is greater than or equal to 5 and late is less than 5, then the selection is invalid.
+    //If early is less than or equal to 5 and late is greater than 5, then the selection is invalid.
     } else if (newForm.early < 5 && newForm.late >= 5) {
       return false;
 
@@ -165,13 +167,9 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleTimeSelect, handleSu
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
-  const handleButton = (event: MouseEvent<HTMLButtonElement>) :void => {
+  const handleButton = (event: any) :void => {
 
-    //Grab parent element
-    const element = event.target as HTMLButtonElement
-    const className = element.parentElement;
-    const classList = element.classList;
-    const wrapper = element.childNodes;
+    const wrapper = event.target.parentElement.childNodes;
 
     //Iterate through children of parent and remove class
     wrapper.forEach((child : any) => {
@@ -179,14 +177,21 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleTimeSelect, handleSu
     });
 
     //Add class to selected button
-    classList.add("button-selected");
+    event.target.classList.add("button-selected");
 
+    //Set toggle to false if true
     if (toggle) {
       setToggle(false);
     }
 
     //Send data to state in create.js
-    handleTimeSelect(event);
+    const earlyValue = Number(event.target.dataset.early);
+    const lateValue = Number(event.target.dataset.late);
+
+    console.log(`changing early to ${earlyValue}`);
+    console.log(`changing late to ${lateValue}`);
+
+    handleChangeTime(earlyValue, lateValue);
   }
 
   const handleCustomTime = (event : MouseEvent<HTMLButtonElement>) :void => {
@@ -195,7 +200,7 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleTimeSelect, handleSu
   }
 
   const handleCheckSubmit = () :void => {
-    //If all required fields are completed -  then submit
+    //If all required fields are completed - then create the event.
     if (newForm.title !== "" && newForm.location !== "" && newForm.days.length !== 0 && newForm.late !== 0 && newForm.late !== 0) {
       handleSubmit();
     //Otherwise draw attention to chat bubble and play button animation.
@@ -211,7 +216,7 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleTimeSelect, handleSu
   return (
     <div id="create-bottom-section">
       <div id="create-bottom-left-subsection">
-        <motion.h3 id="create-time-select-warning" className="invisible no-select">Your custom range selection does not make sense. Please make sure the start time is earlier than the end time. Days are considered to start at 5am and end at 4am to account for late night events.</motion.h3>
+        <motion.h3 id="create-time-select-warning" className={ (newForm.early === 0 && newForm.late === 0) || checkValidTimeSelect() ? "invisible no-select" : "no-select"}>Your custom range selection is invalid. Please make sure the start time is earlier than the end time. Days are considered to start at 5am and end at 4am to account for late night events.</motion.h3>
         <motion.h3 id="create-time-select-header" variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>Time Range</motion.h3>
         <motion.p id="create-time-select-secondary-text" variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>Pick a preset, or make your own custom range.</motion.p>
         <motion.div id="create-time-select-wrapper" variants={childVariant} initial={false} animate={toggle ? "active" : "inactive"}>
@@ -219,8 +224,8 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleTimeSelect, handleSu
           <motion.button data-early="16" data-late="21" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handleButton}>4pm - 9pm</motion.button>
           <motion.button data-early="21" data-late="2" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handleButton}>9pm - 2am</motion.button>
           <motion.button data-early="0" data-late="0" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handleCustomTime}>Custom</motion.button>
-          <SelectTime elementId="select-time-early" toggle={toggle} text="Start"></SelectTime>
-          <SelectTime elementId="select-time-late" toggle={toggle} text="End"></SelectTime>
+          <SelectTime elementId="select-time-early" handleChange={handleChangeEarly} toggle={toggle} text="Start"></SelectTime>
+          <SelectTime elementId="select-time-late" handleChange={handleChangeLate} toggle={toggle} text="End"></SelectTime>
         </motion.div>
       </div>
       <div id="create-bottom-right-subsection">

@@ -80,7 +80,7 @@
   .create-time-select-button {
     background-color: #E9ECFF;
     font-family: v.$font-two;
-    font-size: calc(1rem + 0.5vw);
+    font-size: calc(1rem + 0.8vw);
 
     height: 9vw;
     width: calc(5rem + 12vw);
@@ -129,16 +129,20 @@
 
   #create-time-select-warning {
     color: rgb(173, 85, 85);
-    font-style: v.$font-two;
+    font-family: v.$font-two;
     font-size: calc(0.5rem + 0.55vw);
 
     width: 40vw;
 
     position: absolute;
     left: 6.5vw;
-    top: -6%;
+    top: -8%;
 
     transition: color 0.5s ease;
+
+    #create-time-select-warning-subtext {
+      font-style: italic;
+    }
   }
 
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Right Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@

@@ -29,6 +29,18 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
   //State that stores toggle data for custom time
   const [toggle, setToggle] = useState<boolean>(false);
 
+
+  interface customTimeInterface {
+    early: number;
+    late: number;
+  }
+
+  //State that tracks custom time selections
+  const [customTime, setCustomTime] = useState<customTimeInterface>({
+    early: 0,
+    late: 0
+  })
+
   useEffect(() => {
     console.log("cBS.tsx loaded.")
     console.log("newForm in cBs.tsx:");
@@ -169,8 +181,8 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
     }
   }
 
-  //Helper function - Manages the classes of the time selection major values.
-  const manageClasses = (event: any) => {
+  //Helper function - Manages the classes of the time selection presets and custom buttons.
+  const manageClasses = (event: any, toggleWhat  = false) => {
     const wrapper = event.target.parentElement.childNodes;
 
     //Iterate through children of parent and remove class
@@ -182,15 +194,16 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
     event.target.classList.add("button-selected");
 
     //Set toggle to false if true
-    if (toggle) {
-      setToggle(false);
+    if (toggleWhat) {
+      setToggle(true);
+    } else {
+      setToggle(false)
     }
   }
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
   //Helper function - Manages the classes of the time selection major values.
-
   const handlePreset = (event: any) :void => {
 
     manageClasses(event);
@@ -205,27 +218,18 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
     handleChangeTime(earlyValue, lateValue);
   }
 
+  //Toggle Custom time menu
   const handleCustomTime = (event : MouseEvent<HTMLButtonElement>) :void => {
-    manageClasses(event);
-    setToggle(true);
-  }
 
-  const handleCustomEarly = (value: number) :void => {
+    manageClasses(event, true);
 
-    //Grab the current late value
-    const currentLateValue = newForm.late;
-    const newEarlyValue = value;
+    const earlyValue = customTime.early;
+    const lateValue = customTime.late;
 
-    handleChangeTime(newEarlyValue, currentLateValue);
-  }
+    // console.log(`changing early to ${earlyValue}`);
+    // console.log(`changing late to ${lateValue}`);
 
-  const handleCustomLate = (value: number) :void => {
-
-    //Grab the current early value
-    const currentEarlyValue = newForm.early;
-    const newLateValue = value;
-
-    handleChangeTime(currentEarlyValue, newLateValue);
+    handleChangeTime(earlyValue, lateValue);
   }
 
   const handleCheckSubmit = () :void => {
@@ -238,6 +242,30 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
     }
   }
 
+  /* @#@#@#@#@#@#@#@#@#@#@#@#@#@ Passing Handler Functions @#@#@#@#@#@#@#@#@#@#@#@#@#@ */
+
+  //Set new custom early - that is passed to selectTime component
+  const handleCustomEarly = (value: number) :void => {
+
+    //Grab the current late value
+    const currentLateValue = customTime.late;
+    const newEarlyValue = value;
+
+    handleChangeTime(newEarlyValue, currentLateValue);
+    setCustomTime({...customTime, "early": value});
+  }
+
+  //Set new custom late - that is passed to selectTime component
+  const handleCustomLate = (value: number) :void => {
+
+    //Grab the current early value
+    const currentEarlyValue = customTime.early;
+    const newLateValue = value;
+
+    handleChangeTime(currentEarlyValue, newLateValue);
+    setCustomTime({...customTime, "late": value});
+  }
+
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
@@ -245,14 +273,17 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
   return (
     <div id="create-bottom-section">
       <div id="create-bottom-left-subsection">
-        <motion.h3 id="create-time-select-warning" className={ (newForm.early === 0 && newForm.late === 0) || checkValidTimeSelect() ? "invisible no-select" : "no-select"}>Your custom range selection is invalid. Please make sure the start time is earlier than the end time. Days are considered to start at 5am and end at 4am to account for late night events.</motion.h3>
+        <motion.div id="create-time-select-warning" className={ (newForm.early === 0 && newForm.late === 0) || checkValidTimeSelect() ? "invisible no-select" : "no-select"}>
+          <p id="create-time-select-warning-maintext">Your custom range selection is invalid. Please make sure the start time is earlier than the end time.</p>
+          <p id="create-time-select-warning-subtext">* Days are considered to start at 5 am and end at 4 am to account for late night events.</p>
+        </motion.div>
         <motion.h3 id="create-time-select-header" variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>Time Range</motion.h3>
         <motion.p id="create-time-select-secondary-text" variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>Pick a preset, or make your own custom range.</motion.p>
         <motion.div id="create-time-select-wrapper" variants={childVariant} initial={false} animate={toggle ? "active" : "inactive"}>
           <motion.button data-early="11" data-late="16" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handlePreset}>11am - 4pm</motion.button>
           <motion.button data-early="16" data-late="21" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handlePreset}>4pm - 9pm</motion.button>
           <motion.button data-early="21" data-late="2" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handlePreset}>9pm - 2am</motion.button>
-          <motion.button data-early="0" data-late="0" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handleCustomTime}>Custom</motion.button>
+          <motion.button className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handleCustomTime}>Custom</motion.button>
           <SelectTime elementId="select-time-early" handleChange={handleCustomEarly} toggle={toggle} text="Start"></SelectTime>
           <SelectTime elementId="select-time-late" handleChange={handleCustomLate} toggle={toggle} text="End"></SelectTime>
         </motion.div>

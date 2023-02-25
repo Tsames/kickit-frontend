@@ -8,26 +8,24 @@ import '../../../../styles/create_pages_styling/create_page/child_components/sel
 //Props Interface
 interface SelectTimeProps {
   elementId: string;
-  handleChange: (value :number) => void
-  toggle: boolean;
   text: string;
+  toggle: boolean;
+  handleChange: (value :number) => void;
 }
 
-const SelectTime: FC<SelectTimeProps> = ({ elementId, handleChange, toggle, text }) => {
+const SelectTime: FC<SelectTimeProps> = ({ elementId, text, toggle, handleChange }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
-  //TypeScript Declaration of state
-  interface Time {
-    number: number;
-    tod: 'AM' | 'PM';
+  interface timeInterface {
+    number: number,
+    tod: 'AM' | 'PM'
   }
 
-  //State
-  const [time, setTime] = useState<Time>({
+  const [time, setTime] = useState<timeInterface>({
     number: 0,
     tod: 'AM'
-  });
+  })
 
   useEffect(() => {
     console.log("selectTime.tsx loaded.");
@@ -100,7 +98,8 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, handleChange, toggle, text
     setTime({...time, "number": Number(event.target.dataset.value)});
   }
 
-  const handleSetTod = (event : any) :void => {
+  const handleSetTod = (event : MouseEvent<HTMLLIElement>) :void => {
+    const target = event.taget as HTMLElement;
     const newValue = convertData(time.number, event.target.dataset.value);
     handleChange(newValue);
 

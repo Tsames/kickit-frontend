@@ -161,6 +161,7 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
                 key={`calendar${tracker.getDate()}${weekdays[i]}`}
                 data-time={tracker.getTime()}
                 onClick={handleClick}
+                initial={false}
                 whileHover={selectableHover}
                 whileTap={selectableTap}>
                 <p className="no-select">{tracker.getDate()}</p>
@@ -252,6 +253,7 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
 
       //Remove the css class
       classList.remove("calendar-selected");
+      console.log('removing class from selected item.')
 
       //Find index of the element in days array
       const index = checkDays(newForm.days, Number(dataset.time));

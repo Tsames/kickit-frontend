@@ -1,5 +1,5 @@
 //Dependencies
-import React, { FC, MouseEvent, ChangeEvent, useState, useEffect } from "react";
+import React, { FC, MouseEvent, ChangeEvent, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -43,12 +43,6 @@ const Create: FC<createProps> = ({ getEventData }) => {
     late: 0,
     days: []
   });
-
-  useEffect(() => {
-    console.log("create.tsx loaded.")
-    console.log("newForm in create.tsx:");
-    console.log(newForm);
-  }, [newForm])
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 

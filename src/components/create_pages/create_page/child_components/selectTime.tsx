@@ -1,5 +1,5 @@
 //Dependencies
-import React, { FC, MouseEvent, useState, useEffect } from "react";
+import React, { FC, BaseSyntheticEvent, useState } from "react";
 import { motion } from 'framer-motion';
 
 //Styling
@@ -26,11 +26,6 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, text, toggle, handleChange
     number: 0,
     tod: 'AM'
   })
-
-  useEffect(() => {
-    console.log("selectTime.tsx loaded.");
-    console.log(`time is ${time.number} ${time.tod}.`)
-  }, [time])
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -69,7 +64,7 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, text, toggle, handleChange
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
-  const convertData = (number = time.number, tod = time.tod) :number => {
+  const convertData = (number: number, tod: string): number => {
 
     //If the time of day is PM and the number is not 12 add 12 to the number.
     if(tod === "PM" && number !== 12) {
@@ -91,15 +86,16 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, text, toggle, handleChange
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
-  const handleSetNumber = (event : any) :void => {
-    const newValue = convertData(Number(event.target.dataset.value));
+  const handleSetNumber = (event: BaseSyntheticEvent) :void => {
+
+    const newValue = convertData(Number(event.target.dataset.value), time.tod);
     handleChange(newValue);
 
     setTime({...time, "number": Number(event.target.dataset.value)});
   }
 
-  const handleSetTod = (event : MouseEvent<HTMLLIElement>) :void => {
-    const target = event.taget as HTMLElement;
+  const handleSetTod = (event: BaseSyntheticEvent): void => {
+
     const newValue = convertData(time.number, event.target.dataset.value);
     handleChange(newValue);
 
@@ -132,7 +128,7 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, text, toggle, handleChange
                 <motion.li className={time.number === 12 ? "select-time-option selected" : "select-time-option"} data-value={12} whileHover={optionHover} whileTap={optionTap} onClick={handleSetNumber}>12</motion.li>
             </motion.ul>
             <motion.ul className="select-time-list-tod">
-                <motion.li className={time.tod === "AM" ? "select-time-option-tod selected" : "select-time-option-tod"} data-value={"AM"} whileHover={optionHover} whileTap={optionTap} onClick={handleSetTod}>AM</motion.li>
+                <motion.li className={time.tod === "AM" ? "select-time-option-tod selected" : "select-time-option-tod"} data-value={"AM"} whileHover={optionHover} whileTap={optionTap} onClick={handleSetNumber}>AM</motion.li>
                 <motion.li className={time.tod === "PM" ? "select-time-option-tod selected" : "select-time-option-tod"} data-value={"PM"} whileHover={optionHover} whileTap={optionTap} onClick={handleSetTod}>PM</motion.li>
             </motion.ul>
         </motion.div>

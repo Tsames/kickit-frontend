@@ -106,6 +106,8 @@
     justify-content: center;
     align-items: center;
 
+    background-color: v.$invisible;
+
     text-align: center;
     font-size: calc(1rem + 1vw);
     margin-top: 0.1rem;
@@ -114,7 +116,7 @@
 
   //Assign Color for Days of the week
   .calendar-label {
-    color: rgba(1, 77, 89, 1);
+    color: #014d59;
   }
 
   //Style for selectable days
@@ -129,7 +131,7 @@
   }
 
   //Style for Selected Items in the grid
-  .calendar-selected {
+  .calendar-item + .calendar-selected {
     background-color: #9AFF9E !important;
   }
 

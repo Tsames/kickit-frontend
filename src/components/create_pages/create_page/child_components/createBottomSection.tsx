@@ -1,5 +1,5 @@
 //Dependencies
-import React, { FC, MouseEvent, ChangeEvent, useState, useEffect } from "react";
+import React, { FC, MouseEvent, BaseSyntheticEvent, useState } from "react";
 import { motion } from 'framer-motion';
 
 //Import Components
@@ -41,12 +41,6 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
     late: 0
   })
 
-  useEffect(() => {
-    console.log("cBS.tsx loaded.")
-    console.log("newForm in cBs.tsx:");
-    console.log(newForm);
-  }, [newForm])
-
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
   const parentVariant = {
@@ -82,11 +76,19 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
 
   const submitButtonHover = {
     scale: 1.3,
-    border: "solid",
+    borderWidth: "0.3vw",
     borderColor: "#818DFF",
     transition: {
       duration: 0.2,
     }
+  }
+
+  const cannotSubmitHover = {
+    scale: 1.3,
+    borderWidth: "0.3vw",
+    borderColor: "#721717",
+    color: "#721717",
+    backgroundColor: "#e95151"
   }
 
   //Tap
@@ -102,20 +104,31 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
 
   const submitButtonTap = {
     scale: 0.9,
-    backgroundColor: "#2b37a5"
+    color: "#014d59",
+    borderColor: "#014d59",
+    backgroundColor: "#9AFF9E",
+  }
+
+  const cannotSubmitTap = {
+    x: [0, -30, 0, 30, 0, -30, 0, 30, 0, -30, 0, 30, 0, -30, 0, 30, 0],
+    scale: 1.3,
+    borderWidth: "0.3vw",
+    borderColor: "#721717",
+    color: "#721717",
+    backgroundColor: "#e95151",
   }
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
   //Helper function - determines the helper submit text that needs to be displayed in the chat bubble.
-  const determineChatBubble = () :string => {
+  const determineChatBubble = (): string => {
     const checkArray = [];
     let outputString = "You still need to";
 
     if(newForm.title === "") checkArray.push(0);
     if(newForm.location === "") checkArray.push(1);
     if(newForm.days.length === 0) checkArray.push(2);
-    if(newForm.early === 0 || newForm.late === 0) checkArray.push(3);
+    if((newForm.early === 0 || newForm.late === 0) || !checkValidTimeSelect()) checkArray.push(3);
 
     if(checkArray.length === 0) {
       return "You're ready to create your event. Make sure all the details are correct before submitting. Once you submit you cannot edit your event."
@@ -147,7 +160,7 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
     }
 
     //Time
-     if (((newForm.early === 0 || newForm.late === 0) && !checkValidTimeSelect()) && checkArray.length >= 2) {
+     if (((newForm.early === 0 || newForm.late === 0) || !checkValidTimeSelect()) && checkArray.length >= 2) {
       outputString += " and enter a valid time range"
     } else if ((newForm.early === 0 || newForm.late === 0) && !checkValidTimeSelect()) {
       outputString += " enter a valid time range"
@@ -160,7 +173,7 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
 
   /* Helper function - determines whether a time selection is valid
   Days are considered to start at 5am (5) and end at 4am (4). This means that 4 is later than 24 (12 am) */
-  const checkValidTimeSelect = () => {
+  const checkValidTimeSelect = (): boolean => {
 
     //If both early and late are less than 5 AND late is less than or equal to early, then the selection is invalid. 
     if ((newForm.early < 5 && newForm.late < 5) && newForm.late <= newForm.early) {
@@ -182,11 +195,11 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
   }
 
   //Helper function - Manages the classes of the time selection presets and custom buttons.
-  const manageClasses = (event: any, toggleWhat  = false) => {
+  const manageClasses = (event: BaseSyntheticEvent, toggleWhat  = false) => {
     const wrapper = event.target.parentElement.childNodes;
 
     //Iterate through children of parent and remove class
-    wrapper.forEach((child : any) => {
+    wrapper.forEach((child: any) => {
       child.classList.remove("button-selected");
     });
 
@@ -201,10 +214,21 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
     }
   }
 
+  //Helper function - Checks if all required fields are adequately filled out
+  const checkSubmit = (): boolean => {
+    //If all required fields are completed - then create the event.
+    if (newForm.title !== "" && newForm.location !== "" && newForm.days.length !== 0 && newForm.late !== 0 && newForm.late !== 0 && checkValidTimeSelect()) {
+      return true;
+    //Otherwise draw attention to chat bubble and play button animation.
+    } else {
+      return false;
+    }
+  }
+
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
   //Helper function - Manages the classes of the time selection major values.
-  const handlePreset = (event: any) :void => {
+  const handlePreset = (event: BaseSyntheticEvent) :void => {
 
     manageClasses(event);
 
@@ -294,7 +318,7 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
         </div>
         <div id="create-submit-text-bubble-tail"></div>
         <div id="create-person-graphic"></div>
-        <motion.button id="create-submit" whileHover={submitButtonHover} whileTap={submitButtonTap} onClick={handleCheckSubmit}>Done</motion.button>
+        <motion.button id="create-submit" whileHover={checkSubmit() ? submitButtonHover : cannotSubmitHover} whileTap={checkSubmit() ? submitButtonTap : cannotSubmitTap} onClick={handleCheckSubmit}>Done</motion.button>
       </div>
     </div>
   )

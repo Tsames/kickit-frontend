@@ -61,6 +61,14 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
     }
   }
 
+  const maxedHover = {
+    scale: 1.25,
+    backgroundColor: "#d37373",
+    transition: {
+      duration: 0.2,
+    }
+  }
+
   //Tap
   const monthTap = {
     scale: 0.8,
@@ -71,7 +79,12 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
     backgroundColor: "#9AFF9E",
   }
 
-  const unselectableTap = {};
+  const maxedTap = {
+    scale: 0.9,
+    color: "#721717",
+    backgroundColor: "#e95151",
+    x: [0, -6, 0, 6, 0, -6, 0, 6, 0, -6, 0, 6, 0, -6, 0, 6, 0]
+  };
 
   /* ------------------------- Helper Functions ------------------------- */
 
@@ -146,10 +159,9 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
 
             cells.push(
               <motion.div className="calendar-item unselectable"
-                key={`calendar${tracker.getDate()}${weekdays[i]}`}
+                key={`calendar${tracker.getDate()}`}
                 data-time={tracker.getTime()}
-                whileHover={unselectableHover}
-                whileTap={unselectableTap}>
+                whileHover={unselectableHover}>
                 <p className="no-select">{tracker.getDate()}</p>
               </motion.div>
             )
@@ -158,12 +170,15 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
           } else {
             cells.push(
               <motion.div className={checkDays(newForm.days, tracker.getTime()) >= 0 ? "calendar-item selectable calendar-selected" : "calendar-item selectable"}
-                key={`calendar${tracker.getDate()}${weekdays[i]}`}
+              /* This in-line stlye became necessary to correctly color when unselecting previously selected items upon navigating back to a month previously visited on the calendar component.
+              Weirdly specific situation, i know.
+              This is due to how the framer motion library is working under the hood.*/
+                style={{"backgroundColor": "rgba(0,0,0,0)"}}
+                key={`calendar${tracker.getDate()}`}
                 data-time={tracker.getTime()}
                 onClick={handleClick}
-                initial={false}
-                whileHover={selectableHover}
-                whileTap={selectableTap}>
+                whileHover={newForm.days.length < 7 ? selectableHover : maxedHover}
+                whileTap={newForm.days.length < 7 ? selectableTap : maxedTap}>
                 <p className="no-select">{tracker.getDate()}</p>
               </motion.div>
             )
@@ -240,15 +255,21 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
     //Only if calendarSelected is not on the element already
     if (className === "calendar-item selectable") {
 
-      //Add css class
-      classList.add("calendar-selected");
+      //If there are fewer than 7 days selected already
+      if (newForm.days.length < 7) {
 
-      //Add element to days array
-      const newDays = [...newForm.days, Number(dataset.time)];
-      newDays.sort(function (a, b) { return a - b });
-      setNewForm({ ...newForm, "days": newDays });
+        //Add css class
+        classList.add("calendar-selected");
 
-      //Otherwise if the element has the calendarSelected class
+        //Add element to days array
+        const newDays = [...newForm.days, Number(dataset.time)];
+        newDays.sort(function (a, b) { return a - b });
+        setNewForm({ ...newForm, "days": newDays });
+
+      }
+
+
+    //Otherwise if the element has the calendarSelected class
     } else {
 
       //Remove the css class
@@ -271,8 +292,8 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
   return (
     <motion.div id="calendar-shell">
       <div id="calendar-heading">
-        <motion.div whileHover={monthHover} whileTap={monthTap}>
-          <BiLeftArrow id="calendar-prev-month" className={ page.getMonth() === now.getMonth() ? "calendar-heading-button no-select invisible" : "calendar-heading-button" } onClick={handlePrevMonth}></BiLeftArrow>
+        <motion.div whileHover={monthHover} whileTap={monthTap} onClick={handlePrevMonth}>
+          <BiLeftArrow id="calendar-prev-month" className={ page.getMonth() === now.getMonth() ? "calendar-heading-button no-select invisible" : "calendar-heading-button" }></BiLeftArrow>
         </motion.div>
         <motion.h4 key={page.getMonth()} className="no-select" initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 0.7}}>{`${findMonth(page)} ${page.getFullYear()}`}</motion.h4>
         <motion.div whileHover={monthHover} whileTap={monthTap}>

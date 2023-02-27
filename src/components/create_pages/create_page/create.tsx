@@ -1,5 +1,5 @@
 //Dependencies
-import React, { FC, MouseEvent, ChangeEvent, useState } from "react";
+import React, { FC, ChangeEvent, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -44,6 +44,11 @@ const Create: FC<createProps> = ({ getEventData }) => {
     days: []
   });
 
+  useEffect(() => {
+    console.log("newForm has been updated to:");
+    console.log(newForm);
+  }, [newForm])
+
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
   const createPageVariant = {
@@ -61,10 +66,12 @@ const Create: FC<createProps> = ({ getEventData }) => {
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
   const getCalendarHelperColor = () => {
-    if (newForm.days.length === 5) {
+    if (newForm.days.length === 7) {
       return "calendar-counter-maxed no-select";
-    } else if (newForm.days.length > 2) {
-      return "calendar-counter-some no-select";
+    } else if (newForm.days.length >= 5) {
+      return "calendar-counter-many no-select";
+    } else if (newForm.days.length >= 3) {
+      return "calendar-counter-some no select"
     } else {
       return "no-select";
     }
@@ -115,7 +122,7 @@ const Create: FC<createProps> = ({ getEventData }) => {
     <motion.div id="create-shell" variants={createPageVariant} initial="hidden" animate="visible" exit="exit">
         <CreateTopSection newForm={newForm} handleChange={handleChange} />
         <div id="create-middle-section">
-          <div id="calendarCounter" className={getCalendarHelperColor()}> {newForm.days.length} / 5</div>
+          <div id="calendarCounter" className={getCalendarHelperColor()}> {newForm.days.length} / 7</div>
           <Calendar newForm={newForm} setNewForm={setNewForm} />
         </div>
         <CreateBottomSection newForm={newForm} handleChangeTime={handleChangeTime} handleSubmit={handleSubmit} />

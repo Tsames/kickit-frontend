@@ -110,7 +110,7 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
   }
 
   const cannotSubmitTap = {
-    x: [0, -30, 0, 30, 0, -30, 0, 30, 0, -30, 0, 30, 0, -30, 0, 30, 0],
+    x: [0, -15, 0, 15, 0, -15, 0, 15, 0, -15, 0, 15, 0, -15, 0, 15, 0],
     scale: 1.3,
     borderWidth: "0.3vw",
     borderColor: "#721717",
@@ -162,7 +162,7 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
     //Time
      if (((newForm.early === 0 || newForm.late === 0) || !checkValidTimeSelect()) && checkArray.length >= 2) {
       outputString += " and enter a valid time range"
-    } else if ((newForm.early === 0 || newForm.late === 0) && !checkValidTimeSelect()) {
+    } else if (((newForm.early === 0 || newForm.late === 0) || !checkValidTimeSelect()) && !checkValidTimeSelect()) {
       outputString += " enter a valid time range"
     }
 
@@ -258,11 +258,8 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
 
   const handleCheckSubmit = () :void => {
     //If all required fields are completed - then create the event.
-    if (newForm.title !== "" && newForm.location !== "" && newForm.days.length !== 0 && newForm.late !== 0 && newForm.late !== 0) {
+    if (checkSubmit()) {
       handleSubmit();
-    //Otherwise draw attention to chat bubble and play button animation.
-    } else {
-
     }
   }
 

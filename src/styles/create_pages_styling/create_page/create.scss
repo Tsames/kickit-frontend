@@ -147,8 +147,13 @@
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   .calendar-counter-some {
-    color: rgb(114, 97, 23) !important;
-    background-color: rgb(214, 193, 70) !important;
+    color: #014D59 !important;
+    background-color: v.$pallette_six !important;
+  }
+
+  .calendar-counter-many {
+    color: rgb(136, 116, 28) !important;
+    background-color: #f5d856 !important;
   }
 
   .calendar-counter-maxed {
@@ -156,11 +161,13 @@
     background-color: #e95151 !important;
   }
 
+  
+
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   #calendarCounter {
     // border: solid;
-    // border-color: red;
+    // border-color: #d37373;
     border-radius:  5rem;
 
     height: calc(3rem + 2vw);
@@ -174,8 +181,8 @@
     right: 5vw;
     top: calc(0.5rem + 1vw);
 
-    background-color: v.$pallette_six;
-    color: v.$pallette_three;
+    background-color: #4de97c;
+    color: #014D59;
 
     font-family: v.$font-two;
     font-style: normal;

@@ -7,6 +7,12 @@ import { motion } from 'framer-motion';
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/calendar.scss';
 
+//Attending Interface
+interface attendingInterface {
+  name: string;
+  available: Array<[number, number, number]>;
+}
+
 //Props Interface
 interface CalendarProps  {
   newForm: {
@@ -16,6 +22,7 @@ interface CalendarProps  {
     early: number;
     late: number;
     days: number[];
+    attending: Array<attendingInterface>;
   };
   setNewForm: React.Dispatch<React.SetStateAction<any>>;
 }

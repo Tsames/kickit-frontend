@@ -8,6 +8,12 @@ import SelectTime from './selectTime'
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/createBottomSection.scss';
 
+//Attending Interface
+interface attendingInterface {
+  name: string;
+  available: Array<[number, number, number]>;
+}
+
 //Props Interface
 interface CBSProps {
   newForm: {
@@ -17,6 +23,7 @@ interface CBSProps {
     early: number;
     late: number;
     days: number[];
+    attending: Array<attendingInterface>;
   };
   handleChangeTime: (newEarly: number, newLate: number) => void;
   handleSubmit: () => Promise<void>;

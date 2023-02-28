@@ -82,7 +82,7 @@
     font-family: v.$font-two;
     font-size: calc(1rem + 0.8vw);
 
-    height: 9vw;
+    height: calc(4rem + 4vw);
     width: calc(5rem + 12vw);
 
     border-radius: 0.3vw;
@@ -111,7 +111,7 @@
     pointer-events: none;
 
     position: absolute;
-    bottom: 36.5vw;
+    bottom: calc(8rem + 27.5vw);
     left: 6.5vw;
   }
 
@@ -123,7 +123,7 @@
     pointer-events: none;
 
     position: absolute;
-    bottom: 35.5vw;
+    bottom: calc(6rem + 27.5vw);
     left: 6.5vw;
   }
 
@@ -153,7 +153,7 @@
     padding: 2vw;
 
     width: 30vw;
-    height: 10vw;
+    height: 8vw;
 
     display: flex;
     justify-content: center;
@@ -161,6 +161,7 @@
     position: absolute;
 
     bottom: 25vw;
+    left: 10vw;
     z-index: 1;
   }
 
@@ -175,8 +176,8 @@
     height: 3vw;
 
     position: absolute;
-    bottom: 25.5vw;
-    left: 11vw;
+    bottom: 24.5vw;
+    left: 15vw;
     z-index: 0;
   }
 
@@ -199,8 +200,8 @@
 
     border-color: rgba(1,1,1,1);
 
-    width: 15vw;
-    height: 5vw;
+    width: calc(6rem + 12vw);
+    height: calc(2rem + 4vw);
     padding: 1vw;
 
     font-family: v.$font-one;
@@ -219,8 +220,8 @@
 
     position: absolute;
 
-    width: max(5rem, 20vw);
-    height: max(5rem, 22vw);
+    width: calc(5rem + 17vw);
+    height: calc(5rem + 18vw);
 
     background-image: url("./../../../../../public/assets/graphics/create_page/create-person.svg");
     background-repeat: no-repeat;

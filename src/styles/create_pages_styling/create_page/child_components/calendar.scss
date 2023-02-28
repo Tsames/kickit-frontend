@@ -98,8 +98,8 @@
     // border: solid;
     // border-color: red;
 
-    width: 5vw;
-    height: 5vw;
+    width: calc(1rem + 3vw);
+    height: calc(1rem + 3vw);
     border-radius: 100% 100%;
 
     display: flex;

@@ -14,19 +14,19 @@ const AboutUs: FC<aboutUsProps> = () => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
-  //Framer-Motion Page Transition Settings
-  const fade = {
-    "initial": { opacity: 0 },
-    "animate": { opacity: 1 },
-    "exit": { opacity: 0 },
-    "transition": { duration: 0.5 }
-  }
 
-  const shuffle = {
-    "initial": { width: 0 },
-    "animate": { width: "80%" },
-    "exit": { x: window.innerWidth },
-    "transition": { duration: 0.3 }
+  /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
+
+  const aboutUsVariant = {
+    hidden: {
+      x: "100vw"
+    },
+    visible: {
+      x: 0,
+      transition: { type: "spring", stiffness: 80, damping: 15}
+    },
+    exit: {
+    }
   }
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
@@ -39,7 +39,7 @@ const AboutUs: FC<aboutUsProps> = () => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <motion.div id="about-shell">
+    <motion.div id="about-shell" variants={aboutUsVariant} initial="hidden" animate="visible" exit="exit">
       <div id='about-bg'></div>
       <div id="about-text-wrapper">
         <h1 id="about-text-title">About Us</h1>

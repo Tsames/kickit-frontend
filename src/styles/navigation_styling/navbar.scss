@@ -108,6 +108,7 @@
 
     height: 100%;
     width: fit-content;
+    padding-top: 0.5%;
 
     //Mobile Sizing
     @include d.for-phone-only {
@@ -330,7 +331,7 @@
     -webkit-text-stroke-color: #014D59;
 
     font-weight: 900;
-    font-size: calc(1rem + 2vw);
+    font-size: calc(1rem + 1.5vw);
 
     //Mobile Sizing
     @include d.for-phone-only {

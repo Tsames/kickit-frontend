@@ -73,7 +73,7 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
 
   //Hover
   const navItemHover = {
-    scale: 1.3,
+    scale: 1.2,
     transition: {
       duration: 0.2,
 

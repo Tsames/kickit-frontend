@@ -16,7 +16,9 @@
   max-width: 100%;
   
   background: linear-gradient(180deg, rgb(65, 115, 195) 0%, hsla(187, 47%, 52%, 1) 30%, hsla(0, 0%, 100%, 1) 50%);
-  padding-top: max(20rem, 20vw);
+  padding-top: calc(10rem + 10vw);
+
+  z-index: 1;
 
   //Mobile Sizing
   @include d.for-phone-only {
@@ -52,8 +54,8 @@
     // border: solid;
     // border-color: orange;
 
-    width: 90%;
-    padding-bottom: 10rem;
+    width: 80%;
+    padding-bottom: calc(10rem + 5vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -89,8 +91,8 @@
     // border-color: pink;
 
     width: 80%;
-    height: calc(10rem + 40vw);
-    margin-bottom: calc(5rem + 2vw);
+    height: calc(10rem + 30vw);
+    margin-bottom: calc(5rem + 5vw);
     // height: 60rem;
 
     position: relative;
@@ -129,8 +131,8 @@
     // border-color: gold;
     padding: 0 0 0 0;
 
-    width: 100%;
-    height: calc(10rem + 38vw);
+    width: 80%;
+    height: calc(10rem + 30vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {

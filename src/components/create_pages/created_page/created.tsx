@@ -1,6 +1,7 @@
 //Dependencies
 import React, { FC, useState, useEffect } from "react";
 import { useLocation } from "react-router";
+import { motion } from 'framer-motion';
 
 //Import Components
 import CopyLink from './child_components/copyLink';
@@ -21,6 +22,7 @@ interface createdProps  {
     early: number;
     late: number;
     days: number[];
+    attending: Array<number>[];
   };
 }
 
@@ -32,16 +34,16 @@ const Created: FC<createdProps> = ({ getEventData, event }) => {
 
   const [pageState, setPageState] = useState<number>(0);
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   const paramId = location.pathname.slice(9);
+    const paramId = location.pathname.slice(9);
 
-  //   //If the Id in params does not match the current id
-  //   if (paramId !== event._id) {
+    //If the Id in params does not match the current id
+    if (paramId !== event._id) {
+      getEventData(paramId);
+    }
 
-  //   }
-
-  // }, [])
+  }, [])
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
@@ -53,7 +55,7 @@ const Created: FC<createdProps> = ({ getEventData, event }) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <div id="created-shell">
+    <motion.div id="created-shell">
       <ModalLoading show={false}></ModalLoading>
       <NoSuchEvent show={false}></NoSuchEvent>
       <div id="created-top-section">
@@ -86,7 +88,7 @@ const Created: FC<createdProps> = ({ getEventData, event }) => {
           <CopyLink></CopyLink>
           <div id="created-wallpaper"></div>
         </div>
-    </div>
+    </motion.div>
   )
 }
 

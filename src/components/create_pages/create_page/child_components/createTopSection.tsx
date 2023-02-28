@@ -5,6 +5,12 @@ import React, { FC, ChangeEvent } from "react";
 //Styling
 import '../../../../styles/create_pages_styling/create_page/child_components/createTopSection.scss';
 
+//Attending Interface
+interface attendingInterface {
+  name: string;
+  available: Array<[number, number, number]>;
+}
+
 interface CTSProps {
   newForm: {
     title: string;
@@ -13,6 +19,7 @@ interface CTSProps {
     early: number;
     late: number;
     days: number[];
+    attending: Array<attendingInterface>;
   };
   handleChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }

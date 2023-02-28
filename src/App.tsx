@@ -1,5 +1,5 @@
 //Dependencies
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
@@ -17,6 +17,8 @@ import Home from './components/home_page/Home';
 import HowItWorks from './components/info_pages/howItWorks';
 import Create from './components/create_pages/create_page/create';
 import Created from './components/create_pages/created_page/created';
+import Invitation from './components/event_pages/invitation_page/invitation';
+import Event from './components/event_pages/event_page/event';
 import AboutUs from "./components/info_pages/aboutUs";
 
 function App() {
@@ -28,6 +30,12 @@ function App() {
   We also store data called blocks which is data that facilitates the creation of grids in the AttendanceChart.js and Grid.js components
   to visually represent availability */
 
+  //Attending Interface
+  interface attendingInterface {
+    name: string;
+    available: Array<[number, number, number]>;
+  }
+
   //Event Interface
  interface eventInterface {
     _id: string;
@@ -37,6 +45,7 @@ function App() {
     early: number;
     late: number;
     days: number[];
+    attending: Array<attendingInterface>;
   }
 
   //Stores the data of an event
@@ -47,8 +56,14 @@ function App() {
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     early: 5,
     late: 19,
-    days: []
+    days: [],
+    attending: [{name: 'Jack', available: []}]
   });
+
+  useEffect(() => {
+    console.log('Event is set to:');
+    console.log(event);
+  }, [event])
 
   const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
@@ -99,8 +114,10 @@ function App() {
           {/* Main Routes */}
           <Route path='/' element={<Home />} />
           <Route path='/howItWorks' element={<HowItWorks />} />
-          <Route path='/create' element={<Create getEventData={getEventData} />} />
+          <Route path='/create' element={<Create setEvent={setEvent} />} />
           <Route path='/created/:id' element={<Created getEventData={getEventData} event={event} />} />
+          <Route path='/event/:id/invitation' element={<Invitation event={event} getEventData={getEventData} />} />
+          <Route path='/event/:id' element={<Event eventData={event} getEventData={getEventData} />} />
           <Route path='/aboutUs' element={<AboutUs />} />
 
         </Routes>

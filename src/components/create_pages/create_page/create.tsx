@@ -11,11 +11,30 @@ import CreateBottomSection from './child_components/createBottomSection';
 //Styling
 import '../../../styles/create_pages_styling/create_page/create.scss';
 
-interface createProps {
-  getEventData: (id : string) => Promise<boolean>
+//Attending Interface
+interface attendingInterface {
+  name: string;
+  available: Array<[number, number, number]>;
 }
 
-const Create: FC<createProps> = ({ getEventData }) => {
+//Event Interface
+interface eventInterface {
+  _id: string;
+  title: string;
+  location: string;
+  description: string;
+  early: number;
+  late: number;
+  days: number[];
+  attending: Array<attendingInterface>;
+}
+
+interface createProps {
+  setEvent: (event: eventInterface) => void;
+  getEventData: (id : string) => Promise<boolean>;
+}
+
+const Create: FC<createProps> = ({ setEvent }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
@@ -23,6 +42,12 @@ const Create: FC<createProps> = ({ getEventData }) => {
 
   const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
+
+  //Attending Interface
+  interface attendingInterface {
+    name: string;
+    available: Array<[number, number, number]>;
+  }
 
   //Interface for newForm State
   interface newFormInterface {
@@ -32,6 +57,7 @@ const Create: FC<createProps> = ({ getEventData }) => {
     early: number;
     late: number;
     days: number[];
+    attending: Array<attendingInterface>;
   }
 
   //State that stores input
@@ -41,7 +67,8 @@ const Create: FC<createProps> = ({ getEventData }) => {
     description: "",
     early: 0,
     late: 0,
-    days: []
+    days: [],
+    attending: []
   });
 
   useEffect(() => {
@@ -92,7 +119,7 @@ const Create: FC<createProps> = ({ getEventData }) => {
 
     //Get the Id of the newly created Event and return it
     const newData = await response.json();
-    return newData._id;
+    return newData;
   };
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
@@ -109,8 +136,9 @@ const Create: FC<createProps> = ({ getEventData }) => {
 
   //Handler function - Makes an HTTP Post request to the backend upon submission and redirects user to created page
   const handleSubmit = async () :Promise<void> => {
-    const id = await createEvent();
-    navigate(`/created/${id}`);
+    const newEvent = await createEvent();
+    setEvent(newEvent);
+    navigate(`/created/${newEvent._id}`);
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */

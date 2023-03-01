@@ -11,9 +11,14 @@ import NoSuchEvent from "../../error_pages/noSuchEvent";
 //Styling
 import '../../../styles/create_pages_styling/created_page/created.scss';
 
+//Attending Interface
+interface attendingInterface {
+  name: string;
+  available: Array<[number, number]>;
+}
+
 //Props Interface
 interface createdProps  {
-  getEventData: (id :string) => Promise<boolean>
   event: {
     _id: string;
     title: string;
@@ -22,8 +27,9 @@ interface createdProps  {
     early: number;
     late: number;
     days: number[];
-    attending: Array<number>[];
+    attending: Array<attendingInterface>;
   };
+  getEventData: (id :string) => Promise<boolean>
 }
 
 const Created: FC<createdProps> = ({ getEventData, event }) => {

@@ -14,7 +14,7 @@ import '../../../styles/create_pages_styling/create_page/create.scss';
 //Attending Interface
 interface attendingInterface {
   name: string;
-  available: Array<[number, number, number]>;
+  available: Array<[number, number]>;
 }
 
 //Event Interface
@@ -31,7 +31,6 @@ interface eventInterface {
 
 interface createProps {
   setEvent: (event: eventInterface) => void;
-  getEventData: (id : string) => Promise<boolean>;
 }
 
 const Create: FC<createProps> = ({ setEvent }) => {

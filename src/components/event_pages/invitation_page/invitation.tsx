@@ -9,6 +9,12 @@ import { motion } from 'framer-motion';
 //Styling
 import '../../../styles/create_pages_styling/create_page/create.scss';
 
+//Attending Interface
+interface attendingInterface {
+    name: string;
+    available: Array<[number, number]>;
+}
+
 interface eventDataInterface {
   _id: string;
   title: string;
@@ -17,7 +23,7 @@ interface eventDataInterface {
   early: number;
   late: number;
   days: number[];
-  attending: Array<number>[];
+  attending: Array<attendingInterface>;
 }
 
 interface invitationProps {

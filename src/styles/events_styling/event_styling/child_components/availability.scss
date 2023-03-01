@@ -1,0 +1,193 @@
+//Imports
+@use './../../../variables' as v;
+@use './../../../mixins' as m;
+@use './../../../device' as d;
+
+$calendar-text-color: #014D59;
+$calendar-border-color: #2F6A73;
+$calendar-border-hover-color: #74d8e7;
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#availability-shell {
+  border: solid;
+  border-color: pink;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: fit-content;
+  width: 90%;
+
+  //These Values are set in availabilityChart.js based on the number of cells
+  --column-width: 0rem;
+  --cell-height: 0rem;
+
+  //Mobile Sizing & Positioning
+  @include d.for-phone-only {
+
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+
+  }
+
+  //Desktop Sizing & Positioning
+  @include d.for-desktop-up {
+
+  }
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Availability Chart Container
+  #availability-contents {
+    border: solid;
+    border-color: orange;
+
+    padding-top: calc(2rem + 2vw);
+    padding-bottom: calc(2rem + 2vw);
+
+    width: 100%;
+    height: fit-content;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      padding-top: 8%;
+      padding-bottom: 10%;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      padding-top: 8%;
+      padding-bottom: 10%;
+    }
+  }
+
+  //Column Label Container
+  #availability-column-labels {
+    border: solid;
+    border-color: red;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+
+    width: 100%;
+    height: 7%;
+  }
+
+  //Row Label Container
+  #availability-row-labels {
+    // border: solid;
+    // border-color: green;
+
+    padding: 0rem;
+    margin: 0rem;
+    border-width: 0.1rem;
+
+    width: var(--column-width);
+    height: fit-content;
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  // ------------- General Column and Cell Styling -------------
+
+  //Chart Columns
+  .availability-column {
+    // border: solid;
+    // border-color: blue;
+
+    padding: 0rem;
+    margin: 0rem;
+    border-width: 0.1rem;
+
+    width: var(--column-width);
+    height: fit-content;
+  }
+
+  //Chart Cells
+  .availability-cell {
+    border: solid;
+    border-color: $calendar-border-color;
+    border-width: 0.1rem;
+
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s ease;
+
+    width: var(--column-width);
+    height: calc(2rem + 1.5vw);
+
+    &:hover {
+      border-color: $calendar-border-hover-color;
+      transition: border-color 0.5s ease;
+    }
+  }
+
+  // ------------- Row Label Styling -------------
+
+  //Row Label Cell
+  .availability-row-label-cell {
+    border: solid $calendar-border-color;
+    border-width: 0.1rem;
+
+    width: var(--column-width);
+    height: calc(2rem + 1.5vw);
+  }
+
+  //Row Label Text
+  .availability-row-label-text {
+    position: relative;
+    color: v.$invisible;
+    text-align: right;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      bottom: 75%;
+      right: 10%;
+      font-size: 0.8rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      bottom: 52.5%;
+      right: 10%;
+      font-size: 0.75rem;
+    }
+  }
+
+  // ------------- Column Label Styling -------------
+
+  //Column Label Cell
+  .availability-column-label-cell {
+    border: solid;
+    border-color: v.$invisible;
+    // border-color: black;
+    border-width: 0.1rem;
+    margin: 0 0 0 0;
+
+    height: 100%;
+    width: var(--column-width);
+  }
+
+  //Column Label Text
+  .availability-column-label-text {
+    position: relative;
+    bottom: 0.2rem;
+    font-size: 0.8rem;
+    color: v.$invisible;
+    text-align: center;
+  }
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+}

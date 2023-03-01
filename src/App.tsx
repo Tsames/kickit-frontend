@@ -21,6 +21,9 @@ import Invitation from './components/event_pages/invitation_page/invitation';
 import Event from './components/event_pages/event_page/event';
 import AboutUs from "./components/info_pages/aboutUs";
 
+//Import Example Event Data
+import exampleEvent from "./exampleEvent"
+
 function App() {
 
   /* ------------------------------------------ App Wide Variables and State ------------------------------------------ */
@@ -33,7 +36,7 @@ function App() {
   //Attending Interface
   interface attendingInterface {
     name: string;
-    available: Array<[number, number, number]>;
+    available: Array<[number, number]>;
   }
 
   //Event Interface
@@ -49,16 +52,7 @@ function App() {
   }
 
   //Stores the data of an event
-  const [event, setEvent] = useState<eventInterface>({
-    _id: "1234",
-    title: "Lorem ipsum dolor",
-    location: "Lorem ipsum dolor sit amet",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    early: 5,
-    late: 19,
-    days: [],
-    attending: [{name: 'Jack', available: []}]
-  });
+  const [event, setEvent] = useState<eventInterface>(exampleEvent);
 
   useEffect(() => {
     console.log('Event is set to:');
@@ -115,9 +109,9 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/howItWorks' element={<HowItWorks />} />
           <Route path='/create' element={<Create setEvent={setEvent} />} />
-          <Route path='/created/:id' element={<Created getEventData={getEventData} event={event} />} />
-          <Route path='/event/:id/invitation' element={<Invitation event={event} getEventData={getEventData} />} />
-          <Route path='/event/:id' element={<Event eventData={event} getEventData={getEventData} />} />
+          <Route path='/created/:id' element={<Created event={event} getEventData={getEventData} />} />
+          <Route path='/event/:id/invitation' element={<Invitation eventData={event} setEvent={setEvent} getEventData={getEventData} />} />
+          <Route path='/event/:id' element={<Event eventData={event} />} />
           <Route path='/aboutUs' element={<AboutUs />} />
 
         </Routes>

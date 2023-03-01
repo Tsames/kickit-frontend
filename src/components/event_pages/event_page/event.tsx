@@ -1,18 +1,23 @@
 //Dependencies
 import React, { FC, useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //Import Components
 import Availability from "./child_components/availability";'./child_components/availability';
 
 //Styling
-import '../../../styles/create_pages_styling/create_page/create.scss';
+import '../../../styles/events_styling/event_styling/event.scss';
+
+//Limit Interface
+interface limitInterface {
+    active: boolean;
+    name: string;
+}
 
 //Attending Interface
 interface attendingInterface {
     name: string;
-    available: Array<[number, number, number]>;
+    available: Array<[number, number]>;
 }
 
 //Event Interface
@@ -29,43 +34,51 @@ interface eventDataInterface {
 
 interface eventProps {
   eventData: eventDataInterface;
-  setEvent: (event: eventDataInterface) => void;
-  getEventData: (id: string) => Promise<boolean>;
+//   setEvent: (event: eventDataInterface) => void;
+//   getEventData: (id: string) => Promise<boolean>;
 }
 
-const Event: FC<eventProps> = ({ eventData, setEvent, getEventData }) => {
+const Event: FC<eventProps> = ({ eventData }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
-  let navigate = useNavigate();
+    //const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
+    // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
 
-  const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
-  // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
+    //State for availability.tsx to determine whether it should only show a select person's availability
+    const [limit, setLimit] = useState<limitInterface>({
+        active: false,
+        name: ""
+    })
 
-  //State that stores input
-  const [selection, setSelection] = useState<attendingInterface>({
-    name: "",
-    available: []
-  });
+    //State that stores selection input
+    const [selection, setSelection] = useState<attendingInterface>({
+        name: "Jack",
+        available: [[1,2]],
+    });
 
-  useEffect(() => {
-    console.log("selection has been updated to:");
-    console.log(selection);
-  }, [selection])
+    // useEffect((): void => {
+    //     console.log("selection is:");
+    //     console.log(selection);
+
+    //     console.log("limit is:")
+    //     console.log(limit);
+
+    // }, [selection, limit]);
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
-  const eventPageVariant = {
-    hidden: {
-      y: "-100vw"
-    },
-    visible: {
-      y: 0,
-      transition: { type: "spring", stiffness: 80, damping: 15}
-    },
-    exit: {
-    }
-  }
+//   const eventPageVariant = {
+//     hidden: {
+//       y: "-100vw"
+//     },
+//     visible: {
+//       y: 0,
+//       transition: { type: "spring", stiffness: 80, damping: 15}
+//     },
+//     exit: {
+//     }
+//   }
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -77,11 +90,11 @@ const Event: FC<eventProps> = ({ eventData, setEvent, getEventData }) => {
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
-  return (
-    <motion.div id="event-shell">
-        <Availability eventData={eventData} selection={selection} setSelection={setSelection}/>
-    </motion.div>
-  )
+    return (
+        <motion.div id="event-shell">
+            <Availability limit={limit} eventData={eventData} selection={selection} setSelection={setSelection}/>
+        </motion.div>
+    )
 }
 
 export default Event;

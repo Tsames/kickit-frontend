@@ -38,16 +38,25 @@ interface availabilityInterface {
 
 const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, setSelection }) => {
 
-  /* ------------------------------------------ Table Generator Variables and State ------------------------------------------ */
+  /* ------------------------------------------ Table Variables and State ------------------------------------------ */
   
+  //Event Data
   const early = eventData.early;
   const late = eventData.late;
   const days = eventData.days
   const attending = eventData.attending;
 
-  //Get column and row numbers from props
+  //Get column and row numbers from event data
   const numColumns = days.length;
   const numRows = Math.abs(late - early) * 2;
+
+  //Selection Variables
+  const [selectedCells, setSelectedCells] = useState([]);
+
+  let selectionActive: boolean = false; //Tracks if there is a Active occuring
+  let selectionStart: [number, number]; //Trakcs where the selection began from
+  let selectionEnd: [number, number]; //Tracks where the selection is ending
+  let selectionToggleState: boolean = true; //Tracks if the selected class should be added or removed
 
   //Adjust Cell Width and Height based on numRows & numColumns
   useEffect(() => {
@@ -65,16 +74,29 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
     console.log(shell);
   })
 
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table Generator Helpers %%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+  /* ------------------------------------------ Framer Motion Variants ------------------------------------------ */
+
+  //Hover
+  const cellHover = {
+    
+  }
+
+  /* ------------------------------------------ Table Generator Helpers ------------------------------------------ */
 
   //Helper function (generateColumnLabels) - generate the text for column labels
   const columnLabelHelper = (index: number) => {
     let label = null;
+
     if (index !== 0) {
       const day = new Date(days[index - 1]);
-      let text = day.toDateString().substring(0, 10);
-      label = <p className="availability-column-label-text">{text}</p>
+      let monthText = day.toDateString().substring(4, 10);
+      let dotwText = day.toDateString().substring(0, 3);
+      label = <>
+        <p className="availability-column-label-text-one">{monthText}</p>
+        <p className="availability-column-label-text-two">{dotwText}</p>
+      </>
     }
+    
     return label;
   }
 
@@ -143,17 +165,25 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
     }
   }
 
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table Generator Functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+  /* ------------------------------------------ Table Generator Functions ------------------------------------------ */
 
     //Generator function - labels for columns
     const generateTableHeader = () => {
         let content = [], label = null;
 
+        //Add the row label cell to the new row
+        content.push(
+            <td className="availability-row-label-cell" data-row={0} data-column={0}>
+                {rowLabelHelper(0)}
+            </td>
+        )
+
         //Generate an array of column labels
-        for (let i = 0; i <= numColumns; i++) {
+        for (let i = 1; i <= numColumns; i++) {
             label = columnLabelHelper(i);
             content.push(
-                <th key={`column-${i}-label`} data-column={i} className="availability-column-label-Cell">
+                <th key={`column-${i}-label`} className="availability-column-label-cell" data-row={0} data-column={i}>
+
                     {label}
                 </th>
             )
@@ -191,13 +221,14 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
         const whatColor = limit.active ? determineColorLimited(whoAvailable) : determineColor(whoAvailable.length);
 
         content.push(
-          <td 
+          <motion.td 
           className={`availability-cell ${whatColor}`} 
           key={`cell-${i}`} 
           data-row={row} 
           data-column={i} 
-          data-who={whoAvailable}>
-          </td>
+          data-who={whoAvailable}
+          whileHover={}>
+          </motion.td>
         )
     }
 
@@ -222,6 +253,182 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
         return content
     }
+
+  /* ------------------------------------------ Selection Event Helper Functions ------------------------------------------ */
+
+  //Helper function (handleMouseDown) - determines toggle state
+  const setToggleState = target => {
+    if (target.className === "gridCell") {
+      toggleState = true;
+    } else {
+      toggleState = false;
+    }
+  }
+
+  //Helper function (handleMouseDown, handleMouseover) - toggles the provided elements' class according to toggleState and manages
+  //adding or removing the cell from selectedCells state
+  const toggleThis = (toggleWhat) => {
+    if (toggleState) {
+      toggleWhat.forEach((element) => {
+        element.classList.add("gridSelected");
+        addToSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
+      });
+    } else {
+      toggleWhat.forEach((element) => {
+        element.classList.remove("gridSelected");
+        removeFromSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
+      });
+    }
+  }
+
+  //Helper function (toggleThis) - add to selectedCells under the right conditions
+  const addToSelectedCells = (column, row) => {
+    const item = [block, column, row];
+
+    if (selectedCells.length === 0 || searchSelectedCells(item) === null) {
+      // console.log(`Adding (${block}, ${column}, ${row}) to selectedCells`);
+      const newCells = selectedCells;
+      newCells.push(item);
+      newCells.sort();
+      setSelectedCells(newCells);
+    }
+  }
+
+  //Helper function (toggleThis) - remove from selectedCells under the right conditions
+  const removeFromSelectedCells = (column, row) => {
+    const item = [block, column, row];
+    const index = searchSelectedCells(item);
+
+    if (index !== null) {
+      // console.log(`Removing (${block}, ${column}, ${row}) from selectedCells`);
+      const newCells = selectedCells; newCells.splice(index, 1);
+      setSelectedCells(newCells);
+    }
+  }
+
+  /* Helper function (addToSelectedCells, removeFromSelectedCells) - search through selectedCells and return
+  null if no element exists - otherwise returns index of the element being searched for */
+  const searchSelectedCells = (item) => {
+    let exists = null;
+
+    selectedCells.forEach((cell, index) => {
+      if (cell[0] === item[0] && cell[1] === item[1] && cell[2] === item[2]) {
+        exists = index;
+      }
+    })
+
+    return exists;
+  }
+
+  //Helper function (handleMouseOver) - determines what square should be passed to toggleThis
+  const getCorners = () => {
+
+    //Set helper variables
+    const startColumn = Number(selectionStart.dataset.column);
+    const startRow = Number(selectionStart.dataset.row);
+    const endColumn = Number(selectionEnd.dataset.column);
+    const endRow = Number(selectionEnd.dataset.row);
+
+    //Create return object
+    const sizeArray = [];
+
+    //Push to return object in order of smallest row to largest column
+    //Rows
+    if (startRow >= endRow) {
+      sizeArray.push(endRow);
+      sizeArray.push(startRow);
+    } else {
+      sizeArray.push(startRow);
+      sizeArray.push(endRow);
+    }
+
+    //Columns
+    if (startColumn >= endColumn) {
+      sizeArray.push(endColumn);
+      sizeArray.push(startColumn);
+    } else {
+      sizeArray.push(startColumn);
+      sizeArray.push(endColumn);
+    }
+    
+    return sizeArray;
+  }
+
+  /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
+
+  //Handler function - Start a selection and toggle mousedown target
+  const handleMouseDown = e => {
+    //Prevent page scrolling
+    e.preventDefault();
+
+    //Console message
+    // console.log(`Starting at (${block}, ${e.target.dataset.column}, ${e.target.dataset.row})...`);
+
+    //Set component wide variables that track a selection
+    selection = true;
+    selectionStart = e.target;
+    selectionEnd = e.target;
+    setToggleState(e.target);
+    toggleThis([e.target]);
+  }
+
+  //Handler function - Determine which cells to toggle based on mouseover
+  const handleMouseOver = e => {
+    if (selection) {
+      //Console message
+      // console.log(`Mouse over at (${block}, ${e.target.dataset.column}, ${e.target.dataset.row})...`);
+
+      //Set new end
+      selectionEnd = e.target;
+
+      //Set toggle points
+      const sizeArray = getCorners();
+      const smallRow = sizeArray[0], bigRow = sizeArray[1], smallColumn = sizeArray[2], bigColumn = sizeArray[3];
+
+      //If the selection is restricted to a single column
+      if (smallColumn === bigColumn) {
+
+        //Create sliced array from child node list of parent element
+        let fillArray = Array.from(selectionEnd.parentElement.childNodes).filter(child => 
+          (smallRow <= Number(child.dataset.row) && Number(child.dataset.row) <=bigRow)
+        );
+        toggleThis(fillArray);
+
+      //Else the selection spans columns
+      } else {
+
+        //Create a new array to send to helper
+        const toggleWhat = [];
+
+        //Grab all selected column nodes
+        const selectedColumns = Array.from(selectionEnd.parentElement.parentNode.childNodes).filter(child => 
+          (smallColumn <= Number(child.dataset.column) && Number(child.dataset.column) <= bigColumn)
+        );
+        
+        //Find all the cells in selected columns that are within the selected rows
+        selectedColumns.forEach(column => {
+          const columnCells = Array.from(column.childNodes);
+          columnCells.forEach(cell => {
+            const cellNumber = Number(cell.dataset.row);
+            if (smallRow <= cellNumber && cellNumber <= bigRow) {
+              toggleWhat.push(cell)
+            }
+          })
+        })
+
+        toggleThis(toggleWhat);
+      }
+    }
+  }
+
+  //Handler function - ends a selection when mouse up or cursor moves out of grid
+  const handleMouseUp = () => {
+    // console.log(`Stopping selection...`);
+    selection = false
+    // console.log("sending selected cells to AttendForm.js:");
+    // console.log(selectedCells);
+    handleAvailable(selectedCells);
+  }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 

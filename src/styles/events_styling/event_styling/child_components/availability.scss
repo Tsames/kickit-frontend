@@ -3,9 +3,12 @@
 @use './../../../mixins' as m;
 @use './../../../device' as d;
 
-$calendar-text-color: #014D59;
-$calendar-border-color: #2F6A73;
-$calendar-border-hover-color: #74d8e7;
+$table-column-text-one-color: red;
+$table-column-text-two-color: orange;
+$table-row-text-color: #014D59;
+
+$table-border-color: #2F6A73;
+$table-border-hover-color: #e77474;
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #availability-shell {
@@ -15,6 +18,8 @@ $calendar-border-hover-color: #74d8e7;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: calc(1rem + 1vw);
 
   height: fit-content;
   width: 90%;
@@ -33,16 +38,6 @@ $calendar-border-hover-color: #74d8e7;
 
   }
 
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {
-
-  }
-
-  //Desktop Sizing & Positioning
-  @include d.for-desktop-up {
-
-  }
-
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
@@ -51,50 +46,21 @@ $calendar-border-hover-color: #74d8e7;
     border: solid;
     border-color: orange;
 
-    padding-top: calc(2rem + 2vw);
-    padding-bottom: calc(2rem + 2vw);
+    border-collapse: collapse;
+    border-width: 0.2rem;
 
     width: 100%;
     height: fit-content;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      padding-top: 8%;
-      padding-bottom: 10%;
+
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      padding-top: 8%;
-      padding-bottom: 10%;
+
     }
-  }
-
-  //Column Label Container
-  #availability-column-labels {
-    border: solid;
-    border-color: red;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-content: center;
-
-    width: 100%;
-    height: 7%;
-  }
-
-  //Row Label Container
-  #availability-row-labels {
-    // border: solid;
-    // border-color: green;
-
-    padding: 0rem;
-    margin: 0rem;
-    border-width: 0.1rem;
-
-    width: var(--column-width);
-    height: fit-content;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -102,22 +68,15 @@ $calendar-border-hover-color: #74d8e7;
   // ------------- General Column and Cell Styling -------------
 
   //Chart Columns
-  .availability-column {
+  .availability-row {
     // border: solid;
     // border-color: blue;
-
-    padding: 0rem;
-    margin: 0rem;
-    border-width: 0.1rem;
-
-    width: var(--column-width);
-    height: fit-content;
   }
 
   //Chart Cells
   .availability-cell {
     border: solid;
-    border-color: $calendar-border-color;
+    border-color: $table-border-color;
     border-width: 0.1rem;
 
     margin: 0;
@@ -128,8 +87,15 @@ $calendar-border-hover-color: #74d8e7;
     height: calc(2rem + 1.5vw);
 
     &:hover {
-      border-color: $calendar-border-hover-color;
-      transition: border-color 0.5s ease;
+      border-top: solid;
+      border-left: solid;
+      border-right: solid;
+      border-bottom: solid;
+
+      border-width: 0.4rem;
+      
+      border-color: $table-border-hover-color;
+      transition: all 0.5s ease;
     }
   }
 
@@ -137,31 +103,28 @@ $calendar-border-hover-color: #74d8e7;
 
   //Row Label Cell
   .availability-row-label-cell {
-    border: solid $calendar-border-color;
+    border: solid $table-border-color;
+    border-left: none;
     border-width: 0.1rem;
 
-    width: var(--column-width);
+    width: calc(0.5 * var(--column-width));
     height: calc(2rem + 1.5vw);
   }
 
   //Row Label Text
   .availability-row-label-text {
     position: relative;
-    color: v.$invisible;
+    color: $table-row-text-color;
     text-align: right;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      bottom: 75%;
-      right: 10%;
-      font-size: 0.8rem;
+
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      bottom: 52.5%;
-      right: 10%;
-      font-size: 0.75rem;
+
     }
   }
 
@@ -170,9 +133,9 @@ $calendar-border-hover-color: #74d8e7;
   //Column Label Cell
   .availability-column-label-cell {
     border: solid;
-    border-color: v.$invisible;
-    // border-color: black;
+    border-color: $table-border-color;
     border-width: 0.1rem;
+
     margin: 0 0 0 0;
 
     height: 100%;
@@ -184,9 +147,40 @@ $calendar-border-hover-color: #74d8e7;
     position: relative;
     bottom: 0.2rem;
     font-size: 0.8rem;
-    color: v.$invisible;
+    color: $table-column-text-one-color;
     text-align: center;
   }
+
+  // ------------- Cell Class Styling -------------
+
+  .everyoneAvailable {
+    background-color: rgb(18, 59, 25);
+  }
+
+  .alotAvailable {
+    background-color: rgb(30, 114, 44);
+  }
+
+  .manyAvailable {
+    background-color: rgb(57, 243, 88);
+  }
+
+  .someAvailable {
+    background-color: rgb(107, 233, 128);
+  }
+
+  .fewAvailable {
+    background-color: rgb(145, 238, 160);
+  }
+
+  .verFewAvailable {
+    background-color: rgb(181, 238, 190);
+  }
+
+  .noneAvailable {
+    background-color: rgb(226, 252, 230);
+  }
+
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 

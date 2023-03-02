@@ -54,10 +54,10 @@ function App() {
   //Stores the data of an event
   const [event, setEvent] = useState<eventInterface>(exampleEvent);
 
-  useEffect(() => {
-    console.log('Event is set to:');
-    console.log(event);
-  }, [event])
+  // useEffect(() => {
+  //   console.log('Event is set to:');
+  //   console.log(event);
+  // }, [event])
 
   const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;

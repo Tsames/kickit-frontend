@@ -42,29 +42,29 @@ const Event: FC<eventProps> = ({ eventData }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
-    //const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
-    // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
+  //const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
+  // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
 
-    //State for availability.tsx to determine whether it should only show a select person's availability
-    const [limit, setLimit] = useState<limitInterface>({
-        active: false,
-        name: ""
-    })
+  //State for availability.tsx to determine whether it should only show a select person's availability
+  const [limit, setLimit] = useState<limitInterface>({
+    active: false,
+    name: ""
+  })
 
-    //State that stores selection input
-    const [selection, setSelection] = useState<attendingInterface>({
-        name: "Jack",
-        available: [[1,2]],
-    });
+  //State that stores selection input
+  const [selection, setSelection] = useState<attendingInterface>({
+    name: "Jack",
+    available: [[1,2]],
+  });
 
-    // useEffect((): void => {
-    //     console.log("selection is:");
-    //     console.log(selection);
+  useEffect((): void => {
+    console.log("selection is:");
+    console.log(selection);
 
-    //     console.log("limit is:")
-    //     console.log(limit);
+    // console.log("limit is:")
+    // console.log(limit);
 
-    // }, [selection, limit]);
+  }, [selection.available]);
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 

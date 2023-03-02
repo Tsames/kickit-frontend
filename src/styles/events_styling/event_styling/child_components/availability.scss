@@ -19,7 +19,7 @@ $table-border-hover-color: #e77474;
   justify-content: center;
   align-items: center;
 
-  padding: calc(1rem + 1vw);
+  padding: calc(1rem + 2vw);
 
   height: fit-content;
   width: 90%;
@@ -42,9 +42,9 @@ $table-border-hover-color: #e77474;
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   //Availability Chart Container
-  #availability-contents {
-    border: solid;
-    border-color: orange;
+  table#availability-contents {
+    // border: solid;
+    // border-color: orange;
 
     border-collapse: collapse;
     border-width: 0.2rem;
@@ -63,21 +63,26 @@ $table-border-hover-color: #e77474;
     }
   }
 
+
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   // ------------- General Column and Cell Styling -------------
+  #availability-column-label-wrapper {
+    border: none;
+    height: calc(2rem + 1.5vw);
+  }
 
   //Chart Columns
-  .availability-row {
-    // border: solid;
-    // border-color: blue;
+  tr.availability-row {
+    border: none;
+    height: calc(2rem + 1.5vw);
   }
 
   //Chart Cells
   .availability-cell {
     border: solid;
     border-color: $table-border-color;
-    border-width: 0.1rem;
+    border-width: 0.2rem;
 
     margin: 0;
     padding: 0;
@@ -85,18 +90,6 @@ $table-border-hover-color: #e77474;
 
     width: var(--column-width);
     height: calc(2rem + 1.5vw);
-
-    &:hover {
-      border-top: solid;
-      border-left: solid;
-      border-right: solid;
-      border-bottom: solid;
-
-      border-width: 0.4rem;
-      
-      border-color: $table-border-hover-color;
-      transition: all 0.5s ease;
-    }
   }
 
   // ------------- Row Label Styling -------------
@@ -107,15 +100,30 @@ $table-border-hover-color: #e77474;
     border-left: none;
     border-width: 0.1rem;
 
-    width: calc(0.5 * var(--column-width));
+    position: relative;
+
+    width: calc(0.75 * var(--column-width));
     height: calc(2rem + 1.5vw);
+
+    text-align: left;
   }
 
   //Row Label Text
   .availability-row-label-text {
-    position: relative;
+    // border: solid red;
+    width: 70%;
+    padding-right: 10%;
+
+    position: absolute;
+    top: calc((2rem + 1.5vw)/2);
+    left: -5%;
+
     color: $table-row-text-color;
+    background-color: white;
+
     text-align: right;
+    font-size: calc(0.5rem + 0.7vw);
+
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -132,29 +140,58 @@ $table-border-hover-color: #e77474;
 
   //Column Label Cell
   .availability-column-label-cell {
+    position: relative;
+
     border: solid;
+    border-top: none;
     border-color: $table-border-color;
     border-width: 0.1rem;
 
     margin: 0 0 0 0;
+    padding: 0;
 
-    height: 100%;
+    height: calc(2rem + 1.5vw) !important;
     width: var(--column-width);
+
+    overflow-y: hidden;
   }
 
-  //Column Label Text
-  .availability-column-label-text {
-    position: relative;
-    bottom: 0.2rem;
-    font-size: 0.8rem;
-    color: $table-column-text-one-color;
+  //Column Label Text One
+  .availability-column-label-text-one {
+    position: absolute;
+    left: 0%;
+    top: -10%;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-size: calc(0.5rem + 0.5vw);
+    font-family: v.$font_two;
+    color: v.$pallette_three;
+    text-align: center;
+  }
+
+  //Column Label Text Two
+  .availability-column-label-text-two {
+    position: absolute;
+    top: 25%;
+    left: 0%;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-size: calc(1rem + 1.2vw);
+    font-family: v.$font_two;
+    color: v.$pallette_three;
     text-align: center;
   }
 
   // ------------- Cell Class Styling -------------
 
   .everyoneAvailable {
-    background-color: rgb(18, 59, 25);
+    background-color: rgb(5, 32, 10);
   }
 
   .alotAvailable {
@@ -162,26 +199,98 @@ $table-border-hover-color: #e77474;
   }
 
   .manyAvailable {
-    background-color: rgb(57, 243, 88);
+    background-color: rgb(30, 177, 54);
   }
 
   .someAvailable {
-    background-color: rgb(107, 233, 128);
+    background-color: rgb(64, 247, 94);
   }
 
   .fewAvailable {
-    background-color: rgb(145, 238, 160);
+    background-color: rgb(105, 255, 130);
   }
 
   .verFewAvailable {
-    background-color: rgb(181, 238, 190);
+    background-color: rgb(179, 255, 191);
   }
 
   .noneAvailable {
-    background-color: rgb(226, 252, 230);
+    background-color: rgb(252, 252, 252);
   }
+
+  .selected {
+    background-color: rgb(228, 206, 82);
+  }
+
+  // .selected + .everyoneAvailable {
+  //   background-color: rgb(7, 60, 73) !important;
+  // }
+
+  // .selected + .alotAvailable {
+  //   background-color: rgb(15, 100, 121) !important;
+  // }
+
+  // .selected + .manyAvailable {
+  //   background-color: rgb(16, 117, 143) !important;
+  // }
+
+  // .selected + .someAvailable {
+  //   background-color: rgb(12, 162, 199) !important;
+  // }
+
+  // .selected + .fewAvailable {
+  //   background-color: rgb(76, 203, 235) !important;
+  // }
+
+  // .selected + .veryFewAvailable {
+  //   background-color: rgb(142, 221, 241) !important;
+  // }
+
 
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  //Top Left Cell of the Table
+  #availability-top-row-label-cell {
+    border: solid $table-border-color;
+    border-top: none;
+    border-left: none;
+    border-width: 0.1rem;
+
+    position: relative;
+
+    width: calc(0.75 * var(--column-width));
+    height: calc(2rem + 1.5vw);
+
+    text-align: left;
+
+    p {
+
+      // border: solid red;
+      width: 70%;
+      padding-right: 10%;
+
+      position: absolute;
+      top: 50;
+      left: -5%;
+
+      color: $table-row-text-color;
+      background-color: white;
+
+      text-align: right;
+      font-size: calc(0.5rem + 0.7vw);
+
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+
+      }
+    }
+  }
 
 }

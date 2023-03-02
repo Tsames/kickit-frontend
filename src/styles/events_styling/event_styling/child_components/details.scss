@@ -1,0 +1,31 @@
+//Imports
+@use './../../../variables' as v;
+@use './../../../mixins' as m;
+@use './../../../device' as d;
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#details-shell {
+  border: solid;
+  border-color: purple;
+
+  //Mobile Sizing & Positioning
+  @include d.for-phone-only {
+
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+
+  }
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+
+}

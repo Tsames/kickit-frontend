@@ -3,21 +3,23 @@ import React, { FC, useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 
 //Import Components
-import Availability from "./child_components/availability";'./child_components/availability';
+import Details from './child_components/details';
+import Participants from "./child_components/participants";
+import Availability from "./child_components/availability";
 
 //Styling
 import '../../../styles/events_styling/event_styling/event.scss';
 
 //Limit Interface
 interface limitInterface {
-    active: boolean;
-    name: string;
+  active: boolean;
+  name: string;
 }
 
 //Attending Interface
 interface attendingInterface {
-    name: string;
-    available: Array<[number, number]>;
+  name: string;
+  available: Array<[number, number]>;
 }
 
 //Event Interface
@@ -85,6 +87,12 @@ const Event: FC<eventProps> = ({ eventData }) => {
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
+  //Handles Name Change for the new Submissions
+  const handleNameChange = (event: React.BaseSyntheticEvent): void => {
+    let newValue = event.target.value;
+    setSelection({ ...selection, "name": newValue });
+  }
+
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
 
 
@@ -92,7 +100,25 @@ const Event: FC<eventProps> = ({ eventData }) => {
 
     return (
         <motion.div id="event-shell">
+          <h1 id="event-header">Welcome to <span id="event-special-text">Kick It</span></h1>
+          <div id="event-top-section">
+            <Details eventData={eventData} />
+            <Participants limit={limit} eventData={eventData}/>
             <Availability limit={limit} eventData={eventData} selection={selection} setSelection={setSelection}/>
+          </div>
+          <div id="event-bottom-section">
+            <div id="person=graphic"></div>
+            <h2>Select all of the times that you are available on any of the above days.</h2>
+            <div id="event-warning">
+              <p>You are entering a name that has already submitted their availability.</p>
+              <p>If you submit with this name, you will overwrite the previously submitted availability.</p>
+            </div>
+            <label htmlFor="name" id="event-name-wrapper">
+              <input required id="event-name" type="text" name="name" value={selection.name} onChange={handleNameChange} />
+              <span className="placeholder no-select">enter name</span>
+            </label>
+            <button>Submit</button>
+          </div>
         </motion.div>
     )
 }

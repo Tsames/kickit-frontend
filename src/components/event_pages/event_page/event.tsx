@@ -22,6 +22,13 @@ interface attendingInterface {
   available: Array<[number, number]>;
 }
 
+//Selection Interface
+interface selectionInterface {
+  name: string;
+  available: Array<[number, number]>;
+  mouse: Array<string>;
+}
+
 //Event Interface
 interface eventDataInterface {
   _id: string;
@@ -47,26 +54,23 @@ const Event: FC<eventProps> = ({ eventData }) => {
   //const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
 
-  //State for availability.tsx to determine whether it should only show a select person's availability
+  //State for Participants and Availability child components to determine whether it should only show a select person's availability
   const [limit, setLimit] = useState<limitInterface>({
     active: false,
     name: ""
-  })
+  });
 
   //State that stores selection input
-  const [selection, setSelection] = useState<attendingInterface>({
-    name: "Jack",
-    available: [[1,2]],
+  const [selection, setSelection] = useState<selectionInterface>({
+    name: "",
+    available: [],
+    mouse: []
   });
 
   useEffect((): void => {
     console.log("selection is:");
     console.log(selection);
-
-    // console.log("limit is:")
-    // console.log(limit);
-
-  }, [selection.available]);
+  }, [selection]);
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -103,7 +107,7 @@ const Event: FC<eventProps> = ({ eventData }) => {
           <h1 id="event-header">Welcome to <span id="event-special-text">Kick It</span></h1>
           <div id="event-top-section">
             <Details eventData={eventData} />
-            <Participants limit={limit} eventData={eventData}/>
+            <Participants limit={limit} mouse={selection.mouse} setLimit={setLimit} eventData={eventData}/>
             <Availability limit={limit} eventData={eventData} selection={selection} setSelection={setSelection}/>
           </div>
           <div id="event-bottom-section">

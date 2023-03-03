@@ -8,6 +8,8 @@
   border: solid;
   border-color: pink;
 
+  background: rgba(255, 255, 255, 0.71);
+
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
 
@@ -24,6 +26,16 @@
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+    .participants-name-indicator {
+      border-radius: 0.4rem;
+      width: calc(0.4rem + 0.25vw);
+      height: calc(0.4rem + 0.25vw);
+      background-color: #51D245;
+    }
+
+    .participants-name-indicator + .not-selected {
+      background-color: v.$invisible !important;
+    }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 

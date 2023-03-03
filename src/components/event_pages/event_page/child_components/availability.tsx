@@ -7,33 +7,40 @@ import './../../../../styles/events_styling/event_styling/child_components/avail
 
 //Limit Interface
 interface limitInterface {
-    active: boolean;
-    name: string;
+  active: boolean;
+  name: string;
 }
 
 //Attending Interface
 interface attendingInterface {
-    name: string;
-    available: Array<[number, number]>;
+  name: string;
+  available: Array<[number, number]>;
+}
+
+//Selection Interface
+interface selectionInterface {
+  name: string;
+  available: Array<[number, number]>;
+  mouse: Array<string>;
 }
 
 //Event Interface
 interface eventInterface {
-    _id: string;
-    title: string;
-    location: string;
-    description: string;
-    early: number;
-    late: number;
-    days: number[];
-    attending: Array<attendingInterface>;
+  _id: string;
+  title: string;
+  location: string;
+  description: string;
+  early: number;
+  late: number;
+  days: number[];
+  attending: Array<attendingInterface>;
 }
 
 interface availabilityInterface {
-    limit: limitInterface;
-    eventData: eventInterface;
-    selection: attendingInterface;
-    setSelection: React.Dispatch<React.SetStateAction<attendingInterface>>
+  limit: limitInterface;
+  eventData: eventInterface;
+  selection: selectionInterface;
+  setSelection: React.Dispatch<React.SetStateAction<selectionInterface>>;
 }
 
 const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, setSelection }) => {
@@ -382,6 +389,10 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
   //Handler function - Determine which cells to toggle based on mouseover
   const handleMouseOver = (e: React.BaseSyntheticEvent): void => {
 
+    if(!selectionActive) {
+      setSelection({...selection, "mouse": e.target.dataset.who.split(",")});
+    }
+
     if (selectionActive) {
       //Console message
       // console.log(`Mouse over at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
@@ -399,8 +410,6 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
       //Set toggle points
       const sizeArray = getCorners();
       const smallRow = sizeArray[0], bigRow = sizeArray[1], smallColumn = sizeArray[2], bigColumn = sizeArray[3];
-
-
 
       //Create a new array to send to helper
       const toggleWhat: Array<HTMLElement> = [];
@@ -433,6 +442,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
       toggleThis(toggleWhat);
     }
+
   }
 
   //Handler function - ends a selection when mouse up or cursor moves out of grid

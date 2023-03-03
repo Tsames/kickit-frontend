@@ -22,7 +22,8 @@ $table-border-hover-color: #e77474;
   padding: calc(1rem + 2vw);
 
   height: fit-content;
-  width: 90%;
+  width: 75%;
+  margin-top: max(5rem, 5vw);
 
   //These Values are set in availabilityChart.js based on the number of cells
   --column-width: 0rem;
@@ -191,15 +192,15 @@ $table-border-hover-color: #e77474;
   // ------------- Cell Class Styling -------------
 
   .everyoneAvailable {
-    background-color: rgb(5, 32, 10);
+    background-color: rgb(7, 71, 19);
   }
 
   .alotAvailable {
-    background-color: rgb(30, 114, 44);
+    background-color: rgb(37, 131, 53);
   }
 
   .manyAvailable {
-    background-color: rgb(30, 177, 54);
+    background-color: rgb(41, 182, 65);
   }
 
   .someAvailable {

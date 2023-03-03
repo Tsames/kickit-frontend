@@ -104,7 +104,6 @@ const Event: FC<eventProps> = ({ eventData }) => {
 
     return (
         <motion.div id="event-shell">
-          <h1 id="event-header">Welcome to <span id="event-special-text">Kick It</span></h1>
           <div id="event-top-section">
             <Details eventData={eventData} />
             <Participants limit={limit} mouse={selection.mouse} setLimit={setLimit} eventData={eventData}/>

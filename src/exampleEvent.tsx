@@ -18,6 +18,39 @@ interface eventInterface {
     attending: Array<attendingInterface>;
 }
 
+let currentDay: Date = new Date(Date.now());
+
+currentDay.setSeconds(0);
+currentDay.setMinutes(0);
+currentDay.setHours(0);
+
+let timeOne: number = currentDay.getTime();
+
+let dayTwo: Date = new Date(currentDay);
+dayTwo.setDate(currentDay.getDate() + 1);
+let timeTwo: number = dayTwo.getTime();
+
+let dayThree: Date | number = new Date(dayTwo);
+dayThree.setDate(dayTwo.getDate() + 1);
+let timeThree: number = dayThree.getTime();
+
+let dayFour: Date | number = new Date(currentDay);
+dayFour.setDate(currentDay.getDate() + 7);
+let timeFour: number = dayFour.getTime();
+
+let dayFive: Date | number = new Date(currentDay);
+dayFive.setDate(currentDay.getDate() + 8);
+let timeFive: number = dayFive.getTime();
+
+let daySix: Date | number = new Date(currentDay);
+daySix.setDate(currentDay.getDate() + 9);
+let timeSix: number = daySix.getTime();
+
+let daySeven: Date | number = new Date(currentDay);
+daySeven.setDate(currentDay.getDate() + 12);
+let timeSeven: number = daySeven.getTime();
+
+
 const exampleEvent: eventInterface = {
     _id: "example_event",
     title: "Delightful Picnic",
@@ -25,7 +58,7 @@ const exampleEvent: eventInterface = {
     description: "Enjoy one of the last days of summer with us in the afternoon sun at Greer Park! The weather has been absolutely beautiful after the last heat wave, it would be a shame to not enjoy these days to the fullest. Make sure to bring something tasty to eat for everyone else with you!",
     early: 11,
     late: 18,
-    days: [1663743600000],
+    days: [timeOne, timeTwo, timeThree, timeFour, timeFive,timeSix, timeSeven],
     attending: [{ name:"Tom", available: [[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[9,1],[10,1],[11,1],[12,1],[13,1],[14,1]]}, 
                 {name: "Ethan", available: [[3,3], [3,2], [3,3], [3,4], [2,3], [2,2], [2,3], [2,4], [3,3], [3,2], [3,3], [3,4]]}, 
                 {name: "Daniel", available: [[1,5], [1,6], [1,7], [1,8], [1,9], [5,4], [5,5], [5,6], [5,7], [5,8], [5,9], [5,10], [6,1], [6,2], [6,3], [6,4], [6,5]]},

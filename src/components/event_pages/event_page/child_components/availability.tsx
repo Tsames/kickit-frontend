@@ -396,6 +396,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
     if (selectionActive) {
       //Console message
       // console.log(`Mouse over at (${e.target.dataset.column}, ${e.target.dataset.row})...`);
+      // setSelection({ ...selection, "mouse": [] });
 
       //Set new end
       e.target as HTMLElement;
@@ -451,7 +452,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
     selectionActive = false
     // console.log("sending selected cells to Available.tsx:");
     // console.log(selectedCells);
-    setSelection({...selection, "available": selectedCells});
+    setSelection({...selection, "available": selectedCells, "mouse": [] });
   }
 
   /* ------------------------------------------ Returning JSX ------------------------------------------ */

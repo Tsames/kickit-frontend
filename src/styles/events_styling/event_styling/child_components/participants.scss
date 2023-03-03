@@ -5,9 +5,14 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #participants-shell {
-  border: solid;
-  border-color: pink;
+  // border: solid;
+  // border-color: pink;
+  border-radius: 1rem;
 
+  width: 45%;
+  height: fit-content;
+
+  padding: calc(1rem + 1vw);
   background: rgba(255, 255, 255, 0.71);
 
   //Mobile Sizing & Positioning
@@ -23,21 +28,62 @@
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  #participants-body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: calc(1rem + 1vw);
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-    .participants-name-indicator {
-      border-radius: 0.4rem;
-      width: calc(0.4rem + 0.25vw);
-      height: calc(0.4rem + 0.25vw);
-      background-color: #51D245;
-    }
+  .participants-name-wrapper {
+    // border: solid purple;
 
-    .participants-name-indicator + .not-selected {
-      background-color: v.$invisible !important;
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+
+    position: relative;
+  }
+
+  .participants-name-indicator {
+    // border: solid red;
+    border-radius: 0.4rem;
+
+    margin: 0;
+    padding: 0;
+
+    width: calc(0.4rem + 0.25vw);
+    height: calc(0.4rem + 0.25vw);
+
+    position: relative;
+    top: 40%;
+    right: 5%;
+
+    background-color: #51D245;
+    transition: background-color 0.3s ease;
+  }
+
+  .participants-name-text {
+    // border: solid pink;
+    color: #2C2C2C;
+    font-family: v.$font_two;
+    font-size: calc(1rem + 0.5vw);
+  }
+
+  .not-selected {
+    background-color: v.$invisible !important;
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
+  h1 {
+    font-family: v.$font-two;
+    color: #2C2C2C;
+    border-bottom: solid;
+    width: fit-content;
+    margin: auto;
+  }
 
 }

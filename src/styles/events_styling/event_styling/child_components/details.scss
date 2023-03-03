@@ -12,7 +12,8 @@
   position: relative;
 
   width: 40%;
-  height: calc(15rem + 10vw);
+  height: calc(10rem + 12vw);
+  margin-bottom: max(5rem, 5vw);
 
   z-index: 0;
 
@@ -68,7 +69,7 @@
   #details-event-title {
     position: absolute;
     left: calc(1rem + 4%);
-    top: 15%;
+    top: 10%;
 
     font-family: v.$font-two;
     font-size: calc(2rem + 0.3vw);

@@ -64,6 +64,20 @@ const Participants: FC<participantsProps> = ({ limit, mouse, setLimit, eventData
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
+  const determineVisibility = (elementName: string): boolean => {
+
+    console.log()
+
+    if (limit.active && limit.name === elementName) {
+        return true;
+    } else if (limit.active && limit.name !== elementName) {
+        return false;
+    } else if (mouse.length === 0) {
+        return true;
+    } else {
+        return mouse.includes(elementName);
+    }
+  }
 
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
@@ -90,9 +104,9 @@ const Participants: FC<participantsProps> = ({ limit, mouse, setLimit, eventData
         eventData.attending.forEach( attendObject => {
 
             content.push(
-                <motion.div id={`${attendObject.name}-wrapper`} key={`${attendObject.name}`} className="participants-name-wrapper" dataset-name={attendObject.name} onClick={handleSetLimit}>
-                    <motion.div id={`${attendObject.name}-indicator`} className={mouse.includes(attendObject.name) ? "participants-name-indicator selected" : "participants-name-indicator not-selected"}></motion.div>
-                    <motion.p id={`${attendObject.name}-text`} className={mouse.includes(attendObject.name)? "participants-name-text selected" : "participants-name-text not-selected"}>{attendObject.name}</motion.p>
+                <motion.div id={`${attendObject.name}-wrapper`} key={`${attendObject.name}`} className="participants-name-wrapper" data-name={attendObject.name} onClick={handleSetLimit}>
+                    <motion.div id={`${attendObject.name}-indicator`} className={determineVisibility(attendObject.name) ? "participants-name-indicator selected" : "participants-name-indicator not-selected"}></motion.div>
+                    <motion.p id={`${attendObject.name}-text`} className={determineVisibility(attendObject.name) ? "participants-name-text selected no-select" : "participants-name-text not-selected no-select"}>{attendObject.name}</motion.p>
                 </motion.div>
             );
         })

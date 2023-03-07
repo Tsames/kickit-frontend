@@ -1,6 +1,7 @@
 //Dependencies
 import React, { FC, useState, useEffect } from "react";
 import { motion } from 'framer-motion';
+import { VscTriangleDown } from "react-icons/vsc";
 
 //Import Components
 import Details from './child_components/details';
@@ -54,13 +55,16 @@ const Event: FC<eventProps> = ({ eventData }) => {
   //const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
 
+  //State for submission dropdown-menu management
+  const [toggle, setToggle] = useState<boolean>(false);
+
   //State for Participants and Availability child components to determine whether it should only show a select person's availability
   const [limit, setLimit] = useState<limitInterface>({
     active: false,
     name: ""
   });
 
-  //State that stores selection input
+  //State that stores selection input for Availability.tsx and bottom section of this component
   const [selection, setSelection] = useState<selectionInterface>({
     name: "",
     available: [],
@@ -74,17 +78,51 @@ const Event: FC<eventProps> = ({ eventData }) => {
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
-//   const eventPageVariant = {
-//     hidden: {
-//       y: "-100vw"
-//     },
-//     visible: {
-//       y: 0,
-//       transition: { type: "spring", stiffness: 80, damping: 15}
-//     },
-//     exit: {
-//     }
-//   }
+  const eventSusectionVariant = {
+    inactive: {
+      backgroundColor: "#00000000",
+      transition: { duration: 0.3, delay: 0.3 }
+    },
+    active: {
+      backgroundColor: "#FAF9F6",
+      transition: { duration: 0.3 }
+    }
+  }
+
+  const eventHeaderVariant = {
+    inactive: {
+      backgroundColor: "#FAF9F6",
+      transition: { duration: 0.3, delay: 0.3 }
+    },
+    active: {
+      backgroundColor: "#C2C2C2",
+      transition: { duration: 0.3 }
+    }
+  }
+
+  const eventBodyVariant = {
+    inactive: {
+      opacity: 0,
+      height: 0,
+      transition: { duration: 0.3, delay: 0.3 }
+    },
+    active: {
+      opacity: 1,
+      height: "calc(82% - (2rem + 2vw))",
+      transition: { duration: 0.3 }
+    }
+  }
+
+  const eventToggleButtonVariant = {
+    inactive: {
+      rotateZ: "90deg",
+      transition: { duration: 0.3, delay: 0.3 }
+    },
+    active: {
+      rotateZ: "0deg",
+      transition: { duration: 0.3 }
+    }
+  }
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -111,16 +149,24 @@ const Event: FC<eventProps> = ({ eventData }) => {
           </div>
           <div id="event-bottom-section">
             <div id="event-graphic"></div>
-            <h2>Select all of the times that you are available on any of the above days.</h2>
-            <div id="event-warning">
-              <p>You are entering a name that has already submitted their availability.</p>
-              <p>If you submit with this name, you will overwrite the previously submitted availability.</p>
+            <div id="event-submission-subsection">
+              <motion.div id="event-submission-subsection-header" variants={eventToggleButtonVariant} initial={false} animate={toggle ? "active" : "inactive"}>
+                <motion.h1 id="event-submission-subsection-title">Submit Your Availability</motion.h1>
+                <motion.div id="event-submission-subsection-toggle-button-wrapper" variants={eventToggleButtonVariant} onClick={() => {toggle ? setToggle(false) : setToggle(true)}}><VscTriangleDown id="details-toggle-button"></VscTriangleDown></motion.div>
+              </motion.div>
+              <motion.div id="event-submission-subsection-body" variants={eventBodyVariant}>
+                <h2>Select all of the times that you are available on any of the above days.</h2>
+                <div id="event-warning">
+                  <p>You are entering a name that has already submitted their availability.</p>
+                  <p>If you submit with this name, you will overwrite the previously submitted availability.</p>
+                </div>
+                <label htmlFor="name" id="event-name-wrapper">
+                  <input required id="event-name" type="text" name="name" value={selection.name} onChange={handleNameChange} />
+                  <span className="placeholder no-select">enter name</span>
+                </label>
+                <button>Submit</button>
+              </motion.div>
             </div>
-            <label htmlFor="name" id="event-name-wrapper">
-              <input required id="event-name" type="text" name="name" value={selection.name} onChange={handleNameChange} />
-              <span className="placeholder no-select">enter name</span>
-            </label>
-            <button>Submit</button>
           </div>
         </motion.div>
     )

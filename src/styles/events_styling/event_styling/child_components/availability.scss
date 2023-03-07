@@ -3,13 +3,6 @@
 @use './../../../mixins' as m;
 @use './../../../device' as d;
 
-$table-column-text-one-color: red;
-$table-column-text-two-color: orange;
-$table-row-text-color: #014D59;
-
-$table-border-color: #2F6A73;
-$table-border-hover-color: #e77474;
-
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #availability-shell {
   border: solid;
@@ -27,6 +20,18 @@ $table-border-hover-color: #e77474;
 
   //These Values are set in availability.tsx based on the number of cells
   --cellWidth: 0rem;
+
+  $cellWidth: var(--cellWidth);
+  $cellHeight: calc(2rem + 1vw);
+
+  $cell-border-width: 0.1rem;
+
+  $table-column-text-one-color: red;
+  $table-column-text-two-color: orange;
+  $table-row-text-color: #014D59;
+
+  $table-border-color: #2F6A73;
+  $table-border-hover-color: #e77474;
 
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
@@ -95,33 +100,35 @@ $table-border-hover-color: #e77474;
 
   //Chart Cells
   .availability-cell {
-    border: solid;
+    border-right: solid;
+    border-bottom: solid;
     border-color: $table-border-color;
-    border-width: 0.2rem;
+    border-width: $cell-border-width;
 
-    margin: 0.05rem;
+    margin: 0;
     padding: 0;
     transition: all 0.3s ease;
 
-    width: var(--cellWidth);
-    height: calc(2rem + 1.5vw);
+    width: $cellWidth;
+    height: $cellHeight;
   }
 
   // ------------- Row Label Styling -------------
 
   //Row Label Cell
   .availability-row-label-cell {
-    border: solid $table-border-color;
-    border-left: none;
-    border-width: 0.2rem;
+    border-bottom: solid;
+    border-right: solid;
+    border-color: $table-border-color;
+    border-width: $cell-border-width;
 
-    margin: 0.05rem;
+    margin: 0;
     padding: 0;
 
     position: relative;
 
-    width: calc(0.75 * var(--cellWidth));
-    height: calc(2rem + 1.5vw);
+    width: $cellWidth;
+    height: $cellHeight;
 
     text-align: left;
   }
@@ -162,25 +169,24 @@ $table-border-hover-color: #e77474;
   .availability-column-label-cell {
     position: relative;
 
-    border: solid;
-    // border-top: none;
-    border-color: $table-border-color;
-    border-width: 0.2rem;
+    border: solid $table-border-color;
+    border-top: none;
+    border-left: none;
+    border-width: $cell-border-width;
 
-    margin: 0.2rem;
+    margin: 0;
     padding: 0;
 
-    width: var(--cellWidth);
-    height: calc(2rem + 1.5vw) !important;
+    width: $cellWidth;
+    height: $cellHeight;
 
-    overflow-y: hidden;
   }
 
   //Column Label Text One
   .availability-column-label-text-one {
     position: absolute;
     left: 0%;
-    top: -10%;
+    bottom: 120%;
 
     width: 100%;
     margin: 0;
@@ -195,7 +201,7 @@ $table-border-hover-color: #e77474;
   //Column Label Text Two
   .availability-column-label-text-two {
     position: absolute;
-    top: 25%;
+    bottom: 20%;
     left: 0%;
 
     width: 100%;
@@ -211,42 +217,34 @@ $table-border-hover-color: #e77474;
   // ------------- Cell Class Styling -------------
 
   .everyoneAvailable {
-    border-width: 0.2rem;
     background-color: rgb(7, 71, 19);
   }
 
   .alotAvailable {
-    border-width: 0.2rem;
     background-color: rgb(37, 131, 53);
   }
 
   .manyAvailable {
-    border-width: 0.2rem;
     background-color: rgb(41, 182, 65);
   }
 
   .someAvailable {
-    border-width: 0.2rem;
     background-color: rgb(64, 247, 94);
   }
 
   .fewAvailable {
-    border-width: 0.2rem;
     background-color: rgb(105, 255, 130);
   }
 
   .verFewAvailable {
-    border-width: 0.2rem;
     background-color: rgb(179, 255, 191);
   }
 
   .noneAvailable {
-    border-width: 0.2rem;
     background-color: rgb(252, 252, 252);
   }
 
   .selected {
-    border-width: 0.2rem;
     background-color: rgb(228, 206, 82);
   }
 
@@ -280,15 +278,18 @@ $table-border-hover-color: #e77474;
 
   //Top Left Cell of the Table
   #availability-top-row-label-cell {
-    border: solid $table-border-color;
-    border-top: none;
-    border-left: none;
-    border-width: 0.1rem;
+    border-bottom: solid;
+    border-right: solid;
+    border-color: $table-border-color;
+    border-width: $cell-border-width;
+
+    margin: 0;
+    padding: 0;
 
     position: relative;
 
-    width: calc(0.75 * var(--cellWidth));
-    height: calc(2rem + 1.5vw);
+    width: $cellWidth;
+    height: $cellHeight;
 
     text-align: left;
 

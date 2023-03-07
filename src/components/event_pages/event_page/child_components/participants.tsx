@@ -66,8 +66,6 @@ const Participants: FC<participantsProps> = ({ limit, mouse, setLimit, eventData
 
   const determineVisibility = (elementName: string): boolean => {
 
-    console.log()
-
     if (limit.active && limit.name === elementName) {
         return true;
     } else if (limit.active && limit.name !== elementName) {

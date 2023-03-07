@@ -66,22 +66,20 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
   const numRows = Math.abs(late - early) * 2;
 
   //Set useRef
-  const tableBodyRef = useRef<null | HTMLTableSectionElement>(null);
+  const tableBodyRef = useRef<null | HTMLDivElement>(null);
 
   //Adjust Cell Width and Height based on numRows & numColumns
   useEffect(() => {
-    const columnWidth =  Math.floor(90 / (numColumns + 1));
-    const cellHeight = Math.floor(90 / (numRows));
+    const columnWidth =  Math.floor(100 / (numColumns + 1));
 
     const shell = document.getElementById("availability-shell") as HTMLDivElement;
 
     // console.log(shell);
+    console.log(`setting --cellWidth to ${columnWidth}.`)
+    console.log(shell.style);
+    shell.style.setProperty("--cellWidth", `${columnWidth}%`);
+    console.log(shell.style);
 
-    shell.style.setProperty("--column-width", `${columnWidth}%`);
-    shell.style.setProperty("--cell-height", `${cellHeight}%`);
-
-    // console.log('shell after:');
-    // console.log(shell);
   }, [])
 
   /* ------------------------------------------ Framer Motion Variants ------------------------------------------ */
@@ -184,26 +182,26 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
     //Add the row label cell to the new row
     content.push(
-      <td id="availability-top-row-label-cell" className="availability-row-label-cell" data-row={0} data-column={0}>
+      <div id="availability-top-row-label-cell" className="availability-row-label-cell" data-row={0} data-column={0}>
         {rowLabelHelper(0)}
-      </td>
+      </div>
     )
 
     //Generate an array of column labels
     for (let i = 1; i <= numColumns; i++) {
       label = columnLabelHelper(i);
       content.push(
-        <td key={`column-${i}-label`} className="availability-column-label-cell" data-row={0} data-column={i}>
+        <div key={`column-${i}-label`} className="availability-column-label-cell" data-row={0} data-column={i}>
           {label}
-        </td>
+        </div>
       )
     }
 
     //Return the array of column labels we made above wrapped inside a container div
     return (
-      <tr id="availability-column-label-wrapper" className="availability-row" data-row={0}>
+      <div id="availability-column-label-wrapper" className="availability-row" data-row={0}>
         {content}
-      </tr>
+      </div>
     )
   }
 
@@ -216,9 +214,9 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
     //Add the row label cell to the new row
     content.push(
-        <td className="availability-row-label-cell" data-row={row} data-column={0}>
-            {rowLabelHelper(row)}
-        </td>
+      <div className="availability-row-label-cell" data-row={row} data-column={0}>
+        {rowLabelHelper(row)}
+      </div>
     )
 
     //Iterate numColumns times and each time add a new cell to the content array
@@ -231,7 +229,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
         const whatColor = limit.active ? determineColorLimited(whoAvailable) : determineColor(whoAvailable.length);
 
         content.push(
-          <motion.td 
+          <motion.div 
           className={`availability-cell ${whatColor}`} 
           key={`cell-${i}`} 
           onMouseDown={handleMouseDown}
@@ -241,31 +239,31 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
           data-column={i} 
           data-who={whoAvailable}
           whileHover={cellHover}>
-          </motion.td>
+          </motion.div>
         )
     }
 
     return content
   }
 
-    //Main generator function - Generates the rows of the HTML table element
-    const generateTable = (): Array<any> => {
-        let content = []
-        content.push(generateTableHeader());
+  //Main generator function - Generates the rows of the HTML table element
+  const generateTable = (): Array<any> => {
+    let content = []
+    content.push(generateTableHeader());
 
-        for (let i = 1; i <= numRows; i++) {
+    for (let i = 1; i <= numRows; i++) {
 
-            //If the column's corresponding date is not null
-            content.push(
-                <tr id={`availability-row-${i}`} key={`${i}`} data-row={i} className="availability-row">
-                    {generateCells(i)}
-                </tr>
-            );
+      //If the column's corresponding date is not null
+      content.push(
+        <div id={`availability-row-${i}`} key={`${i}`} data-row={i} className="availability-row">
+          {generateCells(i)}
+        </div>
+      );
 
-        }
-
-        return content
     }
+
+    return content
+  }
 
   /* ------------------------------------------ Selection Event Helper Functions ------------------------------------------ */
 
@@ -459,11 +457,9 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
   return (
     <div id="availability-shell">
-      <table id="availability-contents" onMouseLeave={handleMouseUp}>
-        <tbody ref={tableBodyRef}>
-          {generateTable()}
-        </tbody>
-      </table>
+      <div id="availability-contents" onMouseLeave={handleMouseUp} ref={tableBodyRef}>
+        {generateTable()}
+      </div>
     </div>
   )
 }

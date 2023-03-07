@@ -25,9 +25,8 @@ $table-border-hover-color: #e77474;
   width: 75%;
   margin-top: max(5rem, 5vw);
 
-  //These Values are set in availabilityChart.js based on the number of cells
-  --column-width: 0rem;
-  --cell-height: 0rem;
+  //These Values are set in availability.tsx based on the number of cells
+  --cellWidth: 0rem;
 
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
@@ -43,12 +42,16 @@ $table-border-hover-color: #e77474;
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   //Availability Chart Container
-  table#availability-contents {
+  #availability-contents {
     // border: solid;
     // border-color: orange;
 
-    border-collapse: collapse;
-    border-width: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    border-collapse: separate;
 
     width: 100%;
     height: fit-content;
@@ -67,17 +70,28 @@ $table-border-hover-color: #e77474;
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  // ------------- General Column and Cell Styling -------------
+  // ------------- First Row and General Row Styling -------------
+
+  //First row
   #availability-column-label-wrapper {
-    border: none;
-    height: calc(2rem + 1.5vw);
+
   }
 
-  //Chart Columns
-  tr.availability-row {
-    border: none;
-    height: calc(2rem + 1.5vw);
+  // Rows
+  .availability-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    // border: solid red;
+    width: 100%;
   }
+
+  // ------------- ^*^*^*^*^*^*^*^*^*^*^ -------------
 
   //Chart Cells
   .availability-cell {
@@ -85,11 +99,11 @@ $table-border-hover-color: #e77474;
     border-color: $table-border-color;
     border-width: 0.2rem;
 
-    margin: 0;
+    margin: 0.05rem;
     padding: 0;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 
-    width: var(--column-width);
+    width: var(--cellWidth);
     height: calc(2rem + 1.5vw);
   }
 
@@ -99,11 +113,14 @@ $table-border-hover-color: #e77474;
   .availability-row-label-cell {
     border: solid $table-border-color;
     border-left: none;
-    border-width: 0.1rem;
+    border-width: 0.2rem;
+
+    margin: 0.05rem;
+    padding: 0;
 
     position: relative;
 
-    width: calc(0.75 * var(--column-width));
+    width: calc(0.75 * var(--cellWidth));
     height: calc(2rem + 1.5vw);
 
     text-align: left;
@@ -112,11 +129,11 @@ $table-border-hover-color: #e77474;
   //Row Label Text
   .availability-row-label-text {
     // border: solid red;
-    width: 70%;
+    width: 80%;
     padding-right: 10%;
 
     position: absolute;
-    top: calc((2rem + 1.5vw)/2);
+    top: calc((2rem + 1vw)/2);
     left: -5%;
 
     color: $table-row-text-color;
@@ -124,6 +141,8 @@ $table-border-hover-color: #e77474;
 
     text-align: right;
     font-size: calc(0.5rem + 0.7vw);
+
+    z-index: 1;
 
 
     //Mobile Sizing & Positioning
@@ -144,15 +163,15 @@ $table-border-hover-color: #e77474;
     position: relative;
 
     border: solid;
-    border-top: none;
+    // border-top: none;
     border-color: $table-border-color;
-    border-width: 0.1rem;
+    border-width: 0.2rem;
 
-    margin: 0 0 0 0;
+    margin: 0.2rem;
     padding: 0;
 
+    width: var(--cellWidth);
     height: calc(2rem + 1.5vw) !important;
-    width: var(--column-width);
 
     overflow-y: hidden;
   }
@@ -192,34 +211,42 @@ $table-border-hover-color: #e77474;
   // ------------- Cell Class Styling -------------
 
   .everyoneAvailable {
+    border-width: 0.2rem;
     background-color: rgb(7, 71, 19);
   }
 
   .alotAvailable {
+    border-width: 0.2rem;
     background-color: rgb(37, 131, 53);
   }
 
   .manyAvailable {
+    border-width: 0.2rem;
     background-color: rgb(41, 182, 65);
   }
 
   .someAvailable {
+    border-width: 0.2rem;
     background-color: rgb(64, 247, 94);
   }
 
   .fewAvailable {
+    border-width: 0.2rem;
     background-color: rgb(105, 255, 130);
   }
 
   .verFewAvailable {
+    border-width: 0.2rem;
     background-color: rgb(179, 255, 191);
   }
 
   .noneAvailable {
+    border-width: 0.2rem;
     background-color: rgb(252, 252, 252);
   }
 
   .selected {
+    border-width: 0.2rem;
     background-color: rgb(228, 206, 82);
   }
 
@@ -260,7 +287,7 @@ $table-border-hover-color: #e77474;
 
     position: relative;
 
-    width: calc(0.75 * var(--column-width));
+    width: calc(0.75 * var(--cellWidth));
     height: calc(2rem + 1.5vw);
 
     text-align: left;

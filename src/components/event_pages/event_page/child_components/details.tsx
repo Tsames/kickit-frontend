@@ -43,21 +43,23 @@ const Details: FC<detailsProps> = ({ eventData }) => {
 
   const detailsShellVariant = {
     inactive: {
-        transition: { duration: 0.3, delay: 0.3 }
+      backgroundColor: "#00000000",
+      transition: { duration: 0.3, delay: 0.3 }
     },
     active: {
-        transition: { duration: 0.3 }
+      backgroundColor: "#FAF9F6",
+      transition: { duration: 0.3 }
     }
   }
 
   const detailsHeaderVariant = {
     inactive: {
-        backgroundColor: "#FAF9F6",
-        transition: { duration: 0.3, delay: 0.3 }
+      backgroundColor: "#FAF9F6",
+      transition: { duration: 0.3, delay: 0.3 }
     },
     active: {
-        backgroundColor: "#C2C2C2",
-        transition: { duration: 0.3 }
+      backgroundColor: "#C2C2C2",
+      transition: { duration: 0.3 }
     }
   }
 
@@ -76,12 +78,12 @@ const Details: FC<detailsProps> = ({ eventData }) => {
 
   const detailsToggleButtonVariant = {
     inactive: {
-        rotateZ: "90deg",
-        transition: { duration: 0.3, delay: 0.3 }
+      rotateZ: "90deg",
+      transition: { duration: 0.3, delay: 0.3 }
     },
     active: {
-        rotateZ: "0deg",
-        transition: { duration: 0.3 }
+      rotateZ: "0deg",
+      transition: { duration: 0.3 }
     }
   }
 

@@ -5,8 +5,7 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #availability-shell {
-  border: solid;
-  border-color: red;
+  border: solid red;
 
   display: flex;
   justify-content: center;
@@ -15,8 +14,32 @@
   padding: calc(1rem + 2vw);
 
   height: fit-content;
-  width: 75%;
-  margin-top: max(5rem, 5vw);
+  margin-bottom: max(2.5rem, 2.5vw);
+
+  //Mobile Sizing & Positioning
+  @include d.for-phone-only {
+    width: 90%;
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+    width: 85%;
+  }
+
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+    width: 80%;
+  }
+
+  //Desktop Sizing & Positioning
+  @include d.for-desktop-up {
+    width: 75%;
+  }
+
+  //Large Desktop Sizing & Positioning
+  @include d.for-big-desktop-up {
+    width: 70%;
+  }
 
   //These Values are set in availability.tsx based on the number of cells
   --rowLabelWidth: 0rem;
@@ -112,6 +135,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
   }
 
   //Cell Text
@@ -120,6 +145,9 @@
     font-style: v.$font_two;
     font-size: calc(0.5rem + 0.25vw);
     color: white;
+
+    cursor: default;
+    pointer-events: none;
   }
 
 
@@ -141,6 +169,8 @@
     height: $cellHeight;
 
     text-align: left;
+    pointer-events: none;
+    cursor: default;
   }
 
   //Row Label Text
@@ -192,13 +222,15 @@
     width: $cellWidth;
     height: $cellHeight;
 
+    pointer-events: none;
+    cursor: default;
   }
 
   //Column Label Text One
   .availability-column-label-text-one {
     position: absolute;
     left: 0%;
-    bottom: 120%;
+    bottom: 135%;
 
     width: 100%;
     margin: 0;

@@ -5,8 +5,7 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #event-shell {
-  border: solid;
-  border-color: red;
+  // border: solid red;
 
   display: flex;
   flex-direction: column;
@@ -48,6 +47,14 @@
     align-items: center;
   }
 
+  #event-bottom-section {
+    border: solid blue;
+    position: relative;
+
+    width: 100%;
+    height: calc(10rem + 20vw);
+  }
+
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
 
@@ -55,23 +62,20 @@
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
 
-  //----------------------- Header -----------------------
+  //----------------------- Bottom Section -----------------------
+  #event-graphic {
+    background-image: url("./../../../../public/assets/graphics/event_page/event_graphic.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: cover;
 
-  #event-header {
-    color: #FFFFFF;
-    font-family: v.$font-two;
-    font-style: normal;
-    font-weight: 600;
-    font-size: calc(3rem + 2vw);
+    width: 18vw;
+    height: 15vw;
+
+    position: absolute;
+
+    bottom: 0;
+    left: 25%;
   }
-
-  #event-special-text {
-    background: linear-gradient(90deg, #4DDABB 0%, #3D4BC6 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    // text-fill-color: transparent;
-    border: 2.63584px solid #014D59;
-  }
-
 }

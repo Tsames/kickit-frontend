@@ -5,24 +5,38 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #participants-shell {
-  // border: solid;
-  // border-color: pink;
+  // border: solid pink;
   border-radius: 1rem;
 
-  width: 45%;
   height: fit-content;
 
   padding: calc(1rem + 1vw);
   background: rgba(255, 255, 255, 0.71);
+  margin-bottom: max(2.5rem, 2.5vw);
 
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
-
+    width: 70%;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
+    width: 65%;
+  }
 
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+    width: 55%;
+  }
+
+  //Desktop Sizing & Positioning
+  @include d.for-desktop-up {
+    width: 45%;
+  }
+
+  //Large Desktop Sizing & Positioning
+  @include d.for-big-desktop-up {
+    width: 45%;
   }
 
 
@@ -45,11 +59,13 @@
     align-content: center;
 
     position: relative;
+
+    cursor: pointer;
   }
 
   .participants-name-indicator {
     // border: solid red;
-    border-radius: 0.4rem;
+    border-radius: 1vw;
 
     margin: 0;
     padding: 0;
@@ -84,6 +100,11 @@
     border-bottom: solid;
     width: fit-content;
     margin: auto;
+
+    font-size: calc(1rem + 1vw);
+
+    pointer-events: none;
+    cursor: default;
   }
 
 }

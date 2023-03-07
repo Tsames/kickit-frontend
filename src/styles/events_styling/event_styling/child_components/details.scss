@@ -10,21 +10,36 @@
   border-radius: 2rem;
 
   position: relative;
+  background-color: v.$invisible;
 
-  width: 40%;
-  height: calc(10rem + 12vw);
-  margin-bottom: max(5rem, 5vw);
+  height: fit-content;
+  margin-bottom: max(2.5rem, 2.5vw);
 
   z-index: 0;
 
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
-
+    width: 40%;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
+    width: 40%;
+  }
 
+  //Tablet Landscape Sizing & Positioning
+  @include d.for-tablet-landscape-up {
+    width: 40%;
+  }
+
+  //Desktop Sizing & Positioning
+  @include d.for-desktop-up {
+    width: 40%;
+  }
+
+  //Large Desktop Sizing & Positioning
+  @include d.for-big-desktop-up {
+    width: 40%;
   }
 
 
@@ -33,10 +48,15 @@
   #details-header {
     // border: solid pink;
     border-radius: 2rem;
-    height: 30%;
+    height: calc(2.5rem + 3vw);
     width: 100%;
     position: relative;
     z-index: 1;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
 
@@ -67,23 +87,16 @@
 
   //Event Title Text
   #details-event-title {
-    position: absolute;
-    left: calc(1rem + 4%);
-    top: 10%;
-
     font-family: v.$font-two;
     font-size: calc(2rem + 0.3vw);
+
+    margin-left: 5%;
   }
 
   //Toggle Button Wrapper
   #details-toggle-button-wrapper {
-    position: absolute;
-    right: calc(1rem + 4%);
-    top: 15%;
-
     transform-origin: center;
-
-    margin: 0;
+    margin-right: 5%;
     padding: 0;
   }
 
@@ -117,7 +130,7 @@
   }
 
   #event-details-location-label {
-    font-size: calc(1rem + 0.5vw);
+    font-size: calc(1rem + 0.8vw);
     font-family: v.$font-two;
     color: v.$pallette_three;
   }
@@ -125,7 +138,7 @@
   //Location Text
   #event-details-location {
     margin-left: calc(2rem + 1vw);
-    font-size: calc(1rem + 0.5vw);
+    font-size: calc(1rem + 0.8vw);
     font-family: v.$font-two;
     color: black;
   }
@@ -139,7 +152,7 @@
     width: calc(100% - (2rem));
     height: calc(65% - (2rem));
 
-    padding: calc(1rem);
+    padding-left: 2rem;
     overflow-x: hidden;
     overflow-y: auto;
   }
@@ -147,7 +160,7 @@
   //Description Text
   #event-details-description {
 
-    font-size: calc(1rem + 0.4vw);
+    font-size: calc(1rem + 0.7vw);
     font-family: v.$font-two;
     color: black;
   }

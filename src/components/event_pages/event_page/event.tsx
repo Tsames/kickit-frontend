@@ -110,7 +110,7 @@ const Event: FC<eventProps> = ({ eventData }) => {
             <Availability limit={limit} eventData={eventData} selection={selection} setSelection={setSelection}/>
           </div>
           <div id="event-bottom-section">
-            <div id="person=graphic"></div>
+            <div id="event-graphic"></div>
             <h2>Select all of the times that you are available on any of the above days.</h2>
             <div id="event-warning">
               <p>You are entering a name that has already submitted their availability.</p>

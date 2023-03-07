@@ -56,6 +56,9 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
   //Selection Variables
   const [selectedCells, setSelectedCells] = useState<Array<[number, number]>>([]);
 
+  //Greatest Number of Attendees
+  const [mostPeople, setMostPeople] = useState(0);
+
   let selectionActive: boolean = false; //Tracks if there is a Active occuring
   let selectionStart: HTMLElement; //Trakcs where the selection began from
   let selectionEnd: HTMLElement; //Tracks where the selection is ending
@@ -74,6 +77,12 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
     const shell = document.getElementById("availability-shell") as HTMLDivElement;
 
+    if (numColumns < 3) {
+      shell.style.setProperty("--rowLabelWidth", `20%`);
+    } else {
+      shell.style.setProperty("--rowLabelWidth", `${columnWidth}%`);
+    }
+
     // console.log(shell);
     console.log(`setting --cellWidth to ${columnWidth}.`)
     console.log(shell.style);
@@ -86,8 +95,10 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
   //Hover
   const cellHover = {
-    borderWidth: "0.2rem",
-    borderColor: "#e77474"
+    borderColor: "#e77474",
+    transition: {
+      duration: 0.1
+    }
   }
 
   /* ------------------------------------------ Table Generator Helpers ------------------------------------------ */
@@ -224,6 +235,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
         //Attach attendees' names for those that are available at this time.
         const whoAvailable = determineWho(row, i);
+        if (whoAvailable.length > mostPeople) setMostPeople(whoAvailable.length);
 
         //Class that determines color of the cell assigned by helper functions based on whether or not a limit is active
         const whatColor = limit.active ? determineColorLimited(whoAvailable) : determineColor(whoAvailable.length);
@@ -239,6 +251,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
           data-column={i} 
           data-who={whoAvailable}
           whileHover={cellHover}>
+            <p className={whoAvailable.length >= mostPeople * 0.8 ? "availability-cell-text" : "availability-cell-text invisible"}>{whoAvailable.length}</p>
           </motion.div>
         )
     }

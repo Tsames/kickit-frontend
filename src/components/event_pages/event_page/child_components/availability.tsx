@@ -83,13 +83,9 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
       shell.style.setProperty("--rowLabelWidth", `${columnWidth}%`);
     }
 
-    // console.log(shell);
-    console.log(`setting --cellWidth to ${columnWidth}.`)
-    console.log(shell.style);
     shell.style.setProperty("--cellWidth", `${columnWidth}%`);
-    console.log(shell.style);
 
-  }, [])
+  }, [eventData])
 
   /* ------------------------------------------ Framer Motion Variants ------------------------------------------ */
 

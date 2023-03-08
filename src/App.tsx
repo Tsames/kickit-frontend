@@ -59,10 +59,10 @@ function App() {
   //Stores the data of an event
   const [event, setEvent] = useState<eventInterface>(exampleEvent);
 
-  // useEffect(() => {
-  //   console.log('Event is set to:');
-  //   console.log(event);
-  // }, [event])
+  useEffect(() => {
+    console.log('Event is set to:');
+    console.log(event);
+  }, [event])
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -100,6 +100,36 @@ function App() {
     }
   }
 
+  /* Passing Function - Sends a PUT HTTP Request to backend server to amend the event in state with a new availability. */
+  const addAttendee = async (newAttendee: attendingInterface): Promise<void> => {
+
+    //Create an event object with the newAttendee data
+    const newAttending: Array<attendingInterface> = event.attending;
+    newAttending.push(newAttendee);
+    const newEvent = {...event, attending: newAttending };
+
+    //If the user is just submitting to the example event then just update state - no need to make a call to the database.
+    if (event._id === "example") {
+      setEvent(newEvent);
+
+    //Else the user is updating a real event.
+    } else {
+
+      try {
+        //Find data by Id and update using a PUT request. Save the response to data
+        const response = await fetch(BACKEND_URL + `events/${event._id}`, { method: "PUT" });
+        const data = await response.json()
+
+        //Set event state
+        setEvent(data);
+
+      } catch(error) {
+        console.log("Couldn't get event.");
+        console.log(error);
+      }
+    }
+  }
+
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
@@ -121,7 +151,7 @@ function App() {
           <Route path='/create' element={<Create setEvent={setEvent}/>} />
           <Route path='/created/:id' element={<Created event={event} getEventData={getEventData} />} />
           <Route path='/event/:id/invitation' element={<Invitation eventData={event} setEvent={setEvent} checkEvent={checkEvent} />} />
-          <Route path='/event/:id' element={<Event eventData={event} setEvent={setEvent} checkEvent={checkEvent} />} />
+          <Route path='/event/:id' element={<Event eventData={event} checkEvent={checkEvent} addAttendee={addAttendee}/>} />
           <Route path='/aboutUs' element={<AboutUs />} />
 
         </Routes>

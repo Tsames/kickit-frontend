@@ -79,51 +79,92 @@
     left: 25%;
   }
 
-  //----------------------- Submission Subsection -----------------------
-  
-  //Submission Subsection Wrapper
-  #event-submission-subsection {
-    border: solid red;
-    width: 30%;
-    position: absolute;
-    border-radius: 2rem;
+  //----------------------- Submission Text -----------------------
 
-    bottom: 50%;
-    right: 15%;
+  #event-submission-text {
+    border: solid red;
+    width: 40%;
+
+    position: absolute;
+    bottom: 40%;
+    right: 12%;
+
+    font-family: v.$font_two;
+
+
+    h1 {
+      font-size: calc(1rem + 1.3vw);
+      border-bottom: solid;
+      width: fit-content;
+      margin: 0 0 calc(0.5rem + 1vw) 0;
+      padding: 0;
+    }
+
+    h6 {
+      font-size: calc(1rem + 0.4vw);
+      margin: 0 0 calc(0.5rem + 1vw) 0;
+      padding: 0;
+    }
+
+    p{
+      color: #c24343;
+      font-size: calc(0.8rem + 0.4vw);
+      line-height: calc(1rem + 0.5vw);
+      margin: 0 0 calc(0.5rem + 1vw) 0;
+      padding: 0;
+    }
   }
 
-  //Submission Subsection Header
-  #event-submission-subsection-header {
-    border: solid purple;
+  //----------------------- Submission Field & Button -----------------------
+  
+  //Submission Subsection Wrapper
+  #event-submission-field {
+    // border: solid red;
+    width: 40%;
 
-    border-radius: 2rem;
-    height: calc(2.5rem + 3vw);
-    width: 100%;
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    bottom: 20%;
+    right: 12%;
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
   }
 
-  //Submission Subsection Body
-  #event-submission-subsection-body {
-    border: solid blue;
+  //Add Submission Wrapper
+  #event-submission-wrapper {
+    height: 5vw;
+    width: 5vw;
+    color: v.$pallette_three;
+  }
+
+  //Add Submission Button
+  #event-submission-button {
+    height: 100%;
+    width: 100%;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  #event-name-wrapper {
+    // border: solid red;
+    padding: 0;
+
+    height: 3vw;
+    width: 80%;
 
     position: relative;
-    top: -12%;
 
-    border-radius: 3rem;
-    background-color: #FAF9F6;
-    padding: calc(1rem + 1vw);
+    input {
+      width: 98%;
+      height: 100%;
+    }
 
-    width: calc(100% - (2rem + 2vw));
-    z-index: 2;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    span{
+      position: absolute;
+      left: 5%;
+    }
   }
+
 }

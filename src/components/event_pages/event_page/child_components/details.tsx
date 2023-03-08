@@ -35,9 +35,9 @@ const Details: FC<detailsProps> = ({ eventData }) => {
   //State that determines the state of the component
   const [toggle, setToggle] = useState<boolean>(false);
 
-  useEffect((): void => {
-    console.log(`toggle is ${toggle}.`)
-  }, [toggle]);
+  // useEffect((): void => {
+  //   console.log(`toggle is ${toggle}.`)
+  // }, [toggle]);
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 

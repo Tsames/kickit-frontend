@@ -45,11 +45,11 @@ interface eventDataInterface {
 
 interface eventProps {
   eventData: eventDataInterface;
-  setEvent: (event: eventDataInterface) => void;
   checkEvent: (id: string) => Promise<boolean>;
+  addAttendee: (newAttendee: attendingInterface) => Promise<void>
 }
 
-const Event: FC<eventProps> = ({ eventData, setEvent, checkEvent }) => {
+const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
@@ -60,9 +60,6 @@ const Event: FC<eventProps> = ({ eventData, setEvent, checkEvent }) => {
 
   //State that stores whether or not the params supplied point to a real event.
   const [verifiedEvent, setVerifiedEvent] = useState(false);
-
-  //State for submission dropdown-menu management
-  const [toggle, setToggle] = useState<boolean>(false);
 
   //State for Participants and Availability child components to determine whether it should only show a select person's availability
   const [limit, setLimit] = useState<limitInterface>({
@@ -96,51 +93,48 @@ const Event: FC<eventProps> = ({ eventData, setEvent, checkEvent }) => {
     
   }, []);
 
+  useEffect(() => {
+    console.log("Selection set to:")
+    console.log(selection);
+  }, [selection]);
+
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
-  const eventSusectionVariant = {
-    inactive: {
-      backgroundColor: "#00000000",
-      transition: { duration: 0.3, delay: 0.3 }
+  const eventShellVariant={
+    hidden: {
+
     },
-    active: {
-      backgroundColor: "#FAF9F6",
-      transition: { duration: 0.3 }
+    visible: {
+
     }
   }
 
-  const eventHeaderVariant = {
+  const submitButtonVariant = {
     inactive: {
-      backgroundColor: "#FAF9F6",
-      transition: { duration: 0.3, delay: 0.3 }
+      rotate: "0deg",
+      transition: {
+        type: "spring",
+        dampning: 40,
+        stiffness: 30
+      }
     },
-    active: {
-      backgroundColor: "#C2C2C2",
-      transition: { duration: 0.3 }
-    }
-  }
-
-  const eventBodyVariant = {
-    inactive: {
-      opacity: 0,
-      height: 0,
-      transition: { duration: 0.3, delay: 0.3 }
+    valid: {
+      rotate: "180deg",
+      color: "#9AFF9E",
+      transition: {
+        type: "spring",
+        dampning: 40,
+        stiffness: 30
+      }
     },
-    active: {
-      opacity: 1,
-      height: "calc(82% - (2rem + 2vw))",
-      transition: { duration: 0.3 }
-    }
-  }
-
-  const eventToggleButtonVariant = {
-    inactive: {
-      rotateZ: "90deg",
-      transition: { duration: 0.3, delay: 0.3 }
-    },
-    active: {
-      rotateZ: "0deg",
-      transition: { duration: 0.3 }
+    invalid: {
+      rotate: "-180deg",
+      color: "#e95151",
+      transition: {
+        type: "spring",
+        dampning: 40,
+        stiffness: 30
+      }
     }
   }
 
@@ -153,6 +147,13 @@ const Event: FC<eventProps> = ({ eventData, setEvent, checkEvent }) => {
   const handleNameChange = (event: React.BaseSyntheticEvent): void => {
     let newValue = event.target.value;
     setSelection({ ...selection, "name": newValue });
+  }
+
+  //Handles submitting a new availability.
+  const handleSubmit = (): void => {
+    const newAttendee = { name: selection.name, available: selection.available};
+    addAttendee(newAttendee);
+    setSelection({ name: "",available: [], mouse: []})
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
@@ -169,22 +170,18 @@ const Event: FC<eventProps> = ({ eventData, setEvent, checkEvent }) => {
           </div>
           <div id="event-bottom-section">
             <div id="event-graphic"></div>
-            <div id="event-submission-subsection">
-              <motion.div id="event-submission-subsection-header" variants={eventToggleButtonVariant} initial={false} animate={toggle ? "active" : "inactive"}>
-                <motion.div id="event-submission-subsection-toggle-button-wrapper" variants={eventToggleButtonVariant} onClick={() => {toggle ? setToggle(false) : setToggle(true)}}><AiFillPlusCircle id="details-toggle-button"></AiFillPlusCircle></motion.div>
-              </motion.div>
-              <motion.div id="event-submission-subsection-body" variants={eventBodyVariant}>
-                <h2>Select all of the times that you are available on any of the above days.</h2>
-                <div id="event-warning">
-                  <p>You are entering a name that has already submitted their availability.</p>
-                  <p>If you submit with this name, you will overwrite the previously submitted availability.</p>
-                </div>
+            <div id="event-submission-text">
+              <h1>Submit your availability</h1>
+              <h6>Click and drag your cursor over the days and times that you are available to attend this event in the grid above. Then enter your name and click submit!</h6>
+              <p>* If you submit using a name that already appears under "All Participants" section above you will overwrite their availability with your own.</p>
+              <p>This is a great way to update your availability if needed, however if you just have the same name as someone else we recommend adding your last initial to differentiate yourself.</p>
+            </div>
+            <div id="event-submission-field">
+                <motion.div id="event-submission-wrapper" variants={submitButtonVariant} initial="inactive" whileHover={selection.name !== "" && selection.available.length !== 0 ? "valid" : "invalid"} onClick={handleSubmit}><AiFillPlusCircle id="event-submission-button"></AiFillPlusCircle></motion.div>
                 <label htmlFor="name" id="event-name-wrapper">
                   <input required id="event-name" type="text" name="name" value={selection.name} onChange={handleNameChange} />
-                  <span className="placeholder no-select">enter name</span>
+                  <span className="placeholder no-select">Your name</span>
                 </label>
-                <button>Submit</button>
-              </motion.div>
             </div>
           </div>
         </motion.div>

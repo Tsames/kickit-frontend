@@ -17,13 +17,6 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
 
   const location = useLocation().pathname;
 
-  //State the keeps track of which page the user is on
-  // const [onPage, setOnPage] = useState<String>(location);
-
-
-  // const FRONTEND_URL = process.env.REACT_APP_KICKIT_DEV_FRONTEND;
-  // // const FRONTEND_URL = process.env.REACT_APP_KICKIT_FRONTEND;
-
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
   //Container (navbar-shell) Variant
@@ -94,16 +87,16 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
     <nav id="navbar-shell">
       <motion.div id="navbar-motion-wrapper" variants={containerVariant} initial="initial" animate="entranceAnimate">
         <div id="navLeft">
-          <Link to="/" id="navbarHomeLink" className={location === "/" ? "onPage" : ""}><motion.h1 id="navbarHomeButton" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Kick It</motion.h1></Link>
+          <Link to="/" id="navbarHomeLink" className={location === "/" ? "onPage no-select" : ""}><motion.h1 id="navbarHomeButton" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Kick It</motion.h1></Link>
         </div>
         <div id="navRight">
           <div id="navItems-wrapper">
-            <Link to={`/event/${eventId}`}><motion.button id="navbarEvent" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>{eventId === "example" ? "Example Event" : "Your Event"}</motion.button></Link>
-            <Link to="/howItWorks"><motion.button id="navbarHowItWorks" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>How It Works</motion.button></Link>
-            <Link to="/aboutUs"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
+            <Link to={`/event/${eventId}`} className={location.slice(0, 7) === "/event/" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarEvent" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>{eventId === "example" ? "Example Event" : "Your Event"}</motion.button></Link>
+            <Link to="/howItWorks" className={location === "/howItWorks" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarHowItWorks" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>How It Works</motion.button></Link>
+            <Link to="/aboutUs" className={location === "/aboutUs" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
           </div>
           <div id="navCreate-wrapper">
-            <Link to="/create" id="navbarCreateLink"><motion.button id="navbarCreate" variants={childVariant} whileHover={createButtonHover} whileTap={createButtonTap}>Create Event</motion.button></Link>
+            <Link to="/create" id="navbarCreateLink" className={location === "/create" ? "onPage no-select" : ""}><motion.button id="navbarCreate" variants={childVariant} whileHover={createButtonHover} whileTap={createButtonTap}>Create</motion.button></Link>
           </div>
         </div>
       </motion.div>

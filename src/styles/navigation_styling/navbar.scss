@@ -5,7 +5,7 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #navbar-shell {
-  border: solid red;
+  // border: solid red;
 
   //Display Settings
   position: absolute;
@@ -59,7 +59,7 @@
     top: 1.5vw;
     left: 15vw;
     right: 15vw;
-    height: 5vw;
+    height: 4.3vw;
 
     border-radius: 10rem;
   }
@@ -199,8 +199,8 @@
     //No Styles
     border-style: none;
     text-decoration: none;
+    cursor: pointer;
 
-    margin: 0 0.8vw 0 0.8vw;
     font-size: calc(1rem + 0.6vw);
 
 
@@ -217,9 +217,28 @@
     }
   }
 
+  .navBarLink {
+    // border: solid red;
+    background: linear-gradient(360deg, v.$pallette_one, v.$pallette_one) left bottom/0% 5% no-repeat;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 50%;
+    margin: 0 0.8vw 0 0.8vw;
+    padding: 0;
+
+    cursor: default;
+
+    text-decoration: none;
+    transition: background-size 0.5s ease;
+  }
+
   //Hover Underline Effect
-  .OnPage {
-    background-size: 100% 8%;
+  .onPage {
+    background-size: 100% 5% !important;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -296,6 +315,8 @@
 
     height: 100%;
     width: 100%;
+
+    cursor: pointer;
 
     //Mobile Sizing
     @include d.for-phone-only {

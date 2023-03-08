@@ -1,7 +1,8 @@
 //Dependencies
 import React, { FC, useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { VscTriangleDown } from "react-icons/vsc";
+import { AiFillPlusCircle } from "react-icons/ai";
 
 //Import Components
 import Details from './child_components/details';
@@ -44,16 +45,21 @@ interface eventDataInterface {
 
 interface eventProps {
   eventData: eventDataInterface;
-//   setEvent: (event: eventDataInterface) => void;
-//   getEventData: (id: string) => Promise<boolean>;
+  setEvent: (event: eventDataInterface) => void;
+  checkEvent: (id: string) => Promise<boolean>;
 }
 
-const Event: FC<eventProps> = ({ eventData }) => {
+const Event: FC<eventProps> = ({ eventData, setEvent, checkEvent }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
+  const params = useParams();
+
   //const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
+
+  //State that stores whether or not the params supplied point to a real event.
+  const [verifiedEvent, setVerifiedEvent] = useState(false);
 
   //State for submission dropdown-menu management
   const [toggle, setToggle] = useState<boolean>(false);
@@ -71,10 +77,24 @@ const Event: FC<eventProps> = ({ eventData }) => {
     mouse: []
   });
 
-  useEffect((): void => {
-    console.log("selection is:");
-    console.log(selection);
-  }, [selection]);
+  /* UseEffect defines an asynchronos function which will save a boolean to verifiedEvent based on
+  whether the params represent the id of a real event in the database. */
+  useEffect(() => {
+
+    const checkData = async () => {
+
+      let id = params.id as string;
+
+      try {
+        setVerifiedEvent(await checkEvent(id));
+      } catch {
+        setVerifiedEvent(false);
+      }
+    }
+
+    checkData();
+    
+  }, []);
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -151,8 +171,7 @@ const Event: FC<eventProps> = ({ eventData }) => {
             <div id="event-graphic"></div>
             <div id="event-submission-subsection">
               <motion.div id="event-submission-subsection-header" variants={eventToggleButtonVariant} initial={false} animate={toggle ? "active" : "inactive"}>
-                <motion.h1 id="event-submission-subsection-title">Submit Your Availability</motion.h1>
-                <motion.div id="event-submission-subsection-toggle-button-wrapper" variants={eventToggleButtonVariant} onClick={() => {toggle ? setToggle(false) : setToggle(true)}}><VscTriangleDown id="details-toggle-button"></VscTriangleDown></motion.div>
+                <motion.div id="event-submission-subsection-toggle-button-wrapper" variants={eventToggleButtonVariant} onClick={() => {toggle ? setToggle(false) : setToggle(true)}}><AiFillPlusCircle id="details-toggle-button"></AiFillPlusCircle></motion.div>
               </motion.div>
               <motion.div id="event-submission-subsection-body" variants={eventBodyVariant}>
                 <h2>Select all of the times that you are available on any of the above days.</h2>

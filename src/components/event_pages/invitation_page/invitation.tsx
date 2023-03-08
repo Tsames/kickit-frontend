@@ -1,6 +1,6 @@
 //Dependencies
 import React, { FC, useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //Import Components
@@ -11,8 +11,8 @@ import '../../../styles/create_pages_styling/create_page/create.scss';
 
 //Attending Interface
 interface attendingInterface {
-    name: string;
-    available: Array<[number, number]>;
+  name: string;
+  available: Array<[number, number]>;
 }
 
 interface eventDataInterface {
@@ -29,44 +29,32 @@ interface eventDataInterface {
 interface invitationProps {
   eventData: eventDataInterface;
   setEvent: (event: eventDataInterface) => void;
-  getEventData: (id: string) => Promise<boolean>;
+  checkEvent: (id: string) => Promise<boolean>;
 }
 
-const Invitation: FC<invitationProps> = ({ eventData, setEvent, getEventData }) => {
+const Invitation: FC<invitationProps> = ({ eventData, setEvent, checkEvent }) => {
 
   /* ------------------------------------------ Component Variables & State ------------------------------------------ */
 
-  let navigate = useNavigate();
+  let params = useParams();
+  
+  const [verifiedEvent, setVerifiedEvent] = useState(false);
 
-  const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
-  // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
+  useEffect(() => {
 
-//   //Interface for newForm State
-//   interface eventDataInterface {
-//     title: string;
-//     location: string;
-//     description: string;
-//     early: number;
-//     late: number;
-//     days: number[];
-//     attending: Array<number>[];
-//   }
+    const checkData = async () => {
+      let id = params.id as string;
 
-//   //State that stores input
-//   const [newForm, setNewForm] = useState<newFormInterface>({
-//     title: "",
-//     location: "",
-//     description: "",
-//     early: 0,
-//     late: 0,
-//     days: [],
-//     attending: []
-//   });
+      try {
+        setVerifiedEvent(await checkEvent(id));
+      } catch {
+        setVerifiedEvent(false);
+      }
+    }
 
-//   useEffect(() => {
-//     console.log("newForm has been updated to:");
-//     console.log(newForm);
-//   }, [newForm])
+    checkData();
+    
+  }, []);
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -94,7 +82,11 @@ const Invitation: FC<invitationProps> = ({ eventData, setEvent, getEventData }) 
 
   return (
     <motion.div id="invitation-shell">
-
+      {!verifiedEvent && 
+        <h1>
+          There is no event that matches this URL.
+        </h1>
+      }
     </motion.div>
   )
 }

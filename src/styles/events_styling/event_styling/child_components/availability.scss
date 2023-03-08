@@ -125,6 +125,8 @@
     border-color: $table-border-color;
     border-width: $cell-border-width;
 
+    color: white;
+
     margin: 0;
     padding: 0;
     transition: all 0.3s ease;
@@ -142,9 +144,9 @@
   //Cell Text
   .availability-cell-text{
     font-style: normal;
-    font-style: v.$font_two;
-    font-size: calc(0.5rem + 0.25vw);
-    color: white;
+    font-family: v.$font_two;
+    font-size: calc(0.5rem + 0.5vw);
+    color: inherit;
 
     cursor: default;
     pointer-events: none;
@@ -289,6 +291,7 @@
   }
 
   .selected {
+    color: #00000000 !important;
     background-color: rgb(228, 206, 82);
   }
 

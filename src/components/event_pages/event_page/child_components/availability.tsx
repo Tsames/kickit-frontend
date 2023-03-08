@@ -185,6 +185,11 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
     }
   }
 
+  //Helper Function (generateCells) - determines whether the text number should be displayed or not
+  const determineNumber = () => {
+
+  }
+
   /* ------------------------------------------ Table Generator Functions ------------------------------------------ */
 
   //Generator function - labels for columns
@@ -251,7 +256,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
           data-column={i} 
           data-who={whoAvailable}
           whileHover={cellHover}>
-            <p className={whoAvailable.length >= mostPeople * 0.8 ? "availability-cell-text" : "availability-cell-text invisible"}>{whoAvailable.length}</p>
+            <p className={whoAvailable.length >= mostPeople * 0.8  ? "availability-cell-text" : "availability-cell-text invisible"}>{whoAvailable.length}</p>
           </motion.div>
         )
     }

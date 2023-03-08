@@ -33,6 +33,11 @@ function App() {
   We also store data called blocks which is data that facilitates the creation of grids in the AttendanceChart.js and Grid.js components
   to visually represent availability */
 
+  const location = useLocation();
+
+  const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
+  // const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
+
   //Attending Interface
   interface attendingInterface {
     name: string;
@@ -59,22 +64,14 @@ function App() {
   //   console.log(event);
   // }, [event])
 
-  const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
-  // const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
-
-  const location = useLocation();
-
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
-
-  /* ------------------------------------------ Passing Functions ------------------------------------------ */
-
-  /* Passing Function - Searches for a specific Id, if none exists returns false.
-  If an event with the given Id does exist returns true and sets state */
+  /* Helper function (checkEvent) - Searches for a specific Id in the database, if none exist then it returns false.
+  If an event with the given Id does exist returns true and sets state to the new event data. */
   const getEventData = async (id : string) :Promise<boolean> => {
     try {
       //Fetch event data
-      const response = await fetch(BACKEND_URL + `${id}`);
+      const response = await fetch(BACKEND_URL + `events/${id}`);
       const data = await response.json()
 
       //Set event state
@@ -87,6 +84,19 @@ function App() {
       console.log("Couldn't get event.");
       console.log(error);
       return false;
+    }
+  }
+
+  /* ------------------------------------------ Passing Functions ------------------------------------------ */
+
+  /* Passing Function - Checks if the current event is saved in the event state matches the url of the page.
+  If it doesn't, then the function will call getEventData */
+  const checkEvent = async (id: string): Promise<any> => {
+    if (id !== event._id) {
+      const output = await getEventData(id);
+      return output;
+    } else {
+      return true;
     }
   }
 
@@ -108,10 +118,10 @@ function App() {
           {/* Main Routes */}
           <Route path='/' element={<Home />} />
           <Route path='/howItWorks' element={<HowItWorks />} />
-          <Route path='/create' element={<Create setEvent={setEvent} />} />
+          <Route path='/create' element={<Create setEvent={setEvent}/>} />
           <Route path='/created/:id' element={<Created event={event} getEventData={getEventData} />} />
-          <Route path='/event/:id/invitation' element={<Invitation eventData={event} setEvent={setEvent} getEventData={getEventData} />} />
-          <Route path='/event/:id' element={<Event eventData={event} />} />
+          <Route path='/event/:id/invitation' element={<Invitation eventData={event} setEvent={setEvent} checkEvent={checkEvent} />} />
+          <Route path='/event/:id' element={<Event eventData={event} setEvent={setEvent} checkEvent={checkEvent} />} />
           <Route path='/aboutUs' element={<AboutUs />} />
 
         </Routes>

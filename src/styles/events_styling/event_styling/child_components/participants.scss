@@ -86,9 +86,12 @@
     color: #2C2C2C;
     font-family: v.$font_two;
     font-size: calc(1rem + 0.5vw);
+
+    transition: color 0.3s ease;
   }
 
   .not-selected {
+    color: #2c2c2c4b !important;
     background-color: v.$invisible !important;
   }
 

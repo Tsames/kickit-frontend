@@ -1,5 +1,5 @@
 //Dependencies
-import React, { useEffect, useRef, FC } from 'react';
+import React, { useState, useEffect, useRef, FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -15,27 +15,14 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
 
   /* ------------------------------------------ Component Variables ------------------------------------------ */
 
-  // const pages = ['/', '/create', '/example', '/about/how', '/about/who']
-  // const buttons = ['navbarHomeButton', 'navbarCreateButton', 'navbarExampleButton', 'navbarAboutButton', 'navbarAboutButton'];
-
   const location = useLocation().pathname;
-  // const lastLocation = useRef(null);
 
-  // useEffect(() => helperOnPage());
+  //State the keeps track of which page the user is on
+  // const [onPage, setOnPage] = useState<String>(location);
 
-  // const helperOnPage = () => {
-  //   let buttonChecker;
-  //   pages.forEach((element, index) => {
-  //     if (location === element) {
-  //       document.getElementById(buttons[index]).classList.add('navOnPage');
-  //       buttonChecker = buttons[index];
-  //     } else if (element === lastLocation.current && buttonChecker !== buttons[index]) {
-  //       document.getElementById(buttons[index]).classList.remove('navOnPage');
-  //     }
-  //   });
 
-  //   lastLocation.current = location;
-  // }
+  // const FRONTEND_URL = process.env.REACT_APP_KICKIT_DEV_FRONTEND;
+  // // const FRONTEND_URL = process.env.REACT_APP_KICKIT_FRONTEND;
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -45,7 +32,7 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
       width: 0,
       height: "100%"
     },
-    animate: {
+    entranceAnimate: {
       width: "100%",
       height: "100%",
       transition: {
@@ -61,7 +48,7 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
     initial: { 
       opacity: 0 
     },
-    animate: {
+    entranceAnimate: {
       opacity: 1,
       transition: {
         duration: 0.6
@@ -76,12 +63,11 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
     scale: 1.2,
     transition: {
       duration: 0.2,
-
     }
   }
 
   const createButtonHover = {
-    scale: 1.3,
+    scale: 1.1,
     border: "solid",
     borderColor: "#818DFF",
     transition: {
@@ -106,17 +92,18 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
 
   return (
     <nav id="navbar-shell">
-      <motion.div id="navbar-motion-wrapper" variants={containerVariant} initial="initial" animate="animate">
+      <motion.div id="navbar-motion-wrapper" variants={containerVariant} initial="initial" animate="entranceAnimate">
         <div id="navLeft">
-          <Link to="/"><motion.h1 id="navbarHomeButton" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Kick It</motion.h1></Link>
+          <Link to="/" id="navbarHomeLink" className={location === "/" ? "onPage" : ""}><motion.h1 id="navbarHomeButton" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Kick It</motion.h1></Link>
         </div>
         <div id="navRight">
           <div id="navItems-wrapper">
-            <Link to="/howItWorks"><motion.button id="navbarDemo" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>How It Works</motion.button></Link>
+            <Link to={`/event/${eventId}`}><motion.button id="navbarEvent" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>{eventId === "example" ? "Example Event" : "Your Event"}</motion.button></Link>
+            <Link to="/howItWorks"><motion.button id="navbarHowItWorks" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>How It Works</motion.button></Link>
             <Link to="/aboutUs"><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
           </div>
           <div id="navCreate-wrapper">
-            <Link to="/create"><motion.button id="navbarCreate" variants={childVariant} whileHover={createButtonHover} whileTap={createButtonTap}>Create Event</motion.button></Link>
+            <Link to="/create" id="navbarCreateLink"><motion.button id="navbarCreate" variants={childVariant} whileHover={createButtonHover} whileTap={createButtonTap}>Create Event</motion.button></Link>
           </div>
         </div>
       </motion.div>

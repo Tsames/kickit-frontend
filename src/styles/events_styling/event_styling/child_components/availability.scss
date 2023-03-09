@@ -5,7 +5,7 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #availability-shell {
-  // border: solid red;
+  border: solid red;
 
   display: flex;
   justify-content: center;
@@ -14,7 +14,6 @@
   padding: calc(1rem + 2vw);
 
   height: fit-content;
-  margin-bottom: max(2.5rem, 2.5vw);
 
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
@@ -178,23 +177,18 @@
   //Row Label Text
   .availability-row-label-text {
     // border: solid red;
-    width: 80%;
-    padding-right: 10%;
+    width: fit-content;
 
     position: absolute;
     bottom: -20%;
-    left: -5%;
+    left: -220%;
 
     color: $table-row-text-color;
-    background-color: white;
 
     margin: 0;
 
     text-align: right;
     font-size: calc(0.5rem + 0.5vw);
-
-    z-index: 1;
-
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -262,6 +256,10 @@
 
   // ------------- Cell Class Styling -------------
 
+  .limitActive {
+    background-color: #36ad4a;
+  }
+
   .everyoneAvailable {
     background-color: rgb(1, 36, 7);
   }
@@ -295,32 +293,6 @@
     background-color: rgb(228, 206, 82);
   }
 
-  // .selected + .everyoneAvailable {
-  //   background-color: rgb(7, 60, 73) !important;
-  // }
-
-  // .selected + .alotAvailable {
-  //   background-color: rgb(15, 100, 121) !important;
-  // }
-
-  // .selected + .manyAvailable {
-  //   background-color: rgb(16, 117, 143) !important;
-  // }
-
-  // .selected + .someAvailable {
-  //   background-color: rgb(12, 162, 199) !important;
-  // }
-
-  // .selected + .fewAvailable {
-  //   background-color: rgb(76, 203, 235) !important;
-  // }
-
-  // .selected + .veryFewAvailable {
-  //   background-color: rgb(142, 221, 241) !important;
-  // }
-
-
-
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   //Top Left Cell of the Table
@@ -339,19 +311,20 @@
     height: $cellHeight;
 
     text-align: left;
+    pointer-events: none;
+    cursor: default;
 
     p {
-
       // border: solid red;
-      width: 80%;
-      padding-right: 10%;
+      width: fit-content;
 
       position: absolute;
-      bottom: 50;
-      left: -5%;
+      bottom: -20%;
+      left: -220%;
 
       color: $table-row-text-color;
-      background-color: white;
+
+      margin: 0;
 
       text-align: right;
       font-size: calc(0.5rem + 0.5vw);

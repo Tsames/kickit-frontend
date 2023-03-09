@@ -124,8 +124,7 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
       }
     },
     valid: {
-      rotate: "180deg",
-      color: "#9AFF9E",
+      color: "#36ad4a",
       transition: {
         type: "spring",
         dampning: 40,
@@ -133,7 +132,24 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
       }
     },
     invalid: {
-      rotate: "-180deg",
+      color: "#e95151",
+      transition: {
+        type: "spring",
+        dampning: 40,
+        stiffness: 30
+      }
+    },
+    tapValid: {
+      rotate: "-720deg",
+      color: "#36ad4a",
+      transition: {
+        type: "spring",
+        dampning: 40,
+        stiffness: 30
+      }
+    },
+    tapInvalid: {
+      rotate: "-720deg",
       color: "#e95151",
       transition: {
         type: "spring",
@@ -155,11 +171,13 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
   }
 
   //Handles submitting a new availability.
-  const handleSubmit = async (): Promise<boolean> => {
-    const newAttendee = { name: selection.name, available: selection.available};
-    await addAttendee(newAttendee);
-    window.location.reload();
-    return false
+  const handleSubmit = async (): Promise<void> => {
+
+    if (selection.name !== "" && selection.available.length !== 0) {
+      const newAttendee = { name: selection.name, available: selection.available};
+      await addAttendee(newAttendee);
+      window.location.reload();
+    }
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
@@ -178,12 +196,19 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
             <div id="event-graphic"></div>
             <div id="event-submission-text">
               <h1>Submit your availability</h1>
-              <h6>Click and drag your cursor over the days and times that you are available to attend this event in the grid above. Then enter your name and click submit!</h6>
+              <h6>Click and drag your cursor over the days and times that you are available to attend this event in the grid above. Then enter your name and click "+" below!</h6>
               <p>* If you submit using a name that already appears under the "All Participants" section above you will overwrite their availability with your own.</p>
               <p>This is a great way to update your availability if needed, however if you just have the same name as someone else we recommend adding your last initial to differentiate yourself.</p>
             </div>
             <div id="event-submission-field">
-                <motion.div id="event-submission-wrapper" variants={submitButtonVariant} initial="inactive" whileHover={selection.name !== "" && selection.available.length !== 0 ? "valid" : "invalid"} onClick={handleSubmit}><AiFillPlusCircle id="event-submission-button"></AiFillPlusCircle></motion.div>
+                <motion.div id="event-submission-wrapper" 
+                variants={submitButtonVariant} 
+                initial="inactive" 
+                whileHover={selection.name !== "" && selection.available.length !== 0 ? "valid" : "invalid"} 
+                whileTap={selection.name !== "" && selection.available.length !== 0 ? "tapValid" : "tapInvalid"} 
+                onClick={handleSubmit}>
+                  <AiFillPlusCircle id="event-submission-button"></AiFillPlusCircle>
+                </motion.div>
                 <label htmlFor="name" id="event-name-wrapper">
                   <input required id="event-name" type="text" name="name" value={selection.name} onChange={handleNameChange} />
                   <span className="placeholder no-select">Your name</span>

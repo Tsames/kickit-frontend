@@ -71,19 +71,20 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
   //Set useRef
   const tableBodyRef = useRef<null | HTMLDivElement>(null);
 
-  //Adjust Cell Width and Height based on numRows & numColumns
+  //Adjust Cell Width and Height based on numColumns
   useEffect(() => {
-    const columnWidth =  Math.floor(100 / (numColumns + 1));
-
+    const columnWidth =  Math.floor(90 / (numColumns));
     const shell = document.getElementById("availability-shell") as HTMLDivElement;
 
-    if (numColumns < 3) {
-      shell.style.setProperty("--rowLabelWidth", `20%`);
+    if (numColumns === 1) { 
+      console.log(`Setting rowLabelWidth to 3% and columnWidth to 60%`);
+      shell.style.setProperty("--rowLabelWidth", `3%`);
+      shell.style.setProperty("--cellWidth", `60%`);
     } else {
-      shell.style.setProperty("--rowLabelWidth", `${columnWidth}%`);
+      console.log(`Setting rowLabelWidth to 3% and columnWidth to ${columnWidth - 3}%`);
+      shell.style.setProperty("--rowLabelWidth", `3%`);
+      shell.style.setProperty("--cellWidth", `${columnWidth}%`);
     }
-
-    shell.style.setProperty("--cellWidth", `${columnWidth}%`);
 
   }, [eventData])
 
@@ -175,7 +176,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
   //Helper function (generateCells) - assigns cells a class that colors them if limit is active
   const determineColorLimited = (whoAvailable :any) => {
     if (whoAvailable.includes(limit.name)) {
-      return "everyoneAvailable";
+      return "limitActive";
     } else {
       return  "noneAvailable";
     }
@@ -252,7 +253,9 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
           data-column={i} 
           data-who={whoAvailable}
           whileHover={cellHover}>
-            <p className={(whoAvailable.length >= mostPeople * 0.8) && limit.active === false  ? "availability-cell-text" : "availability-cell-text invisible"}>{whoAvailable.length}</p>
+            <p className={(whoAvailable.length >= mostPeople * 0.8) && limit.active === false  ? "availability-cell-text" : "availability-cell-text invisible"}>
+              {`${whoAvailable.length}/${eventData.attending.length}`}
+            </p>
           </motion.div>
         )
     }

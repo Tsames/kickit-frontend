@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
 
-  padding: calc(1rem + 2vw);
+  padding: 4vw;
 
   height: fit-content;
 
@@ -45,10 +45,10 @@
   --cellWidth: 0rem;
 
   $cellWidth: var(--cellWidth);
-  $cellHeight: calc(2rem + 1vw);
+  $cellHeight: 1.75vw;
 
   $rowLabelWidth: var(--rowLabelWidth);
-  $cell-border-width: 0.15rem;
+  $cell-border-width: 0.1vw;
 
   $table-column-text-one-color: red;
   $table-column-text-two-color: orange;
@@ -144,7 +144,7 @@
   .availability-cell-text{
     font-style: normal;
     font-family: v.$font_two;
-    font-size: calc(0.5rem + 0.5vw);
+    font-size: calc(0.1rem + 0.8vw);
     color: inherit;
 
     cursor: default;
@@ -188,7 +188,7 @@
     margin: 0;
 
     text-align: right;
-    font-size: calc(0.5rem + 0.5vw);
+    font-size: calc(0.1rem + 0.8vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -232,7 +232,7 @@
     margin: 0;
     padding: 0;
 
-    font-size: calc(0.5rem + 0.5vw);
+    font-size: calc(0.1rem + 0.8vw);
     font-family: v.$font_two;
     color: v.$pallette_three;
     text-align: center;
@@ -248,7 +248,7 @@
     margin: 0;
     padding: 0;
 
-    font-size: calc(1rem + 1.2vw);
+    font-size: calc(0.1rem + 1.5vw);
     font-family: v.$font_two;
     color: v.$pallette_three;
     text-align: center;
@@ -327,7 +327,7 @@
       margin: 0;
 
       text-align: right;
-      font-size: calc(0.5rem + 0.5vw);
+      font-size: calc(0.1rem + 0.8vw);
 
 
       //Mobile Sizing & Positioning

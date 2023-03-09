@@ -46,7 +46,7 @@ interface availabilityInterface {
 const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, setSelection }) => {
 
   /* ------------------------------------------ Table Variables and State ------------------------------------------ */
-  
+
   //Event Data
   const early = eventData.early;
   const late = eventData.late;
@@ -54,7 +54,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
   const attending = eventData.attending;
 
   //Selection Variables
-  const [selectedCells, setSelectedCells] = useState<Array<[number, number]>>([]);
+  const [selectedCells, setSelectedCells] = useState<Array<[number, number]>>(selection.available);
 
   //Greatest Number of Attendees
   const [mostPeople, setMostPeople] = useState(0);
@@ -77,16 +77,21 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
     const shell = document.getElementById("availability-shell") as HTMLDivElement;
 
     if (numColumns === 1) { 
-      console.log(`Setting rowLabelWidth to 3% and columnWidth to 60%`);
       shell.style.setProperty("--rowLabelWidth", `3%`);
       shell.style.setProperty("--cellWidth", `60%`);
     } else {
-      console.log(`Setting rowLabelWidth to 3% and columnWidth to ${columnWidth - 3}%`);
       shell.style.setProperty("--rowLabelWidth", `3%`);
       shell.style.setProperty("--cellWidth", `${columnWidth}%`);
     }
 
   }, [eventData])
+
+  useEffect (() => {
+    if (selection.available.length === 0 && selection.available.length !== selectedCells.length) {
+      console.log("Reseting selectedCells");
+      setSelectedCells(selection.available);
+    }
+  }, [selection.available]);
 
   /* ------------------------------------------ Framer Motion Variants ------------------------------------------ */
 
@@ -94,7 +99,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
   const cellHover = {
     borderColor: "#e77474",
     transition: {
-      duration: 0.1
+      duration: 0.2
     }
   }
 
@@ -182,14 +187,19 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
     }
   }
 
-  //Helper Function (generateCells) - determines whether the text number should be displayed or not
-  const determineNumber = () => {
+  /* Helper Function (generateCells) - determines what classes should be assigned to a cell based
+  on whether or not the index is contained within selectedCells. */
+  const determineSelection = (index: [number, number]): boolean => {
+    const output = selectedCells.some((e) => {
+      return JSON.stringify(e) === JSON.stringify(index);
+    })
 
+    return output;
   }
 
   /* ------------------------------------------ Table Generator Functions ------------------------------------------ */
 
-  //Generator function - labels for columns
+  //Generator function - Generates the top of the table.
   const generateTableHeader = () => {
     let content = [], label = null;
 
@@ -227,7 +237,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
     //Add the row label cell to the new row
     content.push(
-      <div className="availability-row-label-cell" data-row={row} data-column={0}>
+      <div className="availability-row-label-cell" key={`row-${row}-cell-${0}`} data-row={row} data-column={0}>
         {rowLabelHelper(row)}
       </div>
     )
@@ -244,13 +254,13 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
         content.push(
           <motion.div 
-          className={`availability-cell ${whatColor}`} 
+          className={determineSelection([row, i]) ? `availability-cell ${whatColor} selected` : `availability-cell ${whatColor}`} 
           key={`row-${row}-cell-${i}`} 
           onMouseDown={handleMouseDown}
           onMouseOver={handleMouseOver}
           onMouseUp={handleMouseUp}
           data-row={row} 
-          data-column={i} 
+          data-column={i}
           data-who={whoAvailable}
           whileHover={cellHover}>
             <p className={(whoAvailable.length >= mostPeople * 0.8) && limit.active === false  ? "availability-cell-text" : "availability-cell-text invisible"}>

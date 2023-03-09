@@ -106,14 +106,7 @@ function App() {
     //Create an event object with the newAttendee data
     const newAttending: Array<attendingInterface> = event.attending;
     newAttending.push(newAttendee);
-    console.log(`Adding newAttendee to state.`);
-    console.log('newAttendee looks like this:');
-    console.log(newAttendee);
-    console.log("newAttending looks like this:");
-    console.log(newAttending);
     const newEvent = {...event, attending: newAttending };
-    console.log(`new event will look like this:`);
-    console.log(newEvent);
 
     //If the user is just submitting to the example event then just update state - no need to make a call to the database.
     if (event._id === "example") {
@@ -121,13 +114,15 @@ function App() {
 
     //Else the user is updating a real event.
     } else {
-
       try {
         //Find data by Id and update using a PUT request. Save the response to data
+        console.log(`Sending request to backend database.`)
         const response = await fetch(BACKEND_URL + `events/${event._id}`, { method: "PUT" });
         const data = await response.json()
 
         //Set event state
+        console.log("Setting new event state.");
+        console.log(data);
         setEvent(data);
 
       } catch(error) {

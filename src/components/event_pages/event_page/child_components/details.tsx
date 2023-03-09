@@ -44,7 +44,7 @@ const Details: FC<detailsProps> = ({ eventData }) => {
   const detailsShellVariant = {
     inactive: {
       backgroundColor: "#00000000",
-      transition: { duration: 0.3, delay: 0.3 }
+      transition: { duration: 0.3 }
     },
     active: {
       backgroundColor: "#FAF9F6",
@@ -55,7 +55,7 @@ const Details: FC<detailsProps> = ({ eventData }) => {
   const detailsHeaderVariant = {
     inactive: {
       backgroundColor: "#FAF9F6",
-      transition: { duration: 0.3, delay: 0.3 }
+      transition: { duration: 0.3 }
     },
     active: {
       backgroundColor: "#C2C2C2",
@@ -67,7 +67,7 @@ const Details: FC<detailsProps> = ({ eventData }) => {
     inactive: {
       opacity: 0,
       height: 0,
-      transition: { duration: 0.3, delay: 0.3 }
+      transition: { duration: 0.3 }
     },
     active: {
       opacity: 1,
@@ -105,13 +105,13 @@ const Details: FC<detailsProps> = ({ eventData }) => {
                 <motion.div id="details-toggle-button-wrapper" variants={detailsToggleButtonVariant} onClick={() => {toggle ? setToggle(false) : setToggle(true)}}><VscTriangleDown id="details-toggle-button"></VscTriangleDown></motion.div>
             </motion.div>
             <motion.div id="details-body" variants={detailsBodyVariant} initial={false} animate={toggle ? "active" : "inactive"}>
-                <div id="event-details-location-wrapper">
+                <motion.div id="event-details-location-wrapper">
                     <h3 id="event-details-location-label" className="event-details-label no-select">Location:</h3>
                     <h3 id="event-details-location" className="event-details">{eventData.location}</h3>
-                </div>
-                <div id="event-details-description-wrapper">
+                </motion.div>
+                <motion.div id="event-details-description-wrapper">
                     <p id="event-details-description">{eventData.description !== "" ? eventData.description : "No event description was given."}</p>
-                </div>
+                </motion.div>
             </motion.div>
         </motion.div>
     )

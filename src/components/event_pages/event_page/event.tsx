@@ -55,9 +55,6 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
 
   const params = useParams();
 
-  //const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
-  // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
-
   //State that stores whether or not the params supplied point to a real event.
   const [verifiedEvent, setVerifiedEvent] = useState(false);
 
@@ -93,15 +90,15 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
     
   }, []);
 
-  useEffect(() => {
-    console.log("resetting selection state");
-    setSelection({...selection, name: "", available: [], mouse: [] });
-  }, [eventData]);
+  // useEffect(() => {
+  //   console.log("resetting selection state");
+  //   setSelection({...selection, name: "", available: [], mouse: [] });
+  // }, [eventData]);
 
   useEffect(() => {
     console.log("selection looks like this:");
     console.log(selection);
-  })
+  }, [selection])
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -176,7 +173,11 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
     if (selection.name !== "" && selection.available.length !== 0) {
       const newAttendee = { name: selection.name, available: selection.available};
       await addAttendee(newAttendee);
-      window.location.reload();
+
+      setSelection({...selection, name: "", available: [], mouse: []})
+
+      const table = document.getElementById('participants-shell') as HTMLElement;
+      table.scrollIntoView({behavior: "smooth", block: "center"});
     }
   }
 

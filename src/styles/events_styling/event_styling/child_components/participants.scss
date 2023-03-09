@@ -6,11 +6,11 @@
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #participants-shell {
   // border: solid pink;
-  border-radius: 1rem;
+  border-radius: 1vw;
 
   height: fit-content;
 
-  padding: calc(1rem + 1vw);
+  padding: 2vw;
   background: rgba(255, 255, 255, 0.71);
   margin-bottom: max(2.5rem, 2.5vw);
 
@@ -31,12 +31,12 @@
 
   //Desktop Sizing & Positioning
   @include d.for-desktop-up {
-    width: 45%;
+    width: 60%;
   }
 
   //Large Desktop Sizing & Positioning
   @include d.for-big-desktop-up {
-    width: 45%;
+    width: 60%;
   }
 
 
@@ -45,7 +45,10 @@
   #participants-body {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    margin-top: calc(1rem + 1vw);
+    grid-column-gap: 0.2vw;
+    grid-row-gap: 0.2vw;
+    margin-top: 1vw;
+
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -60,6 +63,8 @@
 
     position: relative;
 
+    overflow-x: hidden;
+
     cursor: pointer;
   }
 
@@ -70,24 +75,29 @@
     margin: 0;
     padding: 0;
 
-    width: calc(0.4rem + 0.25vw);
-    height: calc(0.4rem + 0.25vw);
+    width: calc(0.1rem + 0.5vw);
+    height: calc(0.1rem + 0.5vw);
 
     position: relative;
     top: 40%;
     right: 5%;
 
     background-color: #51D245;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease;
   }
 
   .participants-name-text {
     // border: solid pink;
     color: #2C2C2C;
     font-family: v.$font_two;
-    font-size: calc(1rem + 0.5vw);
+    font-size: calc(0.1rem + 1vw);
 
-    transition: color 0.3s ease;
+    width: 75%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
+    transition: color 0.5s ease;
+    
   }
 
   .not-selected {
@@ -104,7 +114,7 @@
     width: fit-content;
     margin: auto;
 
-    font-size: calc(1rem + 1vw);
+    font-size: calc(0.1rem + 1.5vw);
 
     pointer-events: none;
     cursor: default;

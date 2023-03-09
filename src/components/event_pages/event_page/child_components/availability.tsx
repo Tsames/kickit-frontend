@@ -244,7 +244,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
         content.push(
           <motion.div 
           className={`availability-cell ${whatColor}`} 
-          key={`cell-${i}`} 
+          key={`row-${row}-cell-${i}`} 
           onMouseDown={handleMouseDown}
           onMouseOver={handleMouseOver}
           onMouseUp={handleMouseUp}
@@ -252,7 +252,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
           data-column={i} 
           data-who={whoAvailable}
           whileHover={cellHover}>
-            <p className={whoAvailable.length >= mostPeople * 0.8  ? "availability-cell-text" : "availability-cell-text invisible"}>{whoAvailable.length}</p>
+            <p className={(whoAvailable.length >= mostPeople * 0.8) && limit.active === false  ? "availability-cell-text" : "availability-cell-text invisible"}>{whoAvailable.length}</p>
           </motion.div>
         )
     }
@@ -269,7 +269,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
       //If the column's corresponding date is not null
       content.push(
-        <div id={`availability-row-${i}`} key={`${i}`} data-row={i} className="availability-row">
+        <div id={`availability-row-${i}`} key={`row${i}`} data-row={i} className="availability-row">
           {generateCells(i)}
         </div>
       );
@@ -296,19 +296,19 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
     if (selectionToggleState) {
       toggleWhat.forEach((element) => {
         element.classList.add("selected");
-        addToSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
+        addToSelectedCells(Number(element.dataset.row),Number(element.dataset.column));
       });
     } else {
       toggleWhat.forEach((element) => {
         element.classList.remove("selected");
-        removeFromSelectedCells(Number(element.dataset.column), Number(element.dataset.row));
+        removeFromSelectedCells(Number(element.dataset.row),Number(element.dataset.column));
       });
     }
   }
 
   //Helper function (toggleThis) - add to selectedCells under the right conditions
-  const addToSelectedCells = (column: number, row: number): void => {
-    const item: [number, number] = [column, row];
+  const addToSelectedCells = (row: number, column: number): void => {
+    const item: [number, number] = [row, column];
 
     if (selectedCells.length === 0 || searchSelectedCells(item) === null) {
       // console.log(`Adding (${column}, ${row}) to selectedCells`);
@@ -320,8 +320,8 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
   }
 
   //Helper function (toggleThis) - remove from selectedCells under the right conditions
-  const removeFromSelectedCells = (column: number, row: number): void => {
-    const item: [number, number] = [column, row];
+  const removeFromSelectedCells = (row: number, column: number): void => {
+    const item: [number, number] = [row, column];
     const index = searchSelectedCells(item);
 
     if (index !== null) {
@@ -432,26 +432,26 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
       for (let i=1; i < tableBodyElement.children.length; i++) {
         if(smallRow <= i && i <= bigRow) {
-          console.log(`pushing ${tableBodyElement.children[i]} to selectedRows.`)
+          // console.log(`pushing ${tableBodyElement.children[i]} to selectedRows.`)
           selectedRows.push(tableBodyElement.children[i]);
         }
       }
 
-      console.log('here is all selected rows');
-      console.log(selectedRows);
+      // console.log('here is all selected rows');
+      // console.log(selectedRows);
 
       selectedRows.forEach(rowElement => {
         for (let j=1; j < rowElement.children.length; j++) {
           if (smallColumn <= j && j <= bigColumn) {
-            console.log(`pushing ${rowElement.children[j]} to selectedCells.`);
+            // console.log(`pushing ${rowElement.children[j]} to selectedCells.`);
             const newCell = rowElement.children[j] as HTMLElement;
             toggleWhat.push(newCell);
           }
         }
       })
 
-      console.log('here is all selected cells');
-      console.log(toggleWhat);
+      // console.log('here is all selected cells');
+      // console.log(toggleWhat);
 
       toggleThis(toggleWhat);
     }

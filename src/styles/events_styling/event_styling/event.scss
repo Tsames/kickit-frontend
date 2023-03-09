@@ -52,7 +52,9 @@
     position: relative;
 
     width: 100%;
-    height: calc(10rem + 20vw);
+    height: 30vw;
+    margin-bottom: 0;
+    padding: 0;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -70,27 +72,33 @@
     background-origin: content-box;
     background-size: cover;
 
-    width: 18vw;
-    height: 15vw;
+    width: 27vw;
+    height: 22vw;
 
     position: absolute;
 
-    bottom: 0;
-    left: 25%;
+    bottom: -0.25%;
+    left: 23vw;
+
+    margin: 0;
+    padding: 0;
   }
 
   //----------------------- Submission Text -----------------------
 
   #event-submission-text {
-    border: solid red;
-    width: 40%;
+    // border: solid red;
+    width: 40vw;
 
     position: absolute;
-    bottom: 40%;
-    right: 12%;
+    bottom: 12vw;
+    right: 8vw;
 
     font-family: v.$font_two;
+    color: v.$pallette_three;
 
+    cursor: default;
+    pointer-events: none;
 
     h1 {
       font-size: calc(1rem + 1.3vw);
@@ -155,15 +163,44 @@
     width: 80%;
 
     position: relative;
+    border-radius: 2rem;
 
     input {
       width: 98%;
       height: 100%;
+      border: none;
+      
+      background: linear-gradient(360deg, v.$pallette_three, v.$pallette_three) left bottom/0% 5% no-repeat;
+      transition: background-size 0.5s ease;
+
+      font-size: calc(1rem + 0.5vw);
+      font-family: v.$font-two;
+      color: v.$pallette_three;
+
+      &:focus {
+        background-size: 100% 5%;
+        border: none;
+        outline: none;
+      }
+    }
+
+    input:valid + .placeholder,
+    input:focus + .placeholder {
+      top: -50%;
+      left: 0%;
+      font-size: calc(0.8rem + 0.3vw);
     }
 
     span{
       position: absolute;
       left: 5%;
+      top: calc(50% - (1rem + 0.5vw));
+
+      font-size: calc(1rem + 0.5vw);
+      font-family: v.$font-two;
+      color: v.$pallette_three;
+
+      transition: top 0.5s ease, left 0.5s ease, font-size 0.5s ease;
     }
   }
 

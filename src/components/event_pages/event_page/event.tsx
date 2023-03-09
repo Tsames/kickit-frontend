@@ -94,9 +94,14 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
   }, []);
 
   useEffect(() => {
-    console.log("Selection set to:")
+    console.log("resetting selection state");
+    setSelection({...selection, name: "", available: [], mouse: [] });
+  }, [eventData]);
+
+  useEffect(() => {
+    console.log("selection looks like this:");
     console.log(selection);
-  }, [selection]);
+  })
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
@@ -150,10 +155,11 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
   }
 
   //Handles submitting a new availability.
-  const handleSubmit = (): void => {
+  const handleSubmit = async (): Promise<boolean> => {
     const newAttendee = { name: selection.name, available: selection.available};
-    addAttendee(newAttendee);
-    setSelection({ name: "",available: [], mouse: []})
+    await addAttendee(newAttendee);
+    window.location.reload();
+    return false
   }
 
   /* ------------------------------------------ Conditional JSX ------------------------------------------ */
@@ -173,7 +179,7 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
             <div id="event-submission-text">
               <h1>Submit your availability</h1>
               <h6>Click and drag your cursor over the days and times that you are available to attend this event in the grid above. Then enter your name and click submit!</h6>
-              <p>* If you submit using a name that already appears under "All Participants" section above you will overwrite their availability with your own.</p>
+              <p>* If you submit using a name that already appears under the "All Participants" section above you will overwrite their availability with your own.</p>
               <p>This is a great way to update your availability if needed, however if you just have the same name as someone else we recommend adding your last initial to differentiate yourself.</p>
             </div>
             <div id="event-submission-field">

@@ -120,4 +120,18 @@
     cursor: default;
   }
 
+  h3 {
+    text-align:  center;
+    margin: 2vw 0 2vw 0;
+    font-family: v.$font-two;
+    font-size: calc(0.1rem + 0.8vw);
+
+    transition: all 0.5s ease;
+  }
+
+  .not-applicable {
+    color: #00000000 !important;
+    margin: 0 !important;
+    font-size: 0 !important;
+  }
 }

@@ -73,13 +73,16 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
   //Adjust Cell Width and Height based on numColumns
   useEffect(() => {
-    const columnWidth =  Math.floor(90 / (numColumns));
+
+    const columnWidth =  Math.floor(90 / (days.length));
     const shell = document.getElementById("availability-shell") as HTMLDivElement;
 
     if (numColumns === 1) { 
+      // console.log(`cellWidth is set to 60%, and rowLabelWidth is set to 3%.`);
       shell.style.setProperty("--rowLabelWidth", `3%`);
       shell.style.setProperty("--cellWidth", `60%`);
     } else {
+      // console.log(`cellWidth is set to ${columnWidth}%, and rowLabelWidth is set to 3%.`);
       shell.style.setProperty("--rowLabelWidth", `3%`);
       shell.style.setProperty("--cellWidth", `${columnWidth}%`);
     }

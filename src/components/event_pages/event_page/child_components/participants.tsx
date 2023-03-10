@@ -118,6 +118,7 @@ const Participants: FC<participantsProps> = ({ limit, mouse, setLimit, eventData
     return (
         <motion.div id="participants-shell">
             <h1>All Participants</h1>
+            <h3 className={eventData.attending.length === 0 ? "" : "not-applicable"}>No one is signed up yet. Be the first to submit your availability!</h3>
             <div id="participants-body">
                 {generateNames()}
             </div>

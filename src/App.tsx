@@ -59,10 +59,10 @@ function App() {
   //Stores the data of an event
   const [event, setEvent] = useState<eventInterface>(exampleEvent);
 
-  useEffect(() => {
-    console.log('Event is set to:');
-    console.log(event);
-  }, [event])
+  // useEffect(() => {
+  //   console.log('Event is set to:');
+  //   console.log(event);
+  // }, [event])
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -120,7 +120,9 @@ function App() {
         const data = await response.json()
 
         //Set event state
-        setEvent({...event, title: data.title, location: data.location, description: data.description, early: data.early, late: data.late, days: data.days, attending: data.attending });
+        console.log("Setting new event state in addAttendee function.");
+        console.log(data);
+        await setEvent({...event, attending: data.attending });
 
       } catch(error) {
         console.log(error);

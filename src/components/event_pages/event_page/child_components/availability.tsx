@@ -57,7 +57,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
   const [selectedCells, setSelectedCells] = useState<Array<[number, number]>>(selection.available);
 
   //Greatest Number of Attendees
-  const [mostPeople, setMostPeople] = useState(0);
+  // const [mostPeople, setMostPeople] = useState(0);
 
   let selectionActive: boolean = false; //Tracks if there is a Active occuring
   let selectionStart: HTMLElement; //Trakcs where the selection began from
@@ -87,11 +87,11 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
       shell.style.setProperty("--cellWidth", `${columnWidth}%`);
     }
 
-  }, [eventData])
+  }, [eventData.days])
 
   useEffect (() => {
     if (selection.available.length === 0 && selection.available.length !== selectedCells.length) {
-      console.log("Reseting selectedCells");
+      // console.log("Reseting selectedCells");
       setSelectedCells(selection.available);
     }
   }, [selection.available]);
@@ -250,7 +250,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
         //Attach attendees' names for those that are available at this time.
         const whoAvailable = determineWho(row, i);
-        if (whoAvailable.length > mostPeople) setMostPeople(whoAvailable.length);
+        // if (whoAvailable.length > mostPeople) setMostPeople(whoAvailable.length);
 
         //Class that determines color of the cell assigned by helper functions based on whether or not a limit is active
         const whatColor = limit.active ? determineColorLimited(whoAvailable) : determineColor(whoAvailable.length);
@@ -266,7 +266,8 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
           data-column={i}
           data-who={whoAvailable}
           whileHover={cellHover}>
-            <p className={(whoAvailable.length >= mostPeople * 0.8) && limit.active === false  ? "availability-cell-text" : "availability-cell-text invisible"}>
+            {/* className={(whoAvailable.length >= mostPeople * 0.8) && limit.active === false  ? "availability-cell-text" : "availability-cell-text invisible" */}
+            <p>
               {`${whoAvailable.length}/${eventData.attending.length}`}
             </p>
           </motion.div>
@@ -278,6 +279,12 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
   //Main generator function - Generates the rows of the HTML table element
   const generateTable = (): Array<any> => {
+
+    // console.log(`Building table with eventCells as:`);
+    // console.log(eventData);
+    // console.log('And selection data as:')
+    // console.log(selection);
+
     let content = []
     content.push(generateTableHeader());
 

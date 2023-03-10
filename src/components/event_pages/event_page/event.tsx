@@ -90,15 +90,15 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
     
   }, []);
 
-  useEffect(() => {
-    console.log("This is the eventData in event.tsx");
-    console.log(eventData);
-  }, [eventData]);
+  // useEffect(() => {
+  //   console.log("This is the eventData in event.tsx");
+  //   console.log(eventData);
+  // }, [eventData]);
 
-  useEffect(() => {
-    console.log("selection looks like this:");
-    console.log(selection);
-  }, [selection])
+  // useEffect(() => {
+  //   console.log("selection looks like this:");
+  //   console.log(selection);
+  // }, [selection])
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 

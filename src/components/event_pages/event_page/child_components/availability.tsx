@@ -159,7 +159,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
   /* Helper function (generateCells) - assigns cells a class that colors them based on the percentage
   of total attendees that reported they are available at the time this cell represents */
   const determineColor = (count: number) => {
-    const totalCount = attending.length;
+    const totalCount = eventData.attending.length;
     const percentage = (count / totalCount) * 100;
     if (percentage >= 86) {
       return "everyoneAvailable";

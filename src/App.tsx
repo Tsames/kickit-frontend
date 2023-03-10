@@ -116,17 +116,13 @@ function App() {
     } else {
       try {
         //Find data by Id and update using a PUT request. Save the response to data
-        console.log(`Sending request to backend database.`)
-        const response = await fetch(BACKEND_URL + `events/${event._id}`, { method: "PUT" });
+        const response = await fetch(BACKEND_URL + `events/${event._id}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newEvent) });
         const data = await response.json()
 
         //Set event state
-        console.log("Setting new event state.");
-        console.log(data);
-        setEvent(data);
+        setEvent({...event, title: data.title, location: data.location, description: data.description, early: data.early, late: data.late, days: data.days, attending: data.attending });
 
       } catch(error) {
-        console.log("Couldn't get event.");
         console.log(error);
       }
     }

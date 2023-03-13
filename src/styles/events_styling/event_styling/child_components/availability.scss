@@ -143,6 +143,12 @@
     align-items: center;
 
     cursor: pointer;
+
+    p {
+      font-style: normal;
+      font-family: v.$font-two;
+      font-size: calc(0.1rem + 0.5vw);
+    }
   }
 
   //Cell Text
@@ -197,6 +203,7 @@
 
     text-align: right;
     font-size: calc(0.1rem + 0.8vw);
+    font-family: v.$font-two;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {

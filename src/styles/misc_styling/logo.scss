@@ -1,0 +1,53 @@
+//Imports
+@use './../variables' as v;
+@use './../mixins' as m;
+@use './../device' as d;
+
+//%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+#logo-background {
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url("./../../../public/assets/graphics/kickit-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-origin: content-box;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  //Mobile Sizing
+  @include d.for-phone-only {
+
+  }
+
+  //Tablet Portrait Sizing & Positioning
+  @include d.for-tablet-portrait-up {
+
+  }
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  #logo-k {
+    // border: solid red;
+
+    background-image: url("./../../../public/assets/graphics/kickit-k.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    background-size: contain;
+
+    width: 65%;
+    height: 65%;
+    
+  }
+}

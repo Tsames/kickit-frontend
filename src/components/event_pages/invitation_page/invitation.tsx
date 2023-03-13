@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 //Import Components
-
+import Logo from './../../misc_components/logo'
 
 //Styling
-import '../../../styles/create_pages_styling/create_page/create.scss';
+import '../../../styles/events_styling/invitation_styling/invitation.scss';
 
 //Attending Interface
 interface attendingInterface {
@@ -82,11 +82,23 @@ const Invitation: FC<invitationProps> = ({ eventData, setEvent, checkEvent }) =>
 
   return (
     <motion.div id="invitation-shell">
-      {!verifiedEvent && 
-        <h1>
-          There is no event that matches this URL.
-        </h1>
-      }
+      <h1>You have been invited to...</h1>
+      <div id="inv-graphic-wrapper">
+        <div id="inv-graphic-one" className="inv-graphic"></div>
+        <div id="inv-graphic-two" className="inv-graphic"></div>
+        <div id="inv-graphic-three" className="inv-graphic"></div>
+      </div>
+      <div id="inv-details-wrapper">
+        <h3>{eventData.title}</h3>
+        <div id="inv-location-wrapper">
+          <h3 id="inv-location-label" className="no-select">Location:</h3>
+          <h3 id="inv-location">{eventData.location}</h3>
+        </div>
+        <div id="inv-description-wrapper">
+          <p id="inv-description">{eventData.description !== "" ? eventData.description : "No event description was given."}</p>
+        </div>
+      </div>
+      <button id="inv-next-button">Next</button>
     </motion.div>
   )
 }

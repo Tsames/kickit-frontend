@@ -6,6 +6,9 @@ import { motion } from 'framer-motion';
 //Styling
 import '../../styles/navigation_styling/navbar.scss';
 
+//Import Components
+import Logo from "./../misc_components/logo";
+
 //Props Interface
 interface navbarProps {
   eventId: string;
@@ -87,7 +90,7 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
     <nav id="navbar-shell">
       <motion.div id="navbar-motion-wrapper" variants={containerVariant} initial="initial" animate="entranceAnimate">
         <div id="navLeft">
-          <Link to="/" id="navbarHomeLink" className={location === "/" ? "onPage no-select" : ""}><motion.h1 id="navbarHomeButton" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>Kick It</motion.h1></Link>
+          <Link to="/" id="navbarHomeLink" className={location === "/" ? "onPage no-select" : ""}><Logo></Logo></Link>
         </div>
         <div id="navRight">
           <div id="navItems-wrapper">

@@ -68,6 +68,9 @@
   }
 
   // &%&%&%&%&%&%&%&%&%& Testimonial Wrapper &%&%&%&%&%&%&%&%&%&
+  $card-height: 25vw;
+  $card-width: 55vw;
+
   #home-testimonials {
     display: flex;
     flex-direction: column;
@@ -77,9 +80,9 @@
 
     position: relative;
 
-    width: 70vw;
-    height: 30vw;
-    margin: 5vw 0 0 0;
+    width: $card-width;
+    height: $card-height;
+    margin: 2vw 0 0 0;
     z-index: 1;
 
     border: none;
@@ -118,7 +121,7 @@
     width: 100%;
     height: fit-content;
 
-    margin: 14vw 0 0 0;
+    margin: 5vw 0 0 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -142,8 +145,8 @@
 
     position: relative;
 
-    width: 70vw;
-    height: 22vw;
+    width: $card-width;
+    height: $card-height;
 
     background-color: #FFE2FE;
     border-radius: 2vw;
@@ -167,7 +170,7 @@
 
   //Content Block Two
   #home-content-block-two {
-    // border: solid pink;
+    border: solid pink;
 
     display: flex;
     flex-direction: row;
@@ -176,10 +179,10 @@
 
     position: relative;
 
-    width: 100%;
-    height: calc(10rem + 22vw);
+    width: $card-width;
+    height: $card-height;
 
-    margin: 12vw 0 0 0;
+    margin: 2vw 0 0 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -295,7 +298,7 @@
   #scroll-down-button {
     position: absolute;
     bottom: 10%;
-    right: 15%;
+    right: 20%;
 
     height: calc(1rem + 2vw);
     width: calc(1rem + 2vw);
@@ -403,8 +406,8 @@
     background-size: cover;
 
     position: absolute;
-    height: calc(5rem + 40vw);
-    top: -22vw;
+    height: 30vw;
+    top: -15vw;
 
     z-index: 0;
     width: 100vw;
@@ -433,8 +436,8 @@
 
     background-image: url("../../../public/assets/graphics/home_page/graphic_one.svg");
 
-    width: 25vw;
-    height: 28vw;
+    width: calc($card-width * 0.3);
+    height: calc($card-height * 0.9);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -469,11 +472,11 @@
     background-image: url("../../../public/assets/graphics/home_page/graphic_two.svg");
 
     position: absolute;
-    bottom: -15vw;
-    right: 15vw;
+    bottom: -8vw;
+    right: 22vw;
 
-    width: 25vw;
-    height: 25vw;
+    width: 15vw;
+    height: 15vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {

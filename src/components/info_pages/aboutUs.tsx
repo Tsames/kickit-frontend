@@ -60,7 +60,7 @@ const AboutUs: FC<aboutUsProps> = () => {
         </div>
         <div id="about-chris" className="about-person">
           <div id="chris-contents" className="about-person-contents">
-            <p id="chris-description" className="about-person-description no-select">Hello! I am Christopher Brand, a fellow UX Designer with Kick It. Check out my socials and portfolio!</p>
+            <p id="chris-description" className="about-person-description no-select">Hello! I am Christopher Brand, a UX Designer with Kick It. Check out my socials and portfolio!</p>
             <div id="chris-links" className="about-person-all-links">
               <a href="http://chrisbrand.squarespace.com/" id="chris-portfolio" className="about-person-link">Portfolio</a>
               <p id="chris-email" className="about-person-link">chrisbrandux@gmail.com</p>

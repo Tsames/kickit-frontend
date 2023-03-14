@@ -267,7 +267,7 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
           data-who={whoAvailable}
           whileHover={cellHover}>
             {/* className={(whoAvailable.length >= mostPeople * 0.8) && limit.active === false  ? "availability-cell-text" : "availability-cell-text invisible" */}
-            <p>
+            <p className="availability-cell-text">
               {`${whoAvailable.length}/${eventData.attending.length}`}
             </p>
           </motion.div>

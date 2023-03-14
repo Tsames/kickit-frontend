@@ -36,9 +36,8 @@
   #home-landing {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    text-align: center;
 
     background-image: url("../../../public/assets/backgrounds/home_page/landing.png");
     background-repeat: no-repeat;
@@ -53,12 +52,15 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      background-image: url("../../../public/assets/backgrounds/home_page/landing-mobile.png");
+      background-position: 40%;
       height: 100vh;
       width: 100vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      background-image: url("../../../public/assets/backgrounds/home_page/landing-mobile.png");
       height: 100vh;
       width: 100vw;
     }
@@ -75,13 +77,13 @@
 
     position: relative;
 
-    width: calc(5rem + 70vw);
-    height: calc(10rem + 22vw);
+    width: 70vw;
+    height: 30vw;
     margin: 5vw 0 0 0;
     z-index: 1;
 
     border: none;
-    border-radius: 4rem;
+    border-radius: 2vw;
 
     background: linear-gradient(270deg, #4DDABB -28.37%, #3D4BC6 122.74%);
 
@@ -89,17 +91,22 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      width: 94vw;
+      height: 50vw;
+      border-radius: 3rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      width: 94vw;
+      height: 50vw;
+      border-radius: 3rem;
     }
   }
   
   // &%&%&%&%&%&%&%&%&%& Contents Wrapper &%&%&%&%&%&%&%&%&%&
   #home-contents {
-    // border: solid;
-    // border-color: green;
+    // border: solid green;
 
     display: flex;
     flex-direction: column;
@@ -111,14 +118,16 @@
     width: 100%;
     height: fit-content;
 
-    margin: max(3rem, 14vw) 0 0 0;
+    margin: 14vw 0 0 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      margin-top: 20vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      margin-top: 20vw;
     }
   }
 
@@ -133,27 +142,32 @@
 
     position: relative;
 
-    width: calc(5rem + 70vw);
-    height: calc(10rem + 22vw);
+    width: 70vw;
+    height: 22vw;
 
     background-color: #FFE2FE;
-    border-radius: 4rem;
+    border-radius: 2vw;
 
     padding: 1vw 0vw 1vw 0vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      width: 94vw;
+      height: 50vw;
+      border-radius: 3rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      width: 94vw;
+      height: 50vw;
+      border-radius: 3rem;
     }
   }
 
   //Content Block Two
   #home-content-block-two {
-    // border: solid;
-    // border-color: pink;
+    // border: solid pink;
 
     display: flex;
     flex-direction: row;
@@ -162,24 +176,27 @@
 
     position: relative;
 
-    width: calc(5rem + 85vw);
+    width: 100%;
     height: calc(10rem + 22vw);
 
     margin: 12vw 0 0 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      height: fit-content;
+      margin-top: 2.5vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      height: fit-content;
+      margin-top: 2.5vw;
     }
   }
 
   //Content Block Three
   #home-content-block-three {
-    // border: solid;
-    // border-color: purple;
+    // border: solid purple;
 
     display: flex;
     flex-direction: column;
@@ -194,10 +211,12 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      margin: 8vw 0 29vw 0;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      margin: 8vw 0 29vw 0;
     }
   }
 
@@ -206,15 +225,17 @@
   .home-content-text {
     font-family: v.$font-two;
     font-style: normal;
-    font-size: calc(1rem + 1.6vw);
+    font-size: calc(0.1rem + 2.4vw);
     color: v.$pallette_three;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      font-size: calc(0.1rem + 4vw);
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 4vw);
     }
   }
 
@@ -223,10 +244,24 @@
   // @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@ Landing @#@#@#@#@&%&%&%&%&%&%&%&%&%&@#@#@#@#@
 
   //Create Event Button
-  #create-event-button {
+  #create-event-button-link {
     position: absolute;
     bottom: 10%;
 
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      position: relative;
+      bottom: 14%;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      position: relative;
+      bottom: 14%;
+    }
+  }
+
+  #create-event-button {
     border: solid;
     border-width: 0;
     border-radius: 5rem;
@@ -246,10 +281,14 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      font-size: 2rem;
+      padding: 1rem 2rem 1rem 2rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      font-size: 3rem;
+      padding: 1.5rem 2.5rem 1.5rem 2.5rem;
     }
   }
 
@@ -284,10 +323,20 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      position: relative;
+      bottom: 12%;
+      left: 0%;
+      height: 4.5rem;
+      width: 4.5rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      position: relative;
+      bottom: 12%;
+      left: 0%;
+      height: 5.5rem;
+      width: 5.5rem;
     }
   }
 
@@ -303,7 +352,7 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      padding: 5rem 15rem;
+      padding: 4rem 1rem;
     }
 
     //Tablet Portrait Sizing & Positioning
@@ -313,28 +362,32 @@
 
     //Quote
     h1 {
-      font-size: calc(0.5rem + 3vw);
+      font-size: calc(0.1rem + 3vw);
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
+        font-size: calc(0.1rem + 5.8vw);
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
+        font-size: calc(0.1rem + 5.8vw);
       }
     }
 
     //Speaker
     p {
-      font-size: calc(0.7rem + 2vw);
+      font-size: calc(0.1rem + 2vw);
       margin-left: 40%;
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
+        font-size: calc(0.1rem + 4vw);
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
+        font-size: calc(0.1rem + 4vw);
       }
     }
   }
@@ -371,8 +424,7 @@
 
   //Person Graphic
   #home-content-graphic-one {
-    // border: solid;
-    // border-color: red;
+    //border: solid red;
 
     background-repeat: no-repeat;
     background-position: center;
@@ -386,10 +438,14 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      width: 30vw;
+      height: 40vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      width: 30vw;
+      height: 40vw;
     }
   }
 
@@ -402,8 +458,7 @@
 
   //Blue Right-to-Left Arrow
   #home-content-graphic-two {
-    // border: solid;
-    // border-color: red;
+    //border: solid red;
 
     background-repeat: no-repeat;
     background-position: bottom;
@@ -422,10 +477,18 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      bottom: -12vw;
+      right: 25vw;
+      width: 28vw;
+      height: 35vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      bottom: -12vw;
+      right: 25vw;
+      width: 28vw;
+      height: 35vw;
     }
   }
 
@@ -433,8 +496,7 @@
 
   //Person Graphic
   #home-content-graphic-three {
-    // border: solid;
-    // border-color: red;
+    // border: solid red;
 
     background-repeat: no-repeat;
     background-position: center;
@@ -447,10 +509,14 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      width: 42vw;
+      height: 55vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      width: 38vw;
+      height: 50vw;
     }
   }
 
@@ -463,15 +529,19 @@
     background-color: #D5D9FF;
 
     width: 35%;
-    height: calc(5rem + 80%);
+    height: 80%;
     border-radius: 50% 50%;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      width: 50vw;
+      height: 50vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      width: 50vw;
+      height: 45vw;
     }
   }
 
@@ -499,13 +569,22 @@
 
     width: 25vw;
     height: 25vw;
+    z-index: 3;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      bottom: -8vw;
+      left: -3vw;
+      width: 28vw;
+      height: 28vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      bottom: -8vw;
+      left: -3vw;
+      width: 28vw;
+      height: 28vw;
     }
   }
 
@@ -529,10 +608,14 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      width: 60vw;
+      height: 35vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      width: 60vw;
+      height: 35vw;
     }
   }
 
@@ -546,10 +629,24 @@
 
     background-color: #B4FFF1;
     border-radius: 5rem;
-    width: calc(5rem + 50%);
-    height: calc(5rem + 15vw);
+    width: 50%;
+    height: 15vw;
 
     margin: 0 0 3vw 0;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      width: 90%;
+      height: 35vw;
+      border-radius: 2rem;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      width: 90%;
+      height: 35vw;
+      border-radius: 2rem;
+    }
   }
 
   //Content Block Three Text ("Pick the best...")
@@ -567,7 +664,17 @@
   #home-content-text-five {
     margin: 0 0 0 0 !important;
     font-weight: bolder;
-    font-size: calc(1rem + 3vw);
+    font-size: calc(0.1rem + 3vw);
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: calc(0.1rem + 5vw);
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 5vw);
+    }
   }
 
   //Squigely Arrow
@@ -589,16 +696,34 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      bottom: -27vw;
+      width: 25vw;
+      height: 25vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      bottom: -27vw;
+      width: 25vw;
+      height: 25vw;
     }
   }
 
   #get-started-wrapper {
+    // border: solid red;
+
     width: 100%;
-    height: max(8rem, 8vw);
+    height: 10vw;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: fit-content;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: fit-content;
+    }
   }
 
   //Create Event Button
@@ -624,10 +749,14 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      font-size: 1.8rem;
+      padding: 1rem 2rem 1rem 2rem;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      font-size: 3rem;
+      padding: 1.5rem 2.5rem 1.5rem 2.5rem;
     }
   }
 

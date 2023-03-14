@@ -76,7 +76,9 @@ $description-index: 5;
         background-color: black;
         z-index: $wallpaper-index !important;
         width: 100vw;
-        height: 32vw;
+
+        top: 35vw;
+        height: 30vw;
 
         //Mobile Sizing & Positioning
         @include d.for-phone-only {

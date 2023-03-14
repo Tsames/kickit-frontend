@@ -1,6 +1,6 @@
 //Dependencies
 import React, { FC, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { HiArrowDown } from "react-icons/hi";
 
@@ -106,7 +106,7 @@ const Home: FC<homeProps> = () => {
   return (
     <motion.div id="home-shell" variants={homeContainerVariant} initial="initial" animate="animate" exit="exit">
       <div id="home-landing" ref={landingRef}>
-        <motion.button id="create-event-button" variants={childButtonVariant} whileHover={buttonItemHover} whileTap={buttonItemTap}>Create Your Event</motion.button>
+        <Link id="create-event-button-link" to="/create"><motion.button id="create-event-button" variants={childButtonVariant} whileHover={buttonItemHover} whileTap={buttonItemTap}>Create an Event</motion.button></Link>
         <motion.button id="scroll-down-button" variants={childButtonVariant} whileHover={buttonItemHover} whileTap={buttonItemTap} onClick={scrollDown}><HiArrowDown></HiArrowDown></motion.button>
       </div>
       <div id="home-testimonials" ref={elementRef}>

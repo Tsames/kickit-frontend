@@ -27,6 +27,26 @@ $pallette_nine: #F9F9F9;
 
 $invisible: #00000000;
 
+/* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Page Component Heights %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
+
+//Desktop to Tablet (Screen Width >= 900px) 
+// $navbar-height-desktop-to-tablet:;
+// $body-padding-top-desktop-to-tablet: ;
+// $body-height-desktop-to-tablet: ;
+// $footer-height-desktop-to-tablet: ;
+
+//Portrait Tablet
+$navbar-height-portrait: 7vh;
+$body-padding-top-portrait: 3vh;
+$body-height-portrait: 85vh;
+$footer-height-portrait: 5vh;
+
+//Mobile
+$navbar-height-mobile: 5vh;
+$body-padding-top-mobile: 3vh;
+$body-height-mobile: 84vh;
+$footer-height-mobile: 8vh;
+
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Global Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
 .no-select {

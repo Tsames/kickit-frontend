@@ -23,22 +23,16 @@
 
   //Mobile Sizing
   @include d.for-phone-only {
-    top: 1.5vw;
-    left: 15vw;
-    right: 15vw;
-    height: 5vw;
-
-    border-radius: 10rem;
+    position: static;
+    height: v.$navbar-height-mobile;
+    border-radius: 0;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-    top: 1.5vw;
-    left: 15vw;
-    right: 15vw;
-    height: 5vw;
-
-    border-radius: 10rem;
+    position: static;
+    height: v.$navbar-height-portrait;
+    border-radius: 0;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%

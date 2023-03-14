@@ -5,216 +5,57 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #footer-shell {
-  background-color: rgba(12, 12, 12, 0.8);
-
-  //Size and Position
-  width: 100%;
-
-  //Container Styles
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: relative;
 
-  background-color: v.$pallette_four;
+  width: 100%;
 
-  // border: solid;
-  // border-color: red;
+  background-color: v.$pallette_four;
 
   //Mobile Sizing
   @include d.for-phone-only {
+    height: v.$footer-height-mobile;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-  }
-
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {
-  }
-
-  //Desktop Sizing
-  @include d.for-desktop-up {
-  }
-
-  //Large Desktop Sizing & Positioning
-  @include d.for-big-desktop-up {
-  }
-
-  #footer-middle {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-
-    font-family: v.$font-two;
-
-    //Mobile Sizing
-    @include d.for-phone-only {
-
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing
-    @include d.for-desktop-up {
-
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-
-    }
-  }
-
-  #footer-right {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-
-    //Mobile Sizing
-    @include d.for-phone-only {
-      margin-right: 5rem;
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-      margin-right: 5rem;
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-      margin-right: 5rem;
-    }
-
-    //Desktop Sizing
-    @include d.for-desktop-up {
-      margin-right: 5rem;
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      margin-right: 5rem;
-    }
+    height: v.$footer-height-portrait;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
-
-  .footer-middle-link {
-    text-decoration: none;
-    margin: 0 1rem;
-    color: v.$pallette_three;
-
-    //Mobile Sizing & Positioning
-    @include d.for-phone-only {
-
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      font-size: 1.5rem;
-    }
-
+  #link-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
   }
 
-  .footer-right-link {
+  //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
+
+  .footer-link {
     text-decoration: none;
-    margin: 0 1rem;
+    font-family: v.$font-two;
     color: v.$pallette_three;
+    font-size: calc(0.1rem + 0.8vw);
+    margin: 0 1.5vw 0 1.5vw;
 
-    //Mobile Sizing & Positioning
+    //Mobile Sizing
     @include d.for-phone-only {
-
+      font-size: calc(0.1rem + 2vw);
+      margin: 0 3vw 0 3vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-      font-size: 1.5rem;
+      font-size: calc(0.1rem + 2vw);
+      margin: 0 2vw 0 2vw;
     }
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Individual Element Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
-
-  #footerHomeButton {
-    display: inline-block;
-    font-family: v.$font-two;
-    font-style: normal;
-    letter-spacing: 0.08em;
-
-    background: linear-gradient(90deg, #4DDABB 0%, #3D4BC6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #014D59;
-    // border: 1.75723px solid #014D59;
-
-    font-weight: 900;
-    font-size: calc(1rem + 2vw);
-    margin-left: 5rem;
-
-    //Mobile Sizing
-    @include d.for-phone-only {
-    }
-
-    //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-    }
-
-    //Desktop Sizing
-    @include d.for-desktop-up {
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-    }
-  }
 
 }

@@ -50,10 +50,10 @@ const CreateTopSection: FC<CTSProps> = ({newForm, handleChange}) => {
           <span className="placeholder no-select">Location</span>
         </label>
       </div>
-        <label htmlFor="description" id="create-description-wrapper" className="create-top-right-wrapper">
-          <textarea wrap="soft" required id="create-description" name="description" value={newForm.description} onChange={handleChange} />
-          <span className="placeholder no-select">Enter a description for your event...</span>
-        </label>
+      <label htmlFor="description" id="create-description-wrapper" className="create-top-right-wrapper">
+        <textarea wrap="soft" required id="create-description" name="description" value={newForm.description} onChange={handleChange} />
+        <span className="placeholder no-select">Enter a description for your event...</span>
+      </label>
     </div>
   )
 }

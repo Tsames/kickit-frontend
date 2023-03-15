@@ -5,8 +5,7 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #create-shell {
-  // border: solid;
-  // border-color: red;
+  // border: solid red;
 
   display: flex;
   flex-direction: column;
@@ -16,33 +15,20 @@
   max-width: 100%;
   
   background: linear-gradient(180deg, rgb(65, 115, 195) 0%, hsla(187, 47%, 52%, 1) 30%, hsla(0, 0%, 100%, 1) 50%);
-  padding-top: calc(10rem + 10vw);
+  padding-top: v.$body-padding-top-desktop-to-tablet;
 
   z-index: 1;
 
   //Mobile Sizing
   @include d.for-phone-only {
-
+    height: fit-content;
+    padding-top: v.$body-padding-top-mobile;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-
-  }
-
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {
-
-  }
-
-  //Desktop Sizing
-  @include d.for-desktop-up {
-
-  }
-
-  //Large Desktop Sizing & Positioning
-  @include d.for-big-desktop-up {
-
+    height: fit-content;
+    padding-top: v.$body-padding-top-portrait;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -51,11 +37,10 @@
 
   //Top Section
   #create-top-section {
-    // border: solid;
-    // border-color: orange;
+    // border: solid orange;
 
     width: 80%;
-    padding-bottom: calc(10rem + 5vw);
+    padding-bottom: 5vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -64,21 +49,6 @@
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
 
     }
   }
@@ -87,39 +57,24 @@
 
   //Middle Section
   #create-middle-section {
-    // border: solid;
-    // border-color: pink;
+    border: solid pink;
 
     width: 80%;
-    height: calc(10rem + 30vw);
-    margin-bottom: calc(5rem + 5vw);
-    // height: 60rem;
+    height: 30vw;
+    margin-bottom: 5vw;
 
     position: relative;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
+      width: 100%;
+      height: fit-content;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
-    }
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {
-
-    }
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {
-
-    }
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {
-
+      width: 100%;
+      height: fit-content;
     }
   }
 
@@ -127,21 +82,22 @@
 
   //Bottom Section
   #create-bottom-section {
-    // border: solid;
-    // border-color: gold;
+    border: solid gold;
     padding: 0 0 0 0;
 
     width: 80%;
-    height: calc(10rem + 30vw);
+    height: 30vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
+      height: 100vw;
+      width: 100%;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
+      height: 30vw;
+      width: 100%;
     }
   }
 

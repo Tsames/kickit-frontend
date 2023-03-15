@@ -10,30 +10,24 @@
   justify-content: space-evenly;
   align-items: center;
 
+  height: fit-content;
+
   //Mobile Sizing
   @include d.for-phone-only {
     flex-direction: column;
+    padding-top: 5vh;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
     flex-direction: column;
+    padding-top: 5vh;
   }
-
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {}
-
-  //Desktop Sizing
-  @include d.for-desktop-up {}
-
-  //Large Desktop Sizing & Positioning
-  @include d.for-big-desktop-up {}
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   #create-top-left-subsection {
-    // border: solid;
-    // border-color: red;
+    // border: solid red;
 
     display: flex;
     flex-direction: column;
@@ -43,19 +37,20 @@
     height: 15vw;
 
     //Mobile Sizing & Positioning
-    @include d.for-phone-only {}
+    @include d.for-phone-only {
+      width: 70%;
+      height: fit-content;
+      justify-content: space-evenly;
+      margin-bottom: 5vw;
+    }
 
     //Tablet Portrait Sizing & Positioning
-    @include d.for-tablet-portrait-up {}
-
-    //Tablet Landscape Sizing & Positioning
-    @include d.for-tablet-landscape-up {}
-
-    //Desktop Sizing & Positioning
-    @include d.for-desktop-up {}
-
-    //Large Desktop Sizing & Positioning
-    @include d.for-big-desktop-up {}
+    @include d.for-tablet-portrait-up {
+      width: 70%;
+      height: fit-content;
+      justify-content: space-evenly;
+      margin-bottom: 5vw;
+    }
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -87,19 +82,40 @@
 
   //Event Title
   label#create-title-wrapper {
-    // border: solid;
-    // border-color: red;
+    // border: solid red;
 
     width: 100%;
     position: relative;
 
-    margin-bottom: max(5rem, 5vw);
+    margin-bottom: 5vw;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      margin-bottom: 14vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      margin-bottom: 10vw;
+    }
 
     input {
-      font-size: calc(1rem + 3.5vw);
+      font-size: calc(0.1rem + 3.5vw);
       width: 100%;
       background: linear-gradient(360deg, v.$pallette_two, v.$pallette_two) left bottom/0% 5% no-repeat;
       transition: background-size 0.3s ease;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        text-align: center;
+        font-size: calc(0.1rem + 4.5vw);
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        text-align: center;
+        font-size: calc(0.1rem + 4.5vw);
+      }
     }
 
     span{
@@ -110,16 +126,42 @@
       color: v.$pallette_two;
       font-family: v.$font-two;
       text-align: left;
-      font-size: calc(1rem + 3.5vw);
+      font-size: calc(0.1rem + 3.5vw);
 
       transition: top 0.3s ease, left 0.3s ease,font-size 0.3s ease;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        text-align: center;
+        font-size: calc(0.1rem + 4.5vw);
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        text-align: center;
+        font-size: calc(0.1rem + 4.5vw);
+      }
     }
 
     input:valid + .placeholder,
     input:focus + .placeholder {
       top: -2.3vw;
       left: 0.5vw;
-      font-size: calc(0.5rem + 1.5vw);
+      font-size: calc(0.1rem + 1.5vw);
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        top: -6vw;
+        left: calc(48%);
+        font-size: calc(0.1rem + 2.5vw);
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        top: -4vw;
+        left: calc(48%);
+        font-size: calc(0.1rem + 2vw);
+      }
     }
 
     input:focus {
@@ -129,17 +171,38 @@
 
   //Event Location
   label#create-location-wrapper {
-    // border: solid;
-    // border-color: orange;
+    // border: solid orange;
 
     width: 100%;
     position: relative;
 
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      margin-bottom: 4vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      margin-bottom: 4vw;
+    }
+
     input {
-      font-size: calc(1rem + 2.5vw);
+      font-size: calc(0.1rem + 4vw);
       width: 100%;
       background: linear-gradient(360deg, v.$pallette_two, v.$pallette_two) left bottom/0% 5% no-repeat;
       transition: background-size 0.3s ease;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        text-align: center;
+        font-size: calc(0.1rem + 4.5vw);
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        text-align: center;
+        font-size: calc(0.1rem + 4.5vw);
+      }
     }
 
     span{
@@ -150,16 +213,42 @@
       color: v.$pallette_two;
       font-family: v.$font-two;
       text-align: left;
-      font-size: calc(1rem + 2.5vw);
+      font-size: calc(0.1rem + 2.5vw);
 
       transition: top 0.3s ease, left 0.3s ease, font-size 0.3s ease;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        text-align: center;
+        font-size: calc(0.1rem + 4.5vw);
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        text-align: center;
+        font-size: calc(0.1rem + 4.5vw);
+      }
     }
 
     input:valid + .placeholder,
     input:focus + .placeholder {
       top: -2.3vw;
       left: 0.5vw;
-      font-size: calc(0.5rem + 1.5vw);
+      font-size: calc(0.1rem + 1.5vw);
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        top: -6vw;
+        left: calc(45%);
+        font-size: calc(0.1rem + 2.5vw);
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        top: -4vw;
+        left: calc(45%);
+        font-size: calc(0.1rem + 2vw);
+      }
     }
 
     input:focus {
@@ -192,37 +281,28 @@
       width: 42vw;
       height: 18vw;
 
-      font-size: calc(1rem + 0.4vw);
+      font-size: calc(0.1rem + 0.8vw);
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
-
+        padding: 2vw;
+        font-size: calc(0.1rem + 3vw);
+        width: 80vw;
+        height: 30vw;
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
-
-      }
-
-      //Tablet Landscape Sizing & Positioning
-      @include d.for-tablet-landscape-up {
-
-      }
-
-      //Desktop Sizing & Positioning
-      @include d.for-desktop-up {
-
-      }
-
-      //Large Desktop Sizing & Positioning
-      @include d.for-big-desktop-up {
-
+        padding: 2vw;
+        font-size: calc(0.1rem + 3vw);
+        width: 60vw;
+        height: 25vw;
       }
     }
 
     span {
       font-family: v.$font-two;
-      font-size: calc(1rem + 0.4vw);
+      font-size: calc(0.1rem + 0.8vw);
       opacity: 30%;
 
       position: absolute;
@@ -230,6 +310,16 @@
       top: 1vw;
 
       transition: opacity 0.3s ease;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        font-size: calc(0.1rem + 3vw);
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        font-size: calc(0.1rem + 3vw);
+      }
     }
 
     textarea:valid + .placeholder,

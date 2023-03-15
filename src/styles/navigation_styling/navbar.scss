@@ -58,7 +58,7 @@
     align-items: center;
 
     width: 100%;
-    height: 3vw;
+    height: 5vw;
     border-radius: inherit;
 
     //Mobile Sizing
@@ -84,7 +84,6 @@
 
     height: 50%;
     width: fit-content;
-    padding-top: 0.5%;
 
     margin-left: 5%;
 
@@ -259,7 +258,7 @@
     text-decoration: none;
 
     padding: 0;
-    margin: 0;
+    margin: 0.25vw 0 0.25vw 0;
 
     transition: background-size 0.5s ease;
   } 
@@ -271,7 +270,7 @@
     display: inline-block;
     font-family: v.$font-one;
     font-style: normal;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.08rem;
 
     background: linear-gradient(90deg, #4DDABB 0%, #3D4BC6 100%);
     -webkit-background-clip: text;
@@ -282,16 +281,20 @@
     -webkit-text-stroke-color: #014D59;
 
     font-weight: 900;
-    font-size: calc(1rem + 1.5vw);
+    font-size: calc(0.1rem + 1.8vw);
+
+    padding: 0 0 0 0;
 
     cursor: pointer;
 
     //Mobile Sizing
     @include d.for-phone-only {
+      font-size: calc(0.1rem + 4vw);
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 4vw);
     }
   }
 
@@ -352,6 +355,8 @@
     font-weight: 500;
     font-size: calc(0.1rem + 0.8vw);
     border-radius: 5vw;
+
+    padding: 0.4vw 1vw 0.4vw 1vw;
 
     height: 100%;
     width: 100%;

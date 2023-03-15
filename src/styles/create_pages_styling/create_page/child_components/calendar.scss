@@ -38,26 +38,25 @@
     justify-content: space-around;
     align-items: center;
     width: 40%;
-    margin-bottom: max(4rem, 3vw);
+    margin-bottom: 3vw;
 
     color: rgba(1, 77, 89, 1);
-    font-size: calc(0.8rem + 1vw);
+    font-size: calc(0.1rem + 1.5vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
+      font-size: calc(0.1rem + 3vw);
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
+      font-size: calc(0.1rem + 3vw);
     }
   }
 
   //Wrapper for all rows
   #calendar-body {
-    // border: solid;
-    // border-color: royalblue;
+    // border: solid royalblue;
 
     display: flex;
     flex-direction: column;
@@ -95,11 +94,10 @@
 
   //Style for Individual Items in the grid
   .calendar-item {
-    // border: solid;
-    // border-color: red;
+    // border: solid red;
 
-    width: calc(1rem + 3vw);
-    height: calc(1rem + 3vw);
+    width: 3vw;
+    height: 3vw;
     border-radius: 100% 100%;
 
     display: flex;
@@ -107,9 +105,23 @@
     align-items: center;
 
     text-align: center;
-    font-size: calc(1rem + 1vw);
+    font-size: calc(0.1rem + 1vw);
     margin-top: 0.1rem;
     margin-bottom: 0.1rem;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: calc(0.1rem + 4vw);
+      margin-top: 3vw;
+      margin-bottom: 3vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 3vw);
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
   }
 
   //Assign Color for Days of the week

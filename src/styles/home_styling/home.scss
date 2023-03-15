@@ -70,6 +70,7 @@
   // &%&%&%&%&%&%&%&%&%& Testimonial Wrapper &%&%&%&%&%&%&%&%&%&
   $card-height: 25vw;
   $card-width: 55vw;
+  $card-spaceing: 3vw;
 
   #home-testimonials {
     display: flex;
@@ -82,7 +83,7 @@
 
     width: $card-width;
     height: $card-height;
-    margin: 2vw 0 0 0;
+    margin: $card-spaceing 0 0 0;
     z-index: 1;
 
     border: none;
@@ -121,7 +122,7 @@
     width: 100%;
     height: fit-content;
 
-    margin: 5vw 0 0 0;
+    margin: calc($card-spaceing + 2vw) 0 0 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -152,6 +153,7 @@
     border-radius: 2vw;
 
     padding: 1vw 0vw 1vw 0vw;
+    margin: 0 0 0 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -170,7 +172,7 @@
 
   //Content Block Two
   #home-content-block-two {
-    border: solid pink;
+    // border: solid pink;
 
     display: flex;
     flex-direction: row;
@@ -182,16 +184,18 @@
     width: $card-width;
     height: $card-height;
 
-    margin: 2vw 0 0 0;
+    margin: calc($card-spaceing) 0 0 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
+      width: 100%;
       height: fit-content;
       margin-top: 2.5vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
+      width: 100%;
       height: fit-content;
       margin-top: 2.5vw;
     }
@@ -210,7 +214,7 @@
 
     width: 100%;
 
-    margin: 12vw 0 25vw 0;
+    margin: calc($card-spaceing) 0 15vw 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -467,16 +471,18 @@
     background-position: bottom;
     background-origin: content-box;
     background-size: contain;
-    rotate: -10deg;
+    rotate: -5deg;
 
     background-image: url("../../../public/assets/graphics/home_page/graphic_two.svg");
 
     position: absolute;
-    bottom: -8vw;
-    right: 22vw;
+    bottom: -10vw;
+    right: 16vw;
 
-    width: 15vw;
-    height: 15vw;
+    width: 18vw;
+    height: 20vw;
+
+    z-index: 3;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -507,8 +513,8 @@
     background-size: cover;
     background-image: url("../../../public/assets/graphics/home_page/graphic_three.svg");
 
-    width: 30vw;
-    height: 30vw;
+    width: calc($card-width * 0.4);
+    height: calc($card-height * 0.9);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -531,8 +537,8 @@
 
     background-color: #D5D9FF;
 
-    width: 35%;
-    height: 80%;
+    width: 50%;
+    height: 100%;
     border-radius: 50% 50%;
 
     //Mobile Sizing & Positioning
@@ -563,15 +569,15 @@
     background-origin: content-box;
     background-size: cover;
     background-image: url("../../../public/assets/graphics/home_page/graphic_four.svg");
-    rotate: 20deg;
+    rotate: 30deg;
 
     position: absolute;
 
-    bottom: -11vw;
-    left: -2vw;
+    bottom: -3vw;
+    left: -5vw;
 
-    width: 25vw;
-    height: 25vw;
+    width: 15vw;
+    height: 15vw;
     z-index: 3;
 
     //Mobile Sizing & Positioning
@@ -606,8 +612,8 @@
 
     position: relative;
 
-    width: 45vw;
-    height: 25vw;
+    width: 30vw;
+    height: 18vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -635,7 +641,7 @@
     width: 50%;
     height: 15vw;
 
-    margin: 0 0 3vw 0;
+    margin: 0 0 1vw 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -692,10 +698,10 @@
     background-image: url("../../../public/assets/graphics/home_page/graphic_six.svg");
 
     position: absolute;
-    bottom: -22vw;
+    bottom: -13vw;
 
-    width: 20vw;
-    height: 20vw;
+    width: 12vw;
+    height: 12vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -716,16 +722,19 @@
     // border: solid red;
 
     width: 100%;
-    height: 10vw;
+    height: 5vw;
+    margin-bottom: 2vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       height: fit-content;
+      margin-bottom: 5vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
       height: fit-content;
+      margin-bottom: 5vw;
     }
   }
 
@@ -737,29 +746,29 @@
     border-color: v.$pallette_eight;
 
     font-style: normal;
-    font-size: calc(1rem + 1vw);
+    font-size: calc(0.1rem + 1vw);
     font-family: v.$font-one;
     font-weight: 900;
 
     color: v.$pallette_two;
     background-color: v.$pallette_one;
 
-    padding: max(0.5rem, 1.5vw) max(1rem, 4vw);
-    margin: 0 0 5vw 0;
+    padding: 1vw 4vw;
+    margin: 0 0 0 0;
 
     pointer-events: all;
     cursor: pointer;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      font-size: 1.8rem;
-      padding: 1rem 2rem 1rem 2rem;
+      font-size: calc(0.1rem + 3.5vw);
+      padding: 1vw 5vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      font-size: 3rem;
-      padding: 1.5rem 2.5rem 1.5rem 2.5rem;
+      font-size: calc(0.1rem + 3.5vw);
+      padding: 1vw 5vw;
     }
   }
 

@@ -30,10 +30,10 @@ $invisible: #00000000;
 /* %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Page Component Heights %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% */
 
 //Desktop to Tablet (Screen Width >= 900px) 
-// $navbar-height-desktop-to-tablet:;
-// $body-padding-top-desktop-to-tablet: ;
-// $body-height-desktop-to-tablet: ;
-// $footer-height-desktop-to-tablet: ;
+$navbar-height-desktop-to-tablet: 5vh;
+$body-padding-top-desktop-to-tablet: 10vh;
+$body-height-desktop-to-tablet: 75vh;
+$footer-height-desktop-to-tablet: 8vh;
 
 //Portrait Tablet
 $navbar-height-portrait: 7vh;

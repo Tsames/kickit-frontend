@@ -52,6 +52,9 @@
     padding-right: 15%;
     margin-bottom: 1vw;
 
+    pointer-events: none;
+    cursor: default;
+
     //Mobile Sizing
     @include d.for-phone-only {
       height: 15vw;
@@ -126,6 +129,7 @@
     grid-template-rows: repeat(4, 1fr);
     row-gap: max(0.3rem, 0.5vw);
     column-gap: max(0.3rem, 0.5vw);
+
   }
 
   //TOD Wrapper
@@ -148,6 +152,7 @@
 
   .select-time-option {
     padding: max(0.1rem, 0.1vw);
+    cursor: pointer !important;
 
     //Mobile Sizing
     @include d.for-phone-only {
@@ -164,6 +169,7 @@
 
   .select-time-option-tod {
     padding: max(0.3rem, 0.3vw);
+    cursor: pointer !important;
 
     //Mobile Sizing
     @include d.for-phone-only {

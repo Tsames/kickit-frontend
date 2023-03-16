@@ -33,13 +33,13 @@
     flex-direction: column;
     align-items: center;
 
-    width: 40vw;
-    height: 15vw;
+    width: 30vw;
+    height: fit-content;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       width: 70%;
-      height: fit-content;
+      // height: fit-content;
       justify-content: space-evenly;
       margin-bottom: 5vw;
     }
@@ -47,7 +47,7 @@
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
       width: 70%;
-      height: fit-content;
+      // height: fit-content;
       justify-content: space-evenly;
       margin-bottom: 5vw;
     }
@@ -100,7 +100,7 @@
     }
 
     input {
-      font-size: calc(0.1rem + 3.5vw);
+      font-size: calc(0.1rem + 2.5vw);
       width: 100%;
       background: linear-gradient(360deg, v.$pallette_two, v.$pallette_two) left bottom/0% 5% no-repeat;
       transition: background-size 0.3s ease;
@@ -126,7 +126,7 @@
       color: v.$pallette_two;
       font-family: v.$font-two;
       text-align: left;
-      font-size: calc(0.1rem + 3.5vw);
+      font-size: calc(0.1rem + 2.5vw);
 
       transition: top 0.3s ease, left 0.3s ease,font-size 0.3s ease;
 
@@ -187,7 +187,7 @@
     }
 
     input {
-      font-size: calc(0.1rem + 4vw);
+      font-size: calc(0.1rem + 2.5vw);
       width: 100%;
       background: linear-gradient(360deg, v.$pallette_two, v.$pallette_two) left bottom/0% 5% no-repeat;
       transition: background-size 0.3s ease;
@@ -276,12 +276,12 @@
       }
 
       border-radius: 0.8vw;
-      padding: 1vw;
+      padding: 1.2vw;
 
-      width: 42vw;
-      height: 18vw;
+      width: 30vw;
+      height: 10vw;
 
-      font-size: calc(0.1rem + 0.8vw);
+      font-size: calc(0.1rem + 1vw);
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
@@ -302,14 +302,14 @@
 
     span {
       font-family: v.$font-two;
-      font-size: calc(0.1rem + 0.8vw);
+      font-size: calc(0.1rem + 1vw);
       opacity: 30%;
 
       position: absolute;
       left: 2vw;
       top: 1vw;
 
-      transition: opacity 0.3s ease;
+      transition: all 0.3s ease;
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
@@ -324,7 +324,23 @@
 
     textarea:valid + .placeholder,
     textarea:focus + .placeholder {
-      opacity: 0;
+      // opacity: 0;
+      color: v.$pallette_two;
+      top: -2vw;
+      left: 1vw;
+      opacity: 1;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        top: -5vw;
+        left: 1vw;
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        top: -4vw;
+        left: 1vw;
+      }
     }
   }
 }

@@ -40,7 +40,7 @@
     // border: solid orange;
 
     width: 80%;
-    padding-bottom: 5vw;
+    padding-bottom: 3vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -69,14 +69,14 @@
     @include d.for-phone-only {
       width: 100%;
       height: fit-content;
-      margin-bottom: 4vw;
+      margin-bottom: 10vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
       width: 100%;
       height: fit-content;
-      margin-bottom: 4vw;
+      margin-bottom: 8vw;
     }
   }
 
@@ -87,8 +87,8 @@
     // border: solid gold;
     padding: 0 0 0 0;
 
-    width: 80%;
-    height: 30vw;
+    width: 70%;
+    height: 35vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {

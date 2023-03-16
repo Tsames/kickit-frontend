@@ -61,7 +61,18 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
     }
   }
 
-  const childVariant = {
+  const childVariantDesktop = {
+    inactive: {
+      y: 0,
+      transition: { type: "spring", stiffness: 400, damping: 50 }
+    },
+    active: {
+      y: "-7vw",
+      transition: { type: "spring", stiffness: 400, damping: 50, delay: 0.3 }
+    }
+  }
+
+  const childVariantMobile = {
     inactive: {
       y: 0,
       transition: { type: "spring", stiffness: 400, damping: 50 }
@@ -321,7 +332,7 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
         </motion.div>
         <motion.h3 id="create-time-select-header" variants={timeSelectTextVariant} initial={false} animate={toggle ? "active" : "inactive"}>Time Range</motion.h3>
         <motion.p id="create-time-select-secondary-text" variants={timeSelectTextVariant} initial={false} animate={toggle ? "active" : "inactive"}>Pick a preset, or make your own custom range.</motion.p>
-        <motion.div id="create-time-select-wrapper" variants={childVariant} initial={false} animate={toggle ? "active" : "inactive"}>
+        <motion.div id="create-time-select-wrapper" variants={window.innerWidth >= 900 ? childVariantDesktop : childVariantMobile} initial={false} animate={toggle ? "active" : "inactive"}>
           <motion.button data-early="11" data-late="16" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handlePreset}>11am - 4pm</motion.button>
           <motion.button data-early="16" data-late="21" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handlePreset}>4pm - 9pm</motion.button>
           <motion.button data-early="21" data-late="2" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handlePreset}>9pm - 2am</motion.button>

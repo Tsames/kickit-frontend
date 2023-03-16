@@ -64,8 +64,8 @@
     max-width: 80%;
 
     position: absolute;
-    bottom: 14vw;
-    left: 6.5vw;
+    top: 30%;
+    left: 5vw;
 
     //Mobile Sizing
     @include d.for-phone-only {
@@ -127,7 +127,7 @@
     font-family: v.$font-two;
     font-size: calc(1rem + 0.8vw);
 
-    height: 4vw;
+    height: 5.5vw;
     width: 12vw;
 
     border-radius: 0.3vw;
@@ -177,12 +177,14 @@
   #create-time-select-header {
     color: v.$pallette_three;
     font-family: v.$font-two;
-    font-size: calc(0.1rem + 4vw);
+    font-size: calc(0.1rem + 2vw);
     pointer-events: none;
 
     position: absolute;
-    bottom: 27.5vw;
-    left: 6.5vw;
+    top: 10%;
+    left: 14%;
+
+    margin: 0 0 0 0;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -190,6 +192,7 @@
       position: relative;
       bottom: 0vw;
       left: 0vw;
+      top: 0vw;
 
       margin-bottom: 2vw;
     }
@@ -200,6 +203,7 @@
       position: relative;
       bottom: 0vw;
       left: 0vw;
+      top: 0vw;
 
       margin-bottom: 2vw;
     }
@@ -209,12 +213,12 @@
   #create-time-select-secondary-text {
     color: v.$pallette_five;
     font-family: v.$font-one;
-    font-size: calc(0.1rem + 1vw);
+    font-size: calc(0.1rem + 0.8vw);
     pointer-events: none;
 
     position: absolute;
-    bottom: calc(6rem + 27.5vw);
-    left: 6.5vw;
+    top: 18%;
+    left: 15%;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -222,6 +226,7 @@
       position: relative;
       bottom: 0vw;
       left: 0vw;
+      top: 0vw;
     }
 
     //Tablet Portrait Sizing & Positioning
@@ -230,6 +235,7 @@
       position: relative;
       bottom: 0vw;
       left: 0vw;
+      top: 0vw;
     }    
   }
 
@@ -239,11 +245,12 @@
     font-family: v.$font-two;
     font-size: calc(0.5rem + 0.55vw);
 
-    width: 40vw;
+    width: 30vw;
 
     position: absolute;
-    left: 6.5vw;
-    top: -8%;
+    left: 5vw;
+    top: -5%;
+    padding: 0 0 0 0;
 
     transition: color 0.5s ease, height 0.5s ease;
 
@@ -284,16 +291,16 @@
     border-radius: 100% 100%;
     padding: 2vw;
 
-    width: 30vw;
-    height: 8vw;
+    width: 18vw;
+    height: 5vw;
 
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
 
-    bottom: 25vw;
-    left: 10vw;
+    bottom: 20vw;
+    left: 6vw;
     z-index: 1;
 
     //Mobile Sizing & Positioning
@@ -330,8 +337,8 @@
     height: 3vw;
 
     position: absolute;
-    bottom: 24.5vw;
-    left: 15vw;
+    bottom: 20vw;
+    left: 8vw;
     z-index: 0;
 
     //Mobile Sizing & Positioning
@@ -359,7 +366,7 @@
     text-align: center;
     font-style: normal;
 
-    font-size: calc(0.1rem + 1.35vw);
+    font-size: calc(0.1rem + 1vw);
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
@@ -382,17 +389,17 @@
 
     border-color: rgba(1,1,1,1);
 
-    width: 12vw;
-    height: 4vw;
+    width: 11vw;
+    height: 3.5vw;
     padding: 1vw;
 
     font-family: v.$font-one;
     font-weight: 700;
-    font-size: calc(0.1rem + 0.3vw);
+    font-size: calc(0.1rem + 1.1vw);
 
     position: absolute;
     bottom: 12vw;
-    left: 25vw;
+    left: 19vw;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {

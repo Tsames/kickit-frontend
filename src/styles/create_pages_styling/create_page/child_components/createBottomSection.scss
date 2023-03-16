@@ -12,27 +12,21 @@
   align-items: center;
 
   //Mobile Sizing
-  @include d.for-phone-only {}
+  @include d.for-phone-only {
+    flex-direction: column;
+  }
 
   //Tablet Portrait Sizing & Positioning
-  @include d.for-tablet-portrait-up {}
-
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {}
-
-  //Desktop Sizing
-  @include d.for-desktop-up {}
-
-  //Large Desktop Sizing & Positioning
-  @include d.for-big-desktop-up {}
+  @include d.for-tablet-portrait-up {
+    flex-direction: column;
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Left Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
 
   #create-bottom-left-subsection {
-    // border: solid;
-    // border-color: greenyellow;
+    // border: solid greenyellow;
 
     height: 100%;
     width: 50%;
@@ -41,29 +35,68 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      height: fit-content;
+      width: 100%;
+
+      margin-bottom: 4vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: fit-content;
+      width: 100%;
+
+      margin-bottom: 4vw;
+    }
   }
 
   #create-time-select-wrapper {
-    // border: solid;
-    // border-color: red;
-
-    max-width: 80%;
+    // border: solid red;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: max(0.5rem, 1.5vw) max(0.5rem, 1.5vw);
     grid-template-rows: repeat(2, 1fr);
 
+    max-width: 80%;
+
     position: absolute;
     bottom: 14vw;
     left: 6.5vw;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      width: 90%;
+      max-width: 90%;
+      height: fit-content;
+
+      gap: 5vw 5vw;
+      position: relative;
+      
+      bottom: 0;
+      left: 0;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      width: 80%;
+      max-width: 90%;
+      
+      gap: 5vw 5vw;
+      position: relative;
+      
+      bottom: 0;
+      left: 0;
+    }
   }
 
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Right Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
 
   #create-bottom-right-subsection {
-    // border: solid;
-    // border-color: greenyellow;
+    // border: solid greenyellow;
 
     height: 100%;
     width: 50%;
@@ -73,6 +106,18 @@
     justify-content: center;
     align-items: center;
     position: relative;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      height: 100vw;
+      width: 100%;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 70vw;
+      width: 100%;
+    }
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -82,13 +127,31 @@
     font-family: v.$font-two;
     font-size: calc(1rem + 0.8vw);
 
-    height: calc(4rem + 4vw);
-    width: calc(5rem + 12vw);
+    height: 4vw;
+    width: 12vw;
 
     border-radius: 0.3vw;
     border: solid;
     border-color: #014D59;
     border-width: 0;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: 5vw;
+      height: 25vw;
+      width: 100%;
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: 5vw;
+      height: 18vw;
+      width: 100%;
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+    } 
   }
 
   .button-selected {
@@ -96,6 +159,13 @@
     color: v.$pallette_three !important;
     border-color: v.$pallette_three !important;
     background-color: v.$pallette_six !important;
+  }
+
+  .hidden {
+    height: 0 !important;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
   }
 
 
@@ -107,27 +177,64 @@
   #create-time-select-header {
     color: v.$pallette_three;
     font-family: v.$font-two;
-    font-size: calc(1rem + 2vw);
+    font-size: calc(0.1rem + 4vw);
     pointer-events: none;
 
     position: absolute;
-    bottom: calc(8rem + 27.5vw);
+    bottom: 27.5vw;
     left: 6.5vw;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: calc(0.1rem + 6vw);
+      position: relative;
+      bottom: 0vw;
+      left: 0vw;
+
+      margin-bottom: 2vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 6vw);
+      position: relative;
+      bottom: 0vw;
+      left: 0vw;
+
+      margin-bottom: 2vw;
+    }
   }
 
   //"Select all that apply" text
   #create-time-select-secondary-text {
     color: v.$pallette_five;
     font-family: v.$font-one;
-    font-size: calc(1rem + 0.3vw);
+    font-size: calc(0.1rem + 1vw);
     pointer-events: none;
 
     position: absolute;
     bottom: calc(6rem + 27.5vw);
     left: 6.5vw;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: calc(0.1rem + 3vw);
+      position: relative;
+      bottom: 0vw;
+      left: 0vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 3vw);
+      position: relative;
+      bottom: 0vw;
+      left: 0vw;
+    }    
   }
 
   #create-time-select-warning {
+    // border: solid red;
     color: rgb(173, 85, 85);
     font-family: v.$font-two;
     font-size: calc(0.5rem + 0.55vw);
@@ -138,11 +245,36 @@
     left: 6.5vw;
     top: -8%;
 
-    transition: color 0.5s ease;
+    transition: color 0.5s ease, height 0.5s ease;
 
     #create-time-select-warning-subtext {
       font-style: italic;
     }
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      position: relative;
+      font-size: calc(0.1rem + 3.5vw);
+      width: 80%;
+      height: 30vw;
+      margin-bottom: 4vw;
+
+      overflow: hidden;
+      bottom: 0vw;
+      left: 0vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      position: relative;
+      font-size: calc(0.1rem + 3.5vw);
+      width: 80%;
+      height: 25vw;
+
+      overflow: hidden;
+      bottom: 0vw;
+      left: 0vw;
+    }   
   }
 
   //@#@#@#@#@&%&%&%&%&@#@#@#@#@ Right Sub-section @#@#@#@#@&%&%&%&%&@#@#@#@#@
@@ -163,6 +295,28 @@
     bottom: 25vw;
     left: 10vw;
     z-index: 1;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      bottom: 55vw;
+      left: 25vw;
+
+      width: 65vw;
+      height: 40vw;
+
+      padding: 2vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      bottom: 40vw;
+      left: 35vw;
+
+      width: 45vw;
+      height: 20vw;
+
+      padding: 2vw;
+    } 
   }
 
   #create-submit-text-bubble-tail {
@@ -179,6 +333,24 @@
     bottom: 24.5vw;
     left: 15vw;
     z-index: 0;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      bottom: 56vw;
+      left: 36vw;
+
+      width: 6vw;
+      height: 6vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      bottom: 40vw;
+      left: 42vw;
+
+      width: 6vw;
+      height: 6vw;
+    } 
   }
 
   #create-submit-text {
@@ -187,7 +359,17 @@
     text-align: center;
     font-style: normal;
 
-    font-size: max(0.5rem, 1.35vw);
+    font-size: calc(0.1rem + 1.35vw);
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: calc(0.1rem + 3.5vw);
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 2.5vw);
+    } 
   }
 
   #create-submit {
@@ -200,23 +382,42 @@
 
     border-color: rgba(1,1,1,1);
 
-    width: calc(6rem + 12vw);
-    height: calc(2rem + 4vw);
+    width: 12vw;
+    height: 4vw;
     padding: 1vw;
 
     font-family: v.$font-one;
     font-weight: 700;
-    font-size: calc(1rem + 0.3vw);
+    font-size: calc(0.1rem + 0.3vw);
 
     position: absolute;
     bottom: 12vw;
     left: 25vw;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      bottom: 15vw;
+      left: 60vw;
+
+      width: 25vw;
+      height: 8vw;
+      font-size: calc(0.1rem + 2.5vw);
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      bottom: 15vw;
+      left: 60vw;
+
+      width: 25vw;
+      height: 8vw;
+      font-size: calc(0.1rem + 2.5vw);
+    } 
   }
 
   //Person Graphic
   #create-person-graphic {
-    // border: solid;
-    // border-color: orange;
+    // border: solid orange;
 
     position: absolute;
 
@@ -232,5 +433,23 @@
     position: absolute;
     bottom: 0;
     left: 0;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      bottom: 0;
+      left: 10vw;
+
+      width: 50vw;
+      height: 70vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      bottom: 0;
+      left: 10vw;
+
+      width: 40vw;
+      height: 40vw;
+    } 
   }
 }

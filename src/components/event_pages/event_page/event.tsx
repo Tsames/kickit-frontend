@@ -90,16 +90,6 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
     
   }, []);
 
-  // useEffect(() => {
-  //   console.log("This is the eventData in event.tsx");
-  //   console.log(eventData);
-  // }, [eventData]);
-
-  // useEffect(() => {
-  //   console.log("selection looks like this:");
-  //   console.log(selection);
-  // }, [selection])
-
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
 
   const eventShellVariant={
@@ -178,7 +168,6 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
 
       const table = document.getElementById('participants-shell') as HTMLElement;
       table.scrollIntoView({behavior: "smooth", block: "center"});
-      // window.location.reload()
     }
   }
 

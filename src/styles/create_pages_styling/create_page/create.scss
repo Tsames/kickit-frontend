@@ -44,12 +44,12 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
+      margin-bottom: 4vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
+      margin-bottom: 4vw;
     }
   }
 
@@ -57,7 +57,7 @@
 
   //Middle Section
   #create-middle-section {
-    border: solid pink;
+    // border: solid pink;
 
     width: 80%;
     height: 30vw;
@@ -69,12 +69,14 @@
     @include d.for-phone-only {
       width: 100%;
       height: fit-content;
+      margin-bottom: 4vw;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
       width: 100%;
       height: fit-content;
+      margin-bottom: 4vw;
     }
   }
 
@@ -82,7 +84,7 @@
 
   //Bottom Section
   #create-bottom-section {
-    border: solid gold;
+    // border: solid gold;
     padding: 0 0 0 0;
 
     width: 80%;
@@ -90,13 +92,13 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-      height: 100vw;
+      height: fit-content;
       width: 100%;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-      height: 30vw;
+      height: fit-content;
       width: 100%;
     }
   }

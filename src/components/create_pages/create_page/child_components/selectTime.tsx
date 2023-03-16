@@ -39,7 +39,8 @@ const SelectTime: FC<SelectTimeProps> = ({ elementId, text, toggle, handleChange
     },
     active: {
       opacity: 1,
-      width: "calc(5rem + 12vw)",
+      height: "fit-content",
+      width: "100%",
       transition: { type: "spring", stiffness: 400, damping: 30, delay: 0.3 }
     }
   }

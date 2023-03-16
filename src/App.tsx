@@ -35,8 +35,8 @@ function App() {
 
   const location = useLocation();
 
-  const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
+  const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
 
   //Attending Interface
   interface attendingInterface {
@@ -58,11 +58,6 @@ function App() {
 
   //Stores the data of an event
   const [event, setEvent] = useState<eventInterface>(exampleEvent);
-
-  // useEffect(() => {
-  //   console.log('Event is set to:');
-  //   console.log(event);
-  // }, [event])
 
   /* ------------------------------------------ Helper Functions ------------------------------------------ */
 
@@ -87,6 +82,24 @@ function App() {
     }
   }
 
+  /* Helper function (addAttendee) - Passed the new attendee's object. Checks the current event states' attending array to see
+  if it contains an object that matches the new attendee's name. If it finds one, replace it with the new data. If it doesn't add the new data to the array. */
+
+  const findExisting = (newAttendee: attendingInterface): attendingInterface[] => {
+
+    const newAttending: Array<attendingInterface> = event.attending;
+
+    for (let i=0; i < newAttending.length; i++) {
+      if (newAttending[i].name === newAttendee.name) {
+        newAttending[i] = newAttendee;
+        return newAttending;
+      }
+    }
+
+    newAttending.push(newAttendee);
+    return newAttending;
+  }
+
   /* ------------------------------------------ Passing Functions ------------------------------------------ */
 
   /* Passing Function - Checks if the current event is saved in the event state matches the url of the page.
@@ -104,8 +117,7 @@ function App() {
   const addAttendee = async (newAttendee: attendingInterface): Promise<void> => {
 
     //Create an event object with the newAttendee data
-    const newAttending: Array<attendingInterface> = event.attending;
-    newAttending.push(newAttendee);
+    const newAttending = findExisting(newAttendee);
     const newEvent = {...event, attending: newAttending };
 
     //If the user is just submitting to the example event then just update state - no need to make a call to the database.

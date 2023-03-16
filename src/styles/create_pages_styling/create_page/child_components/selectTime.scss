@@ -5,13 +5,13 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 .select-time-wrapper {
-
+  // border: solid red;
   border: none;
   border-radius: 5% 5%;
 
   background-color: v.$invisible;
   font-family: v.$font-two;
-  font-size: calc(1rem + 0.3vw);
+  font-size: calc(0.1rem + 1vw);
 
   text-align: center;
 
@@ -23,38 +23,64 @@
   align-items: center;
 
   //Mobile Sizing
-  @include d.for-phone-only {}
+  @include d.for-phone-only {
+    width: 100%;
+    height: fit-content;
+  }
 
   //Tablet Portrait Sizing & Positioning
-  @include d.for-tablet-portrait-up {}
-
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {}
-
-  //Desktop Sizing
-  @include d.for-desktop-up {}
-
-  //Large Desktop Sizing & Positioning
-  @include d.for-big-desktop-up {}
+  @include d.for-tablet-portrait-up {
+    width: 100%;
+    height: fit-content;
+  }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
-    nav {
-        width: calc(100% - 25%);
+  nav {
+    width: calc(100% - 25%);
 
-        background-color: #E9ECFF;
-        border-radius: 5% 5%;
-        text-align: left;
+    background-color: #E9ECFF;
+    border-radius: 5% 5%;
+    text-align: left;
 
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-        padding-left: 10%;
-        padding-right: 15%;
-        margin-bottom: 1vw;
+    padding-left: 10%;
+    padding-right: 15%;
+    margin-bottom: 1vw;
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      height: 15vw;
+      margin-bottom: 3vw;
     }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 15vw;
+      margin-bottom: 3vw;
+    }
+
+    p {
+      pointer-events: none;
+
+      //Mobile Sizing
+      @include d.for-phone-only {
+        line-height: normal;
+        font-size: calc(0.1rem + 3.5vw);
+        overflow: show;
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        line-height: calc(0.1rem + 5vw);
+        font-size: calc(0.1rem + 3vw);
+      }
+    }
+  }
 
 
 
@@ -73,12 +99,23 @@
     justify-content: space-evenly;
     align-items: center;
 
+    //Mobile Sizing
+    @include d.for-phone-only {
+      height: 40vw;
+      width: 100%;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 40vw;
+      width: 100%;
+    }
+
   }
 
   //Number Wrapper
   .select-time-list-number {
-    // border: solid;
-    // border-color: red;
+    // border: solid red;
     padding-left: 1vw;
     list-style-type: none;
 
@@ -93,8 +130,7 @@
 
   //TOD Wrapper
   .select-time-list-tod {
-    // border: solid;
-    // border-color: yellow;
+    // border: solid yellow;
     padding-left: 0;
 
     height: 80%;
@@ -112,10 +148,34 @@
 
   .select-time-option {
     padding: max(0.1rem, 0.1vw);
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      font-size: calc(0.1rem + 4vw);
+      padding: 1.5vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 4vw);
+      padding: 1.5vw;
+    }
   }
 
   .select-time-option-tod {
     padding: max(0.3rem, 0.3vw);
+
+    //Mobile Sizing
+    @include d.for-phone-only {
+      font-size: calc(0.1rem + 4vw);
+      padding: 1.5vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 4vw);
+      padding: 1.5vw;
+    }
   }
 
   .select-time-option, .select-time-option-tod {

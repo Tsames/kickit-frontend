@@ -67,7 +67,21 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
       transition: { type: "spring", stiffness: 400, damping: 50 }
     },
     active: {
-      y: -100,
+      y: -50,
+      transition: { type: "spring", stiffness: 400, damping: 50, delay: 0.3 }
+    }
+  }
+
+  const timeSelectTextVariant = {
+    inactive: {
+      height: "100%",
+      opacity: 1,
+      transition: { type: "spring", stiffness: 400, damping: 50 }
+    },
+    active: {
+      height: 0,
+      opacity: 0,
+      margin: 0,
       transition: { type: "spring", stiffness: 400, damping: 50, delay: 0.3 }
     }
   }
@@ -301,12 +315,12 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
   return (
     <div id="create-bottom-section">
       <div id="create-bottom-left-subsection">
-        <motion.div id="create-time-select-warning" className={ (newForm.early === 0 && newForm.late === 0) || checkValidTimeSelect() ? "invisible no-select" : "no-select"}>
+        <motion.div id="create-time-select-warning" className={ (newForm.early === 0 && newForm.late === 0) || checkValidTimeSelect() ? "invisible no-select hidden" : "no-select"}>
           <p id="create-time-select-warning-maintext">Your custom range selection is invalid. Please make sure the start time is earlier than the end time.</p>
           <p id="create-time-select-warning-subtext">* Days are considered to start at 5 am and end at 4 am to account for late night events.</p>
         </motion.div>
-        <motion.h3 id="create-time-select-header" variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>Time Range</motion.h3>
-        <motion.p id="create-time-select-secondary-text" variants={parentVariant} initial={false} animate={toggle ? "active" : "inactive"}>Pick a preset, or make your own custom range.</motion.p>
+        <motion.h3 id="create-time-select-header" variants={timeSelectTextVariant} initial={false} animate={toggle ? "active" : "inactive"}>Time Range</motion.h3>
+        <motion.p id="create-time-select-secondary-text" variants={timeSelectTextVariant} initial={false} animate={toggle ? "active" : "inactive"}>Pick a preset, or make your own custom range.</motion.p>
         <motion.div id="create-time-select-wrapper" variants={childVariant} initial={false} animate={toggle ? "active" : "inactive"}>
           <motion.button data-early="11" data-late="16" className="create-time-select-button" whileHover={timeButtomHover}  whileTap={timeButtonTap} onClick={handlePreset}>11am - 4pm</motion.button>
           <motion.button data-early="16" data-late="21" className="create-time-select-button" whileHover={timeButtomHover} whileTap={timeButtonTap} onClick={handlePreset}>4pm - 9pm</motion.button>

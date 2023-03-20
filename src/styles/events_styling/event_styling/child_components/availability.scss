@@ -42,13 +42,16 @@
   }
 
   //These Values are set in availability.tsx based on the number of cells
-  --rowLabelWidth: 0rem;
   --cellWidth: 0rem;
 
   $cellWidth: var(--cellWidth);
-  $cellHeight: 1.75vw;
 
-  $rowLabelWidth: var(--rowLabelWidth);
+  $cellHeight: 1.75vw;
+  $cellHeightMobile: 8vw;
+  $cellHeightPortrait: 6vw;
+
+  $rowLabelWidth: 3%;
+
   $cell-border-width: 0.1vw;
 
   $table-column-text-one-color: red;
@@ -58,23 +61,11 @@
   $table-border-color: #2F6A73;
   $table-border-hover-color: #e77474;
 
-  //Mobile Sizing & Positioning
-  @include d.for-phone-only {
-
-  }
-
-  //Tablet Portrait Sizing & Positioning
-  @include d.for-tablet-portrait-up {
-
-  }
-
-
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 
   //Availability Chart Container
   #availability-contents {
-    // border: solid;
-    // border-color: orange;
+    // border: solid orange;
 
     display: flex;
     flex-direction: column;
@@ -144,10 +135,30 @@
 
     cursor: pointer;
 
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: $cellHeightMobile;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: $cellHeightPortrait;
+    }
+
     p {
       font-style: normal;
       font-family: v.$font-two;
       font-size: calc(0.1rem + 0.5vw);
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        font-size: calc(0.1rem + 2.5vw);
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        font-size: calc(0.1rem + 2vw);
+      }
     }
   }
 
@@ -186,6 +197,18 @@
 
     background: #00000000;
     z-index: 1;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      margin-left: 7%;
+      height: $cellHeightMobile;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      margin-left: 7%;
+      height: $cellHeightPortrait;
+    }
   }
 
   //Row Label Text
@@ -207,12 +230,16 @@
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
-
+      bottom: -18%;
+      left: -375%;
+      font-size: calc(0.1rem + 2vw);
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
-
+      bottom: -18%;
+      left: -375%;
+      font-size: calc(0.1rem + 2vw);
     }
   }
 
@@ -236,6 +263,16 @@
 
     pointer-events: none;
     cursor: default;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: $cellHeightMobile;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: $cellHeightPortrait;
+    }
   }
 
   //Column Label Text One
@@ -252,6 +289,18 @@
     font-family: v.$font_two;
     color: v.$pallette_three;
     text-align: center;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      bottom: 110%;
+      font-size: calc(0.1rem + 3vw);
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      bottom: 110%;
+      font-size: calc(0.1rem + 2.5vw);
+    }
   }
 
   //Column Label Text Two
@@ -268,6 +317,16 @@
     font-family: v.$font_two;
     color: v.$pallette_three;
     text-align: center;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: calc(0.1rem + 4vw);
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 3.5vw);
+    }
   }
 
   // ------------- Cell Class Styling -------------
@@ -301,7 +360,7 @@
   }
 
   .noneAvailable {
-    background-color: rgb(252, 252, 252);
+    background-color: rgba(252, 252, 252, 0);
   }
 
   .selected {
@@ -330,6 +389,18 @@
     pointer-events: none;
     cursor: default;
 
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      margin-left: 7%;
+      height: $cellHeightMobile;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      margin-left: 7%;
+      height: $cellHeightPortrait;
+    }
+
     p {
       // border: solid red;
       width: fit-content;
@@ -348,12 +419,16 @@
 
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
-
+        bottom: -18%;
+        left: -375%;
+        font-size: calc(0.1rem + 2vw);
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
-
+        bottom: -18%;
+        left: -375%;
+        font-size: calc(0.1rem + 2vw);
       }
     }
   }

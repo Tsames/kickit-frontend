@@ -21,22 +21,14 @@
 
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
-
+    min-height: v.$body-height-mobile;
+    padding-top: v.$body-padding-top-mobile;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-
-  }
-
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {
-
-  }
-
-  //Desktop Sizing & Positioning
-  @include d.for-desktop-up {
-
+    min-height: v.$body-height-portrait;
+    padding-top: v.$body-padding-top-portrait;
   }
 
 

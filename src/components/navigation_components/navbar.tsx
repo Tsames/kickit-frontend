@@ -108,7 +108,7 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
       <div id="navRight">
         <div id="navItems-wrapper">
           <Link to={`/event/${eventId}`} className={location.slice(0, 7) === "/event/" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarEvent" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>{eventId === "example" ? "Example Event" : "Your Event"}</motion.button></Link>
-          <Link to="/howItWorks" className={location === "/howItWorks" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarHowItWorks" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>How It Works</motion.button></Link>
+          {/* <Link to="/howItWorks" className={location === "/howItWorks" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarHowItWorks" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>How It Works</motion.button></Link> */}
           <Link to="/aboutUs" className={location === "/aboutUs" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
         </div>
         <div id="navCreate-wrapper">
@@ -137,7 +137,7 @@ const Navbar: FC<navbarProps> = ({ eventId }) => {
       <motion.div id="navExtended" variants={extendedMenuVariant} initial={false} animate={ toggle ? "visible" : "invisible"}>
         <div id="navItems-wrapper">
           <Link to={`/event/${eventId}`} className={location.slice(0, 7) === "/event/" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarEvent" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>{eventId === "example" ? "Example Event" : "Your Event"}</motion.button></Link>
-          <Link to="/howItWorks" className={location === "/howItWorks" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarHowItWorks" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>How It Works</motion.button></Link>
+          {/* <Link to="/howItWorks" className={location === "/howItWorks" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarHowItWorks" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>How It Works</motion.button></Link> */}
           <Link to="/aboutUs" className={location === "/aboutUs" ? "onPage navBarLink no-select" : "navBarLink"}><motion.button id="navbarAboutUs" className="navItem" variants={childVariant} whileHover={navItemHover} whileTap={navItemTap}>About Us</motion.button></Link>
         </div>
         <div id="navCreate-wrapper">

@@ -12,16 +12,20 @@
 
   padding: 2vw;
   background: rgba(255, 255, 255, 0.71);
-  margin-bottom: max(2.5rem, 2.5vw);
+  margin-bottom: 2.5vw;
 
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
-    width: 70%;
+    margin-bottom: 8vw;
+    padding: 4vw;
+    width: 80%;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-    width: 65%;
+    margin-bottom: 5vw;
+    padding: 3vw;
+    width: 75%;
   }
 
   //Tablet Landscape Sizing & Positioning
@@ -49,6 +53,15 @@
     grid-row-gap: 0.2vw;
     margin-top: 1vw;
 
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      grid-template-columns: repeat(5, 1fr);
+    }
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -84,6 +97,18 @@
 
     background-color: #51D245;
     transition: background-color 0.5s ease;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      width: calc(0.1rem + 1.5vw);
+      height: calc(0.1rem + 1.5vw);
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      width: calc(0.1rem + 1vw);
+      height: calc(0.1rem + 1vw);
+    }
   }
 
   .participants-name-text {
@@ -97,6 +122,16 @@
     text-overflow: ellipsis;
 
     transition: color 0.5s ease;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: calc(0.1rem + 3vw);
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 2vw);
+    }
     
   }
 
@@ -118,6 +153,18 @@
 
     pointer-events: none;
     cursor: default;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      margin-bottom: 2vw;
+      font-size: calc(0.1rem + 3.5vw);
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      margin-bottom: 1vw;
+      font-size: calc(0.1rem + 2.5vw);
+    }
   }
 
   h3 {
@@ -127,6 +174,16 @@
     font-size: calc(0.1rem + 0.8vw);
 
     transition: all 0.5s ease;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      font-size: calc(0.1rem + 3vw);
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      font-size: calc(0.1rem + 2vw);
+    }
   }
 
   .not-applicable {

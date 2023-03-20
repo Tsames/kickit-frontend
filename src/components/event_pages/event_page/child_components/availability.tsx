@@ -79,11 +79,9 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
 
     if (numColumns === 1) { 
       // console.log(`cellWidth is set to 60%, and rowLabelWidth is set to 3%.`);
-      shell.style.setProperty("--rowLabelWidth", `3%`);
       shell.style.setProperty("--cellWidth", `60%`);
     } else {
       // console.log(`cellWidth is set to ${columnWidth}%, and rowLabelWidth is set to 3%.`);
-      shell.style.setProperty("--rowLabelWidth", `3%`);
       shell.style.setProperty("--cellWidth", `${columnWidth}%`);
     }
 

@@ -36,7 +36,7 @@ function App() {
   const location = useLocation();
 
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
-  const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
+  const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND;
 
   //Attending Interface
   interface attendingInterface {

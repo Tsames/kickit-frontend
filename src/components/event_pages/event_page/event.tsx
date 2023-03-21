@@ -184,7 +184,6 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
             <Availability limit={limit} eventData={eventData} selection={selection} setSelection={setSelection}/>
           </div>
           <div id="event-bottom-section">
-            <div id="event-graphic"></div>
             <div id="event-submission-text">
               <h1>Submit your availability</h1>
               <h6>Click and drag your cursor over the days and times that you are available to attend this event in the grid above. Then enter your name and click "+" below!</h6>
@@ -205,6 +204,7 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
                   <span className="placeholder no-select">Your name</span>
                 </label>
             </div>
+            <div id="event-graphic"></div>
           </div>
         </motion.div>
     )

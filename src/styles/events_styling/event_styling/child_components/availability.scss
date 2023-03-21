@@ -231,14 +231,14 @@
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       bottom: -18%;
-      left: -375%;
-      font-size: calc(0.1rem + 2vw);
+      left: -415%;
+      font-size: calc(0.1rem + 2.2vw);
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
       bottom: -18%;
-      left: -375%;
+      left: -400%;
       font-size: calc(0.1rem + 2vw);
     }
   }
@@ -420,14 +420,14 @@
       //Mobile Sizing & Positioning
       @include d.for-phone-only {
         bottom: -18%;
-        left: -375%;
-        font-size: calc(0.1rem + 2vw);
+        left: -415%;
+        font-size: calc(0.1rem + 2.2vw);
       }
 
       //Tablet Portrait Sizing & Positioning
       @include d.for-tablet-portrait-up {
         bottom: -18%;
-        left: -375%;
+        left: -400%;
         font-size: calc(0.1rem + 2vw);
       }
     }

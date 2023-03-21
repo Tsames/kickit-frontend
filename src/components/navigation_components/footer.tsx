@@ -72,7 +72,7 @@ const Footer: FC<footerProps> = () => {
     <div id="footer-shell">
       <div id="link-wrapper">
         <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAbout"  className="footer-link" to="/">Home</Link></motion.p>
-        <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerCreate" className="footer-link" to="/howItWorks">How It Works</Link></motion.p>
+        {/* <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerCreate" className="footer-link" to="/howItWorks">How It Works</Link></motion.p> */}
         <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerAboutUs" className="footer-link" to="/aboutUs">About Us</Link></motion.p>
         <motion.p variants={childVariant} whileHover={footerItemHover} whileTap={footerItemTap}><Link id="footerDemo" className="footer-link" to="/create">Create</Link></motion.p>
         </div>

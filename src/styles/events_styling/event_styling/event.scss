@@ -18,6 +18,8 @@
   width: 100vw;
 
   $event-bottom-section-height: 20vw;
+  $event-bottom-section-height-mobile: 120vw;
+  $event-bottom-section-height-portrait: 65vw;
 
   //Mobile Sizing & Positioning
   @include d.for-phone-only {
@@ -41,16 +43,41 @@
     align-items: center;
 
     width: 100%;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      margin-bottom: 5vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      margin-bottom: 5vw;
+    }
   }
 
   #event-bottom-section {
-    // border: solid blue;
+    border: solid blue;
     position: relative;
 
     width: 100%;
     height: $event-bottom-section-height;
     margin-bottom: 0;
     padding: 0;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: $event-bottom-section-height-mobile;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: $event-bottom-section-height-portrait;
+    }
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Class Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
@@ -78,6 +105,21 @@
 
     margin: 0;
     padding: 0;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      position: static;
+      left: 5vw;
+      width: 55vw;
+      height: 45vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      left: 4vw;
+      width: 42vw;
+      height: 35vw;
+    }
   }
 
   //----------------------- Submission Text -----------------------
@@ -96,12 +138,41 @@
     cursor: default;
     pointer-events: none;
 
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      position: static;
+      bottom: calc($event-bottom-section-height-mobile * 0.40);
+      right: 22.5vw;
+
+      width: 55vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      bottom: calc($event-bottom-section-height-portrait * 0.38);
+      right: 8vw;
+
+      width: 55vw;
+    }
+
     h1 {
       font-size: calc(0.1rem + 1.3vw);
       border-bottom: solid;
       width: fit-content;
       margin: 0 0 1vw 0;
       padding: 0;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        font-size: calc(0.1rem + 5vw);
+        margin: 0 0 2.5vw 0;
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        font-size: calc(0.1rem + 4vw);
+        margin: 0 0 2vw 0;
+      }
     }
 
     h6 {
@@ -109,14 +180,42 @@
       line-height: calc(0.1rem + 1vw);
       margin: 0 0 0.8vw 0;
       padding: 0;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        line-height: calc(0.1rem + 3.2vw);
+        font-size: calc(0.1rem + 3vw);
+        margin: 0 0 2.5vw 0;
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        line-height: calc(0.1rem + 2.4vw);
+        font-size: calc(0.1rem + 2.2vw);
+        margin: 0 0 2vw 0;
+      }
     }
 
-    p{
+    p {
       color: #c24343;
       font-size: calc(0.1rem + 0.65vw);
       line-height: calc(0.1rem + 0.8vw);
       margin: 0 0 0.5vw 0;
       padding: 0;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        line-height: calc(0.1rem + 3.2vw);
+        font-size: calc(0.1rem + 3vw);
+        margin: 0 0 2.5vw 0;
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        line-height: calc(0.1rem + 2.5vw);
+        font-size: calc(0.1rem + 2vw);
+        margin: 0 0 2vw 0;
+      }
     }
   }
 
@@ -135,6 +234,23 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      position: static;
+      bottom: calc($event-bottom-section-height-portrait * 0.12);
+      right: 11vw;
+
+      width: 40%;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      bottom: calc($event-bottom-section-height-portrait * 0.12);
+      right: 11vw;
+
+      width: 40%;
+    }
   }
 
   //Add Submission Wrapper
@@ -142,6 +258,18 @@
     height: 3.5vw;
     width: 3.5vw;
     color: v.$pallette_three;
+
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: 8vw;
+      width: 8vw;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 8vw;
+      width: 8vw;
+    }
   }
 
   //Add Submission Button
@@ -162,6 +290,18 @@
 
     position: relative;
 
+    //Mobile Sizing & Positioning
+    @include d.for-phone-only {
+      height: 8vw;
+      width: 80%;
+    }
+
+    //Tablet Portrait Sizing & Positioning
+    @include d.for-tablet-portrait-up {
+      height: 8vw;
+      width: 80%;
+    }
+
     input {
       width: 98%;
       height: 100%;
@@ -173,6 +313,18 @@
       font-size: calc(0.1rem + 1.2vw);
       font-family: v.$font-two;
       color: v.$pallette_three;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        font-size: calc(0.1rem + 3.5vw);
+        margin-left: 1vw;
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        font-size: calc(0.1rem + 2.5vw);
+        margin-left: 1vw;
+      }
 
       &:focus, &:valid {
         background-size: 100% 5%;
@@ -186,6 +338,16 @@
       top: -50%;
       left: 0%;
       font-size: calc(0.1rem + 0.8vw);
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        font-size: calc(0.1rem + 2vw);
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        font-size: calc(0.1rem + 2vw);
+      }
     }
 
     span{
@@ -198,6 +360,16 @@
       color: v.$pallette_three;
 
       transition: top 0.5s ease, left 0.5s ease, font-size 0.5s ease;
+
+      //Mobile Sizing & Positioning
+      @include d.for-phone-only {
+        font-size: calc(0.1rem + 2.5vw);
+      }
+
+      //Tablet Portrait Sizing & Positioning
+      @include d.for-tablet-portrait-up {
+        font-size: calc(0.1rem + 2.5vw);
+      }
     }
   }
 

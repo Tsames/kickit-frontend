@@ -159,10 +159,10 @@ function App() {
 
           {/* Main Routes */}
           <Route path='/' element={<Home />} />
-          <Route path='/howItWorks' element={<HowItWorks />} />
+          {/* <Route path='/howItWorks' element={<HowItWorks />} /> */}
           <Route path='/create' element={<Create setEvent={setEvent}/>} />
           <Route path='/created/:id' element={<Created event={event} getEventData={getEventData} />} />
-          <Route path='/event/:id/invitation' element={<Invitation eventData={event} setEvent={setEvent} checkEvent={checkEvent} />} />
+          {/* <Route path='/event/:id/invitation' element={<Invitation eventData={event} setEvent={setEvent} checkEvent={checkEvent} />} /> */}
           <Route path='/event/:id' element={<Event eventData={event} checkEvent={checkEvent} addAttendee={addAttendee}/>} />
           <Route path='/aboutUs' element={<AboutUs />} />
 

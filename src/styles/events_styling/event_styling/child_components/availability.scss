@@ -138,11 +138,13 @@
     //Mobile Sizing & Positioning
     @include d.for-phone-only {
       height: $cellHeightMobile;
+      // touch-action: none;
     }
 
     //Tablet Portrait Sizing & Positioning
     @include d.for-tablet-portrait-up {
       height: $cellHeightPortrait;
+      touch-action: none;
     }
 
     p {

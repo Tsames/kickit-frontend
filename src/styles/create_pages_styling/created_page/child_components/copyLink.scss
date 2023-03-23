@@ -5,8 +5,7 @@
 
 //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Container Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%
 #copyLink-shell {
-  // border: solid;
-  // border-color: red;
+  // border: solid red;
 
   display: flex;
   flex-direction: row;
@@ -14,34 +13,21 @@
   align-items: center;
 
   width: 45vw;
-  height: max(3rem, 3vw);
+  height: 3vw;
 
   border-radius: 5px;
   background-color: v.$invisible;
 
   //Mobile Sizing
   @include d.for-phone-only {
-
+    width: 75vw;
+    height: 10vw;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
-
-  }
-
-  //Tablet Landscape Sizing & Positioning
-  @include d.for-tablet-landscape-up {
-
-  }
-
-  //Desktop Sizing
-  @include d.for-desktop-up {
-
-  }
-
-  //Large Desktop Sizing & Positioning
-  @include d.for-big-desktop-up {
-
+    width: 75vw;
+    height: 6vw;
   }
 
   //%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&% Major Component Wrappers Styles %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%

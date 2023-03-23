@@ -260,6 +260,8 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
           onMouseDown={handleMouseDown}
           onMouseOver={handleMouseOver}
           onMouseUp={handleMouseUp}
+          onTouchStart={handleMouseDown}
+          // onTouchMove={testTouchMoveFunction}
           data-row={row} 
           data-column={i}
           data-who={whoAvailable}
@@ -418,6 +420,16 @@ const Availability: FC<availabilityInterface> = ({ limit, eventData, selection, 
     setToggleState(e.target);
     toggleThis([e.target]);
   }
+
+  // const testTouchMoveFunction = (e: any) => {
+  //   const X = e.changedTouches[0].screenX;
+  //   const Y = e.changedTouches[0].screenY;
+
+  //   console.log(X);
+  //   console.log(Y);
+  //   // const currentElement = document.elementFromPoint(X - window.pageXOffset, Y - window.pageYOffset);
+  //   // console.log(currentElement);
+  // }
 
   //Handler function - Determine which cells to toggle based on mouseover
   const handleMouseOver = (e: React.BaseSyntheticEvent): void => {

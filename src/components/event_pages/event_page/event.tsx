@@ -94,10 +94,13 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
 
   const eventShellVariant={
     hidden: {
-
+      y: "-100vw"
     },
     visible: {
-
+      y: 0,
+      transition: { type: "spring", stiffness: 80, damping: 15}
+    },
+    exit: {
     }
   }
 
@@ -177,7 +180,7 @@ const Event: FC<eventProps> = ({ eventData, checkEvent, addAttendee }) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
     return (
-        <motion.div id="event-shell">
+        <motion.div id="event-shell" variants={eventShellVariant} initial="hidden" animate="visible">
           <div id="event-top-section">
             <Details eventData={eventData} />
             <Participants limit={limit} mouse={selection.mouse} setLimit={setLimit} eventData={eventData}/>

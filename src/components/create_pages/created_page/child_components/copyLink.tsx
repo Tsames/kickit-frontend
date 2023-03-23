@@ -22,7 +22,7 @@ const CopyLink: FC<copyLinkProps> = ({ }) => {
   const eventId = useParams().id;
 
   //Get Base URL from .env
-  const DEV_FRONTEND_URL = process.env.REACT_APP_KICKIT_DEV_FRONTEND + "events/" + `${eventId}`;
+  const DEV_FRONTEND_URL = process.env.REACT_APP_KICKIT_FRONTEND + "event/" + `${eventId}`;
   // const FRONTEND_URL = process.env.REACT_APP_KICKIT_FRONTEND + "events/";
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */

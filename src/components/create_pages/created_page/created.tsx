@@ -51,6 +51,20 @@ const Created: FC<createdProps> = ({ getEventData, event }) => {
 
   }, [])
 
+  /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
+
+  const createdShellVariant = {
+    hidden: {
+      y: "-100vw"
+    },
+    visible: {
+      y: 0,
+      transition: { type: "spring", stiffness: 80, damping: 15}
+    },
+    exit: {
+    }
+  }
+
   /* ------------------------------------------ Event Handler Functions ------------------------------------------ */
 
   
@@ -61,7 +75,7 @@ const Created: FC<createdProps> = ({ getEventData, event }) => {
   /* ------------------------------------------ Returning JSX ------------------------------------------ */
 
   return (
-    <motion.div id="created-shell">
+    <motion.div id="created-shell" variants={createdShellVariant} initial="hidden" animate="visible">
       <ModalLoading show={false}></ModalLoading>
       <NoSuchEvent show={false}></NoSuchEvent>
       <div id="created-top-section">
@@ -70,13 +84,15 @@ const Created: FC<createdProps> = ({ getEventData, event }) => {
         </div>
         <div id="created-mid-section">
           <div id="created-mid-left-section">
-            <div id="created-title-wrapper">
-              <h3 id="created-title-label" className="created-event-details-label no-select">Title:</h3>
-              <h3 id="created-title" className="created-event-details">{event.title}</h3>
-            </div>
-            <div id="created-location-wrapper">
-              <h3 id="created-location-label" className="created-event-details-label no-select">Location:</h3>
-              <h3 id="created-location" className="created-event-details">{event.location}</h3>
+            <div id="created-mid-left-top-subsection">
+              <div id="created-title-wrapper">
+                <h3 id="created-title-label" className="created-event-details-label no-select">Title:</h3>
+                <h3 id="created-title" className="created-event-details">{event.title}</h3>
+              </div>
+              <div id="created-location-wrapper">
+                <h3 id="created-location-label" className="created-event-details-label no-select">Location:</h3>
+                <h3 id="created-location" className="created-event-details">{event.location}</h3>
+              </div>
             </div>
             <div id="created-description-wrapper">
               <p id="created-description">{event.description !== "" ? event.description : "No event description was given."}</p>
@@ -90,7 +106,6 @@ const Created: FC<createdProps> = ({ getEventData, event }) => {
           <div id="created-limeArrow-svg"></div>
         </div>
         <div id="created-bottom-section">
-          <div id="created-limeArrow-svg"></div>
           <CopyLink></CopyLink>
           <div id="created-wallpaper"></div>
         </div>

@@ -14,10 +14,10 @@ import Footer from './components/navigation_components/footer';
 
 //Import Main Pages
 import Home from './components/home_page/Home';
-import HowItWorks from './components/info_pages/howItWorks';
+// import HowItWorks from './components/info_pages/howItWorks';
 import Create from './components/create_pages/create_page/create';
 import Created from './components/create_pages/created_page/created';
-import Invitation from './components/event_pages/invitation_page/invitation';
+// import Invitation from './components/event_pages/invitation_page/invitation';
 import Event from './components/event_pages/event_page/event';
 import AboutUs from "./components/info_pages/aboutUs";
 

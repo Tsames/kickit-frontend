@@ -13,6 +13,7 @@
   align-items: center;
 
   max-width: 100%;
+  min-height: v.$body-height-desktop-to-tablet;
   
   background: linear-gradient(180deg, rgb(65, 115, 195) 0%, hsla(187, 47%, 52%, 1) 30%, hsla(0, 0%, 100%, 1) 50%);
   padding-top: v.$body-padding-top-desktop-to-tablet;
@@ -88,7 +89,9 @@
     padding: 0 0 0 0;
 
     width: 70%;
-    height: 35vw;
+    height: 40vw;
+
+    overflow: hidden;
 
     //Mobile Sizing & Positioning
     @include d.for-phone-only {

@@ -67,7 +67,7 @@ const CreateBottomSection: FC<CBSProps> = ({ newForm, handleChangeTime, handleSu
       transition: { type: "spring", stiffness: 400, damping: 50 }
     },
     active: {
-      y: "-7vw",
+      y: "-10vw",
       transition: { type: "spring", stiffness: 400, damping: 50, delay: 0.3 }
     }
   }

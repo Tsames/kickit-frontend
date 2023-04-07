@@ -3,6 +3,9 @@ import React, { FC, ChangeEvent, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+//Import Backend Address
+import REACT_APP_BACKEND from "./../../../config";
+
 //Import Components
 import CreateTopSection from './child_components/createTopSection';
 import Calendar from './child_components/calendar';
@@ -39,8 +42,8 @@ const Create: FC<createProps> = ({ setEvent }) => {
 
   let navigate = useNavigate();
 
-  const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
-  // const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND + "events/";
+  // const DEV_BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND + "events/";
+  const BACKEND_URL = REACT_APP_BACKEND + "events/";
 
   //Attending Interface
   interface attendingInterface {
@@ -71,8 +74,8 @@ const Create: FC<createProps> = ({ setEvent }) => {
   });
 
   useEffect(() => {
-    console.log("newForm has been updated to:");
-    console.log(newForm);
+    // console.log("newForm has been updated to:");
+    // console.log(newForm);
   }, [newForm])
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
@@ -108,7 +111,7 @@ const Create: FC<createProps> = ({ setEvent }) => {
   const createEvent = async () => {
 
     //Send HTTP Post Request to backend and save response
-    const response = await fetch(DEV_BACKEND_URL, {
+    const response = await fetch(BACKEND_URL, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

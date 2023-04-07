@@ -22,12 +22,14 @@
 
   //Mobile Sizing
   @include d.for-phone-only {
+    min-height: v.$body-height-mobile;
     height: fit-content;
     padding-top: v.$body-padding-top-mobile;
   }
 
   //Tablet Portrait Sizing & Positioning
   @include d.for-tablet-portrait-up {
+    min-height: v.$body-height-portrait;
     height: fit-content;
     padding-top: v.$body-padding-top-portrait;
   }

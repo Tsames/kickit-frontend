@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
+//Import Backend Address
+import REACT_APP_BACKEND from "./config";
+
 //Import Nav & Footer Components
 import Navbar from './components/navigation_components/navbar';
 import Footer from './components/navigation_components/footer';
@@ -36,7 +39,7 @@ function App() {
   const location = useLocation();
 
   // const BACKEND_URL = process.env.REACT_APP_KICKIT_DEV_BACKEND;
-  const BACKEND_URL = process.env.REACT_APP_KICKIT_BACKEND;
+  const BACKEND_URL = REACT_APP_BACKEND;
 
   //Attending Interface
   interface attendingInterface {

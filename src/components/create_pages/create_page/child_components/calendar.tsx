@@ -281,7 +281,7 @@ const Calendar: FC<CalendarProps> = ({ newForm, setNewForm }) => {
 
       //Remove the css class
       classList.remove("calendar-selected");
-      console.log('removing class from selected item.')
+      // console.log('removing class from selected item.')
 
       //Find index of the element in days array
       const index = checkDays(newForm.days, Number(dataset.time));

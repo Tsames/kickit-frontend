@@ -107,7 +107,7 @@ function App() {
 
   /* Passing Function - Checks if the current event is saved in the event state matches the url of the page.
   If it doesn't, then the function will call getEventData */
-  const checkEvent = async (id: string): Promise<any> => {
+  const checkEvent = async (id: string): Promise<boolean> => {
     if (id !== event._id) {
       const output = await getEventData(id);
       return output;

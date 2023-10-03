@@ -1,6 +1,6 @@
 //Dependencies
 import React, { FC, useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AiFillPlusCircle } from "react-icons/ai";
 

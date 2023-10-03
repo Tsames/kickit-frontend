@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { RxCopy } from "react-icons/rx";
 import { motion } from 'framer-motion';
 
+import REACT_APP_KICKIT_FRONTEND from "./../../../../config"
+
 //Styling
 import '../../../../styles/create_pages_styling/created_page/child_components/copyLink.scss';
 
@@ -22,7 +24,7 @@ const CopyLink: FC<copyLinkProps> = ({ }) => {
   const eventId = useParams().id;
 
   //Get Base URL from .env
-  const DEV_FRONTEND_URL = process.env.REACT_APP_KICKIT_FRONTEND + "event/" + `${eventId}`;
+  const DEV_FRONTEND_URL = REACT_APP_KICKIT_FRONTEND + "event/" + `${eventId}`;
   // const FRONTEND_URL = process.env.REACT_APP_KICKIT_FRONTEND + "events/";
 
   /* ------------------------------------------ Animation Details (Framer-Motion) ------------------------------------------ */
